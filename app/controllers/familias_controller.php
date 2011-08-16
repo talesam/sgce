@@ -23,8 +23,12 @@ class FamiliasController extends AppController {
 				}
 			}
 
-			$this->Familia->recursive = 0;
-			$this->set('familias', $this->paginate());
+			$this->Familia->recursive = -1;
+			$this->Familia->Behaviors->Attach('Containable');
+			$this->paginate['contain'] = array('Pessoa' => array('conditions' => array('Pessoa.tipo' => 'responsavel')));
+			$familias = $this->paginate();
+
+			$this->set('familias', $familias);
 
 		}
 
@@ -32,22 +36,22 @@ class FamiliasController extends AppController {
 		
 
 		
-	private function _perguntas(){
+	private function _questionarios(){
 			
-			$_perguntas = $this->Familia->Pergunta->generatetreelist();
+			$_questionarios = $this->Familia->Questionario->generatetreelist();
 			
 			$x= null;
-			$perguntas = array();
-			foreach($_perguntas as $k => $v){
+			$questionarios = array();
+			foreach($_questionarios as $k => $v){
 				if($v[0] == '_'){
-					$perguntas[$x][$k] = substr($v, 1, strlen($v));
+					$questionarios[$x][$k] = substr($v, 1, strlen($v));
 				}else{
 					$x = $v;
 				}
 			}
 			
 		
-			$this->set('perguntas', $perguntas);
+			$this->set('questionarios', $questionarios);
 	}
 		
 	
@@ -63,8 +67,8 @@ class FamiliasController extends AppController {
 				
 			}
 
-			$this->_perguntas();
-						$this->set('escolaridades', $this->Familia->escolaridades);
+			$this->_questionarios();
+			$this->set('escolaridades', $this->Familia->Pessoa->escolaridades);
 		}
 
 		function admin_editar($id = null) {
@@ -88,8 +92,8 @@ class FamiliasController extends AppController {
 				$this->data = $this->Familia->read(null, $id);
 			}
 		
-			$this->_perguntas();
-			$this->set('escolaridades', $this->Familia->escolaridades);
+			$this->_questionarios();
+			$this->set('escolaridades', $this->Familia->Pessoa->escolaridades);
 		}
 
 

@@ -79,24 +79,31 @@
 					</li>
 					
 				
+				
+					<li><?php echo $this->Html->link('Mantimentos', array('controller' => 'mantimentos', 'action' => 'index')); ?>
+						<ul>
+							<li><?php echo $this->Html->link('Listar', array('controller' => 'mantimentos', 'action' => 'index')); ?></li>
+							<li><?php echo $this->Html->link('Cadastrar', array('controller' => 'mantimentos', 'action' => 'cadastrar')); ?></li>
+						</ul>
+					</li>
+
 					
-					<li>
-						<?php echo $this->Html->link('Perguntas', array('controller' => 'perguntas', 'action' => 'index')); ?>
-							<ul>
-								<li><?php echo $this->Html->link('Listar', array('controller' => 'perguntas', 'action' => 'index')); ?></li>
-								<li><?php echo $this->Html->link('Cadastrar', array('controller' => 'perguntas', 'action' => 'cadastrar')); ?></li>
-							</ul>
+					<li><?php echo $this->Html->link('Questionários', array('controller' => 'questionarios', 'action' => 'index')); ?>
+						<ul>
+							<li><?php echo $this->Html->link('Listar', array('controller' => 'questionarios', 'action' => 'index')); ?></li>
+							<li><?php echo $this->Html->link('Cadastrar', array('controller' => 'questionarios', 'action' => 'cadastrar')); ?></li>
+						</ul>
 					</li>
 					
+					<li><?php echo $this->Html->link('Logs', array('controller' => 'logs', 'action' => 'index')); ?> </li>
 				
-				<li><?php echo $this->Html->link('Usuários', array('controller' => 'usuarios', 'action' => 'index')); ?>
-					<ul>
-						<li><?php echo $this->Html->link('Listar', array('controller' => 'usuarios', 'action' => 'index')); ?></li>
-						<li><?php echo $this->Html->link('Cadastrar', array('controller' => 'usuarios', 'action' => 'cadastrar')); ?></li>
-					</ul>
-				</li>
-				
-			</ul>
+					<li><?php echo $this->Html->link('Usuários', array('controller' => 'usuarios', 'action' => 'index')); ?>
+						<ul>
+							<li><?php echo $this->Html->link('Listar', array('controller' => 'usuarios', 'action' => 'index')); ?></li>
+							<li><?php echo $this->Html->link('Cadastrar', array('controller' => 'usuarios', 'action' => 'cadastrar')); ?></li>
+						</ul>
+					</li>				
+				</ul>
 				
 			<p class="user">Olá, <a href="#"><?php echo $this->Session->read('Auth.Usuario.nome'); ?></a> | <?php echo $this->Html->link('Sair', array('controller' => 'usuarios', 'action' => 'logout')); ?></p>
 			</div>		<!-- #header ends -->

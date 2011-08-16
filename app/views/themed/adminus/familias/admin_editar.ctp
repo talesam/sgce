@@ -15,9 +15,10 @@
 	
 		<div class="sidebar">
 			<ul class="sidemenu">
-				<li><a href="#sb1">Perfil</a></li>
-				<li><a href="#sb2">Dependentes</a></li>
+				<li><a href="#sb1">Família</a></li>
+				<li><a href="#sb2">Pessoas</a></li>
 				<li><a href="#sb3">Questionário</a></li>
+				<li><a href="#sb3">Cestas</a></li>
 			</ul>
 		</div>
 		
@@ -25,27 +26,7 @@
 		<?php echo $this->Form->create('Familia'); echo $this->Form->input('id'); ?>
 		<div class="sidebar_content" id="sb1">
 		
-			<div style="position: relative; top: -120px;">
-			<p>
-				<label>Nome:</label><br />
-				<?php echo $this->Form->input('nome', array('div' => false, 'label' => false, 'class' => 'text medium')); ?>
-			</p>
-			
-			<p>
-				<label>Descrição:</label><br />
-				<?php echo $this->Form->input('descricao', array('div' => false, 'label' => false, 'class' => 'text medium')); ?>
-			</p>
-
-			<p>
-				<label>Nascimento:</label><br />
-				<?php echo $this->Form->input('nascimento', array('div' => false, 'label' => false, 'minYear' => date('Y') - 100, 'maxYear' => date('Y') - 10)); ?>
-			</p>
-				
-			<p>
-				<label>Telefone:</label><br />
-				<?php echo $this->Form->input('telefone', array('div' => false, 'label' => false, 'class' => 'text medium mask-telefone')); ?>
-			</p>
-			
+			<div style="position: relative; top: -120px;">			
 			<p>
 				<label>Endereço:</label><br />
 				<?php echo $this->Form->input('endereco', array('div' => false, 'label' => false, 'class' => 'text medium')); ?>
@@ -76,18 +57,11 @@
 				<?php echo $this->Form->input('cidade', array('div' => false, 'label' => false, 'class' => 'text medium')); ?>
 			</p>
 			
-			
 			<p>
-				<label>Escolaridade:</label><br />
-				<?php echo $this->Form->input('escolaridade', array('div' => false, 'label' => false, 'class' => 'styled', 'options' => $escolaridades)); ?>
+				<label>Telefone:</label><br />
+				<?php echo $this->Form->input('telefone', array('div' => false, 'label' => false, 'class' => 'text medium mask-telefone')); ?>
 			</p>
-			
-			
-			<p>
-				<label>Ocupação:</label><br />
-				<?php echo $this->Form->input('ocupacao', array('div' => false, 'label' => false, 'class' => 'text medium')); ?>
-			</p>
-			
+						
 			<p>
 				<label>Renda Familiar:</label><br />
 				<?php echo $this->Form->input('renda_familia', array('div' => false, 'label' => false, 'class' => 'text medium mask-moeda')); ?>
@@ -108,7 +82,7 @@
 		<div class="sidebar_content" id="sb3">
 			<div style="position: relative; top: -120px;">
 				<p>
-					<?php echo $this->Form->input('Pergunta', array('div' => false, 'label' => false, 'multiple' => 'checkbox')); ?>
+					<?php echo $this->Form->input('Questionario', array('div' => false, 'label' => false, 'multiple' => 'checkbox')); ?>
 				</p>
 			</div>
 		</div>
