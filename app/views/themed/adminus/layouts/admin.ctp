@@ -86,6 +86,14 @@
 							<li><?php echo $this->Html->link('Cadastrar', array('controller' => 'mantimentos', 'action' => 'cadastrar')); ?></li>
 						</ul>
 					</li>
+					
+					
+					<li><?php echo $this->Html->link('Estoques', array('controller' => 'estoques', 'action' => 'index')); ?>
+						<ul>
+							<li><?php echo $this->Html->link('Listar', array('controller' => 'estoques', 'action' => 'index')); ?></li>
+							<li><?php echo $this->Html->link('Cadastrar', array('controller' => 'estoques', 'action' => 'cadastrar')); ?></li>
+						</ul>
+					</li>
 
 					
 					<li><?php echo $this->Html->link('Questionários', array('controller' => 'questionarios', 'action' => 'index')); ?>
@@ -96,6 +104,15 @@
 					</li>
 					
 					<li><?php echo $this->Html->link('Logs', array('controller' => 'logs', 'action' => 'index')); ?> </li>
+				
+				
+					<li><?php echo $this->Html->link('Voluntários', array('controller' => 'voluntarios', 'action' => 'index')); ?>
+						<ul>
+							<li><?php echo $this->Html->link('Listar', array('controller' => 'voluntarios', 'action' => 'index')); ?></li>
+							<li><?php echo $this->Html->link('Cadastrar', array('controller' => 'voluntarios', 'action' => 'cadastrar')); ?></li>
+						</ul>
+					</li>
+					
 				
 					<li><?php echo $this->Html->link('Usuários', array('controller' => 'usuarios', 'action' => 'index')); ?>
 						<ul>
