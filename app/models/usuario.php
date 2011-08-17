@@ -18,6 +18,10 @@ class Usuario extends AppModel {
 					'required' => true,
 					'message' => 'E-mail inválido',
 					'on' => 'create',
+				),
+			'isUnique' => array(
+					'rule' => 'isUnique',
+					'message' => 'Já existe este e-mail cadastrado',
 				)
 			),
 		'nome' => array(
@@ -25,7 +29,31 @@ class Usuario extends AppModel {
 				'rule' => 'notEmpty',
 				'required' => true,
 				'on' => 'create',
-				'message' => 'Campo nome é obrigatório',
+				'message' => 'Campo  obrigatório',
+			)
+		),
+		'cpf' => array(
+			'notEmpty' => array(
+				'rule' => 'notEmpty',
+				'required' => true,
+				'on' => 'create',
+				'message' => 'Campo obrigatório',
+			)
+		),
+		'temp_senha' => array(
+			'notEmpty' => array(
+				'rule' => 'notEmpty',
+				'required' => true,
+				'on' => 'create',
+				'message' => 'Campo obrigatório',
+			)
+		),
+		'prestacao_servico' => array(
+			'notEmpty' => array(
+				'rule' => 'notEmpty',
+				'required' => true,
+				'on' => 'create',
+				'message' => 'Campo obrigatório',
 			)
 		)
 	);

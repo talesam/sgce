@@ -2,7 +2,7 @@
 	<div class="block_head">
 		<div class="bheadl"></div>
 		<div class="bheadr"></div>
-		<h2>Familias</h2>
+		<h2>Famílias</h2>
 		<ul>
 			<li><?php echo $this->Html->link('Cadastrar Família', array('action' => 'cadastrar')); ?></li>
 		</ul>

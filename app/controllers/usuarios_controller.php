@@ -35,12 +35,12 @@ class UsuariosController extends AppController {
 
 
 						if ( $this->Email->send($mensagem) ) {
-							$this->flash( 'Sua nova senha foi enviada com sucesso para seu e-mail.', '/accounts/login',3);
+							$this->flash( 'Sua nova senha foi enviada com sucesso para seu e-mail.', '/usuarios/login',3);
 						} else {
-							$this->flash( 'Houve algum problema para recuperar sua senha. Por favor tente novamente mais tarde.', '/accounts/recuperarsenha', 3 );
+							$this->flash( 'Houve algum problema para recuperar sua senha. Por favor tente novamente mais tarde.', '/usuarios/recuperarsenha', 3 );
 						}
 			}else{
-					$this->flash( 'Não encontramos seu e-mail em nossos cadastros. Por favor, tente novamente mais tarde.', '/accounts/recuperarsenha', 3 );
+					$this->flash( 'Não encontramos seu e-mail em nossos cadastros. Por favor, tente novamente mais tarde.', '/usuarios/recuperarsenha', 3 );
 			}
 		
 
@@ -82,25 +82,26 @@ class UsuariosController extends AppController {
 			}
 
 			$this->Usuario->recursive = 0;
-			$this->set('accounts', $this->paginate());
+			$this->set('usuarios', $this->paginate());
 		}
 
 	
 	function admin_cadastrar() {
 			if (!empty($this->data)) {
 				$this->Usuario->create();
-				if(!empty($this->data['Usuario']['temp_password'])){
-					$this->data['Usuario']['password'] = $this->Auth->password($this->data['Usuario']['temp_password']);	
+				if(!empty($this->data['Usuario']['temp_senha'])){
+					$this->data['Usuario']['senha'] = $this->Auth->password($this->data['Usuario']['temp_senha']);	
 				}
 				
-				$this->data['Usuario']['data_cadastro'] = date('Y-m-d H:i:s');
 				if ($this->Usuario->save($this->data)) {
+					
+					$this->gravarLog('Cadastrou usuário: '. $this->data['Usuario']['nome']);
+					
 					$this->Session->setFlash('Usuário cadastrado', 'flash_success');
 					$this->redirect(array('action' => 'index'));
 				} else {
 					$this->Session->setFlash('Usuário não pode ser cadastrado. Por favor, tente novamente.', 'flash_error');
 				}
-				unset($this->data['Usuario']['senha']);
 			}
 		}
 
@@ -114,6 +115,9 @@ class UsuariosController extends AppController {
 					$this->data['Usuario']['password'] = $this->Auth->password($this->data['Usuario']['temp_password']);	
 				}
 				if ($this->Usuario->save($this->data)) {
+					
+					$this->gravarLog('Modificou usuário: '. $this->data['Usuario']['nome']);
+					
 					$this->Session->setFlash('Usuário salvo.', 'flash_success');
 					$this->redirect(array('action' => 'index'));
 				} else {
@@ -132,7 +136,12 @@ class UsuariosController extends AppController {
 				$this->Session->setFlash('Usuário inválido', 'flash_error');
 				$this->redirect(array('action'=>'index'));
 			}
+			
+			$data = $this->Usuario->read(null, $id);
 			if($this->Usuario->delete($id)) {
+				
+				$this->gravarLog('Excluiu usuário: '. $data['Usuario']['nome']);
+				
 				$this->Session->setFlash('Usuario removido.', 'flash_success');
 				$this->redirect(array('action'=>'index'));
 			}

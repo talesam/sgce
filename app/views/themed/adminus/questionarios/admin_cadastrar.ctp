@@ -12,11 +12,11 @@
 	
 	<div class="block_content">
 	
-		<?php echo $this->Form->create('Pergunta');  ?>
+		<?php echo $this->Form->create('Questionario');  ?>
 			
 			<p>
 				<label>Categoria:</label><br />
-				<?php echo $this->Form->input('parent_id', array('div' => false, 'label' => false, 'class' => 'styled', 'options' => $perguntas, 'empty' => 'Categoria Pai')); ?>
+				<?php echo $this->Form->input('parent_id', array('div' => false, 'label' => false, 'class' => 'styled', 'options' => $questionarios, 'empty' => 'Categoria Pai')); ?>
 			</p>
 			
 			<p>

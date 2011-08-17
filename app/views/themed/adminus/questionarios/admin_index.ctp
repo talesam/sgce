@@ -4,10 +4,10 @@
 		<div class="bheadl"></div>
 		<div class="bheadr"></div>
 		
-		<h2>Questionarios</h2>
+		<h2>Questionários</h2>
 		
 		<ul>
-			<li><?php echo $this->Html->link('Cadastrar Questionario', array('action' => 'cadastrar')); ?></li>
+			<li><?php echo $this->Html->link('Cadastrar Questionário', array('action' => 'cadastrar')); ?></li>
 		</ul>
 	</div>		<!-- .block_head ends -->
 	

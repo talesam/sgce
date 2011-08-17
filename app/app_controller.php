@@ -42,7 +42,7 @@ class AppController extends Controller {
 		$this->Auth->userModel = 'Usuario';
 		$this->Auth->fields = array('username' => 'email', 'password' => 'senha');
 		$this->Auth->authError = 'Desculpe, você precisa se autenticar no sistema para visualizar esta área.';
-		$this->Auth->loginError = 'E-mail ou senha inválidos. Por favor, tente novamente.';
+		$this->Auth->loginError = 'E-mail ou senha inválidos. Por favor, tente novamente. Ou usuário pode estar inativo.';
 		$this->Auth->userScope = array('Usuario.status' => 1);
 		$this->Auth->loginAction = array('admin' => true, 'controller' => 'usuarios', 'action' => 'login');
 		$this->Auth->logoutRedirect = array('admin' => true, 'controller' => 'usuarios', 'action' => 'login');
@@ -50,6 +50,22 @@ class AppController extends Controller {
 	}
 	
 	
+	/*
+	* 
+	* Função responsável por registrar todos eventos do sistema e gravar no banco de dados
+	* em forma de logs.
+	* 
+	* */
+	protected function gravarLog($descricao=null){
+		$data = array(
+			'usuario_id' => $this->Session->read('Auth.Usuario.id'),
+			'descricao'	=> $descricao,
+			'data'	=> date('Y-m-d H:i:s')
+		);
+		$log =& ClassRegistry::init('Log');
+		$log->create();
+		$log->save($data);
+	}
 
 	
 	protected function _upload( $file = null , $path = null , $enctype = true , $newName = null ){
