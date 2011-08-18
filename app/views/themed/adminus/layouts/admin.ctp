@@ -83,6 +83,21 @@
 							<li><?php echo $this->Html->link('Estoque', array('controller' => 'estoques', 'action' => 'index')); ?></li>
 						</ul>
 					</li>
+					
+					<li><?php echo $this->Html->link('Relatório', array('controller' => 'encontros', 'action' => 'index')); ?>
+						<ul>
+							<li><?php echo $this->Html->link('Voluntário', array('controller' => 'voluntarios', 'action' => 'index')); ?></li>
+												
+							<li><?php echo $this->Html->link('Vencimento Matrícula', array('controller' => 'familias', 'action' => 'index')); ?></li>
+							<li><?php echo $this->Html->link('Família Apta', array('controller' => 'familias', 'action' => 'index')); ?></li>
+							
+							<li><?php echo $this->Html->link('Vencimento Mantimento', array('controller' => 'mantimentos', 'action' => 'index')); ?></li>
+							<li><?php echo $this->Html->link('Cesta Disponível', array('controller' => 'cestas', 'action' => 'index')); ?></li>
+							<li><?php echo $this->Html->link('Item Pendente Cesta', array('controller' => 'cestas', 'action' => 'index')); ?></li>
+						</ul>
+					</li>					
+
+					<li><?php echo $this->Html->link('Cesta', array('controller' => 'cestas', 'action' => 'index')); ?> </li>
 
 					<li><?php echo $this->Html->link('Log', array('controller' => 'logs', 'action' => 'index')); ?> </li>
 				</ul>
