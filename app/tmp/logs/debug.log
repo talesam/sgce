@@ -1,3 +1,4 @@
 2011-08-17 04:25:51 Notice: Notice (8): Undefined variable: encontro in [/var/www/sgce-new/app/views/themed/adminus/frequencias/admin_index.ctp, line 7]
 2011-08-17 04:25:51 Notice: Notice (8): Undefined variable: encontro in [/var/www/sgce-new/app/views/themed/adminus/frequencias/admin_index.ctp, line 7]
 2011-08-17 04:26:09 Notice: Notice (8): Undefined variable: encontro in [/var/www/sgce-new/app/views/themed/adminus/frequencias/admin_index.ctp, line 7]
+2011-08-18 16:45:28 Notice: Notice (8): Undefined index: voluntario in [/var/www/sgce-new/app/views/themed/adminus/usuarios/admin_index.ctp, line 47]
