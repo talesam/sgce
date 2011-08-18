@@ -5,7 +5,7 @@
  * [Short Description]
  *
  * @package default
- * @author Edinei L. Cipriani
+ * @author Rafael Malatesta e Tales A. Mendonça
  * @version $Id$
  * @copyright __MyCompanyName__
  **/
@@ -19,9 +19,7 @@ class Pessoa extends AppModel {
 		'ensino_medio' => 'Ensino Médio', 
 		'ensino_tecnico' => 'Ensino Técnico', 
 		'ensino_superior' => 'Ensino Superior', 
-		'pos_graduado' => 'Pós Graduado', 
-		'mestrado' => 'Mestrado', 
-		'doutorado' => 'Doutorado'
+		'pos_graduado' => 'Pós Graduado'
 	);
 	
 	

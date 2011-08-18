@@ -1,9 +1,6 @@
 <?php
 class FamiliasController extends AppController {
 
-
-
-
 	function admin_index() {
 			if(!empty($this->data)){
 				$ids = array();
@@ -13,12 +10,12 @@ class FamiliasController extends AppController {
 					}
 				}
 				if(empty($ids)){
-					$this->Session->setFlash('Marque os familias para excluir.', 'flash_warning');
+					$this->Session->setFlash('Marque as familias que deseja excluir.', 'flash_warning');
 				}else{
 					if($this->Familia->deleteAll(array('Familia.id' => $ids))){
-						$this->Session->setFlash('Familias removidos.', 'flash_success');
+						$this->Session->setFlash('Familias removidas.', 'flash_success');
 					}else{
-						$this->Session->setFlash('Familias não removidos. Por favor, tente novamente.', 'flash_error');
+						$this->Session->setFlash('Familias não removidas. Por favor, tente novamente.', 'flash_error');
 					}
 				}
 			}
@@ -33,9 +30,6 @@ class FamiliasController extends AppController {
 		}
 
 
-		
-
-		
 	private function _questionarios(){
 			
 			$_questionarios = $this->Familia->Questionario->generatetreelist();
@@ -59,10 +53,10 @@ class FamiliasController extends AppController {
 			if (!empty($this->data)) {
 				$this->Familia->create();
 				if ($this->Familia->saveAll($this->data)) {
-					$this->Session->setFlash('Produto cadastrado', 'flash_success');
+					$this->Session->setFlash('Família cadastrada', 'flash_success');
 					$this->redirect(array('action' => 'index'));
 				} else {
-					$this->Session->setFlash('Produto não pode ser cadastrado. Por favor, tente novamente.', 'flash_error');
+					$this->Session->setFlash('Família não pode ser cadastrada. Por favor, tente novamente.', 'flash_error');
 				}
 				
 			}
@@ -73,7 +67,7 @@ class FamiliasController extends AppController {
 
 		function admin_editar($id = null) {
 			if (!$id && empty($this->data)) {
-				$this->Session->setFlash('Produto inválido.', 'flash_error');
+				$this->Session->setFlash('Família inválida.', 'flash_error');
 				$this->redirect(array('action' => 'index'));
 			}
 			if (!empty($this->data)) {
@@ -82,10 +76,10 @@ class FamiliasController extends AppController {
 					
 			
 					
-					$this->Session->setFlash('Produto salvo.', 'flash_success');
+					$this->Session->setFlash('Família salva.', 'flash_success');
 					$this->redirect(array('action' => 'index'));
 				} else {
-					$this->Session->setFlash('Produto não pode ser salvo. Por favor, tente novamente.', 'flash_error');
+					$this->Session->setFlash('Família não pode ser salva. Por favor, tente novamente.', 'flash_error');
 				}
 			}
 			if (empty($this->data)) {
@@ -99,14 +93,14 @@ class FamiliasController extends AppController {
 
 		public function admin_excluir($id = null) {
 			if(!$id) {
-				$this->Session->setFlash('Produto inválido', 'flash_error');
+				$this->Session->setFlash('Família inválida', 'flash_error');
 				$this->redirect(array('action'=>'index'));
 			}
 			if($this->Familia->delete($id)) {
-				$this->Session->setFlash('Produto removido.', 'flash_success');
+				$this->Session->setFlash('Família removida.', 'flash_success');
 				$this->redirect(array('action'=>'index'));
 			}
-			$this->Session->setFlash('Produto não pode ser removido', 'flash_error');
+			$this->Session->setFlash('Família não pode ser removida', 'flash_error');
 			$this->redirect(array('action' => 'index'));
 		}
 }

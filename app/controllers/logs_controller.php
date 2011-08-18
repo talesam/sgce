@@ -5,7 +5,7 @@
  * [Short Description]
  *
  * @package default
- * @author Edinei L. Cipriani
+ * @author Rafael Malatesta e Tales Mendonça
  * @version $Id$
  * @copyright __MyCompanyName__
  **/

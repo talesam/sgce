@@ -5,7 +5,7 @@
  * [Short Description]
  *
  * @package default
- * @author Edinei L. Cipriani
+ * @author Rafael Malatesta e Tales A. Mendonça
  * @version $Id$
  * @copyright __MyCompanyName__
  **/
@@ -15,7 +15,6 @@ class Mantimento extends AppModel {
 		'cesta' => 'Cesta',
 		'extra' => 'Extra'
 	);
-	
 	
 	public $validate = array(
 		'nome' => array(
@@ -38,8 +37,15 @@ class Mantimento extends AppModel {
 				 'message' => 'Somente é permitido números',
 			)
 			
-		)
+		),
 	);
-	
+		
+	//Acrecentado por Tales
+	public $medidas = array(
+		'kilo'	=> 'kilo(s)',
+		'litro' => 'Litro(s)',
+		'lata'	=> 'Lata(s)',
+		'outro'	=> 'Outro(s)'
+	);
 }
 ?>

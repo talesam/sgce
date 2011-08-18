@@ -1,10 +1,6 @@
 <?php
 class UsuariosController extends AppController {
 	
-	
-
-
-	
 	public function login(){
 		
 	}
@@ -16,12 +12,12 @@ class UsuariosController extends AppController {
 
 			if(!empty($usuario)){
 						# Enviando e-mail...
-						$nome = 'Conveniencia Lounge Pub';
-						$email  = 'phpedinei@gmail.com';
+						$nome = 'SGCE - Sistema Gerencial Casa Espírita';
+						$email  = 'talesam@gmail.com';
 						$senha = substr(String::uuid(),0, 6);
 						$mensagem = nl2br("Olá, sua nova senha para acesso ao site é: ". $senha."\nAtenciosamente, administração do site.");
 
-						$assunto = 'Nova senha - conveniencialoungepub.com.br';
+						$assunto = 'Nova senha - SGCE';
 						
 						$a = array('id' => $usuario['Usuario']['id'], 'senha' => $this->Auth->password($senha) );
 						$this->Usuario->save($a);
@@ -47,7 +43,6 @@ class UsuariosController extends AppController {
 		}
 	}
 	
-
 	public function logout(){
 		$this->redirect($this->Auth->logout());
 	}
@@ -56,11 +51,9 @@ class UsuariosController extends AppController {
 		//pr($this->data); die();
 	}
 	
-
 	public function admin_logout(){
 		$this->redirect($this->Auth->logout());
 	}
-
 
 	function admin_index() {
 			if(!empty($this->data)){
@@ -85,7 +78,6 @@ class UsuariosController extends AppController {
 			$this->set('usuarios', $this->paginate());
 		}
 
-	
 	function admin_cadastrar() {
 			if (!empty($this->data)) {
 				$this->Usuario->create();
@@ -129,7 +121,6 @@ class UsuariosController extends AppController {
 			}
 		
 		}
-
 
 		public function admin_excluir($id = null) {
 			if(!$id) {
