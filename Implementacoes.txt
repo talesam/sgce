@@ -1,0 +1,37 @@
+itens a arrumar ou que estão faltando para serem implementados:
+
+---------------------------
+Quando posicionar o mouse em cima do menu, vai notar que está apontando para "Encontros", tem que remover esses array
+<li><?php echo $this->Html->link('Cadastrar', array('controller' => 'encontros', 'action' => 'index')); ?>
+<li><?php echo $this->Html->link('Consultar', array('controller' => 'encontros', 'action' => 'index')); ?>
+<li><?php echo $this->Html->link('Relatório', array('controller' => 'encontros', 'action' => 'index')); ?>
+
+---------------------------
+Menu - Cadastrar Usuário
+
+Em "Situação" está aparecendo "Ativo" como padrão, mas ao efetuar o cadastro o mesmo é salvo como "Inativo".
+
+Em "Perfil" deverá aparecer:
+
+	Administrador
+	Coordenador
+	Estoquista
+	Consultor
+
+---------------------------
+Menu - Cadastrar/Consultar Valuntário
+
+	Terminar de incluir o voluntário
+
+	Falta criar a view e os definir o relacionemanto.
+
+---------------------------
+Menu - Cadastrar Mantimento
+
+	Nome (Já possui)
+	Tipo (Já possui)
+	Quantidade (Já possui) (Você colocou quantidade mínima para a cesta, não entendi. O objetivo é o usuário ir cadastrando os mantimentos na medida que vão chegando. O que vai compor UMA CESTA BASICA, deve ficar definido em algum lugar.)
+	Medida(Kilo, Litro, Lata, outro) (Incluir)
+	Data de vencimento(Incluir)
+---------------------------
+
