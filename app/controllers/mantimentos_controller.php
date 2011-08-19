@@ -2,8 +2,19 @@
 class MantimentosController extends AppController {
 	
 	function admin_index() {
-		$this->set('mantimentos', $this->paginate());
+		$mantimentos = $this->paginate();
+		$this->set('mantimentos', $mantimentos);
+		
+		
+		$e =& ClassRegistry::init('Estoque');
+		foreach($mantimentos as $mantimento){
+			$estoque[$mantimento['Mantimento']['id']] = $e->find('count', array('conditions' => array('Estoque.data_saida' => NULL, 'Estoque.mantimento_id' => $mantimento['Mantimento']['id'])));
+		}
+		
+		$this->set('estoque', $estoque);
+		
 		$this->set('tipos', $this->Mantimento->tipos);
+		$this->set('medidas', $this->Mantimento->medidas);
 	}
 
 	function admin_cadastrar() {
@@ -19,7 +30,9 @@ class MantimentosController extends AppController {
 					$this->Session->setFlash('Mantimento não pode ser cadastrado. Por favor, tente novamente.', 'flash_error');
 				}
 			}
-					$this->set('tipos', $this->Mantimento->tipos);
+			
+			$this->set('tipos', $this->Mantimento->tipos);
+			$this->set('medidas', $this->Mantimento->medidas);
 		}
 
 		function admin_editar($id = null) {
@@ -28,6 +41,7 @@ class MantimentosController extends AppController {
 				$this->redirect(array('action' => 'index'));
 			}
 			if (!empty($this->data)) {
+				
 				if ($this->Mantimento->save($this->data)) {
 					
 					$this->gravarLog('Modificou mantimento: '. $this->data['Mantimento']['nome']);
@@ -41,7 +55,9 @@ class MantimentosController extends AppController {
 			if (empty($this->data)) {
 				$this->data = $this->Mantimento->read(null, $id);
 			}
-					$this->set('tipos', $this->Mantimento->tipos);
+				
+			$this->set('tipos', $this->Mantimento->tipos);
+			$this->set('medidas', $this->Mantimento->medidas);
 		}
 
 

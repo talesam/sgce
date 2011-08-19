@@ -4,7 +4,7 @@
 		<div class="bheadl"></div>
 		<div class="bheadr"></div>
 		
-		<h2>Cadastrar Usuário</h2>
+		<h2>Editar Voluntário</h2>
 		<ul><li><?php echo $this->Html->link('VOLTAR', array('action' => 'index')); ?></li></ul>
 	</div>		<!-- .block_head ends -->
 	
@@ -12,7 +12,7 @@
 	
 	<div class="block_content">
 	
-		<?php echo $this->Form->create('Usuario'); ?>
+		<?php echo $this->Form->create('Voluntario'); echo $this->Form->input('id'); ?>
 			<p>
 				<label>Nome:</label><br />
 				<?php echo $this->Form->input('nome', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
@@ -24,21 +24,6 @@
 				<?php echo $this->Form->input('email', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>
 			
-			<p>
-				<label>Senha:</label><br />
-				<?php echo $this->Form->input('temp_senha', array('div' => false, 'label' => false, 'type' => 'password', 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
-			</p>
-			
-			<p>
-				<label>CPF:</label><br />
-				<?php echo $this->Form->input('cpf', array('div' => false, 'label' => false, 'class' => 'text medium mask-cpf', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
-			</p>
-			
-			
-			<p>
-				<label>RG:</label><br />
-				<?php echo $this->Form->input('rg', array('div' => false, 'label' => false,  'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
-			</p>
 			
 			<p>
 				<label>Endereço:</label><br />
@@ -88,16 +73,12 @@
 				<?php echo $this->Form->input('celular', array('div' => false, 'label' => false,  'class' => 'text medium mask-telefone', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>
 			
-				<p>
-					<label>Situação:</label><br />
-					<?php echo $this->Form->input('status', array('div' => false, 'label' => false, 'class' => 'styled', 'type' => 'select', 'options' => array(1 => 'Ativo', 0 => 'Inativo'))); ?>
-				</p>
 			
 			<p>
-				<label>Perfil:</label><br />
-				<?php echo $this->Form->input('perfil', array('div' => false, 'label' => false, 'class' => 'styled', 'type' => 'select')); ?>
+				<label>Situação:</label><br />
+				<?php echo $this->Form->input('status', array('div' => false, 'label' => false, 'class' => 'styled', 'type' => 'select', 'options' => array(1 => 'Ativo', 0 => 'Inativo'))); ?>
 			</p>
-
+			
 		
 			<p>
 				<label>Prestão de serviço:</label><br />
@@ -109,7 +90,7 @@
 			<hr />
 			
 			<p>
-				<input type="submit" class="submit small" value="Cadastrar" />
+				<input type="submit" class="submit small" value="Salvar" />
 			</p>
 		<?php echo $this->Form->end(null); ?>
 		

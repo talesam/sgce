@@ -57,7 +57,7 @@
 				
 				<ul id="nav">					
 
-					<li><?php echo $this->Html->link('Cadastrar', array('controller' => 'encontros', 'action' => 'index')); ?>
+					<li><?php echo $this->Html->link('Cadastros', 'javascript:;'); ?>
 						<ul>
 							<li><?php echo $this->Html->link('Usuário', array('controller' => 'usuarios', 'action' => 'cadastrar')); ?></li>
 							<li><?php echo $this->Html->link('Voluntário', array('controller' => 'voluntarios', 'action' => 'cadastrar')); ?></li>
@@ -70,7 +70,7 @@
 						</ul>
 					</li>
 
-					<li><?php echo $this->Html->link('Consultar', array('controller' => 'encontros', 'action' => 'index')); ?>
+					<li><?php echo $this->Html->link('Consultas', 'javascript:;'); ?>
 						<ul>
 							<li><?php echo $this->Html->link('Usuário', array('controller' => 'usuarios', 'action' => 'index')); ?></li>
 							<li><?php echo $this->Html->link('Voluntário', array('controller' => 'voluntarios', 'action' => 'index')); ?></li>
@@ -84,7 +84,7 @@
 						</ul>
 					</li>
 					
-					<li><?php echo $this->Html->link('Relatório', array('controller' => 'encontros', 'action' => 'index')); ?>
+					<li><?php echo $this->Html->link('Relatórios', 'javascript:;'); ?>
 						<ul>
 							<li><?php echo $this->Html->link('Voluntário', array('controller' => 'voluntarios', 'action' => 'index')); ?></li>
 												
@@ -97,9 +97,9 @@
 						</ul>
 					</li>					
 
-					<li><?php echo $this->Html->link('Cesta', array('controller' => 'cestas', 'action' => 'index')); ?> </li>
+					<li><?php echo $this->Html->link('Cestas', array('controller' => 'cestas', 'action' => 'index')); ?> </li>
 
-					<li><?php echo $this->Html->link('Log', array('controller' => 'logs', 'action' => 'index')); ?> </li>
+					<li><?php echo $this->Html->link('Logs', array('controller' => 'logs', 'action' => 'index')); ?> </li>
 				</ul>
 				
 			<p class="user">Olá, <a href="#"><?php echo $this->Session->read('Auth.Usuario.nome'); ?></a> | <?php echo $this->Html->link('Sair', array('controller' => 'usuarios', 'action' => 'logout')); ?></p>

@@ -16,6 +16,7 @@ class Mantimento extends AppModel {
 		'extra' => 'Extra'
 	);
 	
+
 	public $validate = array(
 		'nome' => array(
 			'notEmpty' => array(

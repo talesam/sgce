@@ -25,10 +25,18 @@
 					<?php echo $this->Form->input('tipo', array('div' => false, 'label' => false, 'type' => 'select', 'class' => 'styled', 'options' => $tipos)); ?>
 				</p>	
 				
+				<p>
+					<label>Quantidade mínima para cesta:</label><br />
+					<?php echo $this->Form->input('quantidade', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
+				</p>
+				
+				
 					<p>
-						<label>Quantidade mínima para cesta:</label><br />
-						<?php echo $this->Form->input('quantidade', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
-					</p>	
+						<label>Medida:</label><br />
+						<?php echo $this->Form->input('medida', array('div' => false, 'label' => false, 'type' => 'select', 'class' => 'styled', 'options' => $medidas)); ?>
+					</p>
+				
+					
 			<hr />
 			
 			<p>

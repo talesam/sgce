@@ -13,6 +13,7 @@
 class LogsController extends AppController {
 
 	public function admin_index(){
+		$this->paginate['order'] = array('Log.data' => 'desc');
 		$this->set('logs', $this->paginate());
 	}
 }

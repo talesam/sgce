@@ -17,6 +17,7 @@
 					<th><?php echo $this->Paginator->sort('nome'); ?></th>
 					<th><?php echo $this->Paginator->sort('tipo'); ?></th>
 					<th><?php echo $this->Paginator->sort('Quantidade para cesta', 'quantidade'); ?></th>
+					<th><?php echo $this->Paginator->sort('medida'); ?></th>
 					<th>Total no estoque</th>
 					<td>&nbsp;</td>
 				</tr>
@@ -28,7 +29,8 @@
 					<td><?php echo $mantimento['Mantimento']['nome']; ?></td>
 					<td><?php echo $tipos[$mantimento['Mantimento']['tipo']]; ?></td>
 					<td><?php echo $mantimento['Mantimento']['quantidade']; ?></td>
-					<td></td>
+					<td><?php echo $medidas[$mantimento['Mantimento']['medida']]; ?></td>
+					<td><?php echo $this->Html->link($estoque[$mantimento['Mantimento']['id']], array('action' => 'index', 'controller' => 'estoques', $mantimento['Mantimento']['id'])); ?></td>
 					<td class="delete">
 						<?php echo $this->Html->link('Editar', array('action' => 'editar', $mantimento['Mantimento']['id'])); ?> | 
 						<?php echo $this->Html->link('Excluir', array('action' => 'excluir', $mantimento['Mantimento']['id']), null, 'Tem certeza que deseja excluir?'); ?>

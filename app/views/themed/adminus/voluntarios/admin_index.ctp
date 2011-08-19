@@ -4,10 +4,10 @@
 		<div class="bheadl"></div>
 		<div class="bheadr"></div>
 		
-		<h2>Usuários</h2>
+		<h2>Voluntários</h2>
 		
 		<ul>
-			<li><?php echo $this->Html->link('Cadastrar usuário', array('action' => 'cadastrar')); ?></li>
+			<li><?php echo $this->Html->link('Cadastrar voluntário', array('action' => 'cadastrar')); ?></li>
 		</ul>
 	</div>		<!-- .block_head ends -->
 	
@@ -15,7 +15,7 @@
 	
 	<div class="block_content">
 	
-		<?php echo $this->Form->create('Usuario'); ?>
+		<?php echo $this->Form->create('Voluntario'); ?>
 		
 			<table cellpadding="0" cellspacing="0" width="100%" class="sortable">
 			
@@ -27,24 +27,22 @@
 						<th><?php echo $this->Paginator->sort('Situação', 'status');?></th>
 						<th><?php echo $this->Paginator->sort('telefone');?></th>
 						<th><?php echo $this->Paginator->sort('celular');?></th>
-						<th><?php echo $this->Paginator->sort('perfil');?></th>
 						<td>&nbsp;</td>
 					</tr>
 				</thead>
 				
 				<tbody>
-					<?php foreach ($usuarios as $usuario): ?>
+					<?php foreach ($voluntarios as $voluntario): ?>
 					<tr>
-						<td><?php echo $this->Form->input('id.'.$usuario['Usuario']['id'], array('type' => 'checkbox', 'div' => false, 'label' => false)); ?></td>
-						<td><?php echo $usuario['Usuario']['nome']; ?>&nbsp;</td>
-						<td><?php echo $usuario['Usuario']['email']; ?>&nbsp;</td>
-						<td><?php echo $usuario['Usuario']['status'] ? 'ativo' : 'inativo'; ?>&nbsp;</td>
-						<td><?php echo $usuario['Usuario']['telefone']; ?>&nbsp;</td>
-						<td><?php echo $usuario['Usuario']['celular']; ?>&nbsp;</td>
-						<td><?php echo $usuario['Usuario']['perfil']; ?>&nbsp;</td>
+						<td><?php echo $this->Form->input('id.'.$voluntario['Voluntario']['id'], array('type' => 'checkbox', 'div' => false, 'label' => false)); ?></td>
+						<td><?php echo $voluntario['Voluntario']['nome']; ?>&nbsp;</td>
+						<td><?php echo $voluntario['Voluntario']['email']; ?>&nbsp;</td>
+						<td><?php echo $voluntario['Voluntario']['status'] ? 'ativo' : 'inativo'; ?>&nbsp;</td>
+						<td><?php echo $voluntario['Voluntario']['telefone']; ?>&nbsp;</td>
+						<td><?php echo $voluntario['Voluntario']['celular']; ?>&nbsp;</td>
 						<td class="delete">
-							<?php echo  $this->Html->link('Editar', array('action' => 'editar', $usuario['Usuario']['id'])); ?> | 
-							<?php echo $this->Html->link('Excluir', array('action' => 'excluir', $usuario['Usuario']['id']), null, 'Tem certeza que deseja excluir?'); ?>
+							<?php echo  $this->Html->link('Editar', array('action' => 'editar', $voluntario['Voluntario']['id'])); ?> | 
+							<?php echo $this->Html->link('Excluir', array('action' => 'excluir', $voluntario['Voluntario']['id']), null, 'Tem certeza que deseja excluir?'); ?>
 						</td>
 					</tr>
 					<?php endforeach; ?>
