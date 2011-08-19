@@ -1,13 +1,11 @@
 <?php
 class MantimentosController extends AppController {
 	
-
 	function admin_index() {
 		$this->set('mantimentos', $this->paginate());
 		$this->set('tipos', $this->Mantimento->tipos);
 	}
 
-	
 	function admin_cadastrar() {
 			if (!empty($this->data)) {
 				$this->Mantimento->create();
@@ -15,10 +13,10 @@ class MantimentosController extends AppController {
 					
 										$this->gravarLog('Cadastrou mantimento: '. $this->data['Mantimento']['nome']);
 										
-					$this->Session->setFlash('Mantimento cadastrada', 'flash_success');
+					$this->Session->setFlash('Mantimento cadastrado', 'flash_success');
 					$this->redirect(array('action' => 'index'));
 				} else {
-					$this->Session->setFlash('Mantimento de produto não pode ser cadastrado. Por favor, tente novamente.', 'flash_error');
+					$this->Session->setFlash('Mantimento não pode ser cadastrado. Por favor, tente novamente.', 'flash_error');
 				}
 			}
 					$this->set('tipos', $this->Mantimento->tipos);
@@ -26,7 +24,7 @@ class MantimentosController extends AppController {
 
 		function admin_editar($id = null) {
 			if (!$id && empty($this->data)) {
-				$this->Session->setFlash('Mantimento inválida.', 'flash_error');
+				$this->Session->setFlash('Mantimento inválido.', 'flash_error');
 				$this->redirect(array('action' => 'index'));
 			}
 			if (!empty($this->data)) {
@@ -34,10 +32,10 @@ class MantimentosController extends AppController {
 					
 					$this->gravarLog('Modificou mantimento: '. $this->data['Mantimento']['nome']);
 					
-					$this->Session->setFlash('Mantimento salva.', 'flash_success');
+					$this->Session->setFlash('Mantimento salvo.', 'flash_success');
 					$this->redirect(array('action' => 'index'));
 				} else {
-					$this->Session->setFlash('Mantimento não pode ser salva. Por favor, tente novamente.', 'flash_error');
+					$this->Session->setFlash('Mantimento não pode ser salvo. Por favor, tente novamente.', 'flash_error');
 				}
 			}
 			if (empty($this->data)) {
@@ -49,7 +47,7 @@ class MantimentosController extends AppController {
 
 		public function admin_excluir($id = null) {
 			if(!$id) {
-				$this->Session->setFlash('Mantimento inválida', 'flash_error');
+				$this->Session->setFlash('Mantimento inválido', 'flash_error');
 				$this->redirect(array('action'=>'index'));
 			}
 			
@@ -58,10 +56,10 @@ class MantimentosController extends AppController {
 				
 				$this->gravarLog('Excluiu mantimento: '. $data['Mantimento']['nome']);
 				
-				$this->Session->setFlash('Mantimento removida.', 'flash_success');
+				$this->Session->setFlash('Mantimento removido.', 'flash_success');
 				$this->redirect(array('action'=>'index'));
 			}
-			$this->Session->setFlash('Mantimento não pode ser removida.', 'flash_error');
+			$this->Session->setFlash('Mantimento não pode ser removido.', 'flash_error');
 			$this->redirect(array('action' => 'index'));
 		}
 }

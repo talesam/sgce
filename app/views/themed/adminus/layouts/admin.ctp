@@ -4,9 +4,7 @@
 <head>
 
 	<meta http-equiv="X-UA-Compatible" content="IE=7" />
-
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	
 	<title>Admin | SGCE</title>
 	
 	<?php 
@@ -43,10 +41,6 @@
 	<style>small { display: block; margin-left: 5px !important;}</style>
 </head>
 
-
-
-
-
 <body>
 
 	<div id="hld">
@@ -63,63 +57,49 @@
 				
 				<ul id="nav">					
 
-					<li><?php echo $this->Html->link('Encontros', array('controller' => 'encontros', 'action' => 'index')); ?>
+					<li><?php echo $this->Html->link('Cadastrar', array('controller' => 'encontros', 'action' => 'index')); ?>
 						<ul>
-							<li><?php echo $this->Html->link('Listar', array('controller' => 'encontros', 'action' => 'index')); ?></li>
-							<li><?php echo $this->Html->link('Cadastrar', array('controller' => 'encontros', 'action' => 'cadastrar')); ?></li>
-						</ul>
-					</li>
-					
+							<li><?php echo $this->Html->link('Usuário', array('controller' => 'usuarios', 'action' => 'cadastrar')); ?></li>
+							<li><?php echo $this->Html->link('Voluntário', array('controller' => 'voluntarios', 'action' => 'cadastrar')); ?></li>
 
-					<li><?php echo $this->Html->link('Familias', array('controller' => 'familias', 'action' => 'index')); ?>
-						<ul>
-							<li><?php echo $this->Html->link('Listar', array('controller' => 'familias', 'action' => 'index')); ?></li>
-							<li><?php echo $this->Html->link('Cadastrar', array('controller' => 'familias', 'action' => 'cadastrar')); ?></li>
-						</ul>
-					</li>
-					
-				
-				
-					<li><?php echo $this->Html->link('Mantimentos', array('controller' => 'mantimentos', 'action' => 'index')); ?>
-						<ul>
-							<li><?php echo $this->Html->link('Listar', array('controller' => 'mantimentos', 'action' => 'index')); ?></li>
-							<li><?php echo $this->Html->link('Cadastrar', array('controller' => 'mantimentos', 'action' => 'cadastrar')); ?></li>
-						</ul>
-					</li>
-					
-					
-					<li><?php echo $this->Html->link('Estoques', array('controller' => 'estoques', 'action' => 'index')); ?>
-						<ul>
-							<li><?php echo $this->Html->link('Listar', array('controller' => 'estoques', 'action' => 'index')); ?></li>
-							<li><?php echo $this->Html->link('Cadastrar', array('controller' => 'estoques', 'action' => 'cadastrar')); ?></li>
+							<li><?php echo $this->Html->link('Familia', array('controller' => 'familias', 'action' => 'cadastrar')); ?></li>
+							<li><?php echo $this->Html->link('Questionário', array('controller' => 'questionarios', 'action' => 'cadastrar')); ?></li>
+							<li><?php echo $this->Html->link('Encontro', array('controller' => 'encontros', 'action' => 'cadastrar')); ?></li>
+
+							<li><?php echo $this->Html->link('Mantimento', array('controller' => 'mantimentos', 'action' => 'cadastrar')); ?></li>							
 						</ul>
 					</li>
 
-					
-					<li><?php echo $this->Html->link('Questionários', array('controller' => 'questionarios', 'action' => 'index')); ?>
+					<li><?php echo $this->Html->link('Consultar', array('controller' => 'encontros', 'action' => 'index')); ?>
 						<ul>
-							<li><?php echo $this->Html->link('Listar', array('controller' => 'questionarios', 'action' => 'index')); ?></li>
-							<li><?php echo $this->Html->link('Cadastrar', array('controller' => 'questionarios', 'action' => 'cadastrar')); ?></li>
+							<li><?php echo $this->Html->link('Usuário', array('controller' => 'usuarios', 'action' => 'index')); ?></li>
+							<li><?php echo $this->Html->link('Voluntário', array('controller' => 'voluntarios', 'action' => 'index')); ?></li>
+							
+							<li><?php echo $this->Html->link('Família', array('controller' => 'familias', 'action' => 'index')); ?></li>
+							<li><?php echo $this->Html->link('Questionário', array('controller' => 'questionarios', 'action' => 'index')); ?></li>
+							<li><?php echo $this->Html->link('Encontro', array('controller' => 'encontros', 'action' => 'index')); ?></li>
+							
+							<li><?php echo $this->Html->link('Mantimento', array('controller' => 'mantimentos', 'action' => 'index')); ?></li>
+							<li><?php echo $this->Html->link('Estoque', array('controller' => 'estoques', 'action' => 'index')); ?></li>
 						</ul>
 					</li>
 					
-					<li><?php echo $this->Html->link('Logs', array('controller' => 'logs', 'action' => 'index')); ?> </li>
-				
-				
-					<li><?php echo $this->Html->link('Voluntários', array('controller' => 'voluntarios', 'action' => 'index')); ?>
+					<li><?php echo $this->Html->link('Relatório', array('controller' => 'encontros', 'action' => 'index')); ?>
 						<ul>
-							<li><?php echo $this->Html->link('Listar', array('controller' => 'voluntarios', 'action' => 'index')); ?></li>
-							<li><?php echo $this->Html->link('Cadastrar', array('controller' => 'voluntarios', 'action' => 'cadastrar')); ?></li>
+							<li><?php echo $this->Html->link('Voluntário', array('controller' => 'voluntarios', 'action' => 'index')); ?></li>
+												
+							<li><?php echo $this->Html->link('Vencimento Matrícula', array('controller' => 'familias', 'action' => 'index')); ?></li>
+							<li><?php echo $this->Html->link('Família Apta', array('controller' => 'familias', 'action' => 'index')); ?></li>
+							
+							<li><?php echo $this->Html->link('Vencimento Mantimento', array('controller' => 'mantimentos', 'action' => 'index')); ?></li>
+							<li><?php echo $this->Html->link('Cesta Disponível', array('controller' => 'cestas', 'action' => 'index')); ?></li>
+							<li><?php echo $this->Html->link('Item Pendente Cesta', array('controller' => 'cestas', 'action' => 'index')); ?></li>
 						</ul>
-					</li>
-					
-				
-					<li><?php echo $this->Html->link('Usuários', array('controller' => 'usuarios', 'action' => 'index')); ?>
-						<ul>
-							<li><?php echo $this->Html->link('Listar', array('controller' => 'usuarios', 'action' => 'index')); ?></li>
-							<li><?php echo $this->Html->link('Cadastrar', array('controller' => 'usuarios', 'action' => 'cadastrar')); ?></li>
-						</ul>
-					</li>				
+					</li>					
+
+					<li><?php echo $this->Html->link('Cesta', array('controller' => 'cestas', 'action' => 'index')); ?> </li>
+
+					<li><?php echo $this->Html->link('Log', array('controller' => 'logs', 'action' => 'index')); ?> </li>
 				</ul>
 				
 			<p class="user">Olá, <a href="#"><?php echo $this->Session->read('Auth.Usuario.nome'); ?></a> | <?php echo $this->Html->link('Sair', array('controller' => 'usuarios', 'action' => 'logout')); ?></p>

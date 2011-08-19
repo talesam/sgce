@@ -5,7 +5,7 @@
  * [Short Description]
  *
  * @package default
- * @author Edinei L. Cipriani
+ * @author Rafael Malatesta e Tales A. Mendonça
  * @version $Id$
  * @copyright __MyCompanyName__
  **/
@@ -29,7 +29,7 @@ class Usuario extends AppModel {
 				'rule' => 'notEmpty',
 				'required' => true,
 				'on' => 'create',
-				'message' => 'Campo  obrigatório',
+				'message' => 'Campo obrigatório',
 			)
 		),
 		'cpf' => array(

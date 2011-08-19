@@ -9,12 +9,7 @@
  * @version $Id$
  * @copyright __MyCompanyName__
  **/
-class Mantimento extends AppModel {
-	
-	public $tipos = array(
-		'cesta' => 'Cesta',
-		'extra' => 'Extra'
-	);
+class Voluntario extends AppModel {
 	
 	public $validate = array(
 		'nome' => array(
@@ -22,30 +17,18 @@ class Mantimento extends AppModel {
 				'rule' => 'notEmpty',
 				'required' => true,
 				'on' => 'create',
-				'message' => 'Campo  obrigatório',
+				'message' => 'Campo obrigatório',
 			)
 		),
-		'quantidade' => array(
+		'prestacao_servico' => array(
 			'notEmpty' => array(
 				'rule' => 'notEmpty',
 				'required' => true,
 				'on' => 'create',
 				'message' => 'Campo obrigatório',
-			),
-			'numeric' => array(
-				'rule' => 'numeric',
-				 'message' => 'Somente é permitido números',
 			)
-			
-		),
+		)
 	);
-		
-	//Acrecentado por Tales
-	public $medidas = array(
-		'kilo'	=> 'kilo(s)',
-		'litro' => 'Litro(s)',
-		'lata'	=> 'Lata(s)',
-		'outro'	=> 'Outro(s)'
-	);
+	
 }
 ?>

@@ -14,7 +14,7 @@ class FrequenciasController extends AppController {
 		/* 
 		* Lista os códigos da frequência
 		* 
-		* Ex.: Ausente, Presença...
+		* Ex.: Ausente, Presente...
 		*  */
 		$codigos = $this->Frequencia->codigos;
 		
