@@ -16,27 +16,24 @@
 
 			
 			<p>
-				<label>Descrição:</label><br />
+				<label>Descrição</label><br />
 				<?php echo $this->Form->input('descricao', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>		
 			
 			<p>
-				<label>Quantidade a ser cadastrada:</label><br />
+				<label>Quantidade a ser cadastrada (Obrigatório)</label><br />
 				<?php echo $this->Form->input('quantidade', array('div' => false, 'label' => false, 'class' => 'text medium')); ?>
 			</p>
 			
+			<p>
+				<label>Data Entrada</label><br />
+				<?php echo $this->Form->input('data_entrada', array('div' => false, 'label' => false)); ?>
+			</p>	
 			
-				<p>
-					<label>Data Entrada:</label><br />
-					<?php echo $this->Form->input('data_entrada', array('div' => false, 'label' => false)); ?>
-				</p>	
-				
-				<p>
-					<label>Data Vencimento:</label><br />
-					<?php echo $this->Form->input('data_vencimento', array('div' => false, 'label' => false)); ?>
-				</p>
-								
-				
+			<p>
+				<label>Data Vencimento</label><br />
+				<?php echo $this->Form->input('data_vencimento', array('div' => false, 'label' => false)); ?>
+			</p>
 					
 			<hr />
 			

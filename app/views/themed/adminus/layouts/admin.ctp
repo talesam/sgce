@@ -66,7 +66,8 @@
 							<li><?php echo $this->Html->link('Questionário', array('controller' => 'questionarios', 'action' => 'cadastrar')); ?></li>
 							<li><?php echo $this->Html->link('Encontro', array('controller' => 'encontros', 'action' => 'cadastrar')); ?></li>
 
-							<li><?php echo $this->Html->link('Mantimento', array('controller' => 'mantimentos', 'action' => 'cadastrar')); ?></li>							
+							<li><?php echo $this->Html->link('Mantimento', array('controller' => 'mantimentos', 'action' => 'cadastrar')); ?></li>
+							<li><?php echo $this->Html->link('Estoque', array('controller' => 'estoques', 'action' => 'cadastrar')); ?></li>
 						</ul>
 					</li>
 

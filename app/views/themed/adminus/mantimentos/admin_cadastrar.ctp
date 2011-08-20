@@ -16,23 +16,23 @@
 
 			
 			<p>
-				<label>Nome:</label><br />
+				<label>Nome (Obrigatório)</label><br />
 				<?php echo $this->Form->input('nome', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>		
 			
 				<p>
-					<label>Tipo:</label><br />
+					<label>Tipo</label><br />
 					<?php echo $this->Form->input('tipo', array('div' => false, 'label' => false, 'type' => 'select', 'class' => 'styled', 'options' => $tipos)); ?>
 				</p>	
 				
 				<p>
-					<label>Quantidade mínima para cesta:</label><br />
+					<label>Quantidade mínima para cesta (Obrigatório)</label><br />
 					<?php echo $this->Form->input('quantidade', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 				</p>
 				
 				
 					<p>
-						<label>Medida:</label><br />
+						<label>Medida</label><br />
 						<?php echo $this->Form->input('medida', array('div' => false, 'label' => false, 'type' => 'select', 'class' => 'styled', 'options' => $medidas)); ?>
 					</p>
 				

@@ -15,17 +15,17 @@
 		<?php echo $this->Form->create('Questionario'); echo $this->Form->input('id');  ?>
 			
 			<p>
-				<label>Categoria:</label><br />
+				<label>Categoria</label><br />
 				<?php echo $this->Form->input('parent_id', array('div' => false, 'label' => false, 'class' => 'styled', 'options' => $questionarios, 'empty' => 'Categoria Pai')); ?>
 			</p>
 			
 			<p>
-				<label>Título:</label><br />
+				<label>Título</label><br />
 				<?php echo $this->Form->input('titulo', array('div' => false, 'label' => false, 'class' => 'text medium', 'type' => 'text')); ?>
 			</p>
 			
 			<p>
-				<label>Descrição:</label><br />
+				<label>Descrição</label><br />
 				<?php echo $this->Form->input('descricao', array('div' => false, 'label' => false, 'class' => 'text medium')); ?>
 			</p>
 			

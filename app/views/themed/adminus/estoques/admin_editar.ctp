@@ -15,25 +15,21 @@
 		<?php echo $this->Form->create('Estoque'); echo $this->Form->input('id'); ?>
 
 			
-	<p>
-		<label>Descrição:</label><br />
-		<?php echo $this->Form->input('descricao', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
-	</p>		
+			<p>
+				<label>Descrição</label><br />
+				<?php echo $this->Form->input('descricao', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
+			</p>		
 			
-			
-	
-				<p>
-					<label>Data Entrada:</label><br />
-					<?php echo $this->Form->input('data_entrada', array('div' => false, 'label' => false)); ?>
-				</p>	
-				
-				<p>
-					<label>Data Vencimento:</label><br />
-					<?php echo $this->Form->input('data_vencimento', array('div' => false, 'label' => false)); ?>
-				</p>
-								
-				
-					
+			<p>
+				<label>Data Entrada</label><br />
+				<?php echo $this->Form->input('data_entrada', array('div' => false, 'label' => false)); ?>
+			</p>	
+
+			<p>
+				<label>Data Vencimento</label><br />
+				<?php echo $this->Form->input('data_vencimento', array('div' => false, 'label' => false)); ?>
+			</p>
+
 			<hr />
 			
 			<p>

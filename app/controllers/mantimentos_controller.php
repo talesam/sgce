@@ -1,4 +1,15 @@
 <?php
+/**
+ * LogsController
+ * 
+ * [Short Description]
+ *
+ * @package default
+ * @author Rafael Malatesta e Tales Mendonça
+ * @version $Id$
+ * @copyright __MyCompanyName__
+ **/
+
 class MantimentosController extends AppController {
 	
 	function admin_index() {

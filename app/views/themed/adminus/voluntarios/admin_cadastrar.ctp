@@ -14,74 +14,74 @@
 	
 		<?php echo $this->Form->create('Voluntario'); ?>
 			<p>
-				<label>Nome:</label><br />
+				<label>Nome (Obrigatório)</label><br />
 				<?php echo $this->Form->input('nome', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>
 			
 
 			<p>
-				<label>E-mail:</label><br />
+				<label>E-mail</label><br />
 				<?php echo $this->Form->input('email', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>
 			
 			
 			<p>
-				<label>Endereço:</label><br />
+				<label>Endereço</label><br />
 				<?php echo $this->Form->input('endereco', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>
 			
 			<p>
-				<label>Complemento:</label><br />
+				<label>Complemento</label><br />
 				<?php echo $this->Form->input('complemento', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>
 		
 			<p>
-				<label>Número:</label><br />
+				<label>Número</label><br />
 				<?php echo $this->Form->input('numero', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>
 			
 			<p>
-				<label>Bairro:</label><br />
+				<label>Bairro</label><br />
 				<?php echo $this->Form->input('bairro', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>
 			
 			<p>
-				<label>Cidade:</label><br />
+				<label>Cidade</label><br />
 				<?php echo $this->Form->input('cidade', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>
 			
 			
 			<p>
-				<label>UF:</label><br />
+				<label>UF</label><br />
 				<?php echo $this->Form->input('uf', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>
 			
 			
 			
 			<p>
-				<label>CEP:</label><br />
+				<label>CEP</label><br />
 				<?php echo $this->Form->input('cep', array('div' => false, 'label' => false, 'class' => 'text medium mask-cep', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>
 					
 			<p>
-				<label>Telefone:</label><br />
+				<label>Telefone</label><br />
 				<?php echo $this->Form->input('telefone', array('div' => false, 'label' => false,  'class' => 'text medium mask-telefone', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>
 			
 			<p>
-				<label>Celular:</label><br />
+				<label>Celular</label><br />
 				<?php echo $this->Form->input('celular', array('div' => false, 'label' => false,  'class' => 'text medium mask-telefone', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>
 			
 			
 			<p>
-				<label>Situação:</label><br />
+				<label>Situação</label><br />
 				<?php echo $this->Form->input('status', array('div' => false, 'label' => false, 'class' => 'styled', 'type' => 'select', 'options' => array(1 => 'Ativo', 0 => 'Inativo'))); ?>
 			</p>
 			
 		
 			<p>
-				<label>Prestão de serviço:</label><br />
+				<label>Prestão de serviço (Obrigatório)</label><br />
 				<?php echo $this->Form->input('prestacao_servico', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>
 						

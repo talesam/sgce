@@ -34,4 +34,11 @@ Menu - Cadastrar Mantimento
 	Medida(Kilo, Litro, Lata, outro) (Incluir)
 	Data de vencimento(Incluir)
 ---------------------------
+**Falta a parte de frequência
+---------------------------
+
+Cadastrar Estoque
+
+	Mudar remover o campo Descrição e puchar os elementos que foram cadastrados em Mantimentos, para que o usuário possa selecionar o que deseja colocar no estoque.
+	Quando cadastrar, mudar apenas a quantidade do item e nao cadastrar ele várias vezes.
 

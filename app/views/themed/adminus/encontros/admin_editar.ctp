@@ -16,7 +16,7 @@
 
 			
 			<p>
-				<label>Data:</label><br />
+				<label>Data</label><br />
 				<?php echo $this->Form->input('data', array('div' => false, 'label' => false)); ?>
 			</p>				
 			<hr />
