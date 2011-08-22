@@ -12,3 +12,4 @@
 2011-08-19 16:08:41 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at /var/www/sgce-new/cake/libs/debugger.php:673) in [/var/www/sgce-new/cake/libs/controller/controller.php, line 742]
 2011-08-19 16:10:52 Warning: Warning (2): Missing argument 1 for EstoquesController::admin_index() in [/var/www/sgce-new/app/controllers/estoques_controller.php, line 4]
 2011-08-19 16:10:54 Warning: Warning (2): Missing argument 1 for EstoquesController::admin_cadastrar() in [/var/www/sgce-new/app/controllers/estoques_controller.php, line 33]
+2011-08-20 01:45:37 Warning: Warning (2): Missing argument 1 for EstoquesController::admin_index() in [/var/www/sgce-new/app/controllers/estoques_controller.php, line 15]

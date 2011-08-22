@@ -41,4 +41,12 @@ Cadastrar Estoque
 
 	Mudar remover o campo Descrição e puchar os elementos que foram cadastrados em Mantimentos, para que o usuário possa selecionar o que deseja colocar no estoque.
 	Quando cadastrar, mudar apenas a quantidade do item e nao cadastrar ele várias vezes.
+---------------------------
+Retirei o campo "descricao" de estoques, mudei na tabela cestas, de data_gerado para data_gerada.
+
+
+
+
+
+
 

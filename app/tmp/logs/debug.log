@@ -17,3 +17,5 @@
 2011-08-19 16:10:52 Notice: Notice (8): Undefined variable: mantimentoId in [/var/www/sgce-new/app/controllers/estoques_controller.php, line 6]
 2011-08-19 16:10:52 Notice: Notice (8): Undefined variable: mantimentoId in [/var/www/sgce-new/app/controllers/estoques_controller.php, line 8]
 2011-08-19 16:10:54 Notice: Notice (8): Undefined variable: mantimentoId in [/var/www/sgce-new/app/controllers/estoques_controller.php, line 49]
+2011-08-20 01:45:37 Notice: Notice (8): Undefined variable: mantimentoId in [/var/www/sgce-new/app/controllers/estoques_controller.php, line 17]
+2011-08-20 01:45:37 Notice: Notice (8): Undefined variable: mantimentoId in [/var/www/sgce-new/app/controllers/estoques_controller.php, line 19]
