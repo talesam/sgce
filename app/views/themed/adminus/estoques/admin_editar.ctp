@@ -4,8 +4,8 @@
 		<div class="bheadl"></div>
 		<div class="bheadr"></div>
 		
-		<h2>Editar Estoque para mantimento <?php echo $mantimento['Mantimento']['nome']; ?></h2>
-		<ul><li><?php echo $this->Html->link('VOLTAR', array('action' => 'index', $mantimento['Mantimento']['id'])); ?></li></ul>
+		<h2>Editar Estoque</h2>
+		<ul><li><?php echo $this->Html->link('VOLTAR', array('action' => 'index')); ?></li></ul>
 	</div>		<!-- .block_head ends -->
 	
 	
@@ -16,8 +16,8 @@
 
 			
 			<p>
-				<label>Descrição</label><br />
-				<?php echo $this->Form->input('descricao', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
+				<label>Mantimento</label><br />
+				<?php echo $this->Form->input('mantimento_id', array('div' => false, 'label' => false, 'options' => $mantimentos, 'class' => 'styled', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>		
 			
 			<p>

@@ -72,10 +72,10 @@
 				<?php echo $this->Form->input('renda_percapta', array('div' => false, 'label' => false, 'class' => 'text medium mask-moeda')); ?>
 			</p>
 			
-			<p>
-				<label>Situação:</label>
-				<?php echo $this->Form->input('status', array('div' => false, 'label' => false)); ?>
-			</p>
+						<p>
+							<label>Situação</label><br />
+							<?php echo $this->Form->input('status', array('div' => false, 'label' => false, 'class' => 'styled', 'type' => 'select', 'options' => array(1 => 'Apta', 0 => 'Não aptra'))); ?>
+						</p>
 			</div>	
 		</div>
 			

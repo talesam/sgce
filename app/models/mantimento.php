@@ -48,5 +48,7 @@ class Mantimento extends AppModel {
 		'lata'	=> 'Lata(s)',
 		'outro'	=> 'Outro(s)'
 	);
+	
+	public $displayField = 'nome';
 }
 ?>

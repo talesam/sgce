@@ -4,24 +4,24 @@
 		<div class="bheadl"></div>
 		<div class="bheadr"></div>
 		
-		<h2>Cadastrar Estoque  para mantimento <?php echo $mantimento['Mantimento']['nome']; ?></h2>
-		<ul><li><?php echo $this->Html->link('VOLTAR', array('action' => 'index', $mantimento['Mantimento']['id'])); ?></li></ul>
+		<h2>Cadastrar Estoque</h2>
+		<ul><li><?php echo $this->Html->link('VOLTAR', array('action' => 'index')); ?></li></ul>
 	</div>		<!-- .block_head ends -->
 	
 	
 	
 	<div class="block_content">
 	
-		<?php echo $this->Form->create('Estoque', array('url' => array('action' => 'cadastrar', $mantimento['Mantimento']['id'])));  ?>
+		<?php echo $this->Form->create('Estoque');  ?>
 
 			
 			<p>
-				<label>Descrição</label><br />
-				<?php echo $this->Form->input('descricao', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
+				<label>Mantimento</label><br />
+				<?php echo $this->Form->input('mantimento_id', array('div' => false, 'label' => false, 'options' => $mantimentos, 'class' => 'styled', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>		
 			
 			<p>
-				<label>Quantidade a ser cadastrada (Obrigatório)</label><br />
+				<label>Quantidade a ser cadastrada</label><br />
 				<?php echo $this->Form->input('quantidade', array('div' => false, 'label' => false, 'class' => 'text medium')); ?>
 			</p>
 			

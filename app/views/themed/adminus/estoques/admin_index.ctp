@@ -2,19 +2,19 @@
 	<div class="block_head">
 		<div class="bheadl"></div>
 		<div class="bheadr"></div>
-		<h2>Estoques para o mantimento <?php echo $mantimento['Mantimento']['nome']; ?></h2>
+		<h2>Estoques</h2>
 		<ul>
-			<li><?php echo $this->Html->link('Cadastrar Estoque', array('action' => 'cadastrar', $mantimento['Mantimento']['id'])); ?></li>
+			<li><?php echo $this->Html->link('Cadastrar Estoque', array('action' => 'cadastrar')); ?></li>
 		</ul>
 	</div>
 	
 	<div class="block_content">
-		<?php echo $this->Form->create('Estoque', array('url' => array('action' => 'index', $mantimento['Mantimento']['id']))); ?>
+		<?php echo $this->Form->create('Estoque'); ?>
 		<table cellpadding="0" cellspacing="0" width="100%" class="sortable">
 			<thead>
 				<tr>
 					<th width="10"><input type="checkbox" class="check_all"/></th>
-					<th><?php echo $this->Paginator->sort('Descrição', 'descricao'); ?></th>
+					<th><?php echo $this->Paginator->sort('Nome', 'Mantimento.nome'); ?></th>
 					<th><?php echo $this->Paginator->sort('Data Entrada', 'data_entrada'); ?></th>
 					<th><?php echo $this->Paginator->sort('Data Vencimento', 'data_vencimento'); ?></th>
 					<th><?php echo $this->Paginator->sort('Data Saída', 'data_said'); ?></th>
@@ -25,7 +25,7 @@
 				<?php foreach ($estoques as $estoque): ?>
 				<tr>
 					<td><?php echo $this->Form->input('id.'.$estoque['Estoque']['id'], array('type' => 'checkbox', 'div' => false, 'label' => false)); ?></td>
-					<td><?php echo $estoque['Estoque']['descricao']; ?></td>
+					<td><?php echo $estoque['Mantimento']['nome']; ?></td>
 					<td><?php echo date('d/m/Y', strtotime($estoque['Estoque']['data_entrada'])); ?></td>
 					<td><?php echo date('d/m/Y', strtotime($estoque['Estoque']['data_vencimento'])); ?></td>
 					<td><?php echo $estoque['Estoque']['data_saida'] ? date('d/m/Y H:i:s', strtotime($estoque['Estoque']['data_saida'])) : '-'; ?></td>

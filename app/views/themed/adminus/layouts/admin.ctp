@@ -29,13 +29,27 @@
 				'jquery.tablesorter.min',
 				'ajaxupload',
 				'jquery.pngfix',
-				'custom'
+				'custom',
+				'masked',
+				'price'
 			)
 		);
 	?>
 	<script>
 		$.facebox.settings.closeImage = '<?php echo $this->Html->url('/theme/adminus/images/close.png'); ?>';
 		$.facebox.settings.loadingImage = '<?php echo $this->Html->url('/theme/adminus/images/ajax-loader.gif'); ?>';
+		
+		$(function(){
+			$(".mask-telefone").mask("(99) 9999-9999");
+			$(".mask-cep").mask("99999-999");
+			$(".mask-cpf").mask("999.999.999-99");
+			
+			$('.mask-moeda').priceFormat({
+			    prefix: '',
+			    centsSeparator: ',',
+			    thousandsSeparator: '.'
+			});
+		});
 		
 	</script>
 	<style>small { display: block; margin-left: 5px !important;}</style>

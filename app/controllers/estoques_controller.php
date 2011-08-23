@@ -12,13 +12,14 @@
 
 class EstoquesController extends AppController {
 	
-	function admin_index($mantimentoId) {
-		
-		$this->set('mantimento', ClassRegistry::init('Mantimento')->findById($mantimentoId));
-		
-		$this->paginate['conditions'] = array('Estoque.mantimento_id' => $mantimentoId);
-		$this->set('estoques', $this->paginate());
-		
+	function admin_index($mantimentoId = null) {
+		if($mantimentoId){
+			$this->set('mantimento', ClassRegistry::init('Mantimento')->findById($mantimentoId));
+			$this->paginate['conditions'] = array('Estoque.mantimento_id' => $mantimentoId);
+			$this->set('estoques', $this->paginate());
+		}else{
+			$this->set('estoques', $this->paginate());
+		}
 		
 		if(!empty($this->data)){
 			$ids = array();
@@ -41,24 +42,25 @@ class EstoquesController extends AppController {
 		
 	}
 
-	function admin_cadastrar($mantimentoId) {
+	function admin_cadastrar() {
+		$mantimentos = ClassRegistry::init('Mantimento')->find('list');
 			if (!empty($this->data)) {
-				$this->data['Estoque']['mantimento_id'] = $mantimentoId;
 				if(!empty($this->data['Estoque']['quantidade']) && $this->data['Estoque']['quantidade'] > 0){
  					for($i = 1; $i <= $this->data['Estoque']['quantidade']; $i++){
 						$this->Estoque->create();
 						$this->Estoque->save($this->data);
-						$this->gravarLog('Cadastrou estoque: '. $this->data['Estoque']['descricao']);
+						$this->gravarLog('Cadastrou estoque: '. $mantimentos[$this->data['Estoque']['mantimento_id']]);
 					}
 					$this->Session->setFlash('Estoque(s) cadastrado(s)', 'flash_success');
 					
-					$this->redirect(array('action' => 'index', $mantimentoId));
+					$this->redirect(array('action' => 'index'));
 				} else {
 					$this->Session->setFlash('Estoque não pode ser cadastrado. Por favor, tente novamente.', 'flash_error');
 				}
 		}
-		$this->set('mantimento', ClassRegistry::init('Mantimento')->findById($mantimentoId));
-
+		
+		$this->set('mantimentos', $mantimentos);
+		
 		}
 
 		function admin_editar($id = null) {
@@ -66,9 +68,10 @@ class EstoquesController extends AppController {
 				$this->Session->setFlash('Estoque inválido.', 'flash_error');
 				$this->redirect(array('action' => 'index'));
 			}
+			$mantimentos = ClassRegistry::init('Mantimento')->find('list');
 			if (!empty($this->data)) {
 				if ($this->Estoque->save($this->data)) {
-					$this->gravarLog('Modificou estoque: '. $this->data['Estoque']['descricao']);
+					$this->gravarLog('Modificou estoque: '. $mantimentos[$this->data['Estoque']['mantimento_id']]);
 					
 					$this->Session->setFlash('Estoque salvo.', 'flash_success');
 					$this->redirect(array('action' => 'index'));
@@ -80,7 +83,7 @@ class EstoquesController extends AppController {
 				$this->data = $this->Estoque->read(null, $id);
 			}
 				
-			$this->set('mantimento', ClassRegistry::init('Mantimento')->findById($this->data['Estoque']['mantimento_id']));
+			$this->set('mantimentos', $mantimentos);
 		}
 
 
@@ -93,7 +96,7 @@ class EstoquesController extends AppController {
 			$data = $this->Estoque->read(null, $id);
 			if($this->Estoque->delete($id)) {
 				
-				$this->gravarLog('Excluiu estoque: '. $data['Estoque']['descricao']);
+				$this->gravarLog('Excluiu estoque: '. $data['Mantimento']['nome']);
 				
 				$this->Session->setFlash('Estoque removido.', 'flash_success');
 				$this->redirect($this->referer());
