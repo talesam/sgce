@@ -1,13 +1,13 @@
 itens a arrumar ou que estão faltando para serem implementados:
 
 ---------------------------
-Quando posicionar o mouse em cima do menu, vai notar que está apontando para "Encontros", tem que remover esses array
+Quando posicionar o mouse em cima do menu, vai notar que está apontando para "Encontros", tem que remover esses array - OK
 <li><?php echo $this->Html->link('Cadastrar', array('controller' => 'encontros', 'action' => 'index')); ?>
 <li><?php echo $this->Html->link('Consultar', array('controller' => 'encontros', 'action' => 'index')); ?>
 <li><?php echo $this->Html->link('Relatório', array('controller' => 'encontros', 'action' => 'index')); ?>
 
 ---------------------------
-Menu - Cadastrar Usuário
+Menu - Cadastrar Usuário - OK
 
 Em "Situação" está aparecendo "Ativo" como padrão, mas ao efetuar o cadastro o mesmo é salvo como "Inativo".
 
@@ -19,14 +19,14 @@ Em "Perfil" deverá aparecer:
 	Consultor
 
 ---------------------------
-Menu - Cadastrar/Consultar Valuntário
+Menu - Cadastrar/Consultar Valuntário - OK
 
 	Terminar de incluir o voluntário
 
 	Falta criar a view e os definir o relacionemanto.
 
 ---------------------------
-Menu - Cadastrar Mantimento
+Menu - Cadastrar Mantimento - OK
 
 	Nome (Já possui)
 	Tipo (Já possui)
@@ -43,6 +43,7 @@ Cadastrar Estoque
 	Quando cadastrar, mudar apenas a quantidade do item e nao cadastrar ele várias vezes.
 ---------------------------
 Retirei o campo "descricao" de estoques, mudei na tabela cestas, de data_gerado para data_gerada.
+Na tabela cestas, coloquei familia_id como NM
 
 
 
