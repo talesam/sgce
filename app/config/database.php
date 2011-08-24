@@ -6,7 +6,7 @@ class DATABASE_CONFIG {
 		'database' => 'sgce',
 		 'host' => 'localhost',
 		 'login' => 'root',
-		 'password' => '',
+		 'password' => '1q2w3e77',
 	);
 
 	var $test = array(

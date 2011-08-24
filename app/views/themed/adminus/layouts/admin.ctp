@@ -77,7 +77,6 @@
 							<li><?php echo $this->Html->link('Voluntário', array('controller' => 'voluntarios', 'action' => 'cadastrar')); ?></li>
 
 							<li><?php echo $this->Html->link('Familia', array('controller' => 'familias', 'action' => 'cadastrar')); ?></li>
-							<li><?php echo $this->Html->link('Questionário', array('controller' => 'questionarios', 'action' => 'cadastrar')); ?></li>
 							<li><?php echo $this->Html->link('Encontro', array('controller' => 'encontros', 'action' => 'cadastrar')); ?></li>
 
 							<li><?php echo $this->Html->link('Mantimento', array('controller' => 'mantimentos', 'action' => 'cadastrar')); ?></li>
@@ -91,7 +90,6 @@
 							<li><?php echo $this->Html->link('Voluntário', array('controller' => 'voluntarios', 'action' => 'index')); ?></li>
 							
 							<li><?php echo $this->Html->link('Família', array('controller' => 'familias', 'action' => 'index')); ?></li>
-							<li><?php echo $this->Html->link('Questionário', array('controller' => 'questionarios', 'action' => 'index')); ?></li>
 							<li><?php echo $this->Html->link('Encontro', array('controller' => 'encontros', 'action' => 'index')); ?></li>
 							
 							<li><?php echo $this->Html->link('Mantimento', array('controller' => 'mantimentos', 'action' => 'index')); ?></li>

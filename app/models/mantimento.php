@@ -41,7 +41,6 @@ class Mantimento extends AppModel {
 		),
 	);
 		
-	//Acrecentado por Tales
 	public $medidas = array(
 		'kilo'	=> 'kilo(s)',
 		'litro' => 'Litro(s)',
