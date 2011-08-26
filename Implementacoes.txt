@@ -53,6 +53,13 @@ Na tabela cestas, coloquei familia_id como NM - OK
 Em estoque, não cadastrar cada registro separadamente, mas sim 1 registro contento a definição correta.
 
 
+---------------------------
+Explicação sobre as tabelas questionarios e respostas
+
+A tabela "questionarios" irá cadastrar dinamicamente, via web, todas as perguntas das famílias, porém, referente a cituação de moradia; a tabela "repostas" conterá as respostas dos usuários que irão utilizar o sistema.
+
+A tabela "questionarios" servirá para minimazar a manutenção do sistema e maximazar, maximizando sua flexibilidade, caso necessite modificar/acrescentar perguntas ao questionário, as perguntas terão um tipo para informar se é um texto ou boleano ou select.
+A tabelas "respostas" servirá para armazenar esses tipos de respostas referente a família em uma pergunta id.
 
 
 
