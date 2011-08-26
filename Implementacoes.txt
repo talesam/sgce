@@ -43,9 +43,14 @@ Cadastrar Estoque
 	Quando cadastrar, mudar apenas a quantidade do item e nao cadastrar ele várias vezes.
 ---------------------------
 Retirei o campo "descricao" de estoques, mudei na tabela cestas, de data_gerado para data_gerada.
-Na tabela cestas, coloquei familia_id como NM
+Na tabela cestas, coloquei familia_id como NM - OK
+---------------------------
 
+*Juntar Encontro com Frequencia
 
+*Em Cadastrar Definição Cesta, colocar um campo medida(kilo, litro, lata) e complemento(1 a 10)
+
+Em estoque, não cadastrar cada registro separadamente, mas sim 1 registro contento a definição correta.
 
 
 

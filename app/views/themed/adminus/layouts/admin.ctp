@@ -79,7 +79,7 @@
 							<li><?php echo $this->Html->link('Familia', array('controller' => 'familias', 'action' => 'cadastrar')); ?></li>
 							<li><?php echo $this->Html->link('Encontro', array('controller' => 'encontros', 'action' => 'cadastrar')); ?></li>
 
-							<li><?php echo $this->Html->link('Mantimento', array('controller' => 'mantimentos', 'action' => 'cadastrar')); ?></li>
+							<li><?php echo $this->Html->link('Definição de Cesta', array('controller' => 'mantimentos', 'action' => 'cadastrar')); ?></li>
 							<li><?php echo $this->Html->link('Estoque', array('controller' => 'estoques', 'action' => 'cadastrar')); ?></li>
 						</ul>
 					</li>
@@ -92,7 +92,7 @@
 							<li><?php echo $this->Html->link('Família', array('controller' => 'familias', 'action' => 'index')); ?></li>
 							<li><?php echo $this->Html->link('Encontro', array('controller' => 'encontros', 'action' => 'index')); ?></li>
 							
-							<li><?php echo $this->Html->link('Mantimento', array('controller' => 'mantimentos', 'action' => 'index')); ?></li>
+							<li><?php echo $this->Html->link('Definição de Cesta', array('controller' => 'mantimentos', 'action' => 'index')); ?></li>
 							<li><?php echo $this->Html->link('Estoque', array('controller' => 'estoques', 'action' => 'index')); ?></li>
 						</ul>
 					</li>
