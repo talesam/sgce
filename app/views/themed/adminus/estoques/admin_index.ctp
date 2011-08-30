@@ -14,10 +14,11 @@
 			<thead>
 				<tr>
 					<th width="10"><input type="checkbox" class="check_all"/></th>
-					<th><?php echo $this->Paginator->sort('Nome', 'Mantimento.nome'); ?></th>
+					<th><?php echo $this->Paginator->sort('Nome', 'Definicoescesta.nome'); ?></th>
+					<th><?php echo $this->Paginator->sort('Quantidade', 'quantidade'); ?></th>
+					<th><?php echo $this->Paginator->sort('Complemento', 'complemento_qt'); ?></th>
 					<th><?php echo $this->Paginator->sort('Data Entrada', 'data_entrada'); ?></th>
 					<th><?php echo $this->Paginator->sort('Data Vencimento', 'data_vencimento'); ?></th>
-					<th><?php echo $this->Paginator->sort('Data Saída', 'data_said'); ?></th>
 					<td>&nbsp;</td>
 				</tr>
 			</thead>
@@ -25,10 +26,11 @@
 				<?php foreach ($estoques as $estoque): ?>
 				<tr>
 					<td><?php echo $this->Form->input('id.'.$estoque['Estoque']['id'], array('type' => 'checkbox', 'div' => false, 'label' => false)); ?></td>
-					<td><?php echo $estoque['Mantimento']['nome']; ?></td>
+					<td><?php echo $estoque['Definicoescesta']['nome']; ?></td>
+					<td><?php echo $estoque['Estoque']['quantidade']; ?></td>
+					<td><?php echo $estoque['Estoque']['complemento_qt']; ?> <?php echo $estoque['Definicoescesta']['medida']; ?></td>
 					<td><?php echo date('d/m/Y', strtotime($estoque['Estoque']['data_entrada'])); ?></td>
 					<td><?php echo date('d/m/Y', strtotime($estoque['Estoque']['data_vencimento'])); ?></td>
-					<td><?php echo $estoque['Estoque']['data_saida'] ? date('d/m/Y H:i:s', strtotime($estoque['Estoque']['data_saida'])) : '-'; ?></td>
 					<td class="delete">
 						<?php echo $this->Html->link('Editar', array('action' => 'editar', $estoque['Estoque']['id'])); ?> | 
 						<?php echo $this->Html->link('Excluir', array('action' => 'excluir', $estoque['Estoque']['id']), null, 'Tem certeza que deseja excluir?'); ?>

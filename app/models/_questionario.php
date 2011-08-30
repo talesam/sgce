@@ -9,7 +9,11 @@
  * @version $Id$
  * @copyright __MyCompanyName__
  **/
-class Estoque extends AppModel {
-	public $belongsTo = array('Definicoescesta');
+class Questionario extends AppModel {
+	
+	public $actsAs = array('Tree');
+	
+	public $displayField = 'titulo';
+
 }
 ?>

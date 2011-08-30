@@ -17,12 +17,18 @@
 			
 			<p>
 				<label>Mantimento</label><br />
-				<?php echo $this->Form->input('mantimento_id', array('div' => false, 'label' => false, 'options' => $mantimentos, 'class' => 'styled', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
+				<?php echo $this->Form->input('definicoescesta_id', array('div' => false, 'label' => false, 'options' => $definicoescestas, 'class' => 'styled', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>		
 			
 			<p>
 				<label>Quantidade a ser cadastrada</label><br />
 				<?php echo $this->Form->input('quantidade', array('div' => false, 'label' => false, 'class' => 'text medium')); ?>
+			</p>
+
+			
+			<p>
+				<label>Complemento quantidade</label><br />
+				<?php echo $this->Form->input('complemento_qt', array('div' => false, 'label' => false, 'class' => 'styled', 'options' => array_combine(range(1,5), range(1,5)) )); ?>
 			</p>
 			
 			<p>

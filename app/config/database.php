@@ -6,16 +6,7 @@ class DATABASE_CONFIG {
 		'database' => 'sgce',
 		 'host' => 'localhost',
 		 'login' => 'root',
-		 'password' => '1q2w3e77',
+		 'password' => '',
 	);
-
-	var $test = array(
-		'driver' => 'mysql',
-		'database' => 'sgce_bd',
-		 'host' => 'localhost',
-		 'login' => 'sgce_us',
-		 'password' => 'sgce_67',
-	);
-
 }
 ?>

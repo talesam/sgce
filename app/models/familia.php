@@ -13,7 +13,7 @@ class Familia extends AppModel {
 
 	
 	/* Familia tem muitas e ou pertence a um Questionário */
-	public $hasAndBelongsToMany = array('Questionario');
+	//public $hasAndBelongsToMany = array('Questionario');
 	
 	
 	/* Familia tem muitas pesssoas */

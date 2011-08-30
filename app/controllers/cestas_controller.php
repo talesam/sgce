@@ -22,22 +22,22 @@ class CestasController extends AppController {
 	public function admin_gerar_cestas(){
 		
 			$estoque =& ClassRegistry::init('Estoque');
-			$mantimento =& ClassRegistry::init('Mantimento');
-			$mantimentos = $mantimento->find('all');
+			$definicoescesta =& ClassRegistry::init('Definicoescesta');
+			$definicoescestas = $definicoescesta->find('all');
 
 			$totalCestas = 0;
 			$ok = true;
 
 			while($ok){
 				$cesta = array();
-				foreach($mantimentos as $m){
-					$total_estoque = $estoque->find('count', array('conditions' => array('Estoque.mantimento_id' => $m['Mantimento']['id'], 'Estoque.data_saida' => null)));
-					if($total_estoque >= $m['Mantimento']['quantidade']){
+				foreach($definicoescestas as $m){
+					$total_estoque = $estoque->find('count', array('conditions' => array('Estoque.definicoescesta_id' => $m['Definicoescesta']['id'], 'Estoque.data_saida' => null)));
+					if($total_estoque >= $m['Definicoescesta']['quantidade']){
 						$estoques_para_cesta = $estoque->find('all', array(
-							'limit' => $m['Mantimento']['quantidade'],
+							'limit' => $m['Definicoescesta']['quantidade'],
 							'order' => array('Estoque.data_vencimento' => 'asc'),
 							'conditions' => array(
-								'Estoque.mantimento_id' => $m['Mantimento']['id'], 
+								'Estoque.definicoescesta_id' => $m['Definicoescesta']['id'], 
 								'Estoque.data_saida' => null) 
 							));
 
