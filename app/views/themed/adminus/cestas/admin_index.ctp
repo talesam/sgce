@@ -15,7 +15,7 @@
 			<thead>
 				<tr>
 					<th>Família</th>
-					<th><?php echo $this->Paginator->sort('data_gerado'); ?></th>
+					<th><?php echo $this->Paginator->sort('data_gerada'); ?></th>
 					<th><?php echo $this->Paginator->sort('data_saida'); ?></th>
 				</tr>
 			</thead>
@@ -23,7 +23,7 @@
 				<?php foreach ($cestas as $cesta): ?>
 				<tr>
 					<td>Disponível</td>
-					<td><?php echo date('d/m/Y H:i:s', strtotime($cesta['Cesta']['data_gerado'])); ?></td>
+					<td><?php echo date('d/m/Y H:i:s', strtotime($cesta['Cesta']['data_gerada'])); ?></td>
 					<td><?php echo $cesta['Cesta']['data_saida'] ? date('d/m/Y H:i:s', strtotime($cesta['Cesta']['data_saida'])) : '-'; ?></td>
 				</tr>
 				<?php endforeach; ?>

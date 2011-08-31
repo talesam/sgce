@@ -19,8 +19,10 @@ class DefinicoescestasController extends AppController {
 		
 		$e =& ClassRegistry::init('Estoque');
 		foreach($definicoescestas as $definicoescesta){
-			$estoque[$definicoescesta['Definicoescesta']['id']] = $e->find('count', array('conditions' => array('Estoque.data_saida' => NULL, 'Estoque.definicoescesta_id' => $definicoescesta['Definicoescesta']['id'])));
+			$estoque[$definicoescesta['Definicoescesta']['id']] = $e->find('first', array('fields' => 'SUM(Estoque.quantidade) as `total`' ,'conditions' => array('Estoque.definicoescesta_id' => $definicoescesta['Definicoescesta']['id'])));
 		}
+		
+	
 		
 		$this->set('estoque', $estoque);
 		
@@ -32,9 +34,7 @@ class DefinicoescestasController extends AppController {
 			if (!empty($this->data)) {
 				$this->Definicoescesta->create();
 				if ($this->Definicoescesta->save($this->data)) {
-					
-										$this->gravarLog('Cadastrou definicoescesta: '. $this->data['Definicoescesta']['nome']);
-										
+					$this->gravarLog('Cadastrou definicoescesta: '. $this->data['Definicoescesta']['nome']);					
 					$this->Session->setFlash('Definicoescesta cadastrado', 'flash_success');
 					$this->redirect(array('action' => 'index'));
 				} else {

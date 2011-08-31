@@ -42,10 +42,11 @@ class Definicoescesta extends AppModel {
 	);
 		
 	public $medidas = array(
-		'kilo'	=> 'kilo(s)',
-		'litro' => 'Litro(s)',
-		'lata'	=> 'Lata(s)',
-		'outro'	=> 'Outro(s)'
+		'kilo'		=> 'kilo(s)',
+		'litro' 	=> 'Litro(s)',
+		'lata'		=> 'Lata(s)',
+		'unidade'	=> 'Unidade(s)',
+		'outro'		=> 'Outro(s)'
 	);
 	
 	public $displayField = 'nome';
