@@ -3,10 +3,10 @@ class DATABASE_CONFIG {
 
 	var $default = array(
 		'driver' => 'mysql',
-		'database' => 'sgce2',
+		'database' => 'sgce',
 		 'host' => 'localhost',
 		 'login' => 'root',
-		 'password' => '',
+		 'password' => '1q2w3e77',
 	);
 }
 ?>

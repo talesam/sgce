@@ -77,7 +77,7 @@
 							<li><?php echo $this->Html->link('Voluntário', array('controller' => 'voluntarios', 'action' => 'cadastrar', 'plugin' => false)); ?></li>
 
 							<li><?php echo $this->Html->link('Familia', array('controller' => 'familias', 'action' => 'cadastrar', 'plugin' => false)); ?></li>
-							<li><?php echo $this->Html->link('Encontro', array('controller' => 'encontros', 'action' => 'cadastrar', 'plugin' => false)); ?></li>
+							<li><?php echo $this->Html->link('Frequência', array('controller' => 'frequencias', 'action' => 'cadastrar', 'plugin' => false)); ?></li>
 
 							<li><?php echo $this->Html->link('Definição de Cesta', array('controller' => 'definicoescestas', 'action' => 'cadastrar', 'plugin' => false)); ?></li>
 							<li><?php echo $this->Html->link('Estoque', array('controller' => 'estoques', 'action' => 'cadastrar', 'plugin' => false)); ?></li>
@@ -90,7 +90,7 @@
 							<li><?php echo $this->Html->link('Voluntário', array('controller' => 'voluntarios', 'action' => 'index', 'plugin' => false)); ?></li>
 							
 							<li><?php echo $this->Html->link('Família', array('controller' => 'familias', 'action' => 'index', 'plugin' => false)); ?></li>
-							<li><?php echo $this->Html->link('Encontro', array('controller' => 'encontros', 'action' => 'index', 'plugin' => false)); ?></li>
+							<li><?php echo $this->Html->link('Frequência', array('controller' => 'frequencias', 'action' => 'index', 'plugin' => false)); ?></li>
 							
 							<li><?php echo $this->Html->link('Definição de Cesta', array('controller' => 'definicoescestas', 'action' => 'index', 'plugin' => false)); ?></li>
 							<li><?php echo $this->Html->link('Estoque', array('controller' => 'estoques', 'action' => 'index', 'plugin' => false)); ?></li>
@@ -112,9 +112,9 @@
 
 					<li><?php echo $this->Html->link('Cestas', array('controller' => 'cestas', 'action' => 'index', 'plugin' => false)); ?> </li>
 					
-					<li><?php echo $this->Html->link('Questionários', array('controller' => 'questionarios', 'action' => 'index', 'plugin' => false)); ?> </li>
+					<li><?php echo $this->Html->link('Criar Questionário', array('controller' => 'questionarios', 'action' => 'index', 'plugin' => false)); ?> </li>
 
-					<li><?php echo $this->Html->link('ACL', '/admin/acl'); ?> </li>
+					<li><?php echo $this->Html->link('Permissões', '/admin/acl'); ?> </li>
 					
 					<li><?php echo $this->Html->link('Logs', array('controller' => 'logs', 'action' => 'index', 'plugin' => false)); ?> </li>
 				</ul>
