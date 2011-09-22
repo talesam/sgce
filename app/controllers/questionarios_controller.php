@@ -11,10 +11,12 @@
  **/
 
 class QuestionariosController extends AppController {
-	
+
+	public $opcoes = array('multiple' => 'Multipla Escolha', 'select' => 'Seleção', 'checkbox' => 'Boleana', 'text' => 'Texto');
 
 	function admin_index() {
-		$this->set('questionarios', $this->Questionario->generatetreelist());
+		$this->set('questionarios', $this->paginate());
+		$this->set('opcoes', $this->opcoes);
 	}
 
 	function admin_cadastrar() {
@@ -28,7 +30,7 @@ class QuestionariosController extends AppController {
 				}
 			}
 			
-			$this->set('questionarios', $this->Questionario->generatetreelist());
+			$this->set('opcoes', $this->opcoes);
 		}
 
 		function admin_editar($id = null) {
@@ -47,7 +49,7 @@ class QuestionariosController extends AppController {
 			if (empty($this->data)) {
 				$this->data = $this->Questionario->read(null, $id);
 			}
-			$this->set('questionarios', $this->Questionario->generatetreelist());
+			$this->set('opcoes', $this->opcoes);
 		}
 
 		public function admin_move_down($id){

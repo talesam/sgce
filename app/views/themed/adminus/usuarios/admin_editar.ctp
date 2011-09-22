@@ -94,8 +94,8 @@
 			</p>
 			
 			<p>
-				<label>Perfil</label><br />
-				<?php echo $this->Form->input('perfil', array('div' => false, 'label' => false, 'class' => 'styled', 'type' => 'select')); ?>
+				<label>Grupo</label><br />
+				<?php echo $this->Form->input('grupo_id', array('div' => false, 'label' => false, 'class' => 'styled', 'type' => 'select', 'options' => $grupos)); ?>
 			</p>
 
 		

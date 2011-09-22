@@ -30,14 +30,10 @@
 					<td><?php echo $this->Html->link($familia['Pessoa'][0]['nome'], array('action' => 'visulizar', $familia['Familia']['id']), array('rel' => 'facebox')); ?></td>
 					<td><a href="#">Não</a></td>
 					<td>Nenhum
-							 <?php echo $this->Html->link('listar dependentes', array('action' => 'nova_cesta')); ?> <br />
-							<?php echo $this->Html->link('novo dependente', array('action' => 'nova_cesta')); ?>
 					</td>
 					<td><a href="#">Sim</a></td>
 					<td>
 						10/01/2011
-						 <?php echo $this->Html->link('listar cestas', array('action' => 'nova_cesta')); ?> <br />
-						<?php echo $this->Html->link('nova cesta', array('action' => 'nova_cesta')); ?>
 					</td>
 					<td><?php echo $familia['Familia']['status'] ?  'Ativa' : 'Inativa'; ?></td>
 					<td class="delete">

@@ -82,7 +82,53 @@
 		<div class="sidebar_content" id="sb3">
 			<div style="position: relative; top: -120px;">
 				<p>
-					<?php echo $this->Form->input('Questionario', array('div' => false, 'label' => false, 'multiple' => 'checkbox')); ?>
+					<?php 
+					$x = 0;
+						foreach($questionarios as $questionario): 
+							echo $this->Form->input('Resposta.'.$x.'.questionario_id', array('value' => $questionario['Questionario']['id'], 'type' => 'hidden'));
+
+							echo '<p>';
+							$op = null;
+							$ops = null;
+							
+							echo '<label>'.$questionario['Questionario']['pergunta'].'</label><br />';
+							switch($questionario['Questionario']['tipo']){
+								case 'select': {
+									
+									$op = explode(',', $questionario['Questionario']['extra']);
+									foreach($op as $k => $v){
+										$ops[trim($v)] = trim($v);
+									}
+									echo $this->Form->input('Resposta.'.$x.'.resposta', array('div' => false, 'label' => false, 'options' => $ops, 'class' => 'styled'));
+									break;
+								}
+								
+								case 'multiple': {
+									$op = explode(',', $questionario['Questionario']['extra']);
+									foreach($op as $k => $v){
+										$ops[trim($v)] = trim($v);
+									}
+									echo $this->Form->input('Resposta.'.$x.'.resposta', array('div' => false, 'label' => false,  'type' => 'select', 'multiple' => 'checkbox', 'options' =>  $ops, 'class' => 'styled'));
+									break;
+								}
+								
+								
+								case 'text': {
+									echo $this->Form->input('Resposta.'.$x.'.resposta', array('div' => false, 'label' => false,   'class' => 'text medium'));
+									break;
+								}
+								
+								case 'checkbox': {
+									echo $this->Form->input('Resposta.'.$x.'.resposta', array('div' => false, 'label' => false,   'type' => 'checkbox'));
+									break;
+								}
+							}
+							
+							$x++;
+	echo '</p>';
+						endforeach;
+					
+					?>
 				</p>
 			</div>
 		</div>

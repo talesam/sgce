@@ -73,46 +73,50 @@
 
 					<li><?php echo $this->Html->link('Cadastros', 'javascript:;'); ?>
 						<ul>
-							<li><?php echo $this->Html->link('Usuário', array('controller' => 'usuarios', 'action' => 'cadastrar')); ?></li>
-							<li><?php echo $this->Html->link('Voluntário', array('controller' => 'voluntarios', 'action' => 'cadastrar')); ?></li>
+							<li><?php echo $this->Html->link('Usuário', array('controller' => 'usuarios', 'action' => 'cadastrar', 'plugin' => false)); ?></li>
+							<li><?php echo $this->Html->link('Voluntário', array('controller' => 'voluntarios', 'action' => 'cadastrar', 'plugin' => false)); ?></li>
 
-							<li><?php echo $this->Html->link('Familia', array('controller' => 'familias', 'action' => 'cadastrar')); ?></li>
-							<li><?php echo $this->Html->link('Encontro', array('controller' => 'encontros', 'action' => 'cadastrar')); ?></li>
+							<li><?php echo $this->Html->link('Familia', array('controller' => 'familias', 'action' => 'cadastrar', 'plugin' => false)); ?></li>
+							<li><?php echo $this->Html->link('Encontro', array('controller' => 'encontros', 'action' => 'cadastrar', 'plugin' => false)); ?></li>
 
-							<li><?php echo $this->Html->link('Definição de Cesta', array('controller' => 'definicoescestas', 'action' => 'cadastrar')); ?></li>
-							<li><?php echo $this->Html->link('Estoque', array('controller' => 'estoques', 'action' => 'cadastrar')); ?></li>
+							<li><?php echo $this->Html->link('Definição de Cesta', array('controller' => 'definicoescestas', 'action' => 'cadastrar', 'plugin' => false)); ?></li>
+							<li><?php echo $this->Html->link('Estoque', array('controller' => 'estoques', 'action' => 'cadastrar', 'plugin' => false)); ?></li>
 						</ul>
 					</li>
 
 					<li><?php echo $this->Html->link('Consultas', 'javascript:;'); ?>
 						<ul>
-							<li><?php echo $this->Html->link('Usuário', array('controller' => 'usuarios', 'action' => 'index')); ?></li>
-							<li><?php echo $this->Html->link('Voluntário', array('controller' => 'voluntarios', 'action' => 'index')); ?></li>
+							<li><?php echo $this->Html->link('Usuário', array('controller' => 'usuarios', 'action' => 'index', 'plugin' => false)); ?></li>
+							<li><?php echo $this->Html->link('Voluntário', array('controller' => 'voluntarios', 'action' => 'index', 'plugin' => false)); ?></li>
 							
-							<li><?php echo $this->Html->link('Família', array('controller' => 'familias', 'action' => 'index')); ?></li>
-							<li><?php echo $this->Html->link('Encontro', array('controller' => 'encontros', 'action' => 'index')); ?></li>
+							<li><?php echo $this->Html->link('Família', array('controller' => 'familias', 'action' => 'index', 'plugin' => false)); ?></li>
+							<li><?php echo $this->Html->link('Encontro', array('controller' => 'encontros', 'action' => 'index', 'plugin' => false)); ?></li>
 							
-							<li><?php echo $this->Html->link('Definição de Cesta', array('controller' => 'definicoescestas', 'action' => 'index')); ?></li>
-							<li><?php echo $this->Html->link('Estoque', array('controller' => 'estoques', 'action' => 'index')); ?></li>
+							<li><?php echo $this->Html->link('Definição de Cesta', array('controller' => 'definicoescestas', 'action' => 'index', 'plugin' => false)); ?></li>
+							<li><?php echo $this->Html->link('Estoque', array('controller' => 'estoques', 'action' => 'index', 'plugin' => false)); ?></li>
 						</ul>
 					</li>
 					
 					<li><?php echo $this->Html->link('Relatórios', 'javascript:;'); ?>
 						<ul>
-							<li><?php echo $this->Html->link('Voluntário', array('controller' => 'voluntarios', 'action' => 'index')); ?></li>
+							<li><?php echo $this->Html->link('Voluntário', array('controller' => 'voluntarios', 'action' => 'index', 'plugin' => false)); ?></li>
 												
-							<li><?php echo $this->Html->link('Vencimento Matrícula', array('controller' => 'familias', 'action' => 'index')); ?></li>
-							<li><?php echo $this->Html->link('Família Apta', array('controller' => 'familias', 'action' => 'index')); ?></li>
+							<li><?php echo $this->Html->link('Vencimento Matrícula', array('controller' => 'familias', 'action' => 'index', 'plugin' => false)); ?></li>
+							<li><?php echo $this->Html->link('Família Apta', array('controller' => 'familias', 'action' => 'index', 'plugin' => false)); ?></li>
 							
-							<li><?php echo $this->Html->link('Vencimento Mantimento', array('controller' => 'mantimentos', 'action' => 'index')); ?></li>
-							<li><?php echo $this->Html->link('Cesta Disponível', array('controller' => 'cestas', 'action' => 'index')); ?></li>
-							<li><?php echo $this->Html->link('Item Pendente Cesta', array('controller' => 'cestas', 'action' => 'index')); ?></li>
+							<li><?php echo $this->Html->link('Vencimento Mantimento', array('controller' => 'mantimentos', 'action' => 'index', 'plugin' => false)); ?></li>
+							<li><?php echo $this->Html->link('Cesta Disponível', array('controller' => 'cestas', 'action' => 'index', 'plugin' => false)); ?></li>
+							<li><?php echo $this->Html->link('Item Pendente Cesta', array('controller' => 'cestas', 'action' => 'index', 'plugin' => false)); ?></li>
 						</ul>
 					</li>					
 
-					<li><?php echo $this->Html->link('Cestas', array('controller' => 'cestas', 'action' => 'index')); ?> </li>
+					<li><?php echo $this->Html->link('Cestas', array('controller' => 'cestas', 'action' => 'index', 'plugin' => false)); ?> </li>
+					
+					<li><?php echo $this->Html->link('Questionários', array('controller' => 'questionarios', 'action' => 'index', 'plugin' => false)); ?> </li>
 
-					<li><?php echo $this->Html->link('Logs', array('controller' => 'logs', 'action' => 'index')); ?> </li>
+					<li><?php echo $this->Html->link('ACL', '/admin/acl'); ?> </li>
+					
+					<li><?php echo $this->Html->link('Logs', array('controller' => 'logs', 'action' => 'index', 'plugin' => false)); ?> </li>
 				</ul>
 				
 			<p class="user">Olá, <a href="#"><?php echo $this->Session->read('Auth.Usuario.nome'); ?></a> | <?php echo $this->Html->link('Sair', array('controller' => 'usuarios', 'action' => 'logout')); ?></p>

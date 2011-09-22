@@ -32,13 +32,17 @@
  */
 class AppController extends Controller {
 	
-	public $components = array('Session', 'Email', 'Auth', 'File');
+	
+	
+	
+	public $components = array('Session', 'Email', 'Auth', 'File', 'Acl');
 	public $helpers = array('Html', 'Form', 'Session', 'Fck');
 	public $layout = 'admin';
 	public $theme = 'adminus';
 	public $view = 'Theme';
 	
 	public function beforeFilter(){
+		$this->Auth->authorize = 'actions';
 		$this->Auth->userModel = 'Usuario';
 		$this->Auth->fields = array('username' => 'email', 'password' => 'senha');
 		$this->Auth->authError = 'Desculpe, você precisa se autenticar no sistema para visualizar esta área.';

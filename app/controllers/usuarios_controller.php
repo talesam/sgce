@@ -106,6 +106,7 @@ class UsuariosController extends AppController {
 					$this->Session->setFlash('Usuário não pode ser cadastrado. Por favor, tente novamente.', 'flash_error');
 				}
 			}
+			$this->set('grupos', ClassRegistry::init('Grupo')->find('list'));
 		}
 
 		function admin_editar($id = null) {
@@ -131,6 +132,7 @@ class UsuariosController extends AppController {
 				$this->data = $this->Usuario->read(null, $id);
 			}
 		
+			$this->set('grupos', ClassRegistry::init('Grupo')->find('list'));
 		}
 
 		public function admin_excluir($id = null) {

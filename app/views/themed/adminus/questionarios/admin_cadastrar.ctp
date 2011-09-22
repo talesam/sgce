@@ -14,20 +14,25 @@
 	
 		<?php echo $this->Form->create('Questionario');  ?>
 			
-			<p>
-				<label>Categoria</label><br />
-				<?php echo $this->Form->input('parent_id', array('div' => false, 'label' => false, 'class' => 'styled', 'options' => $questionarios, 'empty' => 'Categoria Pai')); ?>
-			</p>
+		<p>
+			<label>Pergunta</label><br />
+			<?php echo $this->Form->input('pergunta', array('div' => false, 'label' => false, 'class' => 'text medium')); ?>
+		</p>		
 			
-			<p>
-				<label>Título</label><br />
-				<?php echo $this->Form->input('titulo', array('div' => false, 'label' => false, 'class' => 'text medium', 'type' => 'text')); ?>
-			</p>
+		<p>
+			<label>Tipo</label><br />
+			<?php echo $this->Form->input('tipo', array('div' => false, 'label' => false, 'class' => 'styled', 'type' => 'select', 'options' => $opcoes)); ?>
+		</p>
+		
+		<p>
+			<label>Extra</label><br />
+			<?php echo $this->Form->input('extra', array('div' => false, 'label' => false, 'class' => 'text medium')); ?>
+			<legend>Utilize esse campo separado por , caso seja um campo de escolhas.</legend>
+		</p>
+		
+		
 			
-			<p>
-				<label>Descrição</label><br />
-				<?php echo $this->Form->input('descricao', array('div' => false, 'label' => false, 'class' => 'text medium')); ?>
-			</p>
+
 			
 
 				

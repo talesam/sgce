@@ -58,4 +58,7 @@ Inflector::rules('plural', array('rules' => array(), 'irregular' => array(
 	
 require APP . 'plugins' . DS . 'cake_ptbr' . DS . 'config' . DS . 'traducao_core.php';
 
+require_once(APP . 'plugins' . DS . 'acl' . DS . 'config' . DS . 'bootstrap.php');
+
+
 define('VERSAO', '1.0');

@@ -27,7 +27,7 @@
 						<th><?php echo $this->Paginator->sort('Situação', 'status');?></th>
 						<th><?php echo $this->Paginator->sort('telefone');?></th>
 						<th><?php echo $this->Paginator->sort('celular');?></th>
-						<th><?php echo $this->Paginator->sort('perfil');?></th>
+						<th><?php echo $this->Paginator->sort('Grupo.nome');?></th>
 						<td>&nbsp;</td>
 					</tr>
 				</thead>
@@ -41,7 +41,7 @@
 						<td><?php echo $usuario['Usuario']['status'] ? 'ativo' : 'inativo'; ?>&nbsp;</td>
 						<td><?php echo $usuario['Usuario']['telefone']; ?>&nbsp;</td>
 						<td><?php echo $usuario['Usuario']['celular']; ?>&nbsp;</td>
-						<td><?php echo $usuario['Usuario']['perfil']; ?>&nbsp;</td>
+						<td><?php echo $usuario['Grupo']['nome']; ?>&nbsp;</td>
 						<td class="delete">
 							<?php echo  $this->Html->link('Editar', array('action' => 'editar', $usuario['Usuario']['id'])); ?> | 
 							<?php echo $this->Html->link('Excluir', array('action' => 'excluir', $usuario['Usuario']['id']), null, 'Tem certeza que deseja excluir?'); ?>

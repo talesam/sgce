@@ -92,7 +92,7 @@ class CestasController extends AppController {
 								* O sistema precisa entender que vai ter q tirar do estoque 1 pacote de 1kg e  2 de 2kg para compor a cesta
 								*  */
 								
-								
+
 							}
 						}
 					}else{ 

@@ -42,18 +42,9 @@ class FamiliasController extends AppController {
 
 
 	private function _questionarios(){
+
+			$questionarios = ClassRegistry::init('Questionario')->find('all');
 			
-			$_questionarios = $this->Familia->Questionario->generatetreelist();
-			
-			$x= null;
-			$questionarios = array();
-			foreach($_questionarios as $k => $v){
-				if($v[0] == '_'){
-					$questionarios[$x][$k] = substr($v, 1, strlen($v));
-				}else{
-					$x = $v;
-				}
-			}
 			
 		
 			$this->set('questionarios', $questionarios);
@@ -63,7 +54,35 @@ class FamiliasController extends AppController {
 	function admin_cadastrar() {
 			if (!empty($this->data)) {
 				$this->Familia->create();
+				$respostas = $this->data['Resposta'];
+				unset($this->data['Resposta']);
+				
 				if ($this->Familia->saveAll($this->data)) {
+					
+					/* Cadastra as respostas */
+					if(!empty($respostas)){
+						foreach($respostas as $resposta){
+							if(is_array($resposta['resposta'])){
+								$rr = '';
+								foreach($resposta['resposta'] as $r){
+									$rr .= $r.', ';
+								}
+								$rr = substr($rr, 0, strlen($rr)-2);
+							}else{
+								$rr = $resposta['resposta'];
+							}
+
+							$n = array('familia_id' => $this->Familia->id, 'questionario_id' => $resposta['questionario_id'], 'resposta' => $rr);
+							$m=ClassRegistry::init('Resposta');
+							$m->create();
+							$m->save($n);
+						}
+						
+					}
+
+					
+					
+					
 					$this->Session->setFlash('Família cadastrada', 'flash_success');
 					$this->redirect(array('action' => 'index'));
 				} else {
@@ -82,10 +101,31 @@ class FamiliasController extends AppController {
 				$this->redirect(array('action' => 'index'));
 			}
 			if (!empty($this->data)) {
-		
-				if ($this->Familia->save($this->data)) {
+							$respostas = $this->data['Resposta'];
+							unset($this->data['Resposta']);
+				if ($this->Familia->saveAll($this->data)) {
 					
-			
+					
+					/* Salva as respostas */
+					if(!empty($respostas)){
+						foreach($respostas as $resposta){
+							if(is_array($resposta['resposta'])){
+								$rr = '';
+								foreach($resposta['resposta'] as $r){
+									$rr .= $r.', ';
+								}
+								$rr = substr($rr, 0, strlen($rr)-2);
+							}else{
+								$rr = $resposta['resposta'];
+							}
+							
+							$n = array('id' => $resposta['id'], 'familia_id' => $this->Familia->id, 'questionario_id' => $resposta['questionario_id'], 'resposta' => $rr);
+
+							$m=ClassRegistry::init('Resposta');
+							$m->save($n);
+						}
+					}
+						
 					
 					$this->Session->setFlash('Família salva.', 'flash_success');
 					$this->redirect(array('action' => 'index'));
@@ -98,6 +138,7 @@ class FamiliasController extends AppController {
 			}
 		
 			$this->_questionarios();
+			$this->set('respostas', ClassRegistry::init('Resposta')->find('all', array('conditions' => array('Resposta.familia_id' => $id))));
 			$this->set('escolaridades', $this->Familia->Pessoa->escolaridades);
 		}
 

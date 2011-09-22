@@ -10,10 +10,7 @@
  * @copyright __MyCompanyName__
  **/
 class Questionario extends AppModel {
-	
-	public $actsAs = array('Tree');
-	
-	public $displayField = 'titulo';
+
 
 }
 ?>
