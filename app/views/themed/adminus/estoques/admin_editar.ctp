@@ -26,7 +26,7 @@
 			</p>
 			
 			<p>
-				<label>Complemento quantidade</label><br />
+				<label>Complemento quantidade (Kilo, litro, lata)</label><br />
 				<?php echo $this->Form->input('complemento_qt', array('div' => false, 'label' => false, 'class' => 'styled', 'options' => array_combine(range(1,5), range(1,5)) )); ?>
 			</p>
 			
