@@ -28,48 +28,53 @@
 		
 			<div style="position: relative; top: -120px;">			
 			<p>
+				<label>Nome:</label><br />
+				<?php echo $this->Form->input('pessoa_id','nome', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
+			</p>
+			
+			<p>
+				<label>Data de Nascimento:</label><br />
+				<?php echo $this->Form->input('pessoa_id','nascimento', array('div' => false, 'label' => false)); ?>
+			</p>
+			
+			<p>
 				<label>Endereço:</label><br />
-				<?php echo $this->Form->input('endereco', array('div' => false, 'label' => false, 'class' => 'text medium')); ?>
+				<?php echo $this->Form->input('endereco', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>	
 			
 			<p>
 				<label>Número:</label><br />
-				<?php echo $this->Form->input('numero', array('div' => false, 'label' => false, 'class' => 'text medium')); ?>
+				<?php echo $this->Form->input('numero', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>				
 			
 			<p>
 				<label>Complemento:</label><br />
-				<?php echo $this->Form->input('complemento', array('div' => false, 'label' => false, 'class' => 'text medium')); ?>
+				<?php echo $this->Form->input('complemento', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>
 			
 			<p>
 				<label>Bairro:</label><br />
-				<?php echo $this->Form->input('bairro', array('div' => false, 'label' => false, 'class' => 'text medium')); ?>
+				<?php echo $this->Form->input('bairro', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>
 			
 			<p>
 				<label>Referência:</label><br />
-				<?php echo $this->Form->input('referencia', array('div' => false, 'label' => false, 'class' => 'text medium')); ?>
+				<?php echo $this->Form->input('referencia', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>
-			
-			<p>
-				<label>Cidade:</label><br />
-				<?php echo $this->Form->input('cidade', array('div' => false, 'label' => false, 'class' => 'text medium')); ?>
-			</p>
-			
+					
 			<p>
 				<label>Telefone:</label><br />
-				<?php echo $this->Form->input('telefone', array('div' => false, 'label' => false, 'class' => 'text medium mask-telefone')); ?>
+				<?php echo $this->Form->input('telefone', array('div' => false, 'label' => false, 'class' => 'text medium mask-telefone', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>
 						
 			<p>
 				<label>Renda Familiar:</label><br />
-				<?php echo $this->Form->input('renda_familia', array('div' => false, 'label' => false, 'class' => 'text medium mask-moeda')); ?>
+				<?php echo $this->Form->input('renda_familia', array('div' => false, 'label' => false, 'class' => 'text medium mask-moeda', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>		
 
 			<p>
 				<label>Renda Percapta:</label><br />
-				<?php echo $this->Form->input('renda_percapta', array('div' => false, 'label' => false, 'class' => 'text medium mask-moeda')); ?>
+				<?php echo $this->Form->input('renda_percapta', array('div' => false, 'label' => false, 'class' => 'text medium mask-moeda', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>
 			
 				<p>

@@ -53,11 +53,6 @@
 			</p>
 			
 			<p>
-				<label>Cidade:</label><br />
-				<?php echo $this->Form->input('cidade', array('div' => false, 'label' => false, 'class' => 'text medium')); ?>
-			</p>
-			
-			<p>
 				<label>Telefone:</label><br />
 				<?php echo $this->Form->input('telefone', array('div' => false, 'label' => false, 'class' => 'text medium mask-telefone')); ?>
 			</p>
