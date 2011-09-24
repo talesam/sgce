@@ -19,7 +19,6 @@ class Pessoa extends AppModel {
 		'ensino_medio' => 'Ensino Médio', 
 		'ensino_tecnico' => 'Ensino Técnico', 
 		'ensino_superior' => 'Ensino Superior', 
-		'pos_graduado' => 'Pós Graduado'
 	);
 	
 	

@@ -16,7 +16,6 @@
 		<div class="sidebar">
 			<ul class="sidemenu">
 				<li><a href="#sb1">Família</a></li>
-				<li><a href="#sb2">Pessoas</a></li>
 				<li><a href="#sb3">Questionário</a></li>
 				<li><a href="#sb3">Cestas</a></li>
 			</ul>
@@ -26,61 +25,146 @@
 		<?php echo $this->Form->create('Familia'); ?>
 		<div class="sidebar_content" id="sb1">
 		
-			<div style="position: relative; top: -120px;">			
+			<div style="position: relative; top: -120px;">
 			<p>
-				<label>Nome:</label><br />
-				<?php echo $this->Form->input('pessoa_id','nome', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
+				<label>Situação</label><br />
+				<?php echo $this->Form->input('status', array('div' => false, 'label' => false, 'class' => 'styled', 'type' => 'select', 'options' => array(0 => 'Não apta', 1 => 'Apta'))); ?>
+			</p>
+			<p>
+				<label>Nome Representande</label><br />
+				<?php echo $this->Form->input('Pessoa.nome', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>
 			
 			<p>
-				<label>Data de Nascimento:</label><br />
-				<?php echo $this->Form->input('pessoa_id','nascimento', array('div' => false, 'label' => false)); ?>
+				<label>Data de Nascimento</label><br />
+				<?php echo $this->Form->input('Pessoa.nascimento', array('div' => false, 'label' => false)); ?>
 			</p>
 			
 			<p>
-				<label>Endereço:</label><br />
-				<?php echo $this->Form->input('endereco', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
+				<label>Endereço</label><br />
+				<?php echo $this->Form->input('Pessoa.endereco', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>	
 			
 			<p>
-				<label>Número:</label><br />
-				<?php echo $this->Form->input('numero', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
+				<label>Número</label><br />
+				<?php echo $this->Form->input('Pessoa.numero', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>				
 			
 			<p>
-				<label>Complemento:</label><br />
-				<?php echo $this->Form->input('complemento', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
+				<label>Complemento</label><br />
+				<?php echo $this->Form->input('Pessoa.complemento', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>
 			
 			<p>
-				<label>Bairro:</label><br />
-				<?php echo $this->Form->input('bairro', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
+				<label>Bairro</label><br />
+				<?php echo $this->Form->input('Pessoa.bairro', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>
 			
 			<p>
-				<label>Referência:</label><br />
+				<label>Referência</label><br />
 				<?php echo $this->Form->input('referencia', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>
 					
 			<p>
-				<label>Telefone:</label><br />
-				<?php echo $this->Form->input('telefone', array('div' => false, 'label' => false, 'class' => 'text medium mask-telefone', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
+				<label>Telefone</label><br />
+				<?php echo $this->Form->input('Pessoa.telefone', array('div' => false, 'label' => false, 'class' => 'text medium mask-telefone', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>
-						
+			
 			<p>
-				<label>Renda Familiar:</label><br />
+				<label>Escolaridade</label><br />
+				<?php echo $this->Form->input('Pessoa.escolaridade', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
+			</p>
+
+			<p>
+				<label>Profissão</label><br />
+				<?php echo $this->Form->input('Pessoa.profissao', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
+			</p>
+
+			<p>
+				<label>Ocupação</label><br />
+				<?php echo $this->Form->input('Pessoa.ocupacao', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
+			</p>
+			
+			<p>
+				<label>Está trabalhando?</label><br />
+				<?php echo $this->Form->input('trabalha', array('div' => false, 'label' => false, 'class' => 'styled', 'type' => 'select', 'options' => array(0 => 'Não', 1 => 'Sim'))); ?>
+			</p>		
+			
+			<p>
+				<label>Local do trabalho</label><br />
+				<?php echo $this->Form->input('local_trabalho', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
+			</p>	
+
+			<p>
+				<label>Possui benefícios?</label><br />
+				<?php echo $this->Form->input('beneficios', array('div' => false, 'label' => false, 'class' => 'styled', 'type' => 'select', 'options' => array(0 => 'Não', 1 => 'Sim'))); ?>
+			</p>	
+
+			<p>
+				<label>Situação conjugal - companheiro(a)?</label><br />
+				<?php echo $this->Form->input('companheiro', array('div' => false, 'label' => false, 'class' => 'styled', 'type' => 'select', 'options' => array(0 => 'Não', 1 => 'Sim'))); ?>
+			</p>
+
+<!-- INICIO COMPANHEIRO - Aqui coloca assim, se possui, ou seja, se a pessoa marcar sim, aparece as informações do companheiro para digitar -->
+
+			<p>
+				<label>Nome do Companheiro</label><br />
+				<?php echo $this->Form->input('nome_companheiro', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
+			</p>
+		
+			<p>
+				<label>Escolaridade</label><br />
+				<?php echo $this->Form->input('escolaridade_companheiro', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
+			</p>
+
+			<p>
+				<label>Profissão</label><br />
+				<?php echo $this->Form->input('profissao_companheiro', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
+			</p>
+
+			<p>
+				<label>Ocupação</label><br />
+				<?php echo $this->Form->input('ocupacao_companheiro', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
+			</p>	
+			
+			<p>
+				<label>Está trabalhando?</label><br />
+				<?php echo $this->Form->input('trabalha_companheiro', array('div' => false, 'label' => false, 'class' => 'styled', 'type' => 'select', 'options' => array(0 => 'Não', 1 => 'Sim'))); ?>
+			</p>		
+			
+			<p>
+				<label>Local do trabalho</label><br />
+				<?php echo $this->Form->input('local_trb_companheiro', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
+			</p>	
+
+			<p>
+				<label>Possui benefícios?</label><br />
+				<?php echo $this->Form->input('beneficios_companheiro', array('div' => false, 'label' => false, 'class' => 'styled', 'type' => 'select', 'options' => array(0 => 'Não', 1 => 'Sim'))); ?>
+			</p>	
+
+			<p>
+				<label>O(a) companheiro(a) é pai ou mãe da(s) criança(s)?</label><br />
+				<?php echo $this->Form->input('pai_mae', array('div' => false, 'label' => false, 'class' => 'styled', 'type' => 'select', 'options' => array(0 => 'Não', 1 => 'Sim'))); ?>
+			</p>
+			
+			<p>
+				<label>Possui dependentes?</label><br />
+				<?php echo $this->Form->input('dependente', array('div' => false, 'label' => false, 'class' => 'styled', 'type' => 'select', 'options' => array(0 => 'Não', 1 => 'Sim'))); ?>
+			</p>
+
+<!-- FIM COMPANHEIRO - Aqui coloca assim, se possui, ou seja, se a pessoa marcar sim, aparece as informações do companheiro para digitar -->
+<!-- INICIO DEPENDETE - Aqui coloca assim, se possui, ou seja, se a pessoa marcar sim, aparece as informações do companheiro para digitar -->
+
+<!-- FIM DEPENDETE - Aqui coloca assim, se possui, ou seja, se a pessoa marcar sim, aparece as informações do companheiro para digitar -->
+			<p>
+				<label>Renda Familiar</label><br />
 				<?php echo $this->Form->input('renda_familia', array('div' => false, 'label' => false, 'class' => 'text medium mask-moeda', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>		
 
 			<p>
-				<label>Renda Percapta:</label><br />
+				<label>Renda Percapta</label><br />
 				<?php echo $this->Form->input('renda_percapta', array('div' => false, 'label' => false, 'class' => 'text medium mask-moeda', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>
-			
-				<p>
-					<label>Situação</label><br />
-					<?php echo $this->Form->input('status', array('div' => false, 'label' => false, 'class' => 'styled', 'type' => 'select', 'options' => array(1 => 'Apta', 0 => 'Não aptra'))); ?>
-				</p>
 			</div>	
 		</div>
 			
