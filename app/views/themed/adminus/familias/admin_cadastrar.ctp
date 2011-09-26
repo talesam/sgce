@@ -16,8 +16,9 @@
 		<div class="sidebar">
 			<ul class="sidemenu">
 				<li><a href="#sb1">Família</a></li>
+				<li><a href="#sb2">Pessoa</a></li>
 				<li><a href="#sb3">Questionário</a></li>
-				<li><a href="#sb3">Cestas</a></li>
+				<li><a href="#sb4">Cestas</a></li>
 			</ul>
 		</div>
 		

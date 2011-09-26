@@ -16,8 +16,8 @@
 					<th width="10"><input type="checkbox" class="check_all"/></th>
 					<th>Responsável pela família</th>
 					<th>Questionario realizado?</th>
-					<th>Dependentes</th>
 					<th>Companheiro</th>
+					<th>Dependentes</th>
 					<th>Última Cesta Básica</th>
 					<th><?php echo $this->Paginator->sort('Situação', 'status'); ?></th>
 					<td>&nbsp;</td>
