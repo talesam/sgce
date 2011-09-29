@@ -34,8 +34,7 @@ class AppController extends Controller {
 	
 	
 	
-	
-	public $components = array('Session', 'Email', 'Auth', 'File', 'Acl');
+	public $components = array('Session', 'Email', 'Auth', 'File');
 	public $helpers = array('Html', 'Form', 'Session', 'Fck');
 	public $layout = 'admin';
 	public $theme = 'adminus';
@@ -51,6 +50,7 @@ class AppController extends Controller {
 		$this->Auth->loginAction = array('admin' => true, 'controller' => 'usuarios', 'action' => 'login');
 		$this->Auth->logoutRedirect = array('admin' => true, 'controller' => 'usuarios', 'action' => 'login');
 		$this->Auth->loginRedirect = array('admin' => true,  'controller' => 'familias', 'action' => 'index');
+		$this->Auth->allow('*');
 	}
 	
 	

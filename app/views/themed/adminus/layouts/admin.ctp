@@ -43,6 +43,7 @@
 			$(".mask-telefone").mask("(99) 9999-9999");
 			$(".mask-cep").mask("99999-999");
 			$(".mask-cpf").mask("999.999.999-99");
+			$(".mask-data").mask("99/99/9999");
 			
 			$('.mask-moeda').priceFormat({
 			    prefix: '',
@@ -71,31 +72,20 @@
 				
 				<ul id="nav">					
 
-					<li><?php echo $this->Html->link('Cadastros', 'javascript:;'); ?>
+					<li><?php echo $this->Html->link('Familias', array('controller' => 'familias', 'action' => 'index', 'plugin' => false)); ?>
 						<ul>
-							<li><?php echo $this->Html->link('Usuário', array('controller' => 'usuarios', 'action' => 'cadastrar', 'plugin' => false)); ?></li>
-							<li><?php echo $this->Html->link('Voluntário', array('controller' => 'voluntarios', 'action' => 'cadastrar', 'plugin' => false)); ?></li>
-
-							<li><?php echo $this->Html->link('Familia', array('controller' => 'familias', 'action' => 'cadastrar', 'plugin' => false)); ?></li>
-							<li><?php echo $this->Html->link('Frequência', array('controller' => 'frequencias', 'action' => 'cadastrar', 'plugin' => false)); ?></li>
-
-							<li><?php echo $this->Html->link('Definição de Cesta', array('controller' => 'definicoescestas', 'action' => 'cadastrar', 'plugin' => false)); ?></li>
-							<li><?php echo $this->Html->link('Estoque', array('controller' => 'estoques', 'action' => 'cadastrar', 'plugin' => false)); ?></li>
+							<li><?php echo $this->Html->link('Frequência', array('controller' => 'frequencias', 'action' => 'index', 'plugin' => false)); ?></li>
 						</ul>
 					</li>
-
-					<li><?php echo $this->Html->link('Consultas', 'javascript:;'); ?>
+					<li>
+						<?php echo $this->Html->link('Cestas', array('controller' => 'cestas', 'action' => 'index', 'plugin' => false)); ?> 
 						<ul>
-							<li><?php echo $this->Html->link('Usuário', array('controller' => 'usuarios', 'action' => 'index', 'plugin' => false)); ?></li>
-							<li><?php echo $this->Html->link('Voluntário', array('controller' => 'voluntarios', 'action' => 'index', 'plugin' => false)); ?></li>
 							
-							<li><?php echo $this->Html->link('Família', array('controller' => 'familias', 'action' => 'index', 'plugin' => false)); ?></li>
-							<li><?php echo $this->Html->link('Frequência', array('controller' => 'frequencias', 'action' => 'index', 'plugin' => false)); ?></li>
-							
-							<li><?php echo $this->Html->link('Definição de Cesta', array('controller' => 'definicoescestas', 'action' => 'index', 'plugin' => false)); ?></li>
 							<li><?php echo $this->Html->link('Estoque', array('controller' => 'estoques', 'action' => 'index', 'plugin' => false)); ?></li>
 						</ul>
 					</li>
+					<li><?php echo $this->Html->link('Voluntários', array('controller' => 'voluntarios', 'action' => 'index', 'plugin' => false)); ?></li>
+					
 					
 					<li><?php echo $this->Html->link('Relatórios', 'javascript:;'); ?>
 						<ul>
@@ -110,13 +100,27 @@
 						</ul>
 					</li>					
 
-					<li><?php echo $this->Html->link('Cestas', array('controller' => 'cestas', 'action' => 'index', 'plugin' => false)); ?> </li>
 					
-					<li><?php echo $this->Html->link('Criar Questionário', array('controller' => 'questionarios', 'action' => 'index', 'plugin' => false)); ?> </li>
 
-					<li><?php echo $this->Html->link('Permissões', '/admin/acl'); ?> </li>
+					<li>
+						<?php echo $this->Html->link('Usuários', array('controller' => 'usuarios', 'action' => 'index', 'plugin' => false)); ?>
+						<ul>
+							<li><?php echo $this->Html->link('Logs', array('controller' => 'logs', 'action' => 'index', 'plugin' => false)); ?> </li>
+							<li><?php echo $this->Html->link('Grupos', array('controller' => 'grupos', 'action' => 'index', 'plugin' => false)); ?> </li>
+							<li><?php echo $this->Html->link('Permissões', '/admin/acl'); ?> </li>
+						</ul>
+					</li>
+
+					<li>
+						<?php echo $this->Html->link('Configurações', 'javascript:;'); ?>
+						<ul>
+							<li><?php echo $this->Html->link('Questionário', array('controller' => 'questionarios', 'action' => 'index', 'plugin' => false)); ?> </li>
+							<li><?php echo $this->Html->link('Definição de Cesta', array('controller' => 'definicoescestas', 'action' => 'index', 'plugin' => false)); ?></li>
+						</ul>
 					
-					<li><?php echo $this->Html->link('Logs', array('controller' => 'logs', 'action' => 'index', 'plugin' => false)); ?> </li>
+					</li>
+					
+					
 				</ul>
 				
 			<p class="user">Olá, <a href="#"><?php echo $this->Session->read('Auth.Usuario.nome'); ?></a> | <?php echo $this->Html->link('Sair', array('controller' => 'usuarios', 'action' => 'logout')); ?></p>

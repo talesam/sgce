@@ -2,37 +2,33 @@
 	<div class="block_head">
 		<div class="bheadl"></div>
 		<div class="bheadr"></div>
-		<h2>Famílias</h2>
+		<h2>Dependentes</h2>
 		<ul>
-			<li><?php echo $this->Html->link('Cadastrar Família', array('action' => 'cadastrar')); ?></li>
+			<li><?php echo $this->Html->link('Cadastrar Dependente', array('action' => 'cadastrar', $familiaId)); ?></li>
 		</ul>
 	</div>
 	
 	<div class="block_content">
-		<?php echo $this->Form->create('Familia'); ?>
+		<?php echo $this->Form->create('Dependente'); ?>
 		<table cellpadding="0" cellspacing="0" width="100%" class="sortable">
 			<thead>
 				<tr>
 					<th width="10"><input type="checkbox" class="check_all"/></th>
 					<th>Nome</th>
-					<th>Companheiro</th>
+					<th>Dependente</th>
 					<th>Dependentes</th>
 					<th><?php echo $this->Paginator->sort('Situação', 'situacao'); ?></th>
 					<td>&nbsp;</td>
 				</tr>
 			</thead>
 			<tbody>
-				<?php foreach ($familias as $familia): ?>
+				<?php foreach ($dependentes as $dependente): ?>
 				<tr>
-					<td><?php echo $this->Form->input('id.'.$familia['Familia']['id'], array('type' => 'checkbox', 'div' => false, 'label' => false)); ?></td>
-					<td><?php echo $familia['Familia']['nome']; ?></td>
-					<td><?php echo $this->Html->link($familia['Companheiro']['nome'] ?  $familia['Companheiro']['nome'] : 'Não cadastrado', array('controller' => 'companheiros', 'action' => 'index', $familia['Familia']['id'])); ?></td>
-					<td><?php echo $this->Html->link(count($familia['Dependente']) ?  count($familia['Dependente']) : 'Não cadastrado', array('controller' => 'dependentes', 'action' => 'index', $familia['Familia']['id'])); ?></td>
-					<td><?php echo $familia['Familia']['situacao'] ?  'Ativa' : 'Inativa'; ?></td>
+					<td><?php echo $this->Form->input('id.'.$dependente['Dependente']['id'], array('type' => 'checkbox', 'div' => false, 'label' => false)); ?></td>
+					<td><?php echo $dependente['Dependente']['nome']; ?></td>
 					<td class="delete">
-						<?php echo  $this->Html->link('Questionário', array('controller' => 'respostas', 'action' => 'familia', $familia['Familia']['id'])); ?> | 
-						<?php echo  $this->Html->link('Editar', array('action' => 'editar', $familia['Familia']['id'])); ?> | 
-						<?php echo $this->Html->link('Excluir', array('action' => 'excluir', $familia['Familia']['id']), null, 'Tem certeza que deseja excluir?'); ?>
+						<?php echo  $this->Html->link('Editar', array('action' => 'editar', $dependente['Dependente']['id'])); ?> | 
+						<?php echo $this->Html->link('Excluir', array('action' => 'excluir', $dependente['Dependente']['id']), null, 'Tem certeza que deseja excluir?'); ?>
 					</td>
 				</tr>
 				<?php endforeach; ?>
