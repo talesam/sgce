@@ -25,7 +25,7 @@
 			
 			<p>
 				<label>Data de Nascimento</label><br />
-				<?php echo $this->Form->input('nascimento', array('div' => false, 'label' => false)); ?>
+				<?php echo $this->Form->input('nascimento', array('div' => false, 'label' => false, 'type' => 'text' , 'class' => 'text medium mask-data')); ?>
 			</p>
 			
 			<!-- Peso, Altura e Situação nutricional é para crianças de até 7 anos -->

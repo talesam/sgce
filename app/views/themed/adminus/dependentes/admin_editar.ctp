@@ -25,7 +25,7 @@
 			
 			<p>
 				<label>Data de Nascimento</label><br />
-				<?php echo $this->Form->input('nascimento', array('div' => false, 'label' => false)); ?>
+				<?php echo $this->Form->input('nascimento', array('div' => false, 'label' => false, 'type' => 'text' , 'class' => 'text medium mask-data')); ?>
 			</p>
 			
 			<!-- Peso, Altura e Situação nutricional é para crianças de até 7 anos -->
@@ -46,7 +46,7 @@
 			
 			<p>
 				<label>Parentesco</label><br />
-				<?php echo $this->Form->input('parentesco', array('div' => false, 'label' => false, 'class' => 'styled', 'type' => 'select', 'options' => array(0 => 'Nenhum', 1 => 'Filho(a) do responsável', 2 => 'Filho(a) do companheiro(a)', 3 => 'Enteado(a) do responsável', 4 => 'Enteado(a) do companheiro(a)', 5 => 'Neto(a) do responsável', 6 => 'Neto(a) do companheiro(a)'))); ?>
+				<?php echo $this->Form->input('parentesco', array('div' => false, 'label' => false, 'class' => 'styled', 'empty' => 'Selecione', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>
 			
 			<p>

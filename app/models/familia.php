@@ -32,10 +32,10 @@ class Familia extends AppModel {
 	);
 
 	/* Escolariadade de uma pessoa  */
-	public $escolaridades = array('Analfabeto',  'Ensino Fundamental',  'Ensino Médio',  'Ensino Técnico',  'Ensino Superior', 'Não informado');
+	public $escolaridades = array('Analfabeto', 'Ensino Fundamental', 'Ensino Médio', 'Ensino Técnico', 'Ensino Superior', 'Não informado');
 	
 	/* Parentescos */
-	public $parentescos = array('Filho', 'Neto', 'Genro');
+	public $parentescos = array('Nenhum', 'Filho(a) do responsável', 'Filho(a) do companheiro(a)', 'Enteado(a) do responsável', 'Enteado(a) do companheiro(a)', 'Neto(a) do responsável', 'Neto(a) do companheiro(a)');
 	
 	
 	/* Situações  */

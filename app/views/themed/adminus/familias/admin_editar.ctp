@@ -31,7 +31,7 @@
 				<label>Data de Nascimento</label><br />
 				<?php echo $this->Form->input('nascimento', array('div' => false, 'label' => false, 'type' => 'text' , 'class' => 'text medium mask-data')); ?>
 			</p>
-			
+					
 			<p>
 				<label>Endereço</label><br />
 				<?php echo $this->Form->input('endereco', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
@@ -112,10 +112,10 @@
 				<?php echo $this->Form->input('renda_percapta', array('div' => false, 'label' => false, 'class' => 'text medium mask-moeda', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>
 			
-	
 			<p>
 				<input type="submit" class="submit small" value="Salvar" />
 			</p>
+			
 		<?php echo $this->Form->end(null); ?>
 		
 		

@@ -8,13 +8,8 @@
 		<ul><li><?php echo $this->Html->link('VOLTAR', array('action' => 'index', $this->data['Companheiro']['parente_id'])); ?></li></ul>
 	</div>		<!-- .block_head ends -->
 	
-
-
 	
 	<div class="block_content">
-	
-
-		
 		
 		<?php echo $this->Form->create('Companheiro'); echo $this->Form->input('id'); echo $this->Form->input('parente_id', array('type' => 'hidden')); ?>
 		
@@ -57,8 +52,6 @@
 				<label>O(a) companheiro(a) é pai ou mãe da(s) criança(s)?</label><br />
 				<?php echo $this->Form->input('pai_mae', array('div' => false, 'label' => false, 'class' => 'styled', 'type' => 'select', 'options' => array(0 => 'Não', 1 => 'Sim'))); ?>
 			</p>
-			
-		
 	
 			<p>
 				<input type="submit" class="submit small" value="Salvar" />
