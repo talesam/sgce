@@ -32,14 +32,6 @@ class Usuario extends AppModel {
 				'message' => 'Campo obrigatório',
 			)
 		),
-		'cpf' => array(
-			'notEmpty' => array(
-				'rule' => 'notEmpty',
-				'required' => true,
-				'on' => 'create',
-				'message' => 'Campo obrigatório',
-			)
-		),
 		'temp_senha' => array(
 			'notEmpty' => array(
 				'rule' => 'notEmpty',

@@ -18,12 +18,10 @@
 				<?php echo $this->Form->input('nome', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>
 			
-
 			<p>
 				<label>E-mail</label><br />
 				<?php echo $this->Form->input('email', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>
-			
 			
 			<p>
 				<label>Endereço</label><br />
@@ -50,13 +48,10 @@
 				<?php echo $this->Form->input('cidade', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>
 			
-			
 			<p>
 				<label>UF</label><br />
 				<?php echo $this->Form->input('uf', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>
-			
-			
 			
 			<p>
 				<label>CEP</label><br />
@@ -73,13 +68,11 @@
 				<?php echo $this->Form->input('celular', array('div' => false, 'label' => false,  'class' => 'text medium mask-telefone', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>
 			
-			
 			<p>
 				<label>Situação</label><br />
-				<?php echo $this->Form->input('status', array('div' => false, 'label' => false, 'class' => 'styled', 'type' => 'select', 'options' => array(1 => 'Ativo', 0 => 'Inativo'))); ?>
+				<?php echo $this->Form->input('status', array('div' => false, 'label' => false, 'class' => 'styled', 'type' => 'select', 'options' => array(0 => 'Inativo', 1 => 'Ativo'))); ?>
 			</p>
 			
-		
 			<p>
 				<label>Prestão de serviço (Obrigatório)</label><br />
 				<?php echo $this->Form->input('prestacao_servico', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>

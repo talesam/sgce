@@ -17,7 +17,6 @@
 				<label>Nome (Obrigatório)</label><br />
 				<?php echo $this->Form->input('nome', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>
-			
 
 			<p>
 				<label>E-mail (Obrigatório)</label><br />
@@ -30,14 +29,8 @@
 			</p>
 			
 			<p>
-				<label>CPF (Obrigatório)</label><br />
+				<label>CPF</label><br />
 				<?php echo $this->Form->input('cpf', array('div' => false, 'label' => false, 'class' => 'text medium mask-cpf', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
-			</p>
-			
-			
-			<p>
-				<label>RG</label><br />
-				<?php echo $this->Form->input('rg', array('div' => false, 'label' => false,  'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>
 			
 			<p>

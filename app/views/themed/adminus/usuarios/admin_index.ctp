@@ -27,7 +27,7 @@
 						<th><?php echo $this->Paginator->sort('Situação', 'status');?></th>
 						<th><?php echo $this->Paginator->sort('telefone');?></th>
 						<th><?php echo $this->Paginator->sort('celular');?></th>
-						<th><?php echo $this->Paginator->sort('Grupo.nome');?></th>
+						<th><?php echo $this->Paginator->sort('Grupo', 'Grupo.nome');?></th>
 						<td>&nbsp;</td>
 					</tr>
 				</thead>

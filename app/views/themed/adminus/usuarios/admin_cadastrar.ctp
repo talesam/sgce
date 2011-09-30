@@ -18,7 +18,6 @@
 				<?php echo $this->Form->input('nome', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>
 			
-
 			<p>
 				<label>E-mail (Obrigatório)</label><br />
 				<?php echo $this->Form->input('email', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
@@ -33,7 +32,6 @@
 				<label>CPF (Obrigatório)</label><br />
 				<?php echo $this->Form->input('cpf', array('div' => false, 'label' => false, 'class' => 'text medium mask-cpf', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>
-			
 			
 			<p>
 				<label>RG</label><br />
@@ -65,13 +63,10 @@
 				<?php echo $this->Form->input('cidade', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>
 			
-			
 			<p>
 				<label>UF</label><br />
 				<?php echo $this->Form->input('uf', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>
-			
-			
 			
 			<p>
 				<label>CEP</label><br />
@@ -93,18 +88,16 @@
 				<?php echo $this->Form->input('status', array('div' => false, 'label' => false, 'class' => 'styled', 'type' => 'select', 'options' => array(1 => 'Ativo', 0 => 'Inativo'))); ?>
 			</p>
 			
-				<p>
-					<label>Grupo</label><br />
-					<?php echo $this->Form->input('grupo_id', array('div' => false, 'label' => false, 'class' => 'styled', 'type' => 'select', 'options' => $grupos)); ?>
-				</p>
+			<p>
+				<label>Grupo</label><br />
+				<?php echo $this->Form->input('grupo_id', array('div' => false, 'label' => false, 'class' => 'styled', 'type' => 'select', 'options' => $grupos)); ?>
+			</p>
 
-		
 			<p>
 				<label>Prestão de serviço (Obrigatório)</label><br />
 				<?php echo $this->Form->input('prestacao_servico', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>
 						
-
 						
 			<hr />
 			
