@@ -51,7 +51,7 @@
 			
 			<p>
 				<label>Escolaridade</label><br />
-				<?php echo $this->Form->input('escolaridade', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
+				<?php echo $this->Form->input('escolaridade', array('div' => false, 'label' => false, 'class' => 'styled', 'empty' => 'Selecione', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>
 			
 			<p>
