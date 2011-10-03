@@ -32,6 +32,7 @@
 					<td><?php echo date('d/m/Y', strtotime($estoque['Estoque']['data_entrada'])); ?></td>
 					<td><?php echo date('d/m/Y', strtotime($estoque['Estoque']['data_vencimento'])); ?></td>
 					<td class="delete">
+						<?php echo $this->Html->link('Consultar', array('action' => 'consultar', $estoque['Estoque']['id'])); ?> | 
 						<?php echo $this->Html->link('Editar', array('action' => 'editar', $estoque['Estoque']['id'])); ?> | 
 						<?php echo $this->Html->link('Excluir', array('action' => 'excluir', $estoque['Estoque']['id']), null, 'Tem certeza que deseja excluir?'); ?>
 					</td>

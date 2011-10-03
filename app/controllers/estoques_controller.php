@@ -80,6 +80,28 @@ class EstoquesController extends AppController {
 			$this->set('definicoescestas', $definicoescestas);
 		}
 
+		function admin_consultar($id = null) {
+			if (!$id && empty($this->data)) {
+				$this->Session->setFlash('Estoque inválido.', 'flash_error');
+				$this->redirect(array('action' => 'index'));
+			}
+			$definicoescestas = ClassRegistry::init('Definicoescesta')->find('list');
+			if (!empty($this->data)) {
+				if ($this->Estoque->save($this->data)) {
+					$this->gravarLog('Modificou estoque: '. $definicoescestas[$this->data['Estoque']['definicoescesta_id']]);
+					
+					$this->Session->setFlash('Estoque salvo.', 'flash_success');
+					$this->redirect(array('action' => 'index'));
+				} else {
+					$this->Session->setFlash('Estoque não pode ser salvo. Por favor, tente novamente.', 'flash_error');
+				}
+			}
+			if (empty($this->data)) {
+				$this->data = $this->Estoque->read(null, $id);
+			}
+				
+			$this->set('definicoescestas', $definicoescestas);
+		}
 
 		public function admin_excluir($id = null) {
 			if(!$id) {
