@@ -31,6 +31,7 @@ class DependentesController extends AppController {
 				}
 			}
 			$this->set('familiaId', $familiaId);
+			$this->set('escolaridades', $this->Dependente->escolaridades);
 		}
 
 		function admin_editar($id = null) {
@@ -49,6 +50,7 @@ class DependentesController extends AppController {
 			if (empty($this->data)) {
 				$this->data = $this->Dependente->read(null, $id);
 			}
+			$this->set('escolaridades', $this->Dependente->escolaridades);
 		}
 		
 		function admin_consultar($id = null) {

@@ -123,7 +123,7 @@
 					
 				</ul>
 				
-			<p class="user">Olá, <a href="#"><?php echo $this->Session->read('Auth.Usuario.nome'); ?></a> | <?php echo $this->Html->link('Sair', array('controller' => 'usuarios', 'action' => 'logout')); ?></p>
+			<p class="user">Olá, <a href="#"><?php echo $this->Session->read('Auth.Usuario.nome'); ?></a> | <?php echo $this->Html->link('Sair', array('controller' => 'usuarios', 'action' => 'logout',  'plugin' => false)); ?></p>
 			</div>		<!-- #header ends -->
 			
 			

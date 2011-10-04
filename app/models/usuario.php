@@ -39,14 +39,6 @@ class Usuario extends AppModel {
 				'on' => 'create',
 				'message' => 'Campo obrigatório',
 			)
-		),
-		'prestacao_servico' => array(
-			'notEmpty' => array(
-				'rule' => 'notEmpty',
-				'required' => true,
-				'on' => 'create',
-				'message' => 'Campo obrigatório',
-			)
 		)
 	);
 	

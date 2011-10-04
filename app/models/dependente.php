@@ -11,6 +11,9 @@
  **/
 class Dependente extends AppModel {
 	
+	/* Escolariadade de uma pessoa  */
+	public $escolaridades = array('Analfabeto', 'Ensino Fundamental', 'Ensino Médio', 'Ensino Técnico', 'Ensino Superior', 'Não informado');
+	
 	public $useTable = 'familias';
 
 	public $belongsTo = array(

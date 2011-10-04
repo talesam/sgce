@@ -31,4 +31,27 @@
  * @subpackage    cake.app
  */
 class AppModel extends Model {
+	
+	public function beforeSave(){
+		if(isset($this->data['Familia'])){
+			$this->data['Familia']['nascimento'] = date('Y-m-d', strtotime($this->data['Familia']['nascimento']));
+			$this->data['Familia']['renda_familiar'] = str_replace('.', '', $this->data['Familia']['renda_familiar']);
+			$this->data['Familia']['renda_percapta'] = str_replace(',', '.', $this->data['Familia']['renda_percapta']);
+		}
+		
+		
+		if(isset($this->data['Companheiro'])){
+			$this->data['Companheiro']['nascimento'] = date('Y-m-d', strtotime($this->data['Companheiro']['nascimento']));
+			$this->data['Companheiro']['renda_familiar'] = str_replace('.', '', $this->data['Companheiro']['renda_familiar']);
+			$this->data['Companheiro']['renda_percapta'] = str_replace(',', '.', $this->data['Companheiro']['renda_percapta']);
+		}
+		
+		if(isset($this->data['Dependente'])){
+			$this->data['Dependente']['nascimento'] = date('Y-m-d', strtotime($this->data['Dependente']['nascimento']));
+			$this->data['Dependente']['renda_familiar'] = str_replace('.', '', $this->data['Dependente']['renda_familiar']);
+			$this->data['Dependente']['renda_percapta'] = str_replace(',', '.', $this->data['Dependente']['renda_percapta']);
+		}
+		
+		return true;
+	}
 }
