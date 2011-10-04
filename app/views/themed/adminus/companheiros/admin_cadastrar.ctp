@@ -48,15 +48,13 @@
 				<?php echo $this->Form->input('pai_mae', array('div' => false, 'label' => false, 'class' => 'styled', 'type' => 'select', 'options' => array(0 => 'Não', 1 => 'Sim'))); ?>
 			</p>
 			
-			</div>
 		
 			
-		
-	
+			<hr />
+			
 			<p>
 				<input type="submit" class="submit small" value="Cadastrar" />
 			</p>
-		
 		<?php echo $this->Form->end(null); ?>
 		
 		
