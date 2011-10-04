@@ -50,6 +50,16 @@ class CompanheirosController extends AppController {
 				$this->data = $this->Companheiro->read(null, $id);
 			}
 		}
+		
+				function admin_consultar($id = null) {
+			if (!$id && empty($this->data)) {
+				$this->Session->setFlash('Consulta companheiro inválida.', 'flash_error');
+				$this->redirect(array('action' => 'index'));
+			}
+			if (empty($this->data)) {
+				$this->data = $this->Companheiro->read(null, $id);
+			}
+		}
 
 
 		public function admin_excluir($id = null) {

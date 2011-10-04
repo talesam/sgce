@@ -86,6 +86,20 @@ class FamiliasController extends AppController {
 			$this->set('respostas', ClassRegistry::init('Resposta')->find('all', array('conditions' => array('Resposta.familia_id' => $id))));
 			$this->set('escolaridades', $this->Familia->escolaridades);
 		}
+		
+		function admin_consultar($id = null) {
+			if (!$id && empty($this->data)) {
+				$this->Session->setFlash('Consulta família inválida.', 'flash_error');
+				$this->redirect(array('action' => 'index'));
+			}
+			if (empty($this->data)) {
+				$this->data = $this->Familia->read(null, $id);
+			}
+		
+			$this->_questionarios();
+			$this->set('respostas', ClassRegistry::init('Resposta')->find('all', array('conditions' => array('Resposta.familia_id' => $id))));
+			$this->set('escolaridades', $this->Familia->escolaridades);
+		}
 
 
 		public function admin_excluir($id = null) {

@@ -31,6 +31,7 @@
 					<td><?php echo $familia['Familia']['situacao'] ?  'Ativa' : 'Inativa'; ?></td>
 					<td class="delete">
 						<?php echo  $this->Html->link('Questionário', array('controller' => 'respostas', 'action' => 'familia', $familia['Familia']['id'])); ?> | 
+						<?php echo  $this->Html->link('Consultar', array('action' => 'consultar', $familia['Familia']['id'])); ?> | 
 						<?php echo  $this->Html->link('Editar', array('action' => 'editar', $familia['Familia']['id'])); ?> | 
 						<?php echo $this->Html->link('Excluir', array('action' => 'excluir', $familia['Familia']['id']), null, 'Tem certeza que deseja excluir?'); ?>
 					</td>

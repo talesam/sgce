@@ -32,6 +32,7 @@
 					<td><?php echo $medidas[$definicoescesta['Definicoescesta']['medida']]; ?></td>
 					<td><?php echo $this->Html->link($estoque[$definicoescesta['Definicoescesta']['id']][0]['total'], array('action' => 'index', 'controller' => 'estoques', $definicoescesta['Definicoescesta']['id'])); ?></td>
 					<td class="delete">
+						<?php echo $this->Html->link('Consultar', array('action' => 'consultar', $definicoescesta['Definicoescesta']['id'])); ?> | 
 						<?php echo $this->Html->link('Editar', array('action' => 'editar', $definicoescesta['Definicoescesta']['id'])); ?> | 
 						<?php echo $this->Html->link('Excluir', array('action' => 'excluir', $definicoescesta['Definicoescesta']['id']), null, 'Tem certeza que deseja excluir?'); ?>
 					</td>

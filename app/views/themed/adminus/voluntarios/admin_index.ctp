@@ -41,6 +41,7 @@
 						<td><?php echo $voluntario['Voluntario']['telefone']; ?>&nbsp;</td>
 						<td><?php echo $voluntario['Voluntario']['celular']; ?>&nbsp;</td>
 						<td class="delete">
+							<?php echo  $this->Html->link('Consultar', array('action' => 'consultar', $voluntario['Voluntario']['id'])); ?> | 
 							<?php echo  $this->Html->link('Editar', array('action' => 'editar', $voluntario['Voluntario']['id'])); ?> | 
 							<?php echo $this->Html->link('Excluir', array('action' => 'excluir', $voluntario['Voluntario']['id']), null, 'Tem certeza que deseja excluir?'); ?>
 						</td>

@@ -43,6 +43,7 @@
 						<td><?php echo $usuario['Usuario']['celular']; ?>&nbsp;</td>
 						<td><?php echo $usuario['Grupo']['nome']; ?>&nbsp;</td>
 						<td class="delete">
+							<?php echo  $this->Html->link('Consultar', array('action' => 'consultar', $usuario['Usuario']['id'])); ?> | 
 							<?php echo  $this->Html->link('Editar', array('action' => 'editar', $usuario['Usuario']['id'])); ?> | 
 							<?php echo $this->Html->link('Excluir', array('action' => 'excluir', $usuario['Usuario']['id']), null, 'Tem certeza que deseja excluir?'); ?>
 						</td>

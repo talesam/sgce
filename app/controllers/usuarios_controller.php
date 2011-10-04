@@ -134,6 +134,19 @@ class UsuariosController extends AppController {
 		
 			$this->set('grupos', ClassRegistry::init('Grupo')->find('list'));
 		}
+		
+			function admin_consultar($id = null) {
+			if (!$id && empty($this->data)) {
+				$this->Session->setFlash('Usuário inválido.', 'flash_error');
+				$this->redirect(array('action' => 'index'));
+				$this->gravarLog('Consultou usuário: '. $this->data['Usuario']['nome']);
+			}
+			if (empty($this->data)) {
+				$this->data = $this->Usuario->read(null, $id);
+			}
+		
+			$this->set('grupos', ClassRegistry::init('Grupo')->find('list'));
+		}
 
 		public function admin_excluir($id = null) {
 			if(!$id) {

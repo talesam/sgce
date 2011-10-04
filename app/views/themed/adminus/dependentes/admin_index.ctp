@@ -27,6 +27,7 @@
 					<td><?php echo $this->Form->input('id.'.$dependente['Dependente']['id'], array('type' => 'checkbox', 'div' => false, 'label' => false)); ?></td>
 					<td><?php echo $dependente['Dependente']['nome']; ?></td>
 					<td class="delete">
+						<?php echo  $this->Html->link('Consultar', array('action' => 'consultar', $dependente['Dependente']['id'])); ?> | 
 						<?php echo  $this->Html->link('Editar', array('action' => 'editar', $dependente['Dependente']['id'])); ?> | 
 						<?php echo $this->Html->link('Excluir', array('action' => 'excluir', $dependente['Dependente']['id']), null, 'Tem certeza que deseja excluir?'); ?>
 					</td>

@@ -27,6 +27,7 @@
 					<td><?php echo $this->Form->input('id.'.$companheiro['Companheiro']['id'], array('type' => 'checkbox', 'div' => false, 'label' => false)); ?></td>
 					<td><?php echo $companheiro['Companheiro']['nome']; ?></td>
 					<td class="delete">
+						<?php echo  $this->Html->link('Consultar', array('action' => 'consultar', $companheiro['Companheiro']['id'])); ?> | 
 						<?php echo  $this->Html->link('Editar', array('action' => 'editar', $companheiro['Companheiro']['id'])); ?> | 
 						<?php echo $this->Html->link('Excluir', array('action' => 'excluir', $companheiro['Companheiro']['id']), null, 'Tem certeza que deseja excluir?'); ?>
 					</td>

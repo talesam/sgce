@@ -70,6 +70,20 @@ class DefinicoescestasController extends AppController {
 			$this->set('tipos', $this->Definicoescesta->tipos);
 			$this->set('medidas', $this->Definicoescesta->medidas);
 		}
+		
+		function admin_consultar($id = null) {
+			if (!$id && empty($this->data)) {
+				$this->Session->setFlash('Definicoescesta inválido.', 'flash_error');
+				$this->redirect(array('action' => 'index'));
+				$this->gravarLog('Consultar definicoescesta: '. $this->data['Definicoescesta']['nome']);
+			}
+			if (empty($this->data)) {
+				$this->data = $this->Definicoescesta->read(null, $id);
+			}
+				
+			$this->set('tipos', $this->Definicoescesta->tipos);
+			$this->set('medidas', $this->Definicoescesta->medidas);
+		}
 
 
 		public function admin_excluir($id = null) {

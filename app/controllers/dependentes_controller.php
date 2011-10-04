@@ -50,7 +50,16 @@ class DependentesController extends AppController {
 				$this->data = $this->Dependente->read(null, $id);
 			}
 		}
-
+		
+		function admin_consultar($id = null) {
+			if (!$id && empty($this->data)) {
+				$this->Session->setFlash('Dependente inválido.', 'flash_error');
+				$this->redirect(array('action' => 'index'));
+			}
+			if (empty($this->data)) {
+				$this->data = $this->Dependente->read(null, $id);
+			}
+		}
 
 		public function admin_excluir($id = null) {
 			if(!$id) {

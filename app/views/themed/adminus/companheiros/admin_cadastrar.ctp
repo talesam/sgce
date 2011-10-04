@@ -9,13 +9,8 @@
 	</div>		<!-- .block_head ends -->
 	
 
-
-	
 	<div class="block_content">
-	
 
-		
-		
 		<?php echo $this->Form->create('Companheiro', array('url' => array('controller' => 'companheiros', 'action' => 'cadastrar', $familiaId))); echo $this->Form->input('parente_id', array('type' => 'hidden', 'value' => $familiaId)); echo $this->Form->input('companheiro', array('type' => 'hidden', 'value' => 1)); ?>
 		
 			<p>

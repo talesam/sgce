@@ -59,13 +59,26 @@ class VoluntariosController extends AppController {
 			if(!empty($this->data)){
 				if ($this->Voluntario->save($this->data)) {
 
-					$this->gravarLog('Modificou usuário: '. $this->data['Voluntario']['nome']);
+					$this->gravarLog('Modificou voluntário: '. $this->data['Voluntario']['nome']);
 
 					$this->Session->setFlash('Voluntário salvo.', 'flash_success');
 					$this->redirect(array('action' => 'index'));
 				} else {
 					$this->Session->setFlash('Voluntário não pode ser salvo. Por favor, tente novamente.', 'flash_error');
 				}
+			}
+
+			if (empty($this->data)) {
+				$this->data = $this->Voluntario->read(null, $id);
+			}
+		
+		}
+		
+				function admin_consultar($id = null) {
+			if (!$id) {
+				$this->Session->setFlash('Voluntário inválido.', 'flash_error');
+				$this->redirect(array('action' => 'index'));
+				$this->gravarLog('Consultar voluntário: '. $this->data['Voluntario']['nome']);
 			}
 
 			if (empty($this->data)) {
