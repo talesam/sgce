@@ -12,8 +12,6 @@
 
 class RespostasController extends AppController {
 
-	public function admin_index($familiaId){
-		
-	}
+
 }
 ?>

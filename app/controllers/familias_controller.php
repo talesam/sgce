@@ -49,6 +49,47 @@ class FamiliasController extends AppController {
 			$this->set('questionarios', $questionarios);
 	}
 		
+	public function admin_questionario($id){
+		$respostas = $this->data['Resposta'];
+		unset($this->data['Resposta']);
+
+
+
+		/* Cadastra as respostas */
+		if(!empty($respostas)){
+			foreach($respostas as $resposta){
+				if(is_array($resposta['resposta'])){
+					$rr = '';
+					foreach($resposta['resposta'] as $r){
+						$rr .= $r.', ';
+					}
+					$rr = substr($rr, 0, strlen($rr)-2);
+				}else{
+					$rr = $resposta['resposta'];
+				}
+				$m=ClassRegistry::init('Resposta');
+				if(isset($resposta['id'])){
+					$n = array('id' => $resposta['id'], 'familia_id' => $this->Familia->id, 'questionario_id' => $resposta['questionario_id'], 'resposta' => $rr);
+				}else{
+					$n = array( 'familia_id' => $this->Familia->id, 'questionario_id' => $resposta['questionario_id'], 'resposta' => $rr);
+					$m->create();
+				}
+				
+				
+				
+				$m->save($n);
+			}
+			
+				$this->Session->setFlash('Questionário salvo.', 'flash_success');
+			$this->redirect('index');
+		}
+
+
+		$this->_questionarios();
+		$this->set('respostas', ClassRegistry::init('Resposta')->find('all', array('conditions' => array('Resposta.familia_id' => $id))));
+		$this->set('id', $id);
+
+	}
 	
 	function admin_cadastrar() {
 			if (!empty($this->data)) {
@@ -61,7 +102,6 @@ class FamiliasController extends AppController {
 				}
 			}
 
-			$this->_questionarios();
 			$this->set('escolaridades', $this->Familia->escolaridades);
 		}
 
@@ -82,8 +122,7 @@ class FamiliasController extends AppController {
 				$this->data = $this->Familia->read(null, $id);
 			}
 		
-			$this->_questionarios();
-			$this->set('respostas', ClassRegistry::init('Resposta')->find('all', array('conditions' => array('Resposta.familia_id' => $id))));
+			
 			$this->set('escolaridades', $this->Familia->escolaridades);
 		}
 		
@@ -96,7 +135,6 @@ class FamiliasController extends AppController {
 				$this->data = $this->Familia->read(null, $id);
 			}
 		
-			$this->_questionarios();
 			$this->set('respostas', ClassRegistry::init('Resposta')->find('all', array('conditions' => array('Resposta.familia_id' => $id))));
 			$this->set('escolaridades', $this->Familia->escolaridades);
 		}

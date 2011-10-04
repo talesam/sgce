@@ -30,7 +30,7 @@
 					<td><?php echo $this->Html->link(count($familia['Dependente']) ?  count($familia['Dependente']) : 'Não cadastrado', array('controller' => 'dependentes', 'action' => 'index', $familia['Familia']['id'])); ?></td>
 					<td><?php echo $familia['Familia']['situacao'] ?  'Ativa' : 'Inativa'; ?></td>
 					<td class="delete">
-						<?php echo  $this->Html->link('Questionário', array('controller' => 'respostas', 'action' => 'familia', $familia['Familia']['id'])); ?> | 
+						<?php echo  $this->Html->link('Questionário', array( 'action' => 'questionario', $familia['Familia']['id'])); ?> | 
 						<?php echo  $this->Html->link('Consultar', array('action' => 'consultar', $familia['Familia']['id'])); ?> | 
 						<?php echo  $this->Html->link('Editar', array('action' => 'editar', $familia['Familia']['id'])); ?> | 
 						<?php echo $this->Html->link('Excluir', array('action' => 'excluir', $familia['Familia']['id']), null, 'Tem certeza que deseja excluir?'); ?>
