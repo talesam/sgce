@@ -25,7 +25,7 @@ class CestasController extends AppController {
 		$estoqueCesta->recursive = -1;
 		$cestas = 0;
 		$ok = true;
-		while(true){
+		while($ok){
 			/* Pego todas as definições da cesta  */
 			foreach($defCesta->find('all') as $def){
 
@@ -46,15 +46,14 @@ class CestasController extends AppController {
 						);
 
 				if(!empty($estoque)){
-					pr($estoque); 
-					$remover[] = array('id' => $estoque['Estoque']['id'], 'quantidade' => ($estoque['Estoque']['quantidade'] - 1) );
+					$estoqueCesta->save(array('id' => $estoque['Estoque']['id'], 'quantidade' => ($estoque['Estoque']['quantidade'] - 1)));
 				}else{ $ok = false; }
 			}
 			
-			if($ok != true){
-				break;
+			if($ok == true){
+				$cestas++;
 			}
-			$cestas++;
+			
 		}
 		
 		if($cestas > 0){
