@@ -28,9 +28,7 @@
 			</p>	
 
 			<p>
-				<label>Possui benefícios? </label><?= $this->data['Companheiro']['beneficios'] ?>
-				<br />
-				<label>O(a) companheiro(a) é pai ou mãe da(s) criança(s)? </label><?= $this->data['Companheiro']['pai_mae'] ?>
+				<label>Possui benefícios? </label><?= ($this->data['Companheiro']['beneficios']) ? 'Sim' : 'Não'; ?>
 			</p>
 	
 		<?php echo $this->Form->end(null); ?>

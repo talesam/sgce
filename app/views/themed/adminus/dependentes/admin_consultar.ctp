@@ -27,7 +27,7 @@
 			</p>
 			
 			<p>
-				<label>Situação Normal? </label><?= $this->data['Dependente']['situacao_nutricional'] ?>
+				<label>Situação Nutricional Normal? </label><?= ($this->data['Dependente']['situacao_nutricional']) ? 'Sim' : 'Não'; ?>
 			</p>
 			
 			<p>

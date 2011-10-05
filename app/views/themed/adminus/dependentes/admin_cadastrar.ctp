@@ -8,14 +8,8 @@
 		<ul><li><?php echo $this->Html->link('VOLTAR', array('action' => 'index', $familiaId)); ?></li></ul>
 	</div>		<!-- .block_head ends -->
 	
-
-
-	
 	<div class="block_content">
-	
-
-		
-		
+			
 		<?php echo $this->Form->create('Dependente', array('url' => array('controller' => 'dependentes', 'action' => 'cadastrar', $familiaId))); echo $this->Form->input('parente_id', array('type' => 'hidden', 'value' => $familiaId)); echo $this->Form->input('dependente', array('type' => 'hidden', 'value' => 1)); ?>
 		
 			<p>
@@ -40,7 +34,7 @@
 			</p>
 			
 			<p>
-				<label>Situação Normal?</label><br />
+				<label>Situação Nutricional Normal?</label><br />
 				<?php echo $this->Form->input('situacao_nutricional', array('div' => false, 'label' => false, 'class' => 'styled', 'type' => 'select', 'options' => array(0 => 'Não', 1 => 'Sim'))); ?>
 			</p>
 			

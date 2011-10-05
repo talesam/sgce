@@ -14,7 +14,7 @@
 	
 		<?php echo $this->Form->create('Usuario'); echo $this->Form->input('id'); ?>
 			<p>
-				<label>Situação: </label><?= $this->data['Usuario']['status'] ?>
+				<label>Situação: </label><?= ($this->data['Usuario']['status']) ? 'Ativo' : 'Inativo'; ?>
 				<br />
 				<label>Prestão de serviço: </label><?= $this->data['Usuario']['prestacao_servico'] ?>
 			</p>

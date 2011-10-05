@@ -41,14 +41,7 @@
 			<p>
 				<label>Possui benefícios?</label><br />
 				<?php echo $this->Form->input('beneficios', array('div' => false, 'label' => false, 'class' => 'styled', 'type' => 'select', 'options' => array(0 => 'Não', 1 => 'Sim'))); ?>
-			</p>	
-
-			<p>
-				<label>O(a) companheiro(a) é pai ou mãe da(s) criança(s)?</label><br />
-				<?php echo $this->Form->input('pai_mae', array('div' => false, 'label' => false, 'class' => 'styled', 'type' => 'select', 'options' => array(0 => 'Não', 1 => 'Sim'))); ?>
-			</p>
-			
-		
+			</p>		
 			
 			<hr />
 			

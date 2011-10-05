@@ -4,7 +4,7 @@
 		<div class="bheadl"></div>
 		<div class="bheadr"></div>
 		
-		<h2>Cadastrar Definicoescesta</h2>
+		<h2>Cadastrar Definições cesta</h2>
 		<ul><li><?php echo $this->Html->link('VOLTAR', array('action' => 'index')); ?></li></ul>
 	</div>		<!-- .block_head ends -->
 	

@@ -14,7 +14,7 @@
 		<?php echo $this->Form->create('Familia'); echo $this->Form->input('id'); ?>
 
 			<p>
-				<label>Situação: </label><?= $this->data['Familia']['situacao'] ?>
+				<label>Situação: </label><?= ($this->data['Familia']['situacao']) ? 'Apta' : 'Não apta'; ?>
 			</p>
 			<p>
 				<label>Nome do representande: </label><?= $this->data['Familia']['nome'] ?>
@@ -36,9 +36,7 @@
 				<label>Referência: </label><?= $this->data['Familia']['referencia'] ?>
 				<br />
 				<label>Cidade: </label><?= $this->data['Familia']['cidade'] ?>
-			</p>
-					
-			<p>
+				<br />
 				<label>Telefone: </label><?= $this->data['Familia']['telefone'] ?>
 			</p>
 			
@@ -51,11 +49,11 @@
 				<br />
 				<label>Local do trabalho: </label><?= $this->data['Familia']['local_trabalho'] ?>
 				<br />
-				<label>Possui benefícios? </label><?= $this->data['Familia']['beneficios'] ?>
+				<label>Possui benefícios? </label><?= ($this->data['Familia']['beneficios']) ? 'Sim' : 'Não'; ?>
 				<br />
-				<label>Situação conjugal - companheiro(a)? </label><?= $this->data['Familia']['companheiro'] ?>
+				<label>Situação conjugal - companheiro(a)? </label><?= ($this->data['Familia']['companheiro']) ? 'Sim' : 'Não'; ?>
 				<br />
-				<label>Possui dependentes? </label><?= $this->data['Familia']['dependente'] ?>
+				<label>Possui dependentes? </label><?= ($this->data['Familia']['dependente']) ? 'Sim' : 'Não'; ?>
 			</p>
 			
 			<p>

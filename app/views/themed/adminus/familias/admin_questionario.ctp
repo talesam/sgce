@@ -8,16 +8,10 @@
 		<ul><li><?php echo $this->Html->link('VOLTAR', array('action' => 'index')); ?></li></ul>
 	</div>		<!-- .block_head ends -->
 	
-
 	<div class="block_content">
 	
 		<?php echo $this->Form->create('Familia', array('url' => array('action' => 'questionario', $id))); echo $this->Form->input('id'); ?>
 
-			
-			
-	
-
-		
 				<p>
 					<?php 
 					$x = 0;
@@ -44,7 +38,6 @@
 									foreach($op as $k => $v){
 										$ops[trim($v)] = trim($v);
 									}
-									
 														$ops2 = array();
 														if($xy){
 															$op2 = explode(',', $xy);
@@ -68,7 +61,7 @@
 											$ops2[trim($v2)] = trim($v2);
 										}
 									}
-									echo $this->Form->input('Resposta.'.$x.'.resposta', array('div' => false, 'label' => false,  'type' => 'select', 'multiple' => 'checkbox', 'options' =>  $ops, 'selected' => $ops2, 'class' => 'styled'));
+									echo $this->Form->input('Resposta.'.$x.'.resposta', array('div' => false, 'label' => false, 'type' => 'select', 'multiple' => 'checkbox', 'options' =>  $ops, 'selected' => $ops2, 'class' => 'styled'));
 									break;
 								}
 								

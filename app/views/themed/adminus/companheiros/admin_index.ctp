@@ -14,10 +14,7 @@
 			<thead>
 				<tr>
 					<th width="10"><input type="checkbox" class="check_all"/></th>
-					<th>Nome</th>
-					<th>Companheiro</th>
-					<th>Dependentes</th>
-					<th><?php echo $this->Paginator->sort('Situação', 'situacao'); ?></th>
+					<th>Nome</th>			
 					<td>&nbsp;</td>
 				</tr>
 			</thead>
