@@ -23,7 +23,7 @@
 			<tbody>
 				<?php foreach ($cestas as $cesta): ?>
 				<tr>
-					<td><?php echo $cesta['Cesta']['familia_id'] ? 'Cesta doada' : 'Cesta disponível para doação'; ?></td>
+					<td><?php echo $cesta['Cesta']['familia_id'] ? $cesta['Familia']['nome'] : 'Cesta disponível para doação'; ?></td>
 					<td><?php echo date('d/m/Y H:i:s', strtotime($cesta['Cesta']['data_gerada'])); ?></td>
 					<td><?php echo $cesta['Cesta']['data_saida'] ? date('d/m/Y H:i:s', strtotime($cesta['Cesta']['data_saida'])) : '-'; ?></td>
 					<td class="delete">
