@@ -50,14 +50,13 @@ class FamiliasController extends AppController {
 	}
 		
 	public function admin_questionario($id){
-		$respostas = $this->data['Resposta'];
-		unset($this->data['Resposta']);
 
 
 
 		/* Cadastra as respostas */
-		if(!empty($respostas)){
-			foreach($respostas as $resposta){
+		if($this->data['Resposta'] && !empty($this->data['Resposta'])){
+			foreach($this->data['Resposta'] as $resposta){
+
 				if(is_array($resposta['resposta'])){
 					$rr = '';
 					foreach($resposta['resposta'] as $r){
