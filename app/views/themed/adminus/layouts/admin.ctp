@@ -78,10 +78,9 @@
 						</ul>
 					</li>
 					<li>
-						<?php echo $this->Html->link('Cestas', array('controller' => 'cestas', 'action' => 'index', 'plugin' => false)); ?> 
+						<?php echo $this->Html->link('Estoque', array('controller' => 'estoques', 'action' => 'index', 'plugin' => false)); ?>
 						<ul>
-							
-							<li><?php echo $this->Html->link('Estoque', array('controller' => 'estoques', 'action' => 'index', 'plugin' => false)); ?></li>
+							<li><?php echo $this->Html->link('Cestas', array('controller' => 'cestas', 'action' => 'index', 'plugin' => false)); ?></li>
 						</ul>
 					</li>
 					<li><?php echo $this->Html->link('Voluntários', array('controller' => 'voluntarios', 'action' => 'index', 'plugin' => false)); ?></li>

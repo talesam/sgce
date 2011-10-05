@@ -28,7 +28,7 @@
 					<td><?php echo $cesta['Cesta']['data_saida'] ? date('d/m/Y H:i:s', strtotime($cesta['Cesta']['data_saida'])) : '-'; ?></td>
 					<td class="delete">
 						
-						<?php echo $this->Html->link('Editar', array('action' => 'editar', $cesta['Cesta']['id'])); ?>
+						<?php echo $this->Html->link('Doar', array('action' => 'editar', $cesta['Cesta']['id'])); ?>
 						
 					</td>
 				</tr>
