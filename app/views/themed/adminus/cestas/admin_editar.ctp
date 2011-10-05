@@ -10,16 +10,12 @@
 	
 	<div class="block_content">
 	
-		<?php echo $this->Form->create('Frequencia');  ?>
+		<?php echo $this->Form->create('Cesta'); echo $this->Form->input('id'); ?>
 			<p>
 				<label>Responsável Família</label><br />
 				<?php echo $this->Form->input('familia_id', array('div' => false, 'label' => false, 'options' => $familias, 'class' => 'styled', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>		
 			
-			<p>
-				<label>Data</label><br />
-				<?php echo $this->Form->input('data_gerada', array('div' => false, 'label' => false)); ?>
-			</p>	
 				
 			<p>
 				<label>Data</label><br />

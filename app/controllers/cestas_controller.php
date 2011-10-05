@@ -19,6 +19,31 @@ class CestasController extends AppController {
 	}
 	
 	
+	
+	public function admin_editar($id){
+	
+			if (!$id && empty($this->data)) {
+				$this->Session->setFlash('Cesta inválida.', 'flash_error');
+				$this->redirect(array('action' => 'index'));
+			}
+			if (!empty($this->data)) {
+				if ($this->Cesta->save($this->data)) {
+					$this->Session->setFlash('Cesta doada com sucesso.', 'flash_success');
+					$this->redirect(array('action' => 'index'));
+				} else {
+					$this->Session->setFlash('Cesta não pode ser doada. Por favor, tente novamente.', 'flash_error');
+				}
+			}
+			if (empty($this->data)) {
+				$this->data = $this->Cesta->read(null, $id);
+			}
+		
+		
+		
+		
+		$this->set('familias', ClassRegistry::init('Familia')->find('list', array('conditions' => array('Familia.parente_id' => null, 'Familia.situacao' => 1), 'order' => 'Familia.nome')));
+	}
+	
 	public function admin_gerar_cestas(){
 		$defCesta = ClassRegistry::init('Definicoescesta');
 		$estoqueCesta = ClassRegistry::init('Estoque');

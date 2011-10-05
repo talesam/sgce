@@ -40,5 +40,7 @@ class Familia extends AppModel {
 	
 	/* Situações  */
 	public $situacoes = array('Estudando', 'Trabalhando', 'Estudando e trabalhando', 'Desempregado', 'Não informado');
+	
+	public $displayField = 'nome';
 }
 ?>

@@ -19,7 +19,7 @@
 					<th><?php echo $this->Paginator->sort('Quantidade para cesta', 'quantidade'); ?></th>
 					<th><?php echo $this->Paginator->sort('medida'); ?></th>
 					<th>Total no estoque</th>
-					<td>&nbsp;</td>
+					<th>&nbsp;</th>
 				</tr>
 			</thead>
 			<tbody>

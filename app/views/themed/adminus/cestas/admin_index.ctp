@@ -17,14 +17,20 @@
 					<th>Família</th>
 					<th><?php echo $this->Paginator->sort('data_gerada'); ?></th>
 					<th><?php echo $this->Paginator->sort('data_saida'); ?></th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
 				<?php foreach ($cestas as $cesta): ?>
 				<tr>
-					<td>Disponível</td>
+					<td><?php echo $cesta['Cesta']['familia_id'] ? 'Cesta doada' : 'Cesta disponível para doação'; ?></td>
 					<td><?php echo date('d/m/Y H:i:s', strtotime($cesta['Cesta']['data_gerada'])); ?></td>
 					<td><?php echo $cesta['Cesta']['data_saida'] ? date('d/m/Y H:i:s', strtotime($cesta['Cesta']['data_saida'])) : '-'; ?></td>
+					<td class="delete">
+						
+						<?php echo $this->Html->link('Editar', array('action' => 'editar', $cesta['Cesta']['id'])); ?>
+						
+					</td>
 				</tr>
 				<?php endforeach; ?>
 			</tbody>	
