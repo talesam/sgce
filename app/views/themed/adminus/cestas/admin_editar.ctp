@@ -25,7 +25,7 @@
 			<hr />
 			
 			<p>
-				<input type="submit" class="submit small" value="Salvar" />
+				<input type="submit" class="submit small" value="Doar Cesta" />
 			</p>
 		<?php echo $this->Form->end(null); ?>
 		
