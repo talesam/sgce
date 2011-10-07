@@ -104,12 +104,15 @@ class FamiliasController extends AppController {
 			$this->set('escolaridades', $this->Familia->escolaridades);
 		}
 
-		function admin_editar($id = null) {
-			if (!$id && empty($this->data)) {
+		public function admin_editar($id = null) 
+		{
+			if (!$id && empty($this->data)) 
+			{
 				$this->Session->setFlash('Família inválida.', 'flash_error');
 				$this->redirect(array('action' => 'index'));
 			}
-			if (!empty($this->data)) {
+			if (!empty($this->data)) 
+			{
 				if ($this->Familia->save($this->data)) {
 					$this->Session->setFlash('Família salva.', 'flash_success');
 					$this->redirect(array('action' => 'index'));
@@ -117,23 +120,26 @@ class FamiliasController extends AppController {
 					$this->Session->setFlash('Família não pode ser salva. Por favor, tente novamente.', 'flash_error');
 				}
 			}
-			if (empty($this->data)) {
+			if (empty($this->data)) 
+			{
 				$this->data = $this->Familia->read(null, $id);
+				$data = explode('-',$this->data['Familia']['nascimento']);//0123/56/89
+				$this->data['Familia']['nascimento'] = $data[2].'/'.$data[1].'/'.$data[0];
 			}
-		
-			
 			$this->set('escolaridades', $this->Familia->escolaridades);
 		}
 		
-		function admin_consultar($id = null) {
-			if (!$id && empty($this->data)) {
+		public function admin_consultar($id = null) 
+		{
+			if (!$id && empty($this->data)) 
+			{
 				$this->Session->setFlash('Consulta família inválida.', 'flash_error');
 				$this->redirect(array('action' => 'index'));
 			}
-			if (empty($this->data)) {
+			if (empty($this->data)) 
+			{
 				$this->data = $this->Familia->read(null, $id);
 			}
-		
 			$this->set('respostas', ClassRegistry::init('Resposta')->find('all', array('conditions' => array('Resposta.familia_id' => $id))));
 			$this->set('escolaridades', $this->Familia->escolaridades);
 		}
