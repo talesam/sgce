@@ -12,7 +12,7 @@
 
 class QuestionariosController extends AppController {
 
-	public $opcoes = array('multiple' => 'Multipla Escolha', 'select' => 'Seleção', 'text' => 'Texto');
+	public $opcoes = array('multiple' => 'Multipla Escolha', 'select' => 'Seleção', 'text medium' => 'Texto', 'text' => 'Observação', '<hr />' => 'Linha');
 
 	function admin_index() {
 		$this->set('questionarios', $this->paginate());

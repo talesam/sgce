@@ -29,21 +29,12 @@
 			<?php echo $this->Form->input('extra', array('div' => false, 'label' => false, 'class' => 'text medium')); ?>
 			<legend>Utilize esse campo separado por , caso seja um campo de escolhas.</legend>
 		</p>
-		
-		
-			
-
-			
-
 				
-				
-
-				
-			<hr />
+		<hr />
 			
-			<p>
-				<input type="submit" class="submit small" value="Salvar" />
-			</p>
+		<p>
+			<input type="submit" class="submit small" value="Salvar" />
+		</p>
 		<?php echo $this->Form->end(null); ?>
 		
 		

@@ -105,7 +105,7 @@
 			<p>
 				<label>Renda Familiar</label><br />
 				<?php echo $this->Form->input('renda_familiar', array('div' => false, 'label' => false, 'class' => 'text medium mask-moeda', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
-			</p>		
+			</p>
 
 			<p>
 				<label>Renda per capita</label><br />

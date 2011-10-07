@@ -33,7 +33,6 @@
 class AppController extends Controller {
 	
 	
-	
 	public $components = array('Session', 'Email', 'Auth', 'File', 'Acl');
 	public $helpers = array('Html', 'Form', 'Session', 'Fck');
 	public $layout = 'admin';

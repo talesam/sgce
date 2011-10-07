@@ -16,7 +16,7 @@
 					<?php 
 					$x = 0;
 						foreach($questionarios as $questionario): 
-														$xy = null;
+							$xy = null;
 							foreach($respostas as $resposta):
 								if($resposta['Resposta']['questionario_id'] == $questionario['Questionario']['id']):
 									echo $this->Form->input('Resposta.'.$x.'.id', array('value' => $resposta['Resposta']['id'], 'type' => 'hidden'));
@@ -84,6 +84,8 @@
 					
 					?>
 				</p>
+					
+					<hr />
 					<p>
 						<input type="submit" class="submit small" value="Salvar" />
 					</p>

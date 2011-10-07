@@ -46,7 +46,7 @@
 			$(".mask-data").mask("99/99/9999");
 			
 			$('.mask-moeda').priceFormat({
-			    prefix: '',
+			    prefix: 'R$ ',
 			    centsSeparator: ',',
 			    thousandsSeparator: '.'
 			});
