@@ -36,6 +36,7 @@ class DependentesController extends AppController {
 			}
 			$this->set('familiaId', $familiaId);
 			$this->set('escolaridades', $this->Dependente->escolaridades);
+			$this->set('parentescos', $this->Dependente->parentescos);
 		}
 
 		function admin_editar($id = null) {
@@ -67,6 +68,7 @@ class DependentesController extends AppController {
 				}
 			}
 			$this->set('escolaridades', $this->Dependente->escolaridades);
+			$this->set('parentescos', $this->Dependente->parentescos);
 		}
 		
 		public function admin_consultar($id = null) 
@@ -84,6 +86,7 @@ class DependentesController extends AppController {
 				$this->data['Dependente']['renda']  = number_format($this->data['Dependente']['renda'],2,',','.');
 			}
 			$this->set('escolaridades', $this->Dependente->escolaridades);
+			$this->set('parentescos', $this->Dependente->parentescos);
 		}
 
 		public function admin_excluir($id = null) {

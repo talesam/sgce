@@ -31,6 +31,7 @@
 			<p>
 				<label>Altura</label><br />
 				<?php echo $this->Form->input('altura', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
+				<legend>Utilize o ponto(.) para separação</legend>
 			</p>
 			
 			<p>

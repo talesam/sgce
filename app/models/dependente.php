@@ -42,6 +42,12 @@ class Dependente extends AppModel {
 			$altura = $this->data['Dependente']['altura'];
 			$this->data['Dependente']['altura']	= str_replace(',','.',$altura);
 		}
+		// convertendo a data
+		if (isset($this->data['Dependente']['nascimento']))
+		{
+			$data = $this->data['Dependente']['nascimento']; //01/34/6789
+			$this->data['Dependente']['nascimento'] = substr($data,6,4).'/'.substr($data,3,2).'/'.substr($data,0,2);
+		}
 		if (isset($this->data['Dependente']['renda']))
 		{
 			$this->data['Dependente']['renda'] = str_replace('.','',$this->data['Dependente']['renda']);

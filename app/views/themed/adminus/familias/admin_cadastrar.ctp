@@ -112,6 +112,7 @@
 				<?php echo $this->Form->input('renda_percapta', array('div' => false, 'label' => false, 'class' => 'text medium mask-moeda', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
 			</p>
 			
+			<hr />
 	
 			<p>
 				<input type="submit" class="submit small" value="Cadastrar" />
