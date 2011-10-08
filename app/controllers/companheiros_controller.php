@@ -13,8 +13,12 @@
 class CompanheirosController extends AppController {
 	
 
-	function admin_index($familiaId) {
-		$this->paginate['conditions'] = array('Companheiro.parente_id' => $familiaId, 'Companheiro.companheiro' => 1);
+	function admin_index($familiaId=null) 
+	{
+		if (!empty($familiaId))
+		{
+			$this->paginate['conditions'] = array('Companheiro.parente_id' => $familiaId, 'Companheiro.companheiro' => 1);
+		}
 		$this->set('companheiros', $this->paginate());
 		$this->set('familiaId', $familiaId);
 	}
@@ -39,7 +43,8 @@ class CompanheirosController extends AppController {
 				$this->Session->setFlash('Companheiro inválido.', 'flash_error');
 				$this->redirect(array('action' => 'index'));
 			}
-			if (!empty($this->data)) {
+			if (!empty($this->data)) 
+			{
 				if ($this->Companheiro->save($this->data)) {
 					$this->Session->setFlash('Companheiro salvo.', 'flash_success');
 					$this->redirect(array('action' => 'index', $this->data['Companheiro']['parente_id']));
@@ -53,7 +58,7 @@ class CompanheirosController extends AppController {
 			$this->set('escolaridades', $this->Companheiro->escolaridades);
 		}
 		
-				function admin_consultar($id = null) {
+	function admin_consultar($id = null) {
 			if (!$id && empty($this->data)) {
 				$this->Session->setFlash('Consulta companheiro inválida.', 'flash_error');
 				$this->redirect(array('action' => 'index'));

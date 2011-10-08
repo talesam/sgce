@@ -13,8 +13,12 @@
 class DependentesController extends AppController {
 	
 
-	function admin_index($familiaId) {
-		$this->paginate['conditions'] = array('Dependente.parente_id' => $familiaId, 'Dependente.dependente' => 1);
+	function admin_index($familiaId=null)
+	{
+		if (!empty($familiaId))
+		{
+			$this->paginate['conditions'] = array('Dependente.parente_id' => $familiaId, 'Dependente.dependente' => 1);
+		}
 		$this->set('dependentes', $this->paginate());
 		$this->set('familiaId', $familiaId);
 	}
@@ -55,6 +59,12 @@ class DependentesController extends AppController {
 				$this->data['Dependente']['nascimento'] = $data[2].'/'.$data[1].'/'.$data[0];
 				// convertendo a renda
 				//if (isset($this->data['Dependente']['renda'])) $this->data['Dependente']['renda'] = str_replace('.',',',$this->data['Dependente']['renda']);
+				// convertendo a altura
+				if (isset($this->data['Dependente']['altura']))
+				{
+					$altura = $this->data['Dependente']['altura'];
+					$this->data['Dependente']['altura']	= str_replace('.',',',$altura);
+				}
 			}
 			$this->set('escolaridades', $this->Dependente->escolaridades);
 		}

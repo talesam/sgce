@@ -32,18 +32,24 @@ class Dependente extends AppModel {
 	 * @param	array	@options
 	 * @return	boolean
 	 */
-	public function beforeSave($options = array()) {
-		// convertendo a data
-		if (isset($this->data['Dependente']['nascimento']))
+	public function beforeSave($options=array())
+	{
+		if (!isset($this->data['Dependente']['nascimento'])) 		$this->data['Dependente']['nascimento'] 		= null;
+		if (!isset($this->data['Dependente']['renda_familiar'])) 	$this->data['Dependente']['renda_familiar'] 	= 0;
+		if (!isset($this->data['Dependente']['renda_percapta'])) 	$this->data['Dependente']['renda_percapta'] 	= 0;
+		if (!isset($this->data['Dependente']['altura']))
 		{
-			$data = $this->data['Dependente']['nascimento']; //01/34/6789
-			$this->data['Dependente']['nascimento'] = substr($data,6,4).'/'.substr($data,3,2).'/'.substr($data,0,2);
+			$altura = $this->data['Dependente']['altura'];
+			$this->data['Dependente']['altura']	= str_replace(',','.',$altura);
 		}
-		// convertendo a renda
-		if (isset($this->data['Dependente']['renda'])) $this->data['Dependente']['renda'] = str_replace(',','.',$this->data['Dependente']['renda']);
-		if (isset($this->data['Dependente']['renda'])) $this->data['Dependente']['renda'] = str_replace('R$ ','',$this->data['Dependente']['renda']);
+		if (isset($this->data['Dependente']['renda']))
+		{
+			$this->data['Dependente']['renda'] = str_replace('.','',$this->data['Dependente']['renda']);
+			$this->data['Dependente']['renda'] = str_replace(',','.',$this->data['Dependente']['renda']);
+			$this->data['Dependente']['renda'] = str_replace('R$ ','',$this->data['Dependente']['renda']);
+		}
+		//die(pr($this->data));
 		return true;
-	}
-	
+	}	
 }
 ?>

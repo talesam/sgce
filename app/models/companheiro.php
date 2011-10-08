@@ -24,5 +24,12 @@ class Companheiro extends AppModel {
 		)
 	);
 	
+	public function beforeSave($options=array())
+	{
+		if (!isset($this->data['Companheiro']['nascimento'])) $this->data['Companheiro']['nascimento'] 			= null;
+		if (!isset($this->data['Companheiro']['renda_familiar'])) $this->data['Companheiro']['renda_familiar'] 	= 0;
+		if (!isset($this->data['Companheiro']['renda_percapta'])) $this->data['Companheiro']['renda_percapta'] 	= 0;
+		return true;
+	}
 }
 ?>
