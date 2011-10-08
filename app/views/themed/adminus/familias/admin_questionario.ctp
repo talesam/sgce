@@ -67,10 +67,15 @@
 								
 								
 								case 'text': {
-									echo $this->Form->input('Resposta.'.$x.'.resposta', array('div' => false, 'label' => false,  'value' => $xy, 'class' => 'text medium'));
+									echo $this->Form->input('Resposta.'.$x.'.resposta', array('div' => false, 'label' => false,  'value' => $xy, 'class' => 'text medium', 'type' => 'text'));
 									break;
 								}
 								
+								case 'obs': {
+									echo $this->Form->input('Resposta.'.$x.'.resposta', array('div' => false, 'label' => false,  'value' => $xy, 'class' => 'text medium'));
+									break;
+								}
+															
 								case 'checkbox': {
 									
 									echo $this->Form->input('Resposta.'.$x.'.resposta', array('div' => false, 'label' => false,  'checked' => $xy ? true: false, 'type' => 'checkbox'));
