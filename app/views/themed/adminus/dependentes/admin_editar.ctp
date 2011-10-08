@@ -70,7 +70,8 @@
 			</p>		
 			
 		
-	
+			<hr />
+			
 			<p>
 				<input type="submit" class="submit small" value="Salvar" />
 			</p>

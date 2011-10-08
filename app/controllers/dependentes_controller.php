@@ -47,20 +47,33 @@ class DependentesController extends AppController {
 					$this->Session->setFlash('Dependente não pode ser salvo. Por favor, tente novamente.', 'flash_error');
 				}
 			}
-			if (empty($this->data)) {
+			if (empty($this->data)) 
+			{
 				$this->data = $this->Dependente->read(null, $id);
+				// convertendo a data
+				$data = explode('-',$this->data['Dependente']['nascimento']);//0123/56/89
+				$this->data['Dependente']['nascimento'] = $data[2].'/'.$data[1].'/'.$data[0];
+				// convertendo a renda
+				//if (isset($this->data['Dependente']['renda'])) $this->data['Dependente']['renda'] = str_replace('.',',',$this->data['Dependente']['renda']);
 			}
 			$this->set('escolaridades', $this->Dependente->escolaridades);
 		}
 		
-		function admin_consultar($id = null) {
-			if (!$id && empty($this->data)) {
-				$this->Session->setFlash('Dependente inválido.', 'flash_error');
+		public function admin_consultar($id = null) 
+		{
+			if (!$id && empty($this->data)) 
+			{
+				$this->Session->setFlash('Consulta Dependente inválida.', 'flash_error');
 				$this->redirect(array('action' => 'index'));
 			}
-			if (empty($this->data)) {
+			if (empty($this->data)) 
+			{
 				$this->data = $this->Dependente->read(null, $id);
+				$data = explode('-',$this->data['Dependente']['nascimento']);//0123/56/89
+				$this->data['Dependente']['nascimento'] = $data[2].'/'.$data[1].'/'.$data[0];
+				$this->data['Dependente']['renda']  = number_format($this->data['Dependente']['renda'],2,',','.');
 			}
+			$this->set('escolaridades', $this->Dependente->escolaridades);
 		}
 
 		public function admin_excluir($id = null) {

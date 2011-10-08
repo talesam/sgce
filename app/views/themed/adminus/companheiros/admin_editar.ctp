@@ -43,6 +43,8 @@
 				<?php echo $this->Form->input('beneficios', array('div' => false, 'label' => false, 'class' => 'styled', 'type' => 'select', 'options' => array(0 => 'Não', 1 => 'Sim'))); ?>
 			</p>	
 
+			<hr />
+			
 			<p>
 				<input type="submit" class="submit small" value="Salvar" />
 			</p>

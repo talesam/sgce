@@ -47,8 +47,7 @@ class Familia extends AppModel {
 	 * @param	array	@options
 	 * @return	boolean
 	 */
-	public function beforeSave($options = array()) 
-	{
+	public function beforeSave($options = array()) {
 		// convertendo a data
 		if (isset($this->data['Familia']['nascimento']))
 		{
