@@ -72,9 +72,9 @@
 				
 				<ul id="nav">					
 
-					<li><?php echo $this->Html->link('Familias', array('controller' => 'familias', 'action' => 'index', 'plugin' => false)); ?>
+					<li><?php echo $this->Html->link('Familias', Router::url('/',true)); ?>
 						<ul>
-							<li><?php echo $this->Html->link('Frequência', array('controller' => 'frequencias', 'action' => 'index', 'plugin' => false)); ?></li>
+							<li><?php echo $this->Html->link('Frequência', Router::url('/',true)); ?></li>
 						</ul>
 					</li>
 					<li>

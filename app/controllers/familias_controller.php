@@ -9,36 +9,40 @@
  * @version $Id$
  * @copyright __MyCompanyName__
  **/
-
 class FamiliasController extends AppController {
 
-	function admin_index() {
-			if(!empty($this->data)){
-				$ids = array();
-			 	foreach($this->data['Familia']['id'] as $k => $v){
-					if($v == 1){
-						$ids[$k] = $k;
-					}
-				}
-				if(empty($ids)){
-					$this->Session->setFlash('Marque as familias que deseja excluir.', 'flash_warning');
-				}else{
-					if($this->Familia->deleteAll(array('Familia.id' => $ids))){
-						$this->Session->setFlash('Familias removidas.', 'flash_success');
-					}else{
-						$this->Session->setFlash('Familias não removidas. Por favor, tente novamente.', 'flash_error');
-					}
+	/**
+	 * Exibe a página inicial da administração do cadastro de famílias
+	 * 
+	 * @return	void
+	 */
+	function admin_index() 
+	{
+		if (!empty($this->data))
+		{
+			$ids = array();
+			foreach($this->data['Familia']['id'] as $k => $v) if($v == 1) $ids[$k] = $k;
+
+			if (empty($ids))
+			{
+				$this->Session->setFlash('Marque as familias que deseja excluir.', 'flash_warning');
+			} else
+			{
+				if($this->Familia->deleteAll(array('Familia.id' => $ids)))
+				{
+					$this->Session->setFlash('Familias removidas.', 'flash_success');
+				}else
+				{
+					$this->Session->setFlash('Familias não removidas. Por favor, tente novamente.', 'flash_error');
 				}
 			}
-
-			$this->Familia->recursive = 1;
-			$this->paginate['conditions'] = array('Familia.parente_id' => null);
-			$familias = $this->paginate();
-
-			$this->set('familias', $familias);
-
 		}
 
+		$this->Familia->recursive = 1;
+		$this->paginate['conditions'] = array('Familia.parente_id' => null);
+		$familias = $this->paginate();
+		$this->set('familias', $familias);
+	}
 
 	private function _questionarios(){
 
@@ -115,7 +119,7 @@ class FamiliasController extends AppController {
 			{
 				if ($this->Familia->save($this->data)) {
 					$this->Session->setFlash('Família salva.', 'flash_success');
-					$this->redirect(array('action' => 'index'));
+					//$this->redirect(array('action' => 'index'));
 				} else {
 					$this->Session->setFlash('Família não pode ser salva. Por favor, tente novamente.', 'flash_error');
 				}
@@ -123,8 +127,12 @@ class FamiliasController extends AppController {
 			if (empty($this->data)) 
 			{
 				$this->data = $this->Familia->read(null, $id);
+				// convertendo a data
 				$data = explode('-',$this->data['Familia']['nascimento']);//0123/56/89
 				$this->data['Familia']['nascimento'] = $data[2].'/'.$data[1].'/'.$data[0];
+				// convertendo a renda
+				//if (isset($this->data['Familia']['renda_familiar'])) $this->data['Familia']['renda_familiar'] = str_replace('.',',',$this->data['Familia']['renda_familiar']);
+				//if (isset($this->data['Familia']['renda_percapta'])) $this->data['Familia']['renda_percapta'] = str_replace('.',',',$this->data['Familia']['renda_percapta']);
 			}
 			$this->set('escolaridades', $this->Familia->escolaridades);
 		}
@@ -139,6 +147,10 @@ class FamiliasController extends AppController {
 			if (empty($this->data)) 
 			{
 				$this->data = $this->Familia->read(null, $id);
+				$data = explode('-',$this->data['Familia']['nascimento']);//0123/56/89
+				$this->data['Familia']['nascimento'] = $data[2].'/'.$data[1].'/'.$data[0];
+				$this->data['Familia']['renda_familiar']  = number_format($this->data['Familia']['renda_familiar'],2,',','.');
+				$this->data['Familia']['renda_percapta']  = number_format($this->data['Familia']['renda_percapta'],2,',','.');
 			}
 			$this->set('respostas', ClassRegistry::init('Resposta')->find('all', array('conditions' => array('Resposta.familia_id' => $id))));
 			$this->set('escolaridades', $this->Familia->escolaridades);
