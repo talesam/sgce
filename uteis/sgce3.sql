@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tempo de Geração: Out 08, 2011 as 07:09 PM
+-- Tempo de Geração: Out 09, 2011 as 06:25 PM
 -- Versão do Servidor: 5.1.54
 -- Versão do PHP: 5.3.5-1ubuntu7.2
 
@@ -213,7 +213,7 @@ CREATE TABLE IF NOT EXISTS `cestas` (
   `data_saida` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_cestas_pessoas1` (`familia_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Extraindo dados da tabela `cestas`
@@ -279,8 +279,8 @@ INSERT INTO `definicoescestas` (`id`, `tipo`, `nome`, `quantidade`, `medida`) VA
 CREATE TABLE IF NOT EXISTS `estoques` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `definicoescesta_id` int(11) NOT NULL,
-  `quantidade` double NOT NULL,
-  `complemento_qt` int(11) NOT NULL,
+  `quantidade` int(11) NOT NULL,
+  `complemento_qt` double NOT NULL,
   `data_entrada` date NOT NULL,
   `data_vencimento` date NOT NULL,
   PRIMARY KEY (`id`),
