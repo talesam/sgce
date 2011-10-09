@@ -23,11 +23,13 @@
 			<p>
 				<label>Quantidade a ser cadastrada</label><br />
 				<?php echo $this->Form->input('quantidade', array('div' => false, 'label' => false, 'class' => 'text medium')); ?>
+				<legend>Digite a quantidade de pacotes que serão cadastrados</legend>
 			</p>
 			
 			<p>
 				<label>Complemento quantidade (Kilo, litro, lata)</label><br />
-				<?php echo $this->Form->input('complemento_qt', array('div' => false, 'label' => false, 'class' => 'styled', 'options' => array_combine(range(1,5), range(1,5)) )); ?>
+				<?php echo $this->Form->input('definicoescesta_id', array('div' => false, 'label' => false, 'options' => $definicoescestas, 'class' => 'styled', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
+				<legend>Escolha se o pacote é de 0.5kg, 1kg, 2kg, 3kg, 1l ...</legend>
 			</p>
 			
 			<p>
@@ -38,6 +40,7 @@
 			<p>
 				<label>Data Vencimento</label><br />
 				<?php echo $this->Form->input('data_vencimento', array('div' => false, 'label' => false)); ?>
+				<legend>Referente a 1 pacote ou a pacotes iguais (mesmo peso) e com mesma data de vencimento</legend>
 			</p>
 
 			<hr />

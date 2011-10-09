@@ -61,7 +61,7 @@ class CestasController extends AppController {
 							array(
 								'Estoque.definicoescesta_id' => $def['Definicoescesta']['id'], 
 								'Estoque.quantidade >' => 0,
-								'Estoque.complemento_qt ' => $def['Definicoescesta']['quantidade']
+//Mudar para Definicoescesta.complemento_qt				//	'Estoque.complemento_qt ' => $def['Definicoescesta']['quantidade']
 							), 
 							'order' => 
 								array(

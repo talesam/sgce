@@ -119,7 +119,7 @@ class FamiliasController extends AppController {
 			{
 				if ($this->Familia->save($this->data)) {
 					$this->Session->setFlash('Família salva.', 'flash_success');
-					//$this->redirect(array('action' => 'index'));
+					$this->redirect(array('action' => 'index'));
 				} else {
 					$this->Session->setFlash('Família não pode ser salva. Por favor, tente novamente.', 'flash_error');
 				}

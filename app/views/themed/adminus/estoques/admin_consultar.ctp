@@ -17,11 +17,7 @@
 			</p>		
 			
 			<p>
-				<label>Quantidade cadastrada: </label><?= $this->data['Estoque']['quantidade'] ?>
-			</p>
-			
-			<p>
-				<label>Complemento quantidade (Kilo, litro, lata): </label><?= $this->data['Estoque']['complemento_qt'] ?>
+				<label>Quantidade: </label><?= $this->data['Estoque']['quantidade'] ?><?= $this->data['Definicoescesta']['complemento_qt'] ?>
 			</p>
 			
 			<p>
