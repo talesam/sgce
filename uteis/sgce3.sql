@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tempo de Geração: Out 09, 2011 as 06:25 PM
+-- Tempo de Geração: Out 09, 2011 as 08:40 PM
 -- Versão do Servidor: 5.1.54
 -- Versão do PHP: 5.3.5-1ubuntu7.2
 
@@ -250,7 +250,7 @@ CREATE TABLE IF NOT EXISTS `definicoescestas` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `tipo` varchar(45) NOT NULL,
   `nome` varchar(45) NOT NULL,
-  `quantidade` double NOT NULL,
+  `complemento_qt` double NOT NULL,
   `medida` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
@@ -259,7 +259,7 @@ CREATE TABLE IF NOT EXISTS `definicoescestas` (
 -- Extraindo dados da tabela `definicoescestas`
 --
 
-INSERT INTO `definicoescestas` (`id`, `tipo`, `nome`, `quantidade`, `medida`) VALUES
+INSERT INTO `definicoescestas` (`id`, `tipo`, `nome`, `complemento_qt`, `medida`) VALUES
 (1, 'cesta', 'Arroz', 5, 'kilo'),
 (2, 'cesta', 'FeijÃ£o', 2, 'kilo'),
 (3, 'cesta', 'MacarrÃ£o', 1, 'kilo'),
@@ -280,7 +280,6 @@ CREATE TABLE IF NOT EXISTS `estoques` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `definicoescesta_id` int(11) NOT NULL,
   `quantidade` int(11) NOT NULL,
-  `complemento_qt` double NOT NULL,
   `data_entrada` date NOT NULL,
   `data_vencimento` date NOT NULL,
   PRIMARY KEY (`id`),
@@ -291,10 +290,10 @@ CREATE TABLE IF NOT EXISTS `estoques` (
 -- Extraindo dados da tabela `estoques`
 --
 
-INSERT INTO `estoques` (`id`, `definicoescesta_id`, `quantidade`, `complemento_qt`, `data_entrada`, `data_vencimento`) VALUES
-(5, 1, 0, 5, '2011-10-05', '2012-10-05'),
-(6, 2, 0, 3, '2011-10-05', '2012-10-05'),
-(7, 3, 0, 1, '2011-10-05', '2012-07-16');
+INSERT INTO `estoques` (`id`, `definicoescesta_id`, `quantidade`, `data_entrada`, `data_vencimento`) VALUES
+(5, 1, 0, '2011-10-05', '2012-10-05'),
+(6, 2, 0, '2011-10-05', '2012-10-05'),
+(7, 3, 0, '2011-10-05', '2012-07-16');
 
 -- --------------------------------------------------------
 
