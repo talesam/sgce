@@ -28,7 +28,7 @@
 			
 			<p>
 				<label>Complemento quantidade (Kilo, litro, lata)</label><br />
-				<?php echo $this->Form->input('definicoescesta_id', array('div' => false, 'label' => false, 'options' => $definicoescestas, 'class' => 'styled', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
+				<?php echo $this->Form->input('complemento_qt', array('div' => false, 'label' => false, 'class' => 'styled', 'options' => array(0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5) )); ?>
 				<legend>Escolha se o pacote é de 0.5kg, 1kg, 2kg, 3kg, 1l ...</legend>
 			</p>
 			

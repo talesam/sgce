@@ -22,7 +22,7 @@
 			</p>	
 				
 			<p>
-				<label>Quantidade mínima para cesta: </label><?= $this->data['Definicoescesta']['complemento_qt'] ?><?= $this->data['Definicoescesta']['medida'] ?>
+				<label>Quantidade mínima para cesta: </label><?= $this->data['Definicoescesta']['quantidade'] ?><?= $this->data['Definicoescesta']['medida'] ?>
 			</p>
 			
 		<?php echo $this->Form->end(null); ?>

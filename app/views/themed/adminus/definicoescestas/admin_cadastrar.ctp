@@ -21,11 +21,13 @@
 			<p>
 				<label>Tipo</label><br />
 				<?php echo $this->Form->input('tipo', array('div' => false, 'label' => false, 'type' => 'select', 'class' => 'styled', 'options' => $tipos)); ?>
+				<legend>Escolha tipo "Cesta" para mantimentos que compõe a cesta básica e "Extra" para os que não compõem</legend>
 			</p>	
 				
 			<p>
 				<label>Quantidade mínima para cesta (Obrigatório)</label><br />
-				<?php echo $this->Form->input('complemento_qt', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
+				<?php echo $this->Form->input('quantidade', array('div' => false, 'label' => false, 'class' => 'text medium', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
+				<legend>Digite a quantidade mínima de cada mamtimento que compõe a cesta</legend>				
 			</p>
 				
 			<p>

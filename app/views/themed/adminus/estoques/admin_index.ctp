@@ -16,7 +16,7 @@
 					<th width="10"><input type="checkbox" class="check_all"/></th>
 					<th><?php echo $this->Paginator->sort('Nome', 'Definicoescesta.nome'); ?></th>
 					<th><?php echo $this->Paginator->sort('Quantidade', 'quantidade'); ?></th>
-					<th><?php echo $this->Paginator->sort('Complemento', 'Definicoescesta.complemento_qt'); ?></th>
+					<th><?php echo $this->Paginator->sort('Complemento', 'complemento_qt'); ?></th>
 					<th><?php echo $this->Paginator->sort('Data Entrada', 'data_entrada'); ?></th>
 					<th><?php echo $this->Paginator->sort('Data Vencimento', 'data_vencimento'); ?></th>
 					<td>&nbsp;</td>
@@ -28,7 +28,7 @@
 					<td><?php echo $this->Form->input('id.'.$estoque['Estoque']['id'], array('type' => 'checkbox', 'div' => false, 'label' => false)); ?></td>
 					<td><?php echo $estoque['Definicoescesta']['nome']; ?></td>
 					<td><?php echo $estoque['Estoque']['quantidade']; ?></td>
-					<td><?php echo $estoque['Definicoescesta']['complemento_qt']; ?> <?php echo $estoque['Definicoescesta']['medida']; ?></td>
+					<td><?php echo $estoque['Estoque']['complemento_qt']; ?> <?php echo $estoque['Definicoescesta']['medida']; ?></td>
 					<td><?php echo date('d/m/Y', strtotime($estoque['Estoque']['data_entrada'])); ?></td>
 					<td><?php echo date('d/m/Y', strtotime($estoque['Estoque']['data_vencimento'])); ?></td>
 					<td class="delete">

@@ -17,7 +17,7 @@
 			</p>		
 			
 			<p>
-				<label>Quantidade: </label><?= $this->data['Estoque']['quantidade'] ?><?= $this->data['Definicoescesta']['complemento_qt'] ?>
+				<label>Quantidade: </label><?= $this->data['Estoque']['quantidade'] ?><?= $this->data['Estoque']['complemento_qt'] ?>
 			</p>
 			
 			<p>
