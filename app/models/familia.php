@@ -55,10 +55,14 @@ class Familia extends AppModel {
 			$this->data['Familia']['nascimento'] = substr($data,6,4).'/'.substr($data,3,2).'/'.substr($data,0,2);
 		}
 		// convertendo a renda
+		if (isset($this->data['Familia']['renda_familiar'])) $this->data['Familia']['renda_familiar'] = str_replace('.','',$this->data['Familia']['renda_familiar']);
 		if (isset($this->data['Familia']['renda_familiar'])) $this->data['Familia']['renda_familiar'] = str_replace(',','.',$this->data['Familia']['renda_familiar']);
 		if (isset($this->data['Familia']['renda_familiar'])) $this->data['Familia']['renda_familiar'] = str_replace('R$ ','',$this->data['Familia']['renda_familiar']);
+
+		if (isset($this->data['Familia']['renda_percapta'])) $this->data['Familia']['renda_percapta'] = str_replace('.','',$this->data['Familia']['renda_percapta']);
 		if (isset($this->data['Familia']['renda_percapta'])) $this->data['Familia']['renda_percapta'] = str_replace(',','.',$this->data['Familia']['renda_percapta']);
 		if (isset($this->data['Familia']['renda_percapta'])) $this->data['Familia']['renda_percapta'] = str_replace('R$ ','',$this->data['Familia']['renda_percapta']);
+		//die(pr($this->data));
 		return true;
 	}
 }
