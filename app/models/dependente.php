@@ -37,10 +37,15 @@ class Dependente extends AppModel {
 		if (!isset($this->data['Dependente']['nascimento'])) 		$this->data['Dependente']['nascimento'] 		= null;
 		if (!isset($this->data['Dependente']['renda_familiar'])) 	$this->data['Dependente']['renda_familiar'] 	= 0;
 		if (!isset($this->data['Dependente']['renda_percapta'])) 	$this->data['Dependente']['renda_percapta'] 	= 0;
-		if (!isset($this->data['Dependente']['altura']))
+		if (isset($this->data['Dependente']['altura']))
 		{
 			$altura = $this->data['Dependente']['altura'];
 			$this->data['Dependente']['altura']	= str_replace(',','.',$altura);
+		}
+		if (isset($this->data['Dependente']['peso']))
+		{
+			$peso = $this->data['Dependente']['peso'];
+			$this->data['Dependente']['peso']	= str_replace(',','.',$peso);
 		}
 		// convertendo a data
 		if (isset($this->data['Dependente']['nascimento']))

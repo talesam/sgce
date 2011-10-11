@@ -66,6 +66,11 @@ class DependentesController extends AppController {
 					$altura = $this->data['Dependente']['altura'];
 					$this->data['Dependente']['altura']	= str_replace('.',',',$altura);
 				}
+				if (isset($this->data['Dependente']['peso']))
+				{
+					$altura = $this->data['Dependente']['peso'];
+					$this->data['Dependente']['peso']	= str_replace('.',',',$altura);
+				}
 			}
 			$this->set('escolaridades', $this->Dependente->escolaridades);
 			$this->set('parentescos', $this->Dependente->parentescos);

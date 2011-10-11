@@ -18,7 +18,7 @@
 			</p>
 				
 			<p>
-				<label>Escolaridade: </label><?= $this->data['Companheiro']['escolaridade'] ?>
+				<label>Escolaridade: </label><?php foreach($escolaridades as $_id => $_valor) if ($_id==$this->data['Familia']['escolaridade']) echo $_valor; ?>
 				<br />
 				<label>Profissão: </label><?= $this->data['Companheiro']['profissao'] ?>
 				<br />

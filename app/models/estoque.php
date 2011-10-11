@@ -11,5 +11,14 @@
  **/
 class Estoque extends AppModel {
 	public $belongsTo = array('Definicoescesta');
+	
+	/**
+	 * 
+	 */
+	public function beforeSave($options = array()) 
+	{
+		//die(pr($this->data));
+		return true;
+	}
 }
 ?>
