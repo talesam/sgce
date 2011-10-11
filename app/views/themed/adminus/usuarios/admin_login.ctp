@@ -3,7 +3,7 @@
 		<div class="bheadl"></div>
 		<div class="bheadr"></div>
 					
-		<h2>Admin Login</h2>
+		<h2>Área Administrativa</h2>
 		
 	</div>		<!-- .block_head ends -->
 	<div class="block_content">

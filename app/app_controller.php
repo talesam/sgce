@@ -44,7 +44,7 @@ class AppController extends Controller {
 		$this->Auth->userModel = 'Usuario';
 		$this->Auth->fields = array('username' => 'email', 'password' => 'senha');
 		$this->Auth->authError = 'Desculpe, você precisa se autenticar no sistema para visualizar esta área.';
-		$this->Auth->loginError = 'E-mail ou senha inválidos. Por favor, tente novamente. Ou usuário pode estar inativo.';
+		$this->Auth->loginError = 'E-mail ou senha inválidos ou usuário pode estar inativo. Por favor, tente novamente.';
 		$this->Auth->userScope = array('Usuario.status' => 1);
 		$this->Auth->loginAction = array('admin' => true, 'controller' => 'usuarios', 'action' => 'login');
 		$this->Auth->logoutRedirect = array('admin' => true, 'controller' => 'usuarios', 'action' => 'login');

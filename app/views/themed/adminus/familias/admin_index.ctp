@@ -28,7 +28,7 @@
 					<td><?php echo $familia['Familia']['nome']; ?></td>
 					<td><?php echo $this->Html->link($familia['Companheiro']['nome'] ?  $familia['Companheiro']['nome'] : 'Não cadastrado', array('controller' => 'companheiros', 'action' => 'index', $familia['Familia']['id'])); ?></td>
 					<td><?php echo $this->Html->link(count($familia['Dependente']) ?  count($familia['Dependente']) : 'Não cadastrado', array('controller' => 'dependentes', 'action' => 'index', $familia['Familia']['id'])); ?></td>
-					<td><?php echo $familia['Familia']['situacao'] ?  'Ativa' : 'Inativa'; ?></td>
+					<td><?php echo $familia['Familia']['situacao'] ?  'Apta' : 'Não Apta'; ?></td>
 					<td class="delete">
 						<?php echo  $this->Html->link('Questionário', array( 'action' => 'questionario', $familia['Familia']['id'])); ?> | 
 						<?php echo  $this->Html->link('Consultar', array('action' => 'consultar', $familia['Familia']['id'])); ?> | 
