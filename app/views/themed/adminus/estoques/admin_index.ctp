@@ -28,7 +28,7 @@
 					<td><?php echo $this->Form->input('id.'.$estoque['Estoque']['id'], array('type' => 'checkbox', 'div' => false, 'label' => false)); ?></td>
 					<td><?php echo $estoque['Definicoescesta']['nome']; ?></td>
 					<td><?php echo $estoque['Estoque']['quantidade']; ?></td>
-					<td><?php echo $estoque['Estoque']['complemento_qt']; ?> <?php echo $estoque['Definicoescesta']['medida']; ?></td>
+					<td><?php echo str_replace('.',',',$estoque['Estoque']['complemento_qt']); ?> <?php echo $estoque['Definicoescesta']['medida']; ?></td>
 					<td><?php echo date('d/m/Y', strtotime($estoque['Estoque']['data_entrada'])); ?></td>
 					<td><?php echo date('d/m/Y', strtotime($estoque['Estoque']['data_vencimento'])); ?></td>
 					<td class="delete">

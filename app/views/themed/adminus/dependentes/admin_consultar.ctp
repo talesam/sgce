@@ -21,9 +21,9 @@
 			
 			<!-- Peso, Altura e Situação nutricional é para crianças de até 7 anos -->
 			<p>
-				<label>Peso: </label><?= $this->data['Dependente']['peso'] ?>
+				<label>Peso: </label><?= str_replace('.',',',$this->data['Dependente']['peso']) ?>
 				<br />
-				<label>Altura: </label><?= $this->data['Dependente']['altura'] ?>
+				<label>Altura: </label><?= str_replace('.',',',$this->data['Dependente']['altura']) ?>
 			</p>
 			
 			<p>
@@ -31,9 +31,9 @@
 			</p>
 			
 			<p>
-				<label>Parentesco: </label><?= $this->data['Dependente']['parentesco'] ?>
+				<label>Parentesco: </label><?php foreach($parentescos as $_id => $_valor) if ($_id==$this->data['Dependente']['parentesco']) echo $_valor; ?>
 				<br />
-				<label>Escolaridade: </label><?= $this->data['Dependente']['escolaridade'] ?>
+				<label>Escolaridade: </label><?php foreach($escolaridades as $_id => $_valor) if ($_id==$this->data['Dependente']['escolaridade']) echo $_valor; ?>
 				<br />
 				<label>Nome da escola: </label><?= $this->data['Dependente']['nome_escola'] ?>
 				<br />

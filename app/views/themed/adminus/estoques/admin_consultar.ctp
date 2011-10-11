@@ -17,15 +17,15 @@
 			</p>		
 			
 			<p>
-				<label>Quantidade: </label><?= $this->data['Estoque']['quantidade'] ?><?= $this->data['Estoque']['complemento_qt'] ?>
+				<label>Quantidade: </label><?= $this->data['Estoque']['quantidade'] ?>
 			</p>
 			
 			<p>
-				<label>Data Entrada: </label><?= $this->data['Estoque']['data_entrada'] ?>
+				<label>Data Entrada: </label><?php $data = explode('-',$this->data['Estoque']['data_entrada']); echo $data[2].'/'.$data[1].'/'.$data[0]; ?>
 			</p>	
 
 			<p>
-				<label>Data Vencimento: </label><?= $this->data['Estoque']['data_vencimento'] ?>
+				<label>Data Vencimento: </label><?php $data = explode('-',$this->data['Estoque']['data_vencimento']); echo $data[2].'/'.$data[1].'/'.$data[0]; ?>
 			</p>
 		
 	</div>		<!-- .block_content ends -->

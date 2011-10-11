@@ -12,34 +12,39 @@
 
 class EstoquesController extends AppController {
 	
-	function admin_index($definicoescestaId = null) {
-		if($definicoescestaId){
-			$this->set('definicoescesta', ClassRegistry::init('Definicoescesta')->findById($definicoescestaId));
-			$this->paginate['conditions'] = array('Estoque.definicoescesta_id' => $definicoescestaId);
-			$this->set('estoques', $this->paginate());
-		}else{
-			$this->set('estoques', $this->paginate());
-		}
-		
-		if(!empty($this->data)){
+	function admin_index($definicoescestaId = null) 
+	{
+		if(!empty($this->data))
+		{
 			$ids = array();
-		 	foreach($this->data['Estoque']['id'] as $k => $v){
-				if($v == 1){
-					$ids[$k] = $k;
-				}
+		 	foreach($this->data['Estoque']['id'] as $k => $v)
+		 	{
+				if($v == 1) $ids[$k] = $k;
 			}
-			if(empty($ids)){
+			if(empty($ids))
+			{
 				$this->Session->setFlash('Marque os estoques para excluir.', 'flash_warning');
-			}else{
-				if($this->Estoque->deleteAll(array('Estoque.id' => $ids))){
+			} else
+			{
+				if($this->Estoque->deleteAll(array('Estoque.id' => $ids)))
+				{
 					$this->Session->setFlash('Estoques removidos.', 'flash_success');
-				}else{
+				} else
+				{
 					$this->Session->setFlash('Estoques não removidos. Por favor, tente novamente.', 'flash_error');
 				}
 			}
-			
 		}
-		
+
+		if($definicoescestaId)
+		{
+			$this->set('definicoescesta', ClassRegistry::init('Definicoescesta')->findById($definicoescestaId));
+			$this->paginate['conditions'] = array('Estoque.definicoescesta_id' => $definicoescestaId);
+			$this->set('estoques', $this->paginate());
+		} else
+		{
+			$this->set('estoques', $this->paginate());
+		}
 	}
 
 	function admin_cadastrar() {
@@ -108,7 +113,7 @@ class EstoquesController extends AppController {
 				$this->Session->setFlash('Estoque inválido', 'flash_error');
 				$this->redirect($this->referer());
 			}
-			
+
 			$data = $this->Estoque->read(null, $id);
 			if($this->Estoque->delete($id)) {
 				
