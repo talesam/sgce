@@ -17,17 +17,31 @@ class Familia extends AppModel {
 			'className'    => 'Companheiro',
 			'conditions'   => array('Companheiro.companheiro' => '1'),
 			'dependent'    => true
+		),
+		'Frequencia' => array(
+			'foreignKey'   => 'familia_id',
+			'className'    => 'Frequencia',
+		),
+		'Cesta' => array(
+			'foreignKey'   => 'familia_id',
+			'className'    => 'Cesta',
 		)
 	);
 
 	public $hasMany = array(
 		'Dependente' => array(
-			'className' => 'Dependente',
-			'foreignKey' => 'parente_id',
-			'conditions' => array('Dependente.dependente' => '1'),
-			'order' => 'Dependente.nome',
-			'dependent'=> true
-		)
+			'className' 	=> 'Dependente',
+			'foreignKey' 	=> 'parente_id',
+			'conditions' 	=> array('Dependente.dependente' => '1'),
+			'order' 		=> 'Dependente.nome',
+			'dependent'		=> true
+		),
+		'Resposta' => array(
+			'className'		=> 'Resposta',
+			'foreignKey'   	=> 'familia_id',
+			'className'   	=> 'Resposta',
+			'dependent'		=> true
+		),
 	);
 
 	/* Escolariadade de uma pessoa  */
