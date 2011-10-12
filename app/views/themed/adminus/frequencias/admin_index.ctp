@@ -18,7 +18,7 @@
 				<thead>
 					<tr>
 						<th>Responsável pela família</th>
-						<th>Status</th>
+						<th>Situação</th>
 					</tr>
 				</thead>
 				

@@ -18,13 +18,13 @@ class DefinicoescestasController extends AppController {
 		
 		
 		$e =& ClassRegistry::init('Estoque');
+
 		foreach($definicoescestas as $definicoescesta){
 			$estoque[$definicoescesta['Definicoescesta']['id']] = $e->find('first', array('fields' => 'SUM(Estoque.quantidade) as `total`' ,'conditions' => array('Estoque.definicoescesta_id' => $definicoescesta['Definicoescesta']['id'])));
 		}
-		
-	
-		
-		$this->set('estoque', $estoque);
+
+		if (isset($estoque))
+			$this->set('estoque', $estoque);
 		
 		$this->set('tipos', $this->Definicoescesta->tipos);
 		$this->set('medidas', $this->Definicoescesta->medidas);

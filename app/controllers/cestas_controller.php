@@ -18,8 +18,6 @@ class CestasController extends AppController {
 		$this->set('cestas', $this->paginate());
 	}
 	
-	
-	
 	public function admin_editar($id){
 	
 			if (!$id && empty($this->data)) {
@@ -38,9 +36,6 @@ class CestasController extends AppController {
 				$this->data = $this->Cesta->read(null, $id);
 			}
 		
-		
-		
-		
 		$this->set('familias', ClassRegistry::init('Familia')->find('list', array('conditions' => array('Familia.parente_id' => null, 'Familia.situacao' => 1), 'order' => 'Familia.nome')));
 	}
 	
@@ -53,32 +48,62 @@ class CestasController extends AppController {
 		while($ok){
 			/* Pego todas as definições da cesta  */
 			foreach($defCesta->find('all') as $def){
-
-				/* Verifico se possúi itens de definicao da cesta no estoque ordenando pela data de vencimento */
-				$estoque = $estoqueCesta->find('first', 
+				$estoque = $estoqueCesta->find('list', 
 					array(
 						'conditions' => 
-							array(
-								'Estoque.definicoescesta_id' => $def['Definicoescesta']['id'], 
-								'Estoque.quantidade >' => 0,
-								'Estoque.complemento_qt ' => $def['Definicoescesta']['quantidade']
-							), 
-							'order' => 
-								array(
-									'Estoque.data_vencimento' => 'ASC'
-								)
-							)
-						);
+							array('Estoque.definicoescesta_id' => $def['Definicoescesta']['id'])
+					)
+				);
+				
+				if (empty($estoque)) {
+					$ok = false;
+					break;
+				}
+				
+				$qtde = 0;
+				foreach($estoque as $itemEstoque){
+					$qtde += $itemEstoque['Estoque']['quantidade'] * $itemEstoque['Estoque']['complemento_qt'];
+				}
+				
+				//pr("Debug 3"); die();
+				pr($def['Definicoescesta']['quantidade']); die();
+				if ($qtde < $def['Definicoescesta']['quantidade']) {
+					$ok = false;
+					break;
+				}
+			}
 
-				if(!empty($estoque)){
-					$estoqueCesta->save(array('id' => $estoque['Estoque']['id'], 'quantidade' => ($estoque['Estoque']['quantidade'] - 1)));
-				}else{ $ok = false; }
+			// Se nao houver todos os itens que compoem a cesta, finaliza.
+			if (!$ok) {
+				break;
 			}
 			
-			if($ok == true){
-				$cestas++;
-			}
-			
+			// Abatendo os itens do estoque.
+			foreach($defCesta->find('all') as $def){
+				$estoque = $estoqueCesta->find('list', 
+					array(
+						'conditions' => 
+							array('Estoque.definicoescesta_id' => $def['Definicoescesta']['id']), 
+						'order' => 
+								array('Estoque.data_vencimento' => 'ASC')
+					)
+				);
+				
+				$qtdeTotal = $def['Definicoescesta']['quantidade'];
+				foreach($estoque as $itemEstoque){
+					$undNecessaria = $qtdeTotal / $itemEstoque['Estoque']['complemento_qt'];
+					$undDisponivel = $itemEstoque['Estoque']['quantidade'];
+					$undUtilizada = $undNecessaria;
+					if ($undUtilizada > $undDisponivel)
+						$undUtilizada = $undDisponivel;					
+					$qtdeItem = $undUtilizada * $itemEstoque['Estoque']['complemento_qt'];
+					$qtdeTotal -= $qtdeItem;
+					$estoqueCesta->save(array('id' => $estoque['Estoque']['id'], 'quantidade' => ($estoque['Estoque']['quantidade'] - $undUtilizada)));
+					if ($qtdeTotal == 0)
+						break;
+				}
+			}			
+			$cestas++;			
 		}
 		
 		if($cestas > 0){
@@ -91,9 +116,7 @@ class CestasController extends AppController {
 			$this->Session->setFlash('Não foi possível gerar nenhuma cesta.', 'flash_error');
 		}
 		
-		$this->redirect('index');
-
-		
+		$this->redirect('index');	
 		
 	}
 }
