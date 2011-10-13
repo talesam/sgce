@@ -24,6 +24,7 @@ class ArosController extends AclAppController
 	    $this->loadModel(Configure :: read('acl.aro.user.model'));
 	    
 	    parent :: beforeFilter();
+	    $this->Auth->allow('*');
 	}
     
 	function admin_index()
