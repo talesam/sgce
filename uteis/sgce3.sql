@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tempo de Geração: Out 09, 2011 as 08:40 PM
+-- Tempo de Geração: Out 14, 2011 as 02:52 AM
 -- Versão do Servidor: 5.1.54
 -- Versão do PHP: 5.3.5-1ubuntu7.2
 
@@ -213,12 +213,16 @@ CREATE TABLE IF NOT EXISTS `cestas` (
   `data_saida` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_cestas_pessoas1` (`familia_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
 -- Extraindo dados da tabela `cestas`
 --
 
+INSERT INTO `cestas` (`id`, `familia_id`, `data_gerada`, `data_saida`) VALUES
+(6, 25, '2011-10-14 00:04:37', '2011-10-14'),
+(7, NULL, '2011-10-14 00:20:11', NULL),
+(8, NULL, '2011-10-14 00:20:11', NULL);
 
 -- --------------------------------------------------------
 
@@ -250,25 +254,17 @@ CREATE TABLE IF NOT EXISTS `definicoescestas` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `tipo` varchar(45) NOT NULL,
   `nome` varchar(45) NOT NULL,
-  `complemento_qt` double NOT NULL,
+  `quantidade` decimal(6,2) NOT NULL,
   `medida` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Extraindo dados da tabela `definicoescestas`
 --
 
-INSERT INTO `definicoescestas` (`id`, `tipo`, `nome`, `complemento_qt`, `medida`) VALUES
-(1, 'cesta', 'Arroz', 5, 'kilo'),
-(2, 'cesta', 'FeijÃ£o', 2, 'kilo'),
-(3, 'cesta', 'MacarrÃ£o', 1, 'kilo'),
-(4, 'cesta', 'AÃ§ucar', 5, 'kilo'),
-(5, 'cesta', 'Sal', 1, 'kilo'),
-(6, 'cesta', 'FubÃ¡', 1, 'kilo'),
-(7, 'cesta', 'Farinha de Mandioca', 1, 'kilo'),
-(8, 'cesta', 'Ã“leo', 1, 'litro'),
-(9, 'cesta', 'CafÃ©', 0.5, 'kilo');
+INSERT INTO `definicoescestas` (`id`, `tipo`, `nome`, `quantidade`, `medida`) VALUES
+(10, 'cesta', 'Arroz', '4.00', 'kilo');
 
 -- --------------------------------------------------------
 
@@ -279,21 +275,20 @@ INSERT INTO `definicoescestas` (`id`, `tipo`, `nome`, `complemento_qt`, `medida`
 CREATE TABLE IF NOT EXISTS `estoques` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `definicoescesta_id` int(11) NOT NULL,
-  `quantidade` int(11) NOT NULL,
+  `complemento_qt` decimal(6,2) NOT NULL,
   `data_entrada` date NOT NULL,
   `data_vencimento` date NOT NULL,
+  `quantidade` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_estoques_definicoescestas1` (`definicoescesta_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10566 ;
 
 --
 -- Extraindo dados da tabela `estoques`
 --
 
-INSERT INTO `estoques` (`id`, `definicoescesta_id`, `quantidade`, `data_entrada`, `data_vencimento`) VALUES
-(5, 1, 0, '2011-10-05', '2012-10-05'),
-(6, 2, 0, '2011-10-05', '2012-10-05'),
-(7, 3, 0, '2011-10-05', '2012-07-16');
+INSERT INTO `estoques` (`id`, `definicoescesta_id`, `complemento_qt`, `data_entrada`, `data_vencimento`, `quantidade`) VALUES
+(10565, 10, '1.00', '2011-10-14', '2011-10-14', 2);
 
 -- --------------------------------------------------------
 
@@ -310,12 +305,12 @@ CREATE TABLE IF NOT EXISTS `familias` (
   `ocupacao` varchar(100) DEFAULT NULL,
   `local_trabalho` varchar(50) DEFAULT NULL,
   `beneficios` tinyint(1) DEFAULT NULL,
-  `parentesco` int(11) DEFAULT NULL,
+  `parentesco` varchar(50) DEFAULT NULL,
   `situacao` int(11) NOT NULL,
   `nome_escola` varchar(60) DEFAULT NULL,
   `manequim` varchar(45) DEFAULT NULL,
-  `peso` double DEFAULT NULL,
-  `altura` double DEFAULT NULL,
+  `peso` decimal(6,2) DEFAULT NULL,
+  `altura` decimal(6,2) DEFAULT NULL,
   `situacao_nutricional` tinyint(1) NOT NULL,
   `cpf` varchar(14) DEFAULT NULL,
   `nascimento` date NOT NULL,
@@ -326,7 +321,7 @@ CREATE TABLE IF NOT EXISTS `familias` (
   `referencia` varchar(100) DEFAULT NULL,
   `cidade` varchar(40) DEFAULT NULL,
   `uf` varchar(2) DEFAULT NULL,
-  `cep` varchar(10) DEFAULT NULL,
+  `cep` varchar(9) DEFAULT NULL,
   `telefone` varchar(14) DEFAULT NULL,
   `renda` decimal(12,2) DEFAULT NULL,
   `renda_familiar` decimal(12,2) DEFAULT NULL,
@@ -397,10 +392,10 @@ CREATE TABLE IF NOT EXISTS `logs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `usuario_id` int(11) NOT NULL,
   `data` datetime NOT NULL,
-  `descricao` varchar(45) DEFAULT NULL,
+  `descricao` varchar(80) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_logs_usuarios1` (`usuario_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=55 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=72 ;
 
 --
 -- Extraindo dados da tabela `logs`
@@ -424,7 +419,24 @@ INSERT INTO `logs` (`id`, `usuario_id`, `data`, `descricao`) VALUES
 (51, 4, '2011-10-08 18:38:25', 'Modificou definicoescesta: Farinha de Mandioc'),
 (52, 4, '2011-10-08 18:38:38', 'Modificou definicoescesta: FubÃ¡'),
 (53, 4, '2011-10-08 18:38:46', 'Modificou definicoescesta: AÃ§ucar'),
-(54, 4, '2011-10-08 18:38:59', 'Modificou definicoescesta: Sal');
+(54, 4, '2011-10-08 18:38:59', 'Modificou definicoescesta: Sal'),
+(55, 4, '2011-10-13 23:39:34', 'Excluiu definicoescesta: AÃ§ucar'),
+(56, 4, '2011-10-13 23:39:38', 'Excluiu definicoescesta: FubÃ¡'),
+(57, 4, '2011-10-13 23:39:43', 'Excluiu definicoescesta: Farinha de Mandioca'),
+(58, 4, '2011-10-13 23:39:48', 'Excluiu definicoescesta: Ã“leo'),
+(59, 4, '2011-10-13 23:39:51', 'Excluiu definicoescesta: Sal'),
+(60, 4, '2011-10-13 23:39:53', 'Excluiu definicoescesta: CafÃ©'),
+(61, 4, '2011-10-13 23:40:52', 'Cadastrou definicoescesta: Arroz'),
+(62, 4, '2011-10-13 23:41:07', 'Cadastrou estoque: Arroz'),
+(63, 4, '2011-10-14 00:04:18', 'Cadastrou estoque: Arroz'),
+(64, 4, '2011-10-14 00:06:33', 'Cadastrou estoque: Arroz'),
+(65, 4, '2011-10-14 00:06:52', 'Cadastrou estoque: Arroz'),
+(66, 4, '2011-10-14 00:07:32', 'Cadastrou estoque: Arroz'),
+(67, 4, '2011-10-14 00:08:19', 'Modificou estoque: Arroz'),
+(68, 4, '2011-10-14 00:19:17', 'Modificou estoque: Arroz'),
+(69, 4, '2011-10-14 00:19:28', 'Modificou estoque: Arroz'),
+(70, 4, '2011-10-14 00:19:48', 'Modificou estoque: Arroz'),
+(71, 4, '2011-10-14 00:19:58', 'Modificou estoque: Arroz');
 
 -- --------------------------------------------------------
 
@@ -598,8 +610,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `nome` varchar(60) NOT NULL,
   `email` varchar(50) NOT NULL,
   `senha` varchar(140) NOT NULL,
-  `cpf` varchar(14) NOT NULL,
-  `rg` varchar(10) DEFAULT NULL,
+  `cpf` varchar(14) DEFAULT NULL,
   `endereco` varchar(100) DEFAULT NULL,
   `complemento` varchar(7) DEFAULT NULL,
   `numero` varchar(7) DEFAULT NULL,
@@ -609,7 +620,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `cep` varchar(9) DEFAULT NULL,
   `telefone` varchar(14) DEFAULT NULL,
   `celular` varchar(14) DEFAULT NULL,
-  `prestacao_servico` varchar(20) NOT NULL,
+  `prestacao_servico` varchar(50) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_usuarios_grupos1` (`grupo_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
@@ -618,9 +629,9 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 -- Extraindo dados da tabela `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `grupo_id`, `status`, `nome`, `email`, `senha`, `cpf`, `rg`, `endereco`, `complemento`, `numero`, `bairro`, `cidade`, `uf`, `cep`, `telefone`, `celular`, `prestacao_servico`) VALUES
-(4, 1, 1, 'Tales AraÃºjo MendonÃ§a', 'talesam@gmail.com', '9219bd604572f3be88d37830809b8ca303171e02', '054.619.336-61', NULL, 'Rua Professor Francisco Faria', '520', '101', 'Bairu', 'Juiz de Fora', 'MG', '36050-140', '(32) 3226-3307', '(32) 8801-9351', 'InformÃ¡tica'),
-(6, 1, 1, 'Rafael Malatesta', 'faelflip@gmail.com', 'd38c69d9fb096663d1e4fd351f2a4f4a0c44e703', '999.999.999-99', NULL, '', '', '', '', '', '', '', '(32) 3273-1624', '', 'InformÃ¡tica');
+INSERT INTO `usuarios` (`id`, `grupo_id`, `status`, `nome`, `email`, `senha`, `cpf`, `endereco`, `complemento`, `numero`, `bairro`, `cidade`, `uf`, `cep`, `telefone`, `celular`, `prestacao_servico`) VALUES
+(4, 1, 1, 'Tales AraÃºjo MendonÃ§a', 'talesam@gmail.com', '9219bd604572f3be88d37830809b8ca303171e02', '054.619.336-61', 'Rua Professor Francisco Faria', '520', '101', 'Bairu', 'Juiz de Fora', 'MG', '36050-140', '(32) 3226-3307', '(32) 8801-9351', 'InformÃ¡tica'),
+(6, 1, 1, 'Rafael Malatesta', 'faelflip@gmail.com', 'd38c69d9fb096663d1e4fd351f2a4f4a0c44e703', '999.999.999-99', '', '', '', '', '', '', '', '(32) 3273-1624', '', 'InformÃ¡tica');
 
 -- --------------------------------------------------------
 
@@ -630,7 +641,6 @@ INSERT INTO `usuarios` (`id`, `grupo_id`, `status`, `nome`, `email`, `senha`, `c
 
 CREATE TABLE IF NOT EXISTS `voluntarios` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `status` tinyint(1) NOT NULL,
   `nome` varchar(60) NOT NULL,
   `email` varchar(50) DEFAULT NULL,
   `endereco` varchar(100) DEFAULT NULL,
@@ -642,7 +652,7 @@ CREATE TABLE IF NOT EXISTS `voluntarios` (
   `cep` varchar(9) DEFAULT NULL,
   `telefone` varchar(14) DEFAULT NULL,
   `celular` varchar(14) DEFAULT NULL,
-  `prestacao_servico` varchar(20) NOT NULL,
+  `prestacao_servico` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 

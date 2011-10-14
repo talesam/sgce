@@ -45,10 +45,11 @@ class CestasController extends AppController {
 		$estoqueCesta->recursive = -1;
 		$cestas = 0;
 		$ok = true;
+
 		while($ok){
 			/* Pego todas as definições da cesta  */
 			foreach($defCesta->find('all') as $def){
-				$estoque = $estoqueCesta->find('list', 
+				$estoque = $estoqueCesta->find('all', 
 					array(
 						'conditions' => 
 							array('Estoque.definicoescesta_id' => $def['Definicoescesta']['id'])
@@ -65,8 +66,8 @@ class CestasController extends AppController {
 					$qtde += $itemEstoque['Estoque']['quantidade'] * $itemEstoque['Estoque']['complemento_qt'];
 				}
 				
-				//pr("Debug 3"); die();
-				pr($def['Definicoescesta']['quantidade']); die();
+				//pr($qtde); die();
+				//pr($def); die();
 				if ($qtde < $def['Definicoescesta']['quantidade']) {
 					$ok = false;
 					break;
@@ -80,7 +81,7 @@ class CestasController extends AppController {
 			
 			// Abatendo os itens do estoque.
 			foreach($defCesta->find('all') as $def){
-				$estoque = $estoqueCesta->find('list', 
+				$estoque = $estoqueCesta->find('all', 
 					array(
 						'conditions' => 
 							array('Estoque.definicoescesta_id' => $def['Definicoescesta']['id']), 
@@ -98,7 +99,8 @@ class CestasController extends AppController {
 						$undUtilizada = $undDisponivel;					
 					$qtdeItem = $undUtilizada * $itemEstoque['Estoque']['complemento_qt'];
 					$qtdeTotal -= $qtdeItem;
-					$estoqueCesta->save(array('id' => $estoque['Estoque']['id'], 'quantidade' => ($estoque['Estoque']['quantidade'] - $undUtilizada)));
+					$estoqueCesta->save(array('id' => $itemEstoque['Estoque']['id'], 
+						'quantidade' => ($itemEstoque['Estoque']['quantidade'] - $undUtilizada)));
 					if ($qtdeTotal == 0)
 						break;
 				}
@@ -114,6 +116,13 @@ class CestasController extends AppController {
 			$this->Session->setFlash($cestas . ' cestas geradas.', 'flash_success');
 		}else{
 			$this->Session->setFlash('Não foi possível gerar nenhuma cesta.', 'flash_error');
+		}
+		
+		// Removendo do estoque os itens vazios.
+		foreach($estoque as $itemEstoque){
+			if ($itemEstoque['Estoque']['quantidade'] == 0) {
+				$estoqueCesta->deleteAll(array('Estoque.id' => $itemEstoque['Estoque']['id']));
+			}
 		}
 		
 		$this->redirect('index');	
