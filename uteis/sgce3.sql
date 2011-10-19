@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tempo de Geração: Out 14, 2011 as 02:52 AM
+-- Tempo de Geração: Out 19, 2011 as 02:18 AM
 -- Versão do Servidor: 5.1.54
 -- Versão do PHP: 5.3.5-1ubuntu7.2
 
@@ -167,12 +167,12 @@ CREATE TABLE IF NOT EXISTS `aros` (
 --
 
 INSERT INTO `aros` (`id`, `parent_id`, `model`, `foreign_key`, `alias`, `lft`, `rght`) VALUES
-(1, NULL, 'Grupo', 1, NULL, 1, 6),
-(2, NULL, 'Grupo', 2, NULL, 7, 8),
-(3, NULL, 'Grupo', 3, NULL, 9, 10),
+(1, NULL, 'Grupo', 1, NULL, 1, 4),
+(2, NULL, 'Grupo', 2, NULL, 5, 6),
+(3, NULL, 'Grupo', 3, NULL, 7, 10),
 (5, NULL, 'Grupo', 5, NULL, 11, 12),
 (8, 1, 'Usuario', 4, NULL, 2, 3),
-(10, 1, 'Usuario', 6, NULL, 4, 5);
+(10, 3, 'Usuario', 6, NULL, 8, 9);
 
 -- --------------------------------------------------------
 
@@ -181,7 +181,7 @@ INSERT INTO `aros` (`id`, `parent_id`, `model`, `foreign_key`, `alias`, `lft`, `
 --
 
 CREATE TABLE IF NOT EXISTS `aros_acos` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `aro_id` int(11) NOT NULL,
   `aco_id` int(11) NOT NULL,
   `_create` char(2) DEFAULT NULL,
@@ -191,14 +191,67 @@ CREATE TABLE IF NOT EXISTS `aros_acos` (
   PRIMARY KEY (`id`,`aro_id`,`aco_id`),
   KEY `fk_aros_has_acos_acos1` (`aco_id`),
   KEY `fk_aros_has_acos_aros1` (`aro_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=56 ;
 
 --
 -- Extraindo dados da tabela `aros_acos`
 --
 
 INSERT INTO `aros_acos` (`id`, `aro_id`, `aco_id`, `_create`, `_read`, `_update`, `_delete`) VALUES
-(0, 1, 1, '1', '1', '1', '1');
+(1, 1, 1, '1', '1', '1', '1'),
+(2, 2, 103, '-1', '-1', '-1', '-1'),
+(3, 3, 3, '1', '1', '1', '1'),
+(4, 3, 4, '1', '1', '1', '1'),
+(5, 3, 12, '1', '1', '1', '1'),
+(6, 3, 13, '1', '1', '1', '1'),
+(7, 3, 14, '1', '1', '1', '1'),
+(8, 3, 15, '1', '1', '1', '1'),
+(9, 3, 16, '1', '1', '1', '1'),
+(10, 3, 29, '1', '1', '1', '1'),
+(11, 3, 30, '1', '1', '1', '1'),
+(12, 3, 31, '1', '1', '1', '1'),
+(13, 3, 32, '1', '1', '1', '1'),
+(14, 3, 33, '1', '1', '1', '1'),
+(15, 3, 57, '1', '1', '1', '1'),
+(16, 3, 58, '1', '1', '1', '1'),
+(17, 3, 59, '1', '1', '1', '1'),
+(18, 3, 60, '1', '1', '1', '1'),
+(19, 3, 61, '1', '1', '1', '1'),
+(20, 3, 62, '1', '1', '1', '1'),
+(21, 3, 63, '1', '1', '1', '1'),
+(22, 3, 64, '1', '1', '1', '1'),
+(23, 3, 65, '1', '1', '1', '1'),
+(24, 3, 66, '1', '1', '1', '1'),
+(25, 3, 68, '1', '1', '1', '1'),
+(26, 3, 69, '1', '1', '1', '1'),
+(27, 3, 70, '1', '1', '1', '1'),
+(28, 3, 71, '1', '1', '1', '1'),
+(29, 3, 72, '1', '1', '1', '1'),
+(30, 3, 75, '1', '1', '1', '1'),
+(31, 3, 76, '1', '1', '1', '1'),
+(32, 3, 77, '1', '1', '1', '1'),
+(33, 3, 79, '1', '1', '1', '1'),
+(34, 3, 80, '1', '1', '1', '1'),
+(35, 3, 81, '1', '1', '1', '1'),
+(36, 3, 82, '1', '1', '1', '1'),
+(37, 3, 83, '1', '1', '1', '1'),
+(38, 3, 84, '1', '1', '1', '1'),
+(39, 3, 85, '1', '1', '1', '1'),
+(40, 3, 86, '1', '1', '1', '1'),
+(41, 3, 87, '1', '1', '1', '1'),
+(42, 3, 88, '1', '1', '1', '1'),
+(43, 3, 89, '1', '1', '1', '1'),
+(44, 3, 90, '1', '1', '1', '1'),
+(45, 3, 91, '1', '1', '1', '1'),
+(46, 3, 92, '1', '1', '1', '1'),
+(47, 3, 93, '1', '1', '1', '1'),
+(48, 3, 94, '1', '1', '1', '1'),
+(49, 3, 95, '1', '1', '1', '1'),
+(50, 3, 98, '1', '1', '1', '1'),
+(51, 3, 99, '1', '1', '1', '1'),
+(52, 3, 100, '1', '1', '1', '1'),
+(53, 3, 101, '1', '1', '1', '1'),
+(55, 3, 1, '1', '1', '1', '1');
 
 -- --------------------------------------------------------
 
@@ -395,7 +448,7 @@ CREATE TABLE IF NOT EXISTS `logs` (
   `descricao` varchar(80) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_logs_usuarios1` (`usuario_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=72 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=75 ;
 
 --
 -- Extraindo dados da tabela `logs`
@@ -436,7 +489,10 @@ INSERT INTO `logs` (`id`, `usuario_id`, `data`, `descricao`) VALUES
 (68, 4, '2011-10-14 00:19:17', 'Modificou estoque: Arroz'),
 (69, 4, '2011-10-14 00:19:28', 'Modificou estoque: Arroz'),
 (70, 4, '2011-10-14 00:19:48', 'Modificou estoque: Arroz'),
-(71, 4, '2011-10-14 00:19:58', 'Modificou estoque: Arroz');
+(71, 4, '2011-10-14 00:19:58', 'Modificou estoque: Arroz'),
+(72, 4, '2011-10-16 21:58:31', 'Modificou usuÃ¡rio: Rafael Malatesta'),
+(73, 4, '2011-10-16 21:58:54', 'Modificou usuÃ¡rio: Rafael Malatesta'),
+(74, 4, '2011-10-19 00:21:24', 'Modificou usuÃ¡rio: Rafael Malatesta');
 
 -- --------------------------------------------------------
 
@@ -631,7 +687,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `grupo_id`, `status`, `nome`, `email`, `senha`, `cpf`, `endereco`, `complemento`, `numero`, `bairro`, `cidade`, `uf`, `cep`, `telefone`, `celular`, `prestacao_servico`) VALUES
 (4, 1, 1, 'Tales AraÃºjo MendonÃ§a', 'talesam@gmail.com', '9219bd604572f3be88d37830809b8ca303171e02', '054.619.336-61', 'Rua Professor Francisco Faria', '520', '101', 'Bairu', 'Juiz de Fora', 'MG', '36050-140', '(32) 3226-3307', '(32) 8801-9351', 'InformÃ¡tica'),
-(6, 1, 1, 'Rafael Malatesta', 'faelflip@gmail.com', 'd38c69d9fb096663d1e4fd351f2a4f4a0c44e703', '999.999.999-99', '', '', '', '', '', '', '', '(32) 3273-1624', '', 'InformÃ¡tica');
+(6, 3, 1, 'Rafael Malatesta', 'faelflip@gmail.com', 'd38c69d9fb096663d1e4fd351f2a4f4a0c44e703', '999.999.999-99', '', '', '', '', '', '', '', '(32) 3273-1624', '', 'InformÃ¡tica');
 
 -- --------------------------------------------------------
 
