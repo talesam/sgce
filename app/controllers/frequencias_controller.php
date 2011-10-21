@@ -16,11 +16,11 @@ class FrequenciasController extends AppController {
 	function admin_index($encontroId=null) {
 		
 		/* Lista as frequências de um encontro */
-		$frequencias = $this->Frequencia->find('list', array('conditions' => array('Frequencia.encontro_id' => $encontroId)));
+		$frequencias = $this->Frequencia->find('list', array('conditions' => array('Frequencia.data' => $encontroId)));
 				
 		/* Listar as pessoas responsáveis pela família.*/
-		$this->Frequencia->Familia->Pessoa->recursive = -1;
-		$pessoas = $this->Frequencia->Familia->Pessoa->find('all', array('conditions' => array('Pessoa.tipo' => 'responsavel'), 'order' => array('Pessoa.nome'))); 
+		$this->Frequencia->Familia->recursive = -1;
+		$pessoas = $this->Frequencia->Familia->find('all', array('conditions' => array('Familia.parente_id' => null), 'order' => array('Familia.nome'))); 
 
 		/* 
 		* Lista os códigos da frequência
@@ -31,7 +31,7 @@ class FrequenciasController extends AppController {
 		
 		
 		/* Envia para a visão os valores */
-		$this->set(compact('pessoas', 'frequencias', 'codigos'));
+		$this->set(compact('familias', 'frequencias', 'codigos'));
 	}
 
 }
