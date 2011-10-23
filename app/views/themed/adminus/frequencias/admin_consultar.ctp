@@ -12,29 +12,20 @@
 	
 
 	<div class="block_content">
-	
-		<?php echo $this->Form->create($modelClass);  ?>
 			<p>
 				<label>Responsável Família</label><br />
-				<?php echo $this->Form->input('familia_id', array('div' => false, 'label' => false, 'options' => $familias, 'class' => 'styled', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
+				<?php $valor = $this->data['Familia']['nome'];  echo $valor; ?>
 			</p>		
 			
 			<p>
 				<label>Código</label><br />
-				<?php echo $this->Form->input('codigo', array('div' => false, 'label' => false, 'type' => 'select', 'class' => 'styled', 'options' => $codigos)); ?>
+				<?php $valor = $this->data['Frequencia']['codigo'];  echo $codigos[$valor]; ?>
 			</p>	
 				
 			<p>
 				<label>Data</label><br />
-				<?php echo $this->Form->input('data', array('div' => false, 'label' => false)); ?>
+				<?php $valor = $this->data['Frequencia']['data'];  echo date('d/m/Y', strtotime($valor)); ?>
 			</p>
-					
-			<hr />
-			
-			<p>
-				<input type="submit" class="submit small" value="Salvar" />
-			</p>
-		<?php echo $this->Form->end(null); ?>
 		
 		
 	</div>		<!-- .block_content ends -->
@@ -43,3 +34,4 @@
 	<div class="bendr"></div>
 		
 </div>		<!-- .block ends -->
+

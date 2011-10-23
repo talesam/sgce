@@ -1,16 +1,17 @@
+<?php if (!isset($modelClass)) 	$modelClass = Inflector::singularize($this->name); ?>
+<?php if (!isset($titulo))		$titulo		= $this->name; ?>
 <div class="block">
 
 	<div class="block_head">
 		<div class="bheadl"></div>
 		<div class="bheadr"></div>
-		
-		<h2>Cadastrar Frequência Família</h2>
+		<h2>Cadastrar <?= $titulo ?></h2>
 		<ul><li><?php echo $this->Html->link('VOLTAR', array('action' => 'index')); ?></li></ul>
-	</div>		<!-- .block_head ends -->
+	</div>
 	
 	<div class="block_content">
 	
-		<?php echo $this->Form->create('Frequencia');  ?>
+		<?php echo $this->Form->create($modelClass);  ?>
 			<p>
 				<label>Responsável Família</label><br />
 				<?php echo $this->Form->input('familia_id', array('div' => false, 'label' => false, 'options' => $familias, 'class' => 'styled', 'error' => array('wrap' => 'span', 'class' => 'note error'))); ?>
@@ -39,4 +40,4 @@
 	<div class="bendl"></div>
 	<div class="bendr"></div>
 		
-</div>		<!-- .block ends -->
+</div>

@@ -38,25 +38,25 @@ class CompanheirosController extends AppController {
 			$this->set('escolaridades', $this->Companheiro->escolaridades);
 		}
 
-		function admin_editar($id = null) {
-			if (!$id && empty($this->data)) {
-				$this->Session->setFlash('Companheiro inválido.', 'flash_error');
-				$this->redirect(array('action' => 'index'));
-			}
-			if (!empty($this->data)) 
-			{
-				if ($this->Companheiro->save($this->data)) {
-					$this->Session->setFlash('Companheiro salvo.', 'flash_success');
-					$this->redirect(array('action' => 'index', $this->data['Companheiro']['parente_id']));
-				} else {
-					$this->Session->setFlash('Companheiro não pode ser salvo. Por favor, tente novamente.', 'flash_error');
-				}
-			}
-			if (empty($this->data)) {
-				$this->data = $this->Companheiro->read(null, $id);
-			}
-			$this->set('escolaridades', $this->Companheiro->escolaridades);
+	function admin_editar($id = null) {
+		if (!$id && empty($this->data)) {
+			$this->Session->setFlash('Companheiro inválido.', 'flash_error');
+			$this->redirect(array('action' => 'index'));
 		}
+		if (!empty($this->data)) 
+		{
+			if ($this->Companheiro->save($this->data)) {
+				$this->Session->setFlash('Companheiro salvo.', 'flash_success');
+				$this->redirect(array('action' => 'index', $this->data['Companheiro']['parente_id']));
+			} else {
+				$this->Session->setFlash('Companheiro não pode ser salvo. Por favor, tente novamente.', 'flash_error');
+			}
+		}
+		if (empty($this->data)) {
+			$this->data = $this->Companheiro->read(null, $id);
+		}
+		$this->set('escolaridades', $this->Companheiro->escolaridades);
+	}
 		
 	function admin_consultar($id = null) {
 			if (!$id && empty($this->data)) {
