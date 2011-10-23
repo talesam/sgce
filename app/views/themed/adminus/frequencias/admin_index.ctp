@@ -17,8 +17,7 @@
 			
 				<thead>
 					<tr>
-						<th>Responsável pela família</th>
-						<th>Situação</th>
+						<th>Encontros</th>
 					</tr>
 				</thead>
 				
