@@ -9,30 +9,46 @@
  * @version $Id$
  * @copyright __MyCompanyName__
  **/
-
 class FrequenciasController extends AppController {
-	
-
-	function admin_index($encontroId=null) {
-		
-		/* Lista as frequências de um encontro */
-		$frequencias = $this->Frequencia->find('list', array('conditions' => array('Frequencia.data' => $encontroId)));
-				
-		/* Listar as pessoas responsáveis pela família.*/
-		$this->Frequencia->Familia->recursive = -1;
-		$pessoas = $this->Frequencia->Familia->find('all', array('conditions' => array('Familia.parente_id' => null), 'order' => array('Familia.nome'))); 
-
-		/* 
-		* Lista os códigos da frequência
-		* 
-		* Ex.: Ausente, Presente...
-		*  */
-		$codigos = $this->Frequencia->codigos;
-		
-		
-		/* Envia para a visão os valores */
-		$this->set(compact('familias', 'frequencias', 'codigos'));
+	/**
+	 * Exibe a primeira página do cadastro
+	 * 
+	 * @return	void
+	 */
+	function admin_index($encontroId=null) 
+	{
+		$this->data 	= $this->paginate();
+		$codigos 		= $this->Frequencia->codigos;
+		$listaCampos	= array('Frequencia.data');
+		$this->set(compact('codigos','listaCampos'));
 	}
 
+	/**
+	 * Exibe a tela de edição do cadastro
+	 * 
+	 * @param	integer	$id Primarkey do campo a ser editado
+	 * @return	void
+	 */
+	public function admin_editar($id = null) 
+	{
+	}
+
+	/**
+	 * Exibe a tela de inclusão do cadastro
+	 * 
+	 * @return	void
+	 */
+	function admin_cadastrar() 
+	{
+	}
+
+	/**
+	 * Exibe a tela de consulta do cadastro
+	 * 
+	 * @return	void
+	 */
+	function admin_consultar($id=0) 
+	{
+	}
 }
 ?>
