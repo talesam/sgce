@@ -10,7 +10,15 @@
  * @copyright __MyCompanyName__
  **/
 class Definicoescesta extends AppModel {
-	
+
+	public $hasOne = array(
+		'Estoque' => array(
+			'foreignKey'   => 'definicoescesta_id',
+			'className'    => 'Estoque',
+			'dependent'    => true
+		)
+	);
+
 	public $tipos = array(
 		'cesta' => 'Cesta',
 		'extra' => 'Extra'

@@ -12,7 +12,28 @@
 
 class DefinicoescestasController extends AppController {
 	
-	function admin_index() {
+	function admin_index() 
+	{
+		if (!empty($this->data))
+		{
+			$ids = array();
+			foreach($this->data['Definicoescesta']['id'] as $k => $v) if($v == 1) $ids[$k] = $k;
+
+			if (empty($ids))
+			{
+				$this->Session->setFlash('Marque as Definições que deseja excluir.', 'flash_warning');
+			} else
+			{
+				if($this->Definicoescesta->deleteAll(array('Definicoescesta.id' => $ids)))
+				{
+					$this->Session->setFlash('Definições de Cestas removidas.', 'flash_success');
+				}else
+				{
+					$this->Session->setFlash('Definições de Cestas não removidas. Por favor, tente novamente.', 'flash_error');
+				}
+			}
+		}
+
 		$definicoescestas = $this->paginate();
 		$this->set('definicoescestas', $definicoescestas);
 		
