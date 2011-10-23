@@ -22,17 +22,7 @@
 					</tr>
 				</thead>
 				
-				<tbody>
-					<?php foreach ($pessoas as $pessoa): ?>
-					<tr>
-						<td><?php echo $pessoa['Pessoa']['nome']; ?></td>
-						<td>
-							<?php echo $this->Form->input('codigo', array( 'label' => false, 'class' => 'styled', 'type' => 'select', 'options' => $codigos, 'selected' => isset($frequencias[$pessoa['Pessoa']['familia_id']]) ? $codigos[$frequencias[$pessoa['Pessoa']['familia_id']]] : null, 'empty' => '-')); ?>
-						</td>
-					</tr>
-					<?php endforeach; ?>
-				</tbody>
-				
+
 			</table>
 			<p>
 				<input type="submit" class="submit small" value="Salvar" />
