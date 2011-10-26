@@ -5,12 +5,10 @@
 	<div class="block_head">
 		<div class="bheadl"></div>
 		<div class="bheadr"></div>
-		
 		<h2>Editar <?= $titulo ?></h2>
 		<ul><li><?php echo $this->Html->link('VOLTAR', array('action' => 'index')); ?></li></ul>
 	</div>		<!-- .block_head ends -->
 	
-
 	<div class="block_content">
 	
 		<?php echo $this->Form->create($modelClass);  ?>

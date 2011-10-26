@@ -13,18 +13,15 @@
 
 	<div class="block_content">
 			<p>
-				<label>Responsável Família</label><br />
-				<?php $valor = $this->data['Familia']['nome'];  echo $valor; ?>
+				<label>Responsável Família: </label><?php $valor = $this->data['Familia']['nome'];  echo $valor; ?>
 			</p>		
 			
 			<p>
-				<label>Código</label><br />
-				<?php $valor = $this->data['Frequencia']['codigo'];  echo $codigos[$valor]; ?>
+				<label>Código: </label><?php $valor = $this->data['Frequencia']['codigo'];  echo $codigos[$valor]; ?>
 			</p>	
 				
 			<p>
-				<label>Data</label><br />
-				<?php $valor = $this->data['Frequencia']['data'];  echo date('d/m/Y', strtotime($valor)); ?>
+				<label>Data: </label><?php $valor = $this->data['Frequencia']['data'];  echo date('d/m/Y', strtotime($valor)); ?>
 			</p>
 		
 		
