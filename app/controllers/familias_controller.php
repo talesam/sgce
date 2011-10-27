@@ -155,17 +155,29 @@ class FamiliasController extends AppController {
 	}
 
 
-	public function admin_excluir($id = null) {
-		if(!$id) {
+	public function admin_excluir($id = null) 
+	{
+		if(!$id) 
+		{
 			$this->Session->setFlash('Família inválida', 'flash_error');
 			$this->redirect(array('action'=>'index'));
 		}
-		if($this->Familia->delete($id)) {
+		if($this->Familia->delete($id)) 
+		{
 			$this->Session->setFlash('Família removida.', 'flash_success');
 			$this->redirect(array('action'=>'index'));
 		}
 		$this->Session->setFlash('Família não pode ser removida', 'flash_error');
 		$this->redirect(array('action' => 'index'));
+	}
+
+	/**
+	 * 
+	 */
+	public function admin_rel_aptas()
+	{
+		$this->data = $this->Familia->find('all',array('conditions'=>array('Familia.situacao'=>1)));
+		//$this->set(compact(''));
 	}
 }
 ?>
