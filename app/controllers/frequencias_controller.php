@@ -19,7 +19,7 @@ class FrequenciasController extends AppController {
 	{
 		$titulo 	= 'Frequência';
 		$modelClass	= $this->modelClass;
-		$familias 	= $this->Frequencia->Familia->find('list');
+		$familias 	= $this->Frequencia->Familia->find('list',array('conditions'=>array('Familia.situacao'=>1)));
 		$codigos 	= $this->Frequencia->codigos;
 		$this->set(compact('titulo','modelClass','familias','codigos'));
 		parent::beforeRender();

@@ -12,12 +12,14 @@
 
 class UsuariosController extends AppController {
 	
-	public function login(){
-		
+	public function login()
+	{	
 	}
 	
-	public function recuperarsenha(){
-		if ( !empty($this->data) ) {
+	public function recuperarsenha()
+	{
+		if ( !empty($this->data) ) 
+		{
 			
 			$usuario = $this->Usuario->findByEmail($this->data['Usuario']['email']);
 
@@ -109,44 +111,48 @@ class UsuariosController extends AppController {
 			$this->set('grupos', ClassRegistry::init('Grupo')->find('list'));
 		}
 
-		function admin_editar($id = null) {
-			if (!$id && empty($this->data)) {
-				$this->Session->setFlash('Usuário inválido.', 'flash_error');
-				$this->redirect(array('action' => 'index'));
-			}
-			if (!empty($this->data)) {
-				if(!empty($this->data['Usuario']['temp_password'])){
-					$this->data['Usuario']['password'] = $this->Auth->password($this->data['Usuario']['temp_password']);	
-				}
-				if ($this->Usuario->save($this->data)) {
-					
-					$this->gravarLog('Modificou usuário: '. $this->data['Usuario']['nome']);
-					
-					$this->Session->setFlash('Usuário salvo.', 'flash_success');
-					$this->redirect(array('action' => 'index'));
-				} else {
-					$this->Session->setFlash('Usuário não pode ser salvo. Por favor, tente novamente.', 'flash_error');
-				}
-			}
-			if (empty($this->data)) {
-				$this->data = $this->Usuario->read(null, $id);
-			}
-		
-			$this->set('grupos', ClassRegistry::init('Grupo')->find('list'));
+	function admin_editar($id = null) {
+		if (!$id && empty($this->data)) {
+			$this->Session->setFlash('Usuário inválido.', 'flash_error');
+			$this->redirect(array('action' => 'index'));
 		}
-		
-			function admin_consultar($id = null) {
-			if (!$id && empty($this->data)) {
-				$this->Session->setFlash('Usuário inválido.', 'flash_error');
+		if (!empty($this->data)) 
+		{
+			if(!empty($this->data['Usuario']['temp_senha']))
+			{
+				$this->data['Usuario']['senha'] = $this->Auth->password($this->data['Usuario']['temp_senha']);
+			}
+			if ($this->Usuario->save($this->data)) 
+			{
+				$this->gravarLog('Modificou usuário: '. $this->data['Usuario']['nome']);
+				$this->Session->setFlash('Usuário salvo.', 'flash_success');
 				$this->redirect(array('action' => 'index'));
-				$this->gravarLog('Consultou usuário: '. $this->data['Usuario']['nome']);
+			} else 
+			{
+				$this->Session->setFlash('Usuário não pode ser salvo. Por favor, tente novamente.', 'flash_error');
 			}
-			if (empty($this->data)) {
-				$this->data = $this->Usuario->read(null, $id);
-			}
-		
-			$this->set('grupos', ClassRegistry::init('Grupo')->find('list'));
 		}
+
+		if (empty($this->data)) 
+		{
+			$this->data = $this->Usuario->read(null, $id);
+		}
+		$this->set('grupos', ClassRegistry::init('Grupo')->find('list'));
+	}
+	
+	function admin_consultar($id = null) 
+	{
+		if (!$id && empty($this->data)) 
+		{
+			$this->Session->setFlash('Usuário inválido.', 'flash_error');
+			$this->redirect(array('action' => 'index'));
+			$this->gravarLog('Consultou usuário: '. $this->data['Usuario']['nome']);
+		}
+		if (empty($this->data)) {
+			$this->data = $this->Usuario->read(null, $id);
+		}
+		$this->set('grupos', ClassRegistry::init('Grupo')->find('list'));
+	}
 
 		public function admin_excluir($id = null) {
 			if(!$id) {

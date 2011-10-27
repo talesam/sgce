@@ -42,33 +42,40 @@ class Usuario extends AppModel {
 		)
 	);
 	
-	
-	
+	public $belongsTo = array('Grupo');
+	public $actsAs = array('Acl' => array('type' => 'requester'));
 
-
-		public $belongsTo = array('Grupo');
-		public $actsAs = array('Acl' => array('type' => 'requester'));
-
-		function parentNode() {
-		    if (!$this->id && empty($this->data)) {
-		        return null;
-		    }
-		    if (isset($this->data['Usuario']['role_id'])) {
-			$groupId = $this->data['Usuario']['role_id'];
-		    } else {
-		    	$roleId = $this->field('grupo_id');
-		    }
-		    if (!$roleId) {
+	function parentNode() 
+	{
+		if (!$this->id && empty($this->data)) 
+		{
 			return null;
-		    } else {
-		        return array('Grupo' => array('id' => $roleId));
-		    }
 		}
-
-		function bindNode($user) {
-		    return array('model' => 'Grupo', 'foreign_key' => $user['Usuario']['grupo_id']);
+		if (isset($this->data['Usuario']['role_id'])) 
+		{
+			$groupId = $this->data['Usuario']['role_id'];
+		} else 
+		{
+			$roleId = $this->field('grupo_id');
 		}
+		if (!$roleId) 
+		{
+			return null;
+		} else
+		{
+			return array('Grupo' => array('id' => $roleId));
+		}
+	}
 
-	
+	function bindNode($user) 
+	{
+		return array('model' => 'Grupo', 'foreign_key' => $user['Usuario']['grupo_id']);
+	}
+
+	public function beforeSave($options = array())
+	{
+		pr($this->data);
+		return true;
+	}	
 }
 ?>
