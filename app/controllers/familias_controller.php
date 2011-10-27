@@ -172,12 +172,13 @@ class FamiliasController extends AppController {
 	}
 
 	/**
+	 * Exibe o relatório de família aptas
 	 * 
+	 * @return	void
 	 */
 	public function admin_rel_aptas()
 	{
 		$this->data = $this->Familia->find('all',array('conditions'=>array('Familia.situacao'=>1)));
-		//$this->set(compact(''));
 	}
 }
 ?>

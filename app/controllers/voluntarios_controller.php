@@ -104,5 +104,17 @@ class VoluntariosController extends AppController {
 			$this->Session->setFlash('Voluntário não pode ser removido', 'flash_error');
 			$this->redirect(array('action' => 'index'));
 		}
+	
+	/**
+	 * Exibe o relatório voluntarios
+	 * 
+	 * @return	void
+	 */
+	public function admin_rel_voluntarios()
+	{
+		$this->data 	= $this->Voluntario->find('all');
+		$listaCampos 	= array('Voluntario.nome','Voluntario.prestacao_servico','Voluntario.telefone','Voluntario.celular','Voluntario.email');
+		$this->set(compact('listaCampos'));
+	}
 }
 ?>

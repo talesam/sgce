@@ -24,7 +24,6 @@
 						<th width="10"><input type="checkbox" class="check_all"/></th>
 						<th><?php echo $this->Paginator->sort('nome');?></th>
 						<th><?php echo $this->Paginator->sort('E-mail', 'email');?></th>
-						<th><?php echo $this->Paginator->sort('Situação', 'status');?></th>
 						<th><?php echo $this->Paginator->sort('telefone');?></th>
 						<th><?php echo $this->Paginator->sort('celular');?></th>
 						<td>&nbsp;</td>
@@ -37,7 +36,6 @@
 						<td><?php echo $this->Form->input('id.'.$voluntario['Voluntario']['id'], array('type' => 'checkbox', 'div' => false, 'label' => false)); ?></td>
 						<td><?php echo $voluntario['Voluntario']['nome']; ?>&nbsp;</td>
 						<td><?php echo $voluntario['Voluntario']['email']; ?>&nbsp;</td>
-						<td><?php echo $voluntario['Voluntario']['status'] ? 'ativo' : 'inativo'; ?>&nbsp;</td>
 						<td><?php echo $voluntario['Voluntario']['telefone']; ?>&nbsp;</td>
 						<td><?php echo $voluntario['Voluntario']['celular']; ?>&nbsp;</td>
 						<td class="delete">

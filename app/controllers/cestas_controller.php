@@ -126,7 +126,24 @@ class CestasController extends AppController {
 		}
 		
 		$this->redirect('index');	
-		
+	}
+
+	/**
+	 * Exibe o relatório voluntarios
+	 * 
+	 * @return	void
+	 */
+	public function admin_rel_cestas()
+	{
+		$this->data 	= $this->Cesta->find('all');
+		$_arrData = $this->data;
+		foreach($_arrData as $_linha => $_arrModel)
+		{
+			$this->data[$_linha]['Cesta']['data_gerada'] 	= date('d/m/Y',strtotime($this->data[$_linha]['Cesta']['data_gerada']));
+			$this->data[$_linha]['Cesta']['data_saida'] 	= date('d/m/Y',strtotime($this->data[$_linha]['Cesta']['data_saida']));
+		}
+		$listaCampos 	= array('Familia.nome','Familia.telefone','Cesta.data_gerada','Cesta.data_saida');
+		$this->set(compact('listaCampos'));
 	}
 }
 ?>
