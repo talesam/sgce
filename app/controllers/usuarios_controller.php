@@ -16,7 +16,7 @@ class UsuariosController extends AppController {
 	{	
 	}
 	
-	public function recuperarsenha()
+	public function admin_recuperarsenha()
 	{
 		if ( !empty($this->data) ) 
 		{
@@ -33,7 +33,6 @@ class UsuariosController extends AppController {
 						$assunto = 'Nova senha - SGCE';
 						
 						$a = array('id' => $usuario['Usuario']['id'], 'senha' => $this->Auth->password($senha) );
-						$this->Usuario->save($a);
 						
 						$this->Email->to = $this->data['Usuario']['email'];
 						$this->Email->subject = $assunto;
@@ -43,16 +42,18 @@ class UsuariosController extends AppController {
 						$this->Email->sendAs = 'both'; // html, text, both
 
 
-						if ( $this->Email->send($mensagem) ) {
+						if ( $this->Email->send($mensagem) ) 
+						{
 							$this->flash( 'Sua nova senha foi enviada com sucesso para seu e-mail.', '/usuarios/login',3);
-						} else {
-							$this->flash( 'Houve algum problema para recuperar sua senha. Por favor tente novamente mais tarde.', '/usuarios/recuperarsenha', 3 );
+							$this->Usuario->save($a);
+						} else
+						{
+							$this->flash( 'Houve algum problema para recuperar sua senha. Por favor tente novamente mais tarde.', '/usuarios/admin_recuperarsenha', 3 );
 						}
-			}else{
-					$this->flash( 'Não encontramos seu e-mail em nossos cadastros. Por favor, tente novamente mais tarde.', '/usuarios/recuperarsenha', 3 );
+			}else
+			{
+					$this->flash( 'Não encontramos seu e-mail em nossos cadastros. Por favor, tente novamente mais tarde.', '/usuarios/admin_recuperarsenha', 3 );
 			}
-		
-
 		}
 	}
 	

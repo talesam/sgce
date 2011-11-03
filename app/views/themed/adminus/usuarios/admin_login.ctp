@@ -24,6 +24,7 @@
 		<p>
 			<input type="submit" class="submit" value="Login" /> &nbsp; 
 		</p>
+		<p><?php echo $this->Html->link('Recuperar senha',array('controller'=>'usuarios','action'=>'recuperarsenha')) ?></p>
 		<?php echo $this->Form->end(null); ?>
 					
 	</div>		<!-- .block_content ends -->					

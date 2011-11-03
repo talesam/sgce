@@ -23,17 +23,23 @@ class AppController extends Controller {
 	 */
 	public function beforeFilter()
 	{
-		//echo pr($this->params);
-		$this->Auth->authorize 		= 'actions';
-		$this->Auth->userModel 		= 'Usuario';
-		$this->Auth->fields 		= array('username' => 'email', 'password' => 'senha');
-		$this->Auth->authError 		= 'Desculpe, você precisa se autenticar no sistema para visualizar esta área.';
-		$this->Auth->loginError 	= 'E-mail ou senha inválidos ou usuário pode estar inativo. Por favor, tente novamente.';
-		$this->Auth->userScope 		= array('Usuario.status' => 1);
-		$this->Auth->loginAction 	= array('admin' => true, 'controller' => 'usuarios', 'action' => 'login');
-		$this->Auth->logoutRedirect = array('admin' => true, 'controller' => 'usuarios', 'action' => 'login');
-		$this->Auth->loginRedirect 	= array('admin' => true,  'controller' => 'familias', 'action' => 'index');
-		//$this->Auth->allow('*');
+		if ($this->params['controller']=='usuarios' && $this->params['action']=='admin_recuperarsenha')
+		{
+			$this->Auth->enabled = false;
+		} else
+		{
+			//echo pr($this->params);
+			$this->Auth->authorize 		= 'actions';
+			$this->Auth->userModel 		= 'Usuario';
+			$this->Auth->fields 		= array('username' => 'email', 'password' => 'senha');
+			$this->Auth->authError 		= 'Desculpe, você precisa se autenticar no sistema para visualizar esta área.';
+			$this->Auth->loginError 	= 'E-mail ou senha inválidos ou usuário pode estar inativo. Por favor, tente novamente.';
+			$this->Auth->userScope 		= array('Usuario.status' => 1);
+			$this->Auth->loginAction 	= array('admin' => true, 'controller' => 'usuarios', 'action' => 'login');
+			$this->Auth->logoutRedirect = array('admin' => true, 'controller' => 'usuarios', 'action' => 'login');
+			$this->Auth->loginRedirect 	= array('admin' => true,  'controller' => 'familias', 'action' => 'index');
+			//$this->Auth->allow('*');
+		}
 	}
 
 	/**
