@@ -9,13 +9,13 @@
 		$senha	= $db->config->default['password'];
 	?>
 	<div id="txtInstalaBanco" style='align: 0px auto;'>
-		<p class='sql_tit'>Peça ao Administrador do Banco de dados para executar os comandos abaixo.</p>
-		<pre class='txt_sql' style='background-color: #FF8989; color: #000;'>
-		create database <?php echo $banco; ?> CHARACTER SET utf8;
-		grant all privileges on <?php echo $banco; ?>.* to <?php echo $login."@".$host." identified by \"".$senha."\" with grant option;\n"; ?>
-		flush privileges;</pre><br />
-		<p class='sql_obs2'>* Para alterar as configurações do banco de dados, edite o arquivo config/database.php</p>
-		<p class='sql_obs3'>Cliquei <a href="<?php echo $this->here; ?>">aqui</a> para atualizar.</p>
+<p class='sql_tit'>Peça ao Administrador do Banco de dados para executar os comandos abaixo.</p>
+<pre class='txt_sql' style='background-color: #FF8989; color: #000;'>
+create database <?php echo $banco; ?> CHARACTER SET utf8;
+grant all privileges on <?php echo $banco; ?>.* to <?php echo $login."@".$host." identified by \"".$senha."\" with grant option;\n"; ?>
+flush privileges;</pre><br />
+<p class='sql_obs2'>* Para alterar as configurações do banco de dados, edite o arquivo config/database.php</p>
+<p class='sql_obs3'>Cliquei <a href="<?php echo $this->here; ?>">aqui</a> para atualizar.</p>
 	</div>
 	<?php else : 
 	if (isset($_POST))

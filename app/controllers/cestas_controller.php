@@ -136,14 +136,14 @@ class CestasController extends AppController {
 	 */
 	public function admin_rel_cestas()
 	{
-		$this->data 	= $this->Cesta->find('all');
+		$this->data 	= $this->Cesta->find('all',array('conditions'=>array('Cesta.familia_id'=>null)));
 		$_arrData = $this->data;
 		foreach($_arrData as $_linha => $_arrModel)
 		{
 			$this->data[$_linha]['Cesta']['data_gerada'] 	= date('d/m/Y',strtotime($this->data[$_linha]['Cesta']['data_gerada']));
 			$this->data[$_linha]['Cesta']['data_saida'] 	= date('d/m/Y',strtotime($this->data[$_linha]['Cesta']['data_saida']));
 		}
-		$listaCampos 	= array('Familia.nome','Familia.telefone','Cesta.data_gerada','Cesta.data_saida');
+		$listaCampos 	= array('Familia.nome','Cesta.data_gerada','Cesta.data_saida');
 		$this->set(compact('listaCampos'));
 	}
 

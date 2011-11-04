@@ -3,6 +3,7 @@
 <tr>
 	<th>Cestas Disponíveis</th>
 	<th>data Gerada</th>
+	<th>data Saída</th>
 </tr>
 
 <?php foreach($this->data as $_linha => $_arrModel): ?> 
@@ -14,3 +15,4 @@
 <?php endforeach; ?>
 
 </table>
+<?php pr($this->data); ?>

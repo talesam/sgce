@@ -690,7 +690,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `grupo_id`, `status`, `nome`, `email`, `senha`, `cpf`, `endereco`, `complemento`, `numero`, `bairro`, `cidade`, `uf`, `cep`, `telefone`, `celular`, `prestacao_servico`) VALUES
-(4, 1, 1, 'Tales AraÃºjo MendonÃ§a', 'talesam@gmail.com', '9219bd604572f3be88d37830809b8ca303171e02', '054.619.336-61', 'Rua Professor Francisco Faria', '520', '101', 'Bairu', 'Juiz de Fora', 'MG', '36050-140', '(32) 3226-3307', '(32) 8801-9351', 'InformÃ¡tica'),
+(4, 1, 1, 'Tales Araújo Mendonça', 'talesam@gmail.com', '9219bd604572f3be88d37830809b8ca303171e02', '054.619.336-61', 'Rua Professor Francisco Faria', '520', '101', 'Bairu', 'Juiz de Fora', 'MG', '36050-140', '(32) 3226-3307', '(32) 8801-9351', 'InformÃ¡tica'),
 (6, 3, 1, 'Rafael Malatesta', 'faelflip@gmail.com', 'd38c69d9fb096663d1e4fd351f2a4f4a0c44e703', '999.999.999-99', '', '', '', '', '', '', '', '(32) 3273-1624', '', 'InformÃ¡tica');
 
 -- --------------------------------------------------------
