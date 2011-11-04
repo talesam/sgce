@@ -11,6 +11,7 @@
  **/
 
 class MantimentosController extends AppController {
+	var $name	= 'Mantimentos';
 	
 	function admin_index() {
 		$mantimentos = $this->paginate();

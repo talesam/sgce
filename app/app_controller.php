@@ -23,11 +23,11 @@ class AppController extends Controller {
 	 */
 	public function beforeFilter()
 	{
-		/*if ($this->params['controller']=='usuarios' && $this->params['action']=='admin_recuperarsenha')
+		if ($this->params['controller']=='usuarios' && $this->params['action']=='admin_recuperarsenha')
 		{
 			$this->Auth->enabled = false;
 		} else
-		{*/
+		{
 			//echo pr($this->params);
 			$this->Auth->authorize 		= 'actions';
 			$this->Auth->userModel 		= 'Usuario';
@@ -37,9 +37,9 @@ class AppController extends Controller {
 			$this->Auth->userScope 		= array('Usuario.status' => 1);
 			$this->Auth->loginAction 	= array('admin' => true, 'controller' => 'usuarios', 'action' => 'login');
 			$this->Auth->logoutRedirect = array('admin' => true, 'controller' => 'usuarios', 'action' => 'login');
-			$this->Auth->loginRedirect 	= array('admin' => true,  'controller' => 'familias', 'action' => 'index');
+			$this->Auth->loginRedirect 	= array('admin' => true, 'controller' => 'familias', 'action' => 'index');
 			//$this->Auth->allow('*');
-		//}
+		}
 	}
 
 	/**
@@ -130,10 +130,4 @@ class AppController extends Controller {
         $path =  ROOT.DS.APP_DIR.DS.WEBROOT_DIR.DS."arquivos".DS . $path.DS;
         @unlink($path);
     }
-
-
-
-
-	
-
 }
