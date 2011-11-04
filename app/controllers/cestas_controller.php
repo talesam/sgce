@@ -140,11 +140,13 @@ class CestasController extends AppController {
 		$_arrData = $this->data;
 		foreach($_arrData as $_linha => $_arrModel)
 		{
+			$this->data[$_linha]['Cesta']['nome'] 			= 'Cesta disponível para doação';
 			$this->data[$_linha]['Cesta']['data_gerada'] 	= date('d/m/Y',strtotime($this->data[$_linha]['Cesta']['data_gerada']));
 			$this->data[$_linha]['Cesta']['data_saida'] 	= date('d/m/Y',strtotime($this->data[$_linha]['Cesta']['data_saida']));
 		}
-		$listaCampos 	= array('Familia.nome','Cesta.data_gerada','Cesta.data_saida');
-		$this->set(compact('listaCampos'));
+		$totalCestas	= count($this->data);
+		$listaCampos 	= array('Cesta.nome','Cesta.data_gerada');
+		$this->set(compact('listaCampos','totalCestas'));
 	}
 
 	/**

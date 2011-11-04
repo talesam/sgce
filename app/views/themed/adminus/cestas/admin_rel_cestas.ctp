@@ -3,7 +3,6 @@
 <tr>
 	<th>Cestas Disponíveis</th>
 	<th>data Gerada</th>
-	<th>data Saída</th>
 </tr>
 
 <?php foreach($this->data as $_linha => $_arrModel): ?> 
@@ -13,6 +12,9 @@
 	<?php endforeach ?>
 </tr>
 <?php endforeach; ?>
+
+<tr><td colspan="<?= count($listaCampos) ?>">Total: <?= $totalCestas; ?></td>
+</tr>
 
 </table>
 <?php pr($this->data); ?>
