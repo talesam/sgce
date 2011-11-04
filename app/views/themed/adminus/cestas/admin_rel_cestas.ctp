@@ -8,7 +8,7 @@
 <?php foreach($this->data as $_linha => $_arrModel): ?> 
 <tr>
 	<?php foreach($listaCampos as $_campo) : $c = explode('.',$_campo); ?>
-	<td><?php echo $_arrModel[$c[0]][$c[1]] ?></td>
+	<td align="<?= ($c[1]=='data_gerada')?'center':'left' ?>"><?php echo $_arrModel[$c[0]][$c[1]] ?></td>
 	<?php endforeach ?>
 </tr>
 <?php endforeach; ?>
@@ -17,4 +17,4 @@
 </tr>
 
 </table>
-<?php pr($this->data); ?>
+<?php //pr($this->data); ?>
