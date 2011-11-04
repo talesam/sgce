@@ -192,7 +192,7 @@ class FamiliasController extends AppController {
 		foreach($this->data as $_linha => $_arrModel)
 		{
 			$this->data[$_linha]['Familia']['situacao'] = ($this->data[$_linha]['Familia']['situacao']==1) ? 'Sim' : 'Não';
-			$this->data[$_linha]['Cesta']['data_saida'] = date('d/m/Y', strtotime($this->data[$_linha]['Cesta']['data_saida']));
+			$this->data[$_linha]['Cesta']['data_saida'] = isset($this->data[$_linha]['Cesta']['data_saida']) ? date('d/m/Y', strtotime($this->data[$_linha]['Cesta']['data_saida'])) : null;
 		}
 		$listaCampos = array('Familia.situacao','Familia.nome','Cesta.data_saida');
 		$this->set(compact('listaCampos'));
