@@ -21,10 +21,6 @@ class Familia extends AppModel {
 		'Frequencia' => array(
 			'foreignKey'   => 'familia_id',
 			'className'    => 'Frequencia',
-		),
-		'Cesta' => array(
-			'foreignKey'   => 'familia_id',
-			'className'    => 'Cesta',
 		)
 	);
 
@@ -39,8 +35,11 @@ class Familia extends AppModel {
 		'Resposta' => array(
 			'className'		=> 'Resposta',
 			'foreignKey'   	=> 'familia_id',
-			'className'   	=> 'Resposta',
 			'dependent'		=> true
+		),
+		'Cesta' => array(
+			'foreignKey'   => 'familia_id',
+			'className'    => 'Cesta',
 		),
 	);
 

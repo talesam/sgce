@@ -49,12 +49,15 @@ class CestasController extends AppController {
 		while($ok){
 			/* Pego todas as definições da cesta  */
 			foreach($defCesta->find('all') as $def){
-				$estoque = $estoqueCesta->find('all', 
-					array(
-						'conditions' => 
-							array('Estoque.definicoescesta_id' => $def['Definicoescesta']['id'])
+				$estoqueParam = array(
+					array('AND' => array (
+						'conditions' =>  array(
+							'Estoque.definicoescesta_id' => $def['Definicoescesta']['id']), 
+							'Estoque.data_vencimento >= ' => 'Date(Now())'),
+						'order' => array('Estoque.data_vencimento' => 'ASC')
 					)
 				);
+				$estoque = $estoqueCesta->find('all', $estoqueParam);
 				
 				if (empty($estoque)) {
 					$ok = false;
@@ -81,17 +84,10 @@ class CestasController extends AppController {
 			
 			// Abatendo os itens do estoque.
 			foreach($defCesta->find('all') as $def){
-				$estoque = $estoqueCesta->find('all', 
-					array(
-						'conditions' => 
-							array('Estoque.definicoescesta_id' => $def['Definicoescesta']['id']), 
-						'order' => 
-								array('Estoque.data_vencimento' => 'ASC')
-					)
-				);
+				$estoque = $estoqueCesta->find('all', $estoqueParam);
 				
 				$qtdeTotal = $def['Definicoescesta']['quantidade'];
-				foreach($estoque as $itemEstoque){
+				foreach ($estoque as $itemEstoque) {
 					$undNecessaria = $qtdeTotal / $itemEstoque['Estoque']['complemento_qt'];
 					$undDisponivel = $itemEstoque['Estoque']['quantidade'];
 					$undUtilizada = $undNecessaria;
@@ -99,8 +95,16 @@ class CestasController extends AppController {
 						$undUtilizada = $undDisponivel;					
 					$qtdeItem = $undUtilizada * $itemEstoque['Estoque']['complemento_qt'];
 					$qtdeTotal -= $qtdeItem;
+					$novaQtde = $undDisponivel - $undUtilizada;
+					/*
+					if ($itemEstoque['Estoque']['quantidade'] > 1) {
+						pr($novaQtde); die();
+					}
+					*/
+					
 					$estoqueCesta->save(array('id' => $itemEstoque['Estoque']['id'], 
-						'quantidade' => ($itemEstoque['Estoque']['quantidade'] - $undUtilizada)));
+						'quantidade' => $novaQtde));
+					
 					if ($qtdeTotal == 0)
 						break;
 				}
@@ -119,11 +123,11 @@ class CestasController extends AppController {
 		}
 		
 		// Removendo do estoque os itens vazios.
-		foreach($estoque as $itemEstoque){
+		/*foreach($estoque as $itemEstoque){
 			if ($itemEstoque['Estoque']['quantidade'] == 0) {
 				$estoqueCesta->deleteAll(array('Estoque.id' => $itemEstoque['Estoque']['id']));
 			}
-		}
+		} */
 		
 		$this->redirect('index');	
 	}

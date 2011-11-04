@@ -9,17 +9,12 @@
  * @version $Id$
  * @copyright __MyCompanyName__
  **/
-class Estoque extends AppModel {
-	public $belongsTo = array('Definicoescesta');
-	
-	// Uma cesta tem vários itens
-	/*public $hasMany = array(
-		'Itemcesta' => array(
-			'foreignKey'   => 'estoque_id',
-			'className'    => 'ItemCesta',
-			'dependent'		=> true
-		),
-	);*/
+class Itemcesta extends AppModel {
+	/* Itemcesta tem muitas Cestas e Estoques */
+	public $belongsTo = array(
+		'Estoque', 'Cesta'
+	);
+
 	
 	/**
 	 * 

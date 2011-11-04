@@ -41,7 +41,8 @@ class DefinicoescestasController extends AppController {
 		$e =& ClassRegistry::init('Estoque');
 
 		foreach($definicoescestas as $definicoescesta){
-			$estoque[$definicoescesta['Definicoescesta']['id']] = $e->find('first', array('fields' => 'SUM(Estoque.quantidade) as `total`' ,'conditions' => array('Estoque.definicoescesta_id' => $definicoescesta['Definicoescesta']['id'])));
+			$estoque[$definicoescesta['Definicoescesta']['id']] = 
+				$e->find('first', array('fields' => 'SUM(Estoque.quantidade*Estoque.complemento_qt) as `total`' ,'conditions' => array('Estoque.definicoescesta_id' => $definicoescesta['Definicoescesta']['id'])));
 		}
 
 		if (isset($estoque))
