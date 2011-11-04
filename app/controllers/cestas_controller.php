@@ -45,10 +45,11 @@ class CestasController extends AppController {
 		$estoqueCesta->recursive = -1;
 		$cestas = 0;
 		$ok = true;
+		$itDefCesta = $defCesta->find('all');
 
 		while($ok){
 			/* Pego todas as definições da cesta  */
-			foreach($defCesta->find('all') as $def){
+			foreach($itDefCesta as $def){
 				$estoqueParam = array(
 					array('AND' => array (
 						'conditions' =>  array(
@@ -68,9 +69,7 @@ class CestasController extends AppController {
 				foreach($estoque as $itemEstoque){
 					$qtde += $itemEstoque['Estoque']['quantidade'] * $itemEstoque['Estoque']['complemento_qt'];
 				}
-				
-				//pr($qtde); die();
-				//pr($def); die();
+
 				if ($qtde < $def['Definicoescesta']['quantidade']) {
 					$ok = false;
 					break;
@@ -83,11 +82,14 @@ class CestasController extends AppController {
 			}
 			
 			// Abatendo os itens do estoque.
-			foreach($defCesta->find('all') as $def){
+			
+			foreach($itDefCesta as $def){
 				$estoque = $estoqueCesta->find('all', $estoqueParam);
 				
 				$qtdeTotal = $def['Definicoescesta']['quantidade'];
+				$cont = 0;
 				foreach ($estoque as $itemEstoque) {
+					++$cont;
 					$undNecessaria = $qtdeTotal / $itemEstoque['Estoque']['complemento_qt'];
 					$undDisponivel = $itemEstoque['Estoque']['quantidade'];
 					$undUtilizada = $undNecessaria;
@@ -96,15 +98,10 @@ class CestasController extends AppController {
 					$qtdeItem = $undUtilizada * $itemEstoque['Estoque']['complemento_qt'];
 					$qtdeTotal -= $qtdeItem;
 					$novaQtde = $undDisponivel - $undUtilizada;
-					/*
-					if ($itemEstoque['Estoque']['quantidade'] > 1) {
-						pr($novaQtde); die();
-					}
-					*/
-					
-					$estoqueCesta->save(array('id' => $itemEstoque['Estoque']['id'], 
+
+					$result = $estoqueCesta->save(array('id' => $itemEstoque['Estoque']['id'], 
 						'quantidade' => $novaQtde));
-					
+
 					if ($qtdeTotal == 0)
 						break;
 				}

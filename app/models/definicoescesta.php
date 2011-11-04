@@ -11,7 +11,7 @@
  **/
 class Definicoescesta extends AppModel {
 
-	public $hasOne = array(
+	public $hasMany = array(
 		'Estoque' => array(
 			'foreignKey'   => 'definicoescesta_id',
 			'className'    => 'Estoque',
