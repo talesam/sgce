@@ -23,11 +23,11 @@ class AppController extends Controller {
 	 */
 	public function beforeFilter()
 	{
-		if ($this->params['controller']=='usuarios' && $this->params['action']=='admin_recuperarsenha')
+		/*if ($this->params['controller']=='usuarios' && $this->params['action']=='admin_recuperarsenha')
 		{
 			$this->Auth->enabled = false;
 		} else
-		{
+		{*/
 			//echo pr($this->params);
 			$this->Auth->authorize 		= 'actions';
 			$this->Auth->userModel 		= 'Usuario';
@@ -39,7 +39,7 @@ class AppController extends Controller {
 			$this->Auth->logoutRedirect = array('admin' => true, 'controller' => 'usuarios', 'action' => 'login');
 			$this->Auth->loginRedirect 	= array('admin' => true,  'controller' => 'familias', 'action' => 'index');
 			//$this->Auth->allow('*');
-		}
+		//}
 	}
 
 	/**

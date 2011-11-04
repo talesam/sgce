@@ -95,14 +95,15 @@ class MantimentosController extends AppController {
 	 * 
 	 * @return	void
 	 */
-	public function admin_rel_venc_mantimento()
+	public function admin_rel_venc_mantimentos()
 	{
-		$this->data  = $this->Mantimento->find('all');
+		//$this->data = $this->Mantimento->find('all');
 		/*foreach($this->data as $_linha => $_arrModel)
 		{
 			//$this->data[$_linha]['Familia']['situacao'] = ($this->data[$_linha]['Familia']['situacao']==1) ? 'Sim' : 'Não';
 			//$this->data[$_linha]['Cesta']['data_saida'] = date('d/m/Y', strtotime($this->data[$_linha]['Cesta']['data_saida']));
 		}*/
+		$this->data = array();
 		$listaCampos = array('Mantimento.nome','Mantimento.complemento_qt','Mantimento.data');
 		$this->set(compact('listaCampos'));
 	}

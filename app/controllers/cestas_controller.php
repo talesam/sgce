@@ -130,7 +130,7 @@ class CestasController extends AppController {
 	}
 
 	/**
-	 * Exibe o relatório voluntarios
+	 * Exibe o relatório cestas
 	 * 
 	 * @return	void
 	 */
@@ -144,6 +144,18 @@ class CestasController extends AppController {
 			$this->data[$_linha]['Cesta']['data_saida'] 	= date('d/m/Y',strtotime($this->data[$_linha]['Cesta']['data_saida']));
 		}
 		$listaCampos 	= array('Familia.nome','Familia.telefone','Cesta.data_gerada','Cesta.data_saida');
+		$this->set(compact('listaCampos'));
+	}
+
+	/**
+	 * Exibe o relatório de itens pendentes
+	 * 
+	 * @return	void
+	 */
+	public function admin_rel_itens_pendentes()
+	{
+		$this->data = $this->Cesta->find('all');
+		$listaCampos= array('Familia.nome','Estoque.quantidade','Estoque.complemento_qt');
 		$this->set(compact('listaCampos'));
 	}
 }
