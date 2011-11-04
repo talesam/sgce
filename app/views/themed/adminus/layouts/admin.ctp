@@ -90,10 +90,10 @@
 						<ul>
 							<li><?php echo $this->Html->link('Voluntário', array('controller' => 'voluntarios', 'action' => 'rel_voluntarios', 'plugin' => false)); ?></li>
 												
-							<li><?php echo $this->Html->link('Vencimento Matrícula', array('controller' => 'familias', 'action' => 'index', 'plugin' => false)); ?></li>
+							<li><?php echo $this->Html->link('Vencimento Matrícula', array('controller' => 'familias', 'action' => 'admin_rel_venc_matricula', 'plugin' => false)); ?></li>
 							<li><?php echo $this->Html->link('Família Apta', array('controller' => 'familias', 'action' => 'rel_aptas', 'plugin' => false)); ?></li>
 							
-							<li><?php echo $this->Html->link('Vencimento Mantimento', array('controller' => 'mantimentos', 'action' => 'index', 'plugin' => false)); ?></li>
+							<li><?php echo $this->Html->link('Vencimento Mantimento', array('controller' => 'mantimentos', 'action' => 'admin_rel_venc_mantimento', 'plugin' => false)); ?></li>
 							<li><?php echo $this->Html->link('Cesta Disponível', array('controller' => 'cestas', 'action' => 'rel_cestas', 'plugin' => false)); ?></li>
 							<li><?php echo $this->Html->link('Item Pendente Cesta', array('controller' => 'cestas', 'action' => 'index', 'plugin' => false)); ?></li>
 						</ul>
