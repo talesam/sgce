@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 3.3.10deb1
+-- version 3.4.5deb1
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tempo de Geração: Nov 05, 2011 as 11:03 AM
--- Versão do Servidor: 5.1.54
--- Versão do PHP: 5.3.5-1ubuntu7.3
+-- Tempo de Geração: 05/11/2011 às 19h04min
+-- Versão do Servidor: 5.1.58
+-- Versão do PHP: 5.3.6-13ubuntu3.2
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -172,20 +173,19 @@ CREATE TABLE IF NOT EXISTS `aros` (
   `lft` int(11) DEFAULT NULL,
   `rght` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Extraindo dados da tabela `aros`
 --
 
 INSERT INTO `aros` (`id`, `parent_id`, `model`, `foreign_key`, `alias`, `lft`, `rght`) VALUES
-(1, NULL, 'Grupo', 1, NULL, 1, 6),
-(2, NULL, 'Grupo', 2, NULL, 7, 8),
-(3, NULL, 'Grupo', 3, NULL, 9, 12),
-(5, NULL, 'Grupo', 5, NULL, 13, 14),
+(1, NULL, 'Grupo', 1, NULL, 1, 4),
+(2, NULL, 'Grupo', 2, NULL, 5, 6),
+(3, NULL, 'Grupo', 3, NULL, 7, 10),
+(5, NULL, 'Grupo', 5, NULL, 11, 12),
 (8, 1, 'Usuario', 4, NULL, 2, 3),
-(10, 3, 'Usuario', 6, NULL, 10, 11),
-(11, 1, 'Usuario', 7, NULL, 4, 5);
+(10, 3, 'Usuario', 6, NULL, 8, 9);
 
 -- --------------------------------------------------------
 
@@ -293,26 +293,6 @@ INSERT INTO `cestas` (`id`, `familia_id`, `data_gerada`, `data_saida`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `cestas_estoques`
---
-
-CREATE TABLE IF NOT EXISTS `cestas_estoques` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `cesta_id` int(11) NOT NULL,
-  `estoque_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`,`cesta_id`,`estoque_id`),
-  KEY `fk_cestas_has_estoques_cestas1` (`cesta_id`),
-  KEY `fk_cestas_has_estoques_estoques1` (`estoque_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
---
--- Extraindo dados da tabela `cestas_estoques`
---
-
-
--- --------------------------------------------------------
-
---
 -- Estrutura da tabela `definicoescestas`
 --
 
@@ -330,7 +310,7 @@ CREATE TABLE IF NOT EXISTS `definicoescestas` (
 --
 
 INSERT INTO `definicoescestas` (`id`, `tipo`, `nome`, `quantidade`, `medida`) VALUES
-(10, 'cesta', 'Arroz', 4.00, 'kilo');
+(10, 'cesta', 'Arroz', '4.00', 'kilo');
 
 -- --------------------------------------------------------
 
@@ -354,7 +334,7 @@ CREATE TABLE IF NOT EXISTS `estoques` (
 --
 
 INSERT INTO `estoques` (`id`, `definicoescesta_id`, `complemento_qt`, `data_entrada`, `data_vencimento`, `quantidade`) VALUES
-(10565, 10, 1.00, '2011-10-14', '2011-10-14', 2);
+(10565, 10, '1.00', '2011-10-14', '2011-10-14', 2);
 
 -- --------------------------------------------------------
 
@@ -395,7 +375,7 @@ CREATE TABLE IF NOT EXISTS `familias` (
   `companheiro` tinyint(1) NOT NULL,
   `dependente` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=28 ;
 
 --
 -- Extraindo dados da tabela `familias`
@@ -403,8 +383,9 @@ CREATE TABLE IF NOT EXISTS `familias` (
 
 INSERT INTO `familias` (`id`, `nome`, `parente_id`, `escolaridade`, `profissao`, `ocupacao`, `local_trabalho`, `beneficios`, `parentesco`, `situacao`, `nome_escola`, `manequim`, `peso`, `altura`, `situacao_nutricional`, `cpf`, `nascimento`, `endereco`, `numero`, `complemento`, `bairro`, `referencia`, `cidade`, `uf`, `cep`, `telefone`, `renda`, `renda_familiar`, `renda_percapta`, `companheiro`, `dependente`) VALUES
 (24, 'teste2', NULL, '', '', '', '', 0, NULL, 0, NULL, NULL, NULL, NULL, 0, '', '2000-04-12', '', '', '', '', '', '', NULL, NULL, '', NULL, NULL, NULL, 0, 0),
-(25, 'Dona Florinda', NULL, '3', 'Do lar', 'Dona de casa', 'Casa', 1, NULL, 1, NULL, NULL, NULL, NULL, 0, '123.456.789-09', '1962-08-27', 'Rua Professor Francisco Faria', '520', '101', 'Bairu', 'Perto da Mercearia Mont Serrat', 'Juiz de Fora', NULL, NULL, '(32) 3226-3307', NULL, 1.50, 3.25, 1, 1),
-(26, 'Kico', 24, '', NULL, '', NULL, NULL, NULL, 0, '', '', NULL, NULL, 0, NULL, '0000-00-00', '', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, 0.00, 0.00, 0, 1);
+(25, 'Dona Florinda', NULL, '3', 'Do lar', 'Dona de casa', 'Casa', 1, NULL, 1, NULL, NULL, NULL, NULL, 0, '123.456.789-09', '1962-08-27', 'Rua Professor Francisco Faria', '520', '101', 'Bairu', 'Perto da Mercearia Mont Serrat', 'Juiz de Fora', NULL, NULL, '(32) 3226-3307', NULL, '1.50', '3.25', 1, 1),
+(26, 'Kico', 24, '', NULL, '', NULL, NULL, NULL, 0, '', '', NULL, NULL, 0, NULL, '0000-00-00', '', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, '0.00', '0.00', 0, 1),
+(27, 'matias barbosa', NULL, '', '', '', '', 0, NULL, 1, NULL, NULL, NULL, NULL, 0, '', '0000-00-00', '', '', '', '', '', '', NULL, NULL, '', NULL, NULL, NULL, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -419,12 +400,16 @@ CREATE TABLE IF NOT EXISTS `frequencias` (
   `data` date NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_frequencias_pessoas1` (`familia_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Extraindo dados da tabela `frequencias`
 --
 
+INSERT INTO `frequencias` (`id`, `familia_id`, `codigo`, `data`) VALUES
+(1, 25, 'P', '2011-11-04'),
+(2, 25, 'F', '2011-11-05'),
+(3, 25, 'P', '2011-11-07');
 
 -- --------------------------------------------------------
 
@@ -447,6 +432,22 @@ INSERT INTO `grupos` (`id`, `nome`) VALUES
 (2, 'Coordenador'),
 (3, 'Estoquista'),
 (5, 'Consultor');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `itemcestas`
+--
+
+CREATE TABLE IF NOT EXISTS `itemcestas` (
+  `id` int(11) NOT NULL,
+  `cesta_id` int(11) NOT NULL,
+  `estoque_id` int(11) NOT NULL,
+  `quantidade` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_itemcestas_cestas1` (`cesta_id`),
+  KEY `fk_itemcestas_estoques1` (`estoque_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -506,8 +507,8 @@ INSERT INTO `logs` (`id`, `usuario_id`, `data`, `descricao`) VALUES
 (72, 4, '2011-10-16 21:58:31', 'Modificou usuÃ¡rio: Rafael Malatesta'),
 (73, 4, '2011-10-16 21:58:54', 'Modificou usuÃ¡rio: Rafael Malatesta'),
 (74, 4, '2011-10-19 00:21:24', 'Modificou usuÃ¡rio: Rafael Malatesta'),
-(75, 4, '2011-11-05 10:56:35', 'Cadastrou usuÃ¡rio: Adriano Carneiro de Moura'),
-(76, 4, '2011-11-05 10:57:01', 'Modificou usuÃ¡rio: Tales AraÃºjo MendonÃ§a');
+(75, 4, '2011-11-04 18:43:21', 'Cadastrou voluntÃ¡rio: JosÃ© Maria MendonÃ§a'),
+(76, 4, '2011-11-04 18:58:52', 'Cadastrou voluntÃ¡rio: RogÃ©rio Gomes');
 
 -- --------------------------------------------------------
 
@@ -598,7 +599,7 @@ CREATE TABLE IF NOT EXISTS `respostas` (
   PRIMARY KEY (`id`),
   KEY `fk_respostas_questionarios1` (`questionario_id`),
   KEY `fk_respostas_pessoas1` (`familia_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=68 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
 
 --
 -- Extraindo dados da tabela `respostas`
@@ -612,61 +613,7 @@ INSERT INTO `respostas` (`id`, `familia_id`, `questionario_id`, `resposta`) VALU
 (10, 24, 11, 'Sim'),
 (11, 24, 12, 'Sim'),
 (12, 24, 13, 'Sim'),
-(13, 24, 14, 'nao'),
-(14, 25, 7, 'Casa PrÃ³pria'),
-(15, 25, 8, 'Alvenaria'),
-(16, 25, 9, '4'),
-(17, 25, 10, 'Sim'),
-(18, 25, 11, 'Sim'),
-(19, 25, 12, 'Sim'),
-(20, 25, 13, 'Sim'),
-(21, 25, 14, 'NÃ£o'),
-(22, 25, 15, ''),
-(23, 25, 16, 'Sim'),
-(24, 25, 17, 'Sim'),
-(25, 25, 18, ''),
-(26, 25, 19, ''),
-(27, 25, 20, ''),
-(28, 25, 21, ''),
-(29, 25, 22, ''),
-(30, 25, 23, ''),
-(31, 25, 24, ''),
-(32, 25, 25, 'Em dia'),
-(33, 25, 26, ''),
-(34, 25, 27, ''),
-(35, 25, 28, 'Todas as crianÃ§as e jovens estÃ£o frequentando as aulas'),
-(36, 25, 29, ''),
-(37, 25, 30, ''),
-(38, 25, 31, ''),
-(39, 25, 32, 'Sim'),
-(40, 25, 33, 'Bom'),
-(41, 25, 34, 'Cachorro, Galinha'),
-(42, 25, 35, ''),
-(43, 25, 36, 'Sim'),
-(44, 25, 37, 'Bom'),
-(45, 25, 38, ''),
-(46, 25, 39, 'NÃ£o'),
-(47, 25, 40, 'Camisinha'),
-(48, 25, 41, 'Sim'),
-(49, 25, 42, '10/04/2012'),
-(50, 25, 43, 'Sim'),
-(51, 25, 44, ''),
-(52, 25, 45, ''),
-(53, 25, 46, 'Sim'),
-(54, 25, 47, ''),
-(55, 25, 48, 'Sim'),
-(56, 25, 49, ''),
-(57, 25, 50, ''),
-(58, 25, 51, 'SaÃºde, Lazer'),
-(59, 25, 52, ''),
-(60, 25, 53, 'Sim'),
-(61, 25, 54, ''),
-(62, 25, 55, 'A saÃºde'),
-(63, 25, 56, ''),
-(64, 25, 57, 'NÃ£o'),
-(65, 25, 58, ''),
-(66, 25, 59, 'NÃ£o'),
-(67, 25, 60, '');
+(13, 24, 14, 'nao');
 
 -- --------------------------------------------------------
 
@@ -694,7 +641,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `prestacao_servico` varchar(50) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_usuarios_grupos1` (`grupo_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Extraindo dados da tabela `usuarios`
@@ -702,8 +649,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `grupo_id`, `status`, `nome`, `email`, `senha`, `cpf`, `endereco`, `complemento`, `numero`, `bairro`, `cidade`, `uf`, `cep`, `telefone`, `celular`, `prestacao_servico`) VALUES
 (4, 1, 1, 'Tales AraÃºjo MendonÃ§a', 'talesam@gmail.com', '9219bd604572f3be88d37830809b8ca303171e02', '054.619.336-61', 'Rua Professor Francisco Faria', '520', '101', 'Bairu', 'Juiz de Fora', 'MG', '36050-140', '(32) 3226-3307', '(32) 8801-9351', 'InformÃ¡tica'),
-(6, 3, 1, 'Rafael Malatesta', 'faelflip@gmail.com', 'd38c69d9fb096663d1e4fd351f2a4f4a0c44e703', '999.999.999-99', '', '', '', '', '', '', '', '(32) 3273-1624', '', 'InformÃ¡tica'),
-(7, 1, 1, 'Adriano Carneiro de Moura', 'adrianodemoura@gmail.com', '7fc3e669e38895aa425b6448520874579188fc23', '025.577.766-37', 'Av. Costa do Marfim', 'apto403', '35', 'Conjunto Estrelda D''alva', 'Belo Horizonte', 'MG', '30575-000', '(31) 8596-6797', '(31) 8596-6797', 'InformÃ¡tica');
+(6, 3, 1, 'Rafael Malatesta', 'faelflip@gmail.com', 'd38c69d9fb096663d1e4fd351f2a4f4a0c44e703', '999.999.999-99', '', '', '', '', '', '', '', '(32) 3273-1624', '', 'InformÃ¡tica');
 
 -- --------------------------------------------------------
 
@@ -726,12 +672,15 @@ CREATE TABLE IF NOT EXISTS `voluntarios` (
   `celular` varchar(14) DEFAULT NULL,
   `prestacao_servico` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Extraindo dados da tabela `voluntarios`
 --
 
+INSERT INTO `voluntarios` (`id`, `nome`, `email`, `endereco`, `numero`, `complemento`, `bairro`, `cidade`, `uf`, `cep`, `telefone`, `celular`, `prestacao_servico`) VALUES
+(1, 'JosÃ© Maria MendonÃ§a', 'talesam@gmail.com', 'Rua Euclides da Cunha, 202, loja 1 Cidade Nobre', '', '', '', 'Ipatinga', '', '35162-364', '(31) 3826-1005', '', 'Nada'),
+(2, 'RogÃ©rio Gomes', 'rag.inf@gmail.com', 'Rua Euclides da Cunha, 202, loja 1 Cidade Nobre', '', '', '', 'Ipatinga', '', '35162364', '3138261005', '', 'xxx');
 
 --
 -- Restrições para as tabelas dumpadas
@@ -751,13 +700,6 @@ ALTER TABLE `cestas`
   ADD CONSTRAINT `fk_cestas_pessoas1` FOREIGN KEY (`familia_id`) REFERENCES `familias` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Restrições para a tabela `cestas_estoques`
---
-ALTER TABLE `cestas_estoques`
-  ADD CONSTRAINT `fk_cestas_has_estoques_cestas1` FOREIGN KEY (`cesta_id`) REFERENCES `cestas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_cestas_has_estoques_estoques1` FOREIGN KEY (`estoque_id`) REFERENCES `estoques` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
 -- Restrições para a tabela `estoques`
 --
 ALTER TABLE `estoques`
@@ -768,6 +710,13 @@ ALTER TABLE `estoques`
 --
 ALTER TABLE `frequencias`
   ADD CONSTRAINT `fk_frequencias_pessoas1` FOREIGN KEY (`familia_id`) REFERENCES `familias` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Restrições para a tabela `itemcestas`
+--
+ALTER TABLE `itemcestas`
+  ADD CONSTRAINT `fk_itemcestas_cestas1` FOREIGN KEY (`cesta_id`) REFERENCES `cestas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_itemcestas_estoques1` FOREIGN KEY (`estoque_id`) REFERENCES `estoques` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Restrições para a tabela `logs`
@@ -787,3 +736,7 @@ ALTER TABLE `respostas`
 --
 ALTER TABLE `usuarios`
   ADD CONSTRAINT `fk_usuarios_grupos1` FOREIGN KEY (`grupo_id`) REFERENCES `grupos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
