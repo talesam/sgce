@@ -12,7 +12,7 @@
 <?php foreach($this->data as $_linha => $_arrModel): ?> 
 <tr>
 	<?php foreach($listaCampos as $_campo) : $c = explode('.',$_campo); ?>
-	<td style="border-bottom: 1px solid #333;"><?php echo $_arrModel[$c[0]][$c[1]] ?></td>
+	<td style="border-bottom: 1px solid #333; padding: 0px 5px 0px 5px"><?php echo $_arrModel[$c[0]][$c[1]] ?></td>
 	<?php endforeach ?>
 </tr>
 <?php endforeach; ?>
