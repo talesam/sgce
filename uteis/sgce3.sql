@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tempo de Geração: Out 19, 2011 as 02:18 AM
+-- Tempo de Geração: Nov 05, 2011 as 11:03 AM
 -- Versão do Servidor: 5.1.54
--- Versão do PHP: 5.3.5-1ubuntu7.2
+-- Versão do PHP: 5.3.5-1ubuntu7.3
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -16,7 +16,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Banco de Dados: `sgce`
+-- Banco de Dados: `sgce_bd`
 --
 
 -- --------------------------------------------------------
@@ -34,120 +34,128 @@ CREATE TABLE IF NOT EXISTS `acos` (
   `lft` int(11) DEFAULT NULL,
   `rght` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=104 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=116 ;
 
 --
 -- Extraindo dados da tabela `acos`
 --
 
 INSERT INTO `acos` (`id`, `parent_id`, `model`, `foreign_key`, `alias`, `lft`, `rght`) VALUES
-(1, NULL, NULL, NULL, 'controllers', 1, 214),
-(2, 1, NULL, NULL, 'Cestas', 2, 9),
+(1, NULL, NULL, NULL, 'controllers', 1, 230),
+(2, 1, NULL, NULL, 'Cestas', 2, 13),
 (3, 2, NULL, NULL, 'admin_index', 3, 4),
 (4, 2, NULL, NULL, 'admin_gerar_cestas', 5, 6),
-(5, 1, NULL, NULL, 'Companheiros', 10, 21),
-(6, 5, NULL, NULL, 'admin_index', 11, 12),
-(7, 5, NULL, NULL, 'admin_cadastrar', 13, 14),
-(8, 5, NULL, NULL, 'admin_editar', 15, 16),
-(9, 5, NULL, NULL, 'admin_consultar', 17, 18),
-(10, 5, NULL, NULL, 'admin_excluir', 19, 20),
-(11, 1, NULL, NULL, 'Definicoescestas', 22, 33),
-(12, 11, NULL, NULL, 'admin_index', 23, 24),
-(13, 11, NULL, NULL, 'admin_cadastrar', 25, 26),
-(14, 11, NULL, NULL, 'admin_editar', 27, 28),
-(15, 11, NULL, NULL, 'admin_consultar', 29, 30),
-(16, 11, NULL, NULL, 'admin_excluir', 31, 32),
-(17, 1, NULL, NULL, 'Dependentes', 34, 45),
-(18, 17, NULL, NULL, 'admin_index', 35, 36),
-(19, 17, NULL, NULL, 'admin_cadastrar', 37, 38),
-(20, 17, NULL, NULL, 'admin_editar', 39, 40),
-(21, 17, NULL, NULL, 'admin_consultar', 41, 42),
-(22, 17, NULL, NULL, 'admin_excluir', 43, 44),
-(23, 1, NULL, NULL, 'Encontros', 46, 55),
-(24, 23, NULL, NULL, 'admin_index', 47, 48),
-(25, 23, NULL, NULL, 'admin_cadastrar', 49, 50),
-(26, 23, NULL, NULL, 'admin_editar', 51, 52),
-(27, 23, NULL, NULL, 'admin_excluir', 53, 54),
-(28, 1, NULL, NULL, 'Estoques', 56, 67),
-(29, 28, NULL, NULL, 'admin_index', 57, 58),
-(30, 28, NULL, NULL, 'admin_cadastrar', 59, 60),
-(31, 28, NULL, NULL, 'admin_editar', 61, 62),
-(32, 28, NULL, NULL, 'admin_consultar', 63, 64),
-(33, 28, NULL, NULL, 'admin_excluir', 65, 66),
-(34, 1, NULL, NULL, 'Familias', 68, 81),
-(35, 34, NULL, NULL, 'admin_index', 69, 70),
-(36, 34, NULL, NULL, 'admin_cadastrar', 71, 72),
-(37, 34, NULL, NULL, 'admin_editar', 73, 74),
-(38, 34, NULL, NULL, 'admin_consultar', 75, 76),
-(39, 34, NULL, NULL, 'admin_excluir', 77, 78),
-(40, 1, NULL, NULL, 'Frequencias', 82, 93),
-(41, 40, NULL, NULL, 'admin_index', 83, 84),
-(42, 1, NULL, NULL, 'Grupos', 94, 103),
-(43, 42, NULL, NULL, 'admin_index', 95, 96),
-(44, 42, NULL, NULL, 'admin_cadastrar', 97, 98),
-(45, 42, NULL, NULL, 'admin_editar', 99, 100),
-(46, 42, NULL, NULL, 'admin_excluir', 101, 102),
-(47, 1, NULL, NULL, 'Logs', 104, 107),
-(48, 47, NULL, NULL, 'admin_index', 105, 106),
-(49, 1, NULL, NULL, 'Questionarios', 108, 121),
-(50, 49, NULL, NULL, 'admin_index', 109, 110),
-(51, 49, NULL, NULL, 'admin_cadastrar', 111, 112),
-(52, 49, NULL, NULL, 'admin_editar', 113, 114),
-(53, 49, NULL, NULL, 'admin_move_down', 115, 116),
-(54, 49, NULL, NULL, 'admin_move_up', 117, 118),
-(55, 49, NULL, NULL, 'admin_excluir', 119, 120),
-(56, 1, NULL, NULL, 'Usuarios', 122, 143),
-(57, 56, NULL, NULL, 'login', 123, 124),
-(58, 56, NULL, NULL, 'recuperarsenha', 125, 126),
-(59, 56, NULL, NULL, 'logout', 127, 128),
-(60, 56, NULL, NULL, 'admin_login', 129, 130),
-(61, 56, NULL, NULL, 'admin_logout', 131, 132),
-(62, 56, NULL, NULL, 'admin_index', 133, 134),
-(63, 56, NULL, NULL, 'admin_cadastrar', 135, 136),
-(64, 56, NULL, NULL, 'admin_editar', 137, 138),
-(65, 56, NULL, NULL, 'admin_consultar', 139, 140),
-(66, 56, NULL, NULL, 'admin_excluir', 141, 142),
-(67, 1, NULL, NULL, 'Voluntarios', 144, 155),
-(68, 67, NULL, NULL, 'admin_index', 145, 146),
-(69, 67, NULL, NULL, 'admin_cadastrar', 147, 148),
-(70, 67, NULL, NULL, 'admin_editar', 149, 150),
-(71, 67, NULL, NULL, 'admin_consultar', 151, 152),
-(72, 67, NULL, NULL, 'admin_excluir', 153, 154),
-(73, 1, NULL, NULL, 'Acl', 156, 201),
-(74, 73, NULL, NULL, 'Acos', 157, 164),
-(75, 74, NULL, NULL, 'admin_index', 158, 159),
-(76, 74, NULL, NULL, 'admin_empty_acos', 160, 161),
-(77, 74, NULL, NULL, 'admin_build_acl', 162, 163),
-(78, 73, NULL, NULL, 'Aros', 165, 200),
-(79, 78, NULL, NULL, 'admin_index', 166, 167),
-(80, 78, NULL, NULL, 'admin_check', 168, 169),
-(81, 78, NULL, NULL, 'admin_users', 170, 171),
-(82, 78, NULL, NULL, 'admin_update_user_role', 172, 173),
-(83, 78, NULL, NULL, 'admin_ajax_role_permissions', 174, 175),
-(84, 78, NULL, NULL, 'admin_role_permissions', 176, 177),
-(85, 78, NULL, NULL, 'admin_user_permissions', 178, 179),
-(86, 78, NULL, NULL, 'admin_empty_permissions', 180, 181),
-(87, 78, NULL, NULL, 'admin_clear_user_specific_permissions', 182, 183),
-(88, 78, NULL, NULL, 'admin_grant_all_controllers', 184, 185),
-(89, 78, NULL, NULL, 'admin_deny_all_controllers', 186, 187),
-(90, 78, NULL, NULL, 'admin_get_role_controller_permission', 188, 189),
-(91, 78, NULL, NULL, 'admin_grant_role_permission', 190, 191),
-(92, 78, NULL, NULL, 'admin_deny_role_permission', 192, 193),
-(93, 78, NULL, NULL, 'admin_get_user_controller_permission', 194, 195),
-(94, 78, NULL, NULL, 'admin_grant_user_permission', 196, 197),
-(95, 78, NULL, NULL, 'admin_deny_user_permission', 198, 199),
-(96, 34, NULL, NULL, 'admin_questionario', 79, 80),
-(97, 1, NULL, NULL, 'Mantimentos', 202, 211),
-(98, 97, NULL, NULL, 'admin_index', 203, 204),
-(99, 97, NULL, NULL, 'admin_cadastrar', 205, 206),
-(100, 97, NULL, NULL, 'admin_editar', 207, 208),
-(101, 97, NULL, NULL, 'admin_excluir', 209, 210),
-(102, 1, NULL, NULL, 'Respostas', 212, 213),
+(5, 1, NULL, NULL, 'Companheiros', 14, 25),
+(6, 5, NULL, NULL, 'admin_index', 15, 16),
+(7, 5, NULL, NULL, 'admin_cadastrar', 17, 18),
+(8, 5, NULL, NULL, 'admin_editar', 19, 20),
+(9, 5, NULL, NULL, 'admin_consultar', 21, 22),
+(10, 5, NULL, NULL, 'admin_excluir', 23, 24),
+(11, 1, NULL, NULL, 'Definicoescestas', 26, 37),
+(12, 11, NULL, NULL, 'admin_index', 27, 28),
+(13, 11, NULL, NULL, 'admin_cadastrar', 29, 30),
+(14, 11, NULL, NULL, 'admin_editar', 31, 32),
+(15, 11, NULL, NULL, 'admin_consultar', 33, 34),
+(16, 11, NULL, NULL, 'admin_excluir', 35, 36),
+(17, 1, NULL, NULL, 'Dependentes', 38, 49),
+(18, 17, NULL, NULL, 'admin_index', 39, 40),
+(19, 17, NULL, NULL, 'admin_cadastrar', 41, 42),
+(20, 17, NULL, NULL, 'admin_editar', 43, 44),
+(21, 17, NULL, NULL, 'admin_consultar', 45, 46),
+(22, 17, NULL, NULL, 'admin_excluir', 47, 48),
+(23, 1, NULL, NULL, 'Encontros', 50, 59),
+(24, 23, NULL, NULL, 'admin_index', 51, 52),
+(25, 23, NULL, NULL, 'admin_cadastrar', 53, 54),
+(26, 23, NULL, NULL, 'admin_editar', 55, 56),
+(27, 23, NULL, NULL, 'admin_excluir', 57, 58),
+(28, 1, NULL, NULL, 'Estoques', 60, 71),
+(29, 28, NULL, NULL, 'admin_index', 61, 62),
+(30, 28, NULL, NULL, 'admin_cadastrar', 63, 64),
+(31, 28, NULL, NULL, 'admin_editar', 65, 66),
+(32, 28, NULL, NULL, 'admin_consultar', 67, 68),
+(33, 28, NULL, NULL, 'admin_excluir', 69, 70),
+(34, 1, NULL, NULL, 'Familias', 72, 89),
+(35, 34, NULL, NULL, 'admin_index', 73, 74),
+(36, 34, NULL, NULL, 'admin_cadastrar', 75, 76),
+(37, 34, NULL, NULL, 'admin_editar', 77, 78),
+(38, 34, NULL, NULL, 'admin_consultar', 79, 80),
+(39, 34, NULL, NULL, 'admin_excluir', 81, 82),
+(40, 1, NULL, NULL, 'Frequencias', 90, 101),
+(41, 40, NULL, NULL, 'admin_index', 91, 92),
+(42, 1, NULL, NULL, 'Grupos', 102, 111),
+(43, 42, NULL, NULL, 'admin_index', 103, 104),
+(44, 42, NULL, NULL, 'admin_cadastrar', 105, 106),
+(45, 42, NULL, NULL, 'admin_editar', 107, 108),
+(46, 42, NULL, NULL, 'admin_excluir', 109, 110),
+(47, 1, NULL, NULL, 'Logs', 112, 115),
+(48, 47, NULL, NULL, 'admin_index', 113, 114),
+(49, 1, NULL, NULL, 'Questionarios', 116, 129),
+(50, 49, NULL, NULL, 'admin_index', 117, 118),
+(51, 49, NULL, NULL, 'admin_cadastrar', 119, 120),
+(52, 49, NULL, NULL, 'admin_editar', 121, 122),
+(53, 49, NULL, NULL, 'admin_move_down', 123, 124),
+(54, 49, NULL, NULL, 'admin_move_up', 125, 126),
+(55, 49, NULL, NULL, 'admin_excluir', 127, 128),
+(56, 1, NULL, NULL, 'Usuarios', 130, 153),
+(57, 56, NULL, NULL, 'login', 131, 132),
+(58, 56, NULL, NULL, 'recuperarsenha', 133, 134),
+(59, 56, NULL, NULL, 'logout', 135, 136),
+(60, 56, NULL, NULL, 'admin_login', 137, 138),
+(61, 56, NULL, NULL, 'admin_logout', 139, 140),
+(62, 56, NULL, NULL, 'admin_index', 141, 142),
+(63, 56, NULL, NULL, 'admin_cadastrar', 143, 144),
+(64, 56, NULL, NULL, 'admin_editar', 145, 146),
+(65, 56, NULL, NULL, 'admin_consultar', 147, 148),
+(66, 56, NULL, NULL, 'admin_excluir', 149, 150),
+(67, 1, NULL, NULL, 'Voluntarios', 154, 167),
+(68, 67, NULL, NULL, 'admin_index', 155, 156),
+(69, 67, NULL, NULL, 'admin_cadastrar', 157, 158),
+(70, 67, NULL, NULL, 'admin_editar', 159, 160),
+(71, 67, NULL, NULL, 'admin_consultar', 161, 162),
+(72, 67, NULL, NULL, 'admin_excluir', 163, 164),
+(73, 1, NULL, NULL, 'Acl', 168, 213),
+(74, 73, NULL, NULL, 'Acos', 169, 176),
+(75, 74, NULL, NULL, 'admin_index', 170, 171),
+(76, 74, NULL, NULL, 'admin_empty_acos', 172, 173),
+(77, 74, NULL, NULL, 'admin_build_acl', 174, 175),
+(78, 73, NULL, NULL, 'Aros', 177, 212),
+(79, 78, NULL, NULL, 'admin_index', 178, 179),
+(80, 78, NULL, NULL, 'admin_check', 180, 181),
+(81, 78, NULL, NULL, 'admin_users', 182, 183),
+(82, 78, NULL, NULL, 'admin_update_user_role', 184, 185),
+(83, 78, NULL, NULL, 'admin_ajax_role_permissions', 186, 187),
+(84, 78, NULL, NULL, 'admin_role_permissions', 188, 189),
+(85, 78, NULL, NULL, 'admin_user_permissions', 190, 191),
+(86, 78, NULL, NULL, 'admin_empty_permissions', 192, 193),
+(87, 78, NULL, NULL, 'admin_clear_user_specific_permissions', 194, 195),
+(88, 78, NULL, NULL, 'admin_grant_all_controllers', 196, 197),
+(89, 78, NULL, NULL, 'admin_deny_all_controllers', 198, 199),
+(90, 78, NULL, NULL, 'admin_get_role_controller_permission', 200, 201),
+(91, 78, NULL, NULL, 'admin_grant_role_permission', 202, 203),
+(92, 78, NULL, NULL, 'admin_deny_role_permission', 204, 205),
+(93, 78, NULL, NULL, 'admin_get_user_controller_permission', 206, 207),
+(94, 78, NULL, NULL, 'admin_grant_user_permission', 208, 209),
+(95, 78, NULL, NULL, 'admin_deny_user_permission', 210, 211),
+(96, 34, NULL, NULL, 'admin_questionario', 83, 84),
+(97, 1, NULL, NULL, 'Mantimentos', 214, 225),
+(98, 97, NULL, NULL, 'admin_index', 215, 216),
+(99, 97, NULL, NULL, 'admin_cadastrar', 217, 218),
+(100, 97, NULL, NULL, 'admin_editar', 219, 220),
+(101, 97, NULL, NULL, 'admin_excluir', 221, 222),
+(102, 1, NULL, NULL, 'Respostas', 226, 227),
 (103, 2, NULL, NULL, 'admin_editar', 7, 8),
-(104, 40, NULL, NULL, 'admin_editar', 85, 86),
-(105, 40, NULL, NULL, 'admin_cadastrar', 87, 88),
-(106, 40, NULL, NULL, 'admin_consultar', 89, 90),
-(107, 40, NULL, NULL, 'admin_excluir', 91, 92);
+(104, 40, NULL, NULL, 'admin_editar', 93, 94),
+(105, 40, NULL, NULL, 'admin_cadastrar', 95, 96),
+(106, 40, NULL, NULL, 'admin_consultar', 97, 98),
+(107, 40, NULL, NULL, 'admin_excluir', 99, 100),
+(108, 2, NULL, NULL, 'admin_rel_cestas', 9, 10),
+(109, 2, NULL, NULL, 'admin_rel_itens_pendentes', 11, 12),
+(110, 34, NULL, NULL, 'admin_rel_aptas', 85, 86),
+(111, 34, NULL, NULL, 'admin_rel_venc_matricula', 87, 88),
+(112, 1, NULL, NULL, 'Itemcestas', 228, 229),
+(113, 97, NULL, NULL, 'admin_rel_venc_mantimentos', 223, 224),
+(114, 56, NULL, NULL, 'admin_recuperarsenha', 151, 152),
+(115, 67, NULL, NULL, 'admin_rel_voluntarios', 165, 166);
 
 -- --------------------------------------------------------
 
@@ -164,19 +172,20 @@ CREATE TABLE IF NOT EXISTS `aros` (
   `lft` int(11) DEFAULT NULL,
   `rght` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
 -- Extraindo dados da tabela `aros`
 --
 
 INSERT INTO `aros` (`id`, `parent_id`, `model`, `foreign_key`, `alias`, `lft`, `rght`) VALUES
-(1, NULL, 'Grupo', 1, NULL, 1, 4),
-(2, NULL, 'Grupo', 2, NULL, 5, 6),
-(3, NULL, 'Grupo', 3, NULL, 7, 10),
-(5, NULL, 'Grupo', 5, NULL, 11, 12),
+(1, NULL, 'Grupo', 1, NULL, 1, 6),
+(2, NULL, 'Grupo', 2, NULL, 7, 8),
+(3, NULL, 'Grupo', 3, NULL, 9, 12),
+(5, NULL, 'Grupo', 5, NULL, 13, 14),
 (8, 1, 'Usuario', 4, NULL, 2, 3),
-(10, 3, 'Usuario', 6, NULL, 8, 9);
+(10, 3, 'Usuario', 6, NULL, 10, 11),
+(11, 1, 'Usuario', 7, NULL, 4, 5);
 
 -- --------------------------------------------------------
 
@@ -321,7 +330,7 @@ CREATE TABLE IF NOT EXISTS `definicoescestas` (
 --
 
 INSERT INTO `definicoescestas` (`id`, `tipo`, `nome`, `quantidade`, `medida`) VALUES
-(10, 'cesta', 'Arroz', '4.00', 'kilo');
+(10, 'cesta', 'Arroz', 4.00, 'kilo');
 
 -- --------------------------------------------------------
 
@@ -345,7 +354,7 @@ CREATE TABLE IF NOT EXISTS `estoques` (
 --
 
 INSERT INTO `estoques` (`id`, `definicoescesta_id`, `complemento_qt`, `data_entrada`, `data_vencimento`, `quantidade`) VALUES
-(10565, 10, '1.00', '2011-10-14', '2011-10-14', 2);
+(10565, 10, 1.00, '2011-10-14', '2011-10-14', 2);
 
 -- --------------------------------------------------------
 
@@ -394,8 +403,8 @@ CREATE TABLE IF NOT EXISTS `familias` (
 
 INSERT INTO `familias` (`id`, `nome`, `parente_id`, `escolaridade`, `profissao`, `ocupacao`, `local_trabalho`, `beneficios`, `parentesco`, `situacao`, `nome_escola`, `manequim`, `peso`, `altura`, `situacao_nutricional`, `cpf`, `nascimento`, `endereco`, `numero`, `complemento`, `bairro`, `referencia`, `cidade`, `uf`, `cep`, `telefone`, `renda`, `renda_familiar`, `renda_percapta`, `companheiro`, `dependente`) VALUES
 (24, 'teste2', NULL, '', '', '', '', 0, NULL, 0, NULL, NULL, NULL, NULL, 0, '', '2000-04-12', '', '', '', '', '', '', NULL, NULL, '', NULL, NULL, NULL, 0, 0),
-(25, 'Dona Florinda', NULL, '3', 'Do lar', 'Dona de casa', 'Casa', 1, NULL, 1, NULL, NULL, NULL, NULL, 0, '123.456.789-09', '1962-08-27', 'Rua Professor Francisco Faria', '520', '101', 'Bairu', 'Perto da Mercearia Mont Serrat', 'Juiz de Fora', NULL, NULL, '(32) 3226-3307', NULL, '1.50', '3.25', 1, 1),
-(26, 'Kico', 24, '', NULL, '', NULL, NULL, NULL, 0, '', '', NULL, NULL, 0, NULL, '0000-00-00', '', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, '0.00', '0.00', 0, 1);
+(25, 'Dona Florinda', NULL, '3', 'Do lar', 'Dona de casa', 'Casa', 1, NULL, 1, NULL, NULL, NULL, NULL, 0, '123.456.789-09', '1962-08-27', 'Rua Professor Francisco Faria', '520', '101', 'Bairu', 'Perto da Mercearia Mont Serrat', 'Juiz de Fora', NULL, NULL, '(32) 3226-3307', NULL, 1.50, 3.25, 1, 1),
+(26, 'Kico', 24, '', NULL, '', NULL, NULL, NULL, 0, '', '', NULL, NULL, 0, NULL, '0000-00-00', '', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, 0.00, 0.00, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -452,7 +461,7 @@ CREATE TABLE IF NOT EXISTS `logs` (
   `descricao` varchar(80) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_logs_usuarios1` (`usuario_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=75 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=77 ;
 
 --
 -- Extraindo dados da tabela `logs`
@@ -496,7 +505,9 @@ INSERT INTO `logs` (`id`, `usuario_id`, `data`, `descricao`) VALUES
 (71, 4, '2011-10-14 00:19:58', 'Modificou estoque: Arroz'),
 (72, 4, '2011-10-16 21:58:31', 'Modificou usuÃ¡rio: Rafael Malatesta'),
 (73, 4, '2011-10-16 21:58:54', 'Modificou usuÃ¡rio: Rafael Malatesta'),
-(74, 4, '2011-10-19 00:21:24', 'Modificou usuÃ¡rio: Rafael Malatesta');
+(74, 4, '2011-10-19 00:21:24', 'Modificou usuÃ¡rio: Rafael Malatesta'),
+(75, 4, '2011-11-05 10:56:35', 'Cadastrou usuÃ¡rio: Adriano Carneiro de Moura'),
+(76, 4, '2011-11-05 10:57:01', 'Modificou usuÃ¡rio: Tales AraÃºjo MendonÃ§a');
 
 -- --------------------------------------------------------
 
@@ -683,15 +694,16 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `prestacao_servico` varchar(50) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_usuarios_grupos1` (`grupo_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Extraindo dados da tabela `usuarios`
 --
 
 INSERT INTO `usuarios` (`id`, `grupo_id`, `status`, `nome`, `email`, `senha`, `cpf`, `endereco`, `complemento`, `numero`, `bairro`, `cidade`, `uf`, `cep`, `telefone`, `celular`, `prestacao_servico`) VALUES
-(4, 1, 1, 'Tales Araújo Mendonça', 'talesam@gmail.com', '9219bd604572f3be88d37830809b8ca303171e02', '054.619.336-61', 'Rua Professor Francisco Faria', '520', '101', 'Bairu', 'Juiz de Fora', 'MG', '36050-140', '(32) 3226-3307', '(32) 8801-9351', 'InformÃ¡tica'),
-(6, 3, 1, 'Rafael Malatesta', 'faelflip@gmail.com', 'd38c69d9fb096663d1e4fd351f2a4f4a0c44e703', '999.999.999-99', '', '', '', '', '', '', '', '(32) 3273-1624', '', 'InformÃ¡tica');
+(4, 1, 1, 'Tales AraÃºjo MendonÃ§a', 'talesam@gmail.com', '9219bd604572f3be88d37830809b8ca303171e02', '054.619.336-61', 'Rua Professor Francisco Faria', '520', '101', 'Bairu', 'Juiz de Fora', 'MG', '36050-140', '(32) 3226-3307', '(32) 8801-9351', 'InformÃ¡tica'),
+(6, 3, 1, 'Rafael Malatesta', 'faelflip@gmail.com', 'd38c69d9fb096663d1e4fd351f2a4f4a0c44e703', '999.999.999-99', '', '', '', '', '', '', '', '(32) 3273-1624', '', 'InformÃ¡tica'),
+(7, 1, 1, 'Adriano Carneiro de Moura', 'adrianodemoura@gmail.com', '7fc3e669e38895aa425b6448520874579188fc23', '025.577.766-37', 'Av. Costa do Marfim', 'apto403', '35', 'Conjunto Estrelda D''alva', 'Belo Horizonte', 'MG', '30575-000', '(31) 8596-6797', '(31) 8596-6797', 'InformÃ¡tica');
 
 -- --------------------------------------------------------
 
