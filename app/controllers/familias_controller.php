@@ -178,7 +178,24 @@ class FamiliasController extends AppController {
 	 */
 	public function admin_rel_aptas()
 	{
+		$tipo = isset($this->params['pass']['0']) ? $this->params['pass']['0'] : 'html';
+		if ($tipo=='pdf') $this->layout = 'pdf';
+
 		$this->data = $this->Familia->find('all',array('conditions'=>array('Familia.situacao'=>1)));
+		foreach($this->data as $_linha => $_arrModel)
+		{
+			$this->data[$_linha]['Familia']['situacao'] = ($_arrModel['Familia']['situacao']==1) ? 'Apta': 'Não Apta';
+		}
+		
+		// configuração da view
+		$config['titulo'] = 'Reatório de Famílias Aptas';
+		$config['listaCampos'] = array('Familia.situacao','Familia.nome');
+		$config['Campos']['Familia']['situacao']['titulo'] 			= 'Situação';
+		$config['Campos']['Familia']['situacao']['td']['align'] 	= 'center';
+		$config['Campos']['Familia']['nome']['titulo'] 				= 'Representante';
+
+		$this->set(compact('config','tipo'));
+		$this->render('../padrao/rel_lista');
 	}
 	
 	/**
@@ -194,8 +211,21 @@ class FamiliasController extends AppController {
 			$this->data[$_linha]['Familia']['situacao'] = ($this->data[$_linha]['Familia']['situacao']==1) ? 'Sim' : 'Não';
 			$this->data[$_linha]['Cesta']['data_saida'] = isset($this->data[$_linha]['Cesta']['data_saida']) ? date('d/m/Y', strtotime($this->data[$_linha]['Cesta']['data_saida'])) : null;
 		}
-		$listaCampos = array('Familia.situacao','Familia.nome','Cesta.data_saida');
-		$this->set(compact('listaCampos'));
+
+		// descobrindo o tipo do relatório
+		$tipo = isset($this->params['pass']['0']) ? $this->params['pass']['0'] : 'html';
+		if ($tipo=='pdf') $this->layout = 'pdf';
+		
+		// configuração da view
+		$config['titulo'] = 'Reatório de Vencimento de Matrículas';
+		$config['listaCampos'] = array('Familia.situacao','Familia.nome','Cesta.data_saida');
+		$config['Campos']['Familia']['situacao']['titulo'] 			= 'Situação';
+		$config['Campos']['Familia']['situacao']['td']['align'] 	= 'center';
+		$config['Campos']['Familia']['nome']['titulo'] 				= 'Representante';
+		$config['Campos']['Cesta']['data_saida']['titulo'] 			= 'Saída';
+		
+		$this->set(compact('config','tipo'));
+		$this->render('../padrao/rel_lista');
 	}
 }
 ?>

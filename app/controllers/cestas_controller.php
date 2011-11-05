@@ -144,9 +144,21 @@ class CestasController extends AppController {
 			$this->data[$_linha]['Cesta']['data_gerada'] 	= date('d/m/Y',strtotime($this->data[$_linha]['Cesta']['data_gerada']));
 			$this->data[$_linha]['Cesta']['data_saida'] 	= date('d/m/Y',strtotime($this->data[$_linha]['Cesta']['data_saida']));
 		}
-		$totalCestas	= count($this->data);
-		$listaCampos 	= array('Cesta.nome','Cesta.data_gerada');
-		$this->set(compact('listaCampos','totalCestas'));
+
+		// descobrindo o tipo do relatório
+		$tipo = isset($this->params['pass']['0']) ? $this->params['pass']['0'] : 'html';
+		if ($tipo=='pdf') $this->layout = 'pdf';
+		
+		// config da view
+		$config['titulo'] 		= 'Reatório de Cestas Disponíveis';
+		$config['rodape'] 		= 'Total de Cestas: '.count($this->data);
+		$config['listaCampos']	= array('Cesta.nome','Cesta.data_gerada');
+		$config['Campos']['Cesta']['nome']['titulo'] 			= 'Cestas Disponíveis';
+		$config['Campos']['Cesta']['data_gerada']['titulo'] 	= 'Data Gerada';
+		$config['Campos']['Cesta']['data_gerada']['td']['align']= 'center';
+
+		$this->set(compact('config','tipo'));
+		$this->render('../padrao/rel_lista');
 	}
 
 	/**
@@ -157,8 +169,20 @@ class CestasController extends AppController {
 	public function admin_rel_itens_pendentes()
 	{
 		$this->data = $this->Cesta->find('all');
-		$listaCampos= array('Familia.nome','Estoque.quantidade','Estoque.complemento_qt');
-		$this->set(compact('listaCampos'));
+
+		// descobrindo o tipo do relatório
+		$tipo = isset($this->params['pass']['0']) ? $this->params['pass']['0'] : 'html';
+		if ($tipo=='pdf') $this->layout = 'pdf';
+		
+		// config da view
+		$config['titulo'] 		= 'Relatório de Itens Pendentes';
+		$config['listaCampos']	= array('Familia.nome','Estoque.quantidade','Estoque.complemento_qt');
+		$config['Campos']['Familia']['nome']['titulo'] 			= 'Mantimento';
+		$config['Campos']['Estoque']['quantidade']['titulo'] 	= 'Quantidade';
+		$config['Campos']['Estoque']['complemento_qt']['titulo']= 'Complemento';
+
+		$this->set(compact('config','tipo'));
+		$this->render('../padrao/rel_lista');
 	}
 }
 ?>

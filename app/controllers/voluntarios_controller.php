@@ -87,23 +87,23 @@ class VoluntariosController extends AppController {
 		
 		}
 
-		public function admin_excluir($id = null) {
-			if(!$id) {
-				$this->Session->setFlash('Voluntário inválido', 'flash_error');
-				$this->redirect(array('action'=>'index'));
-			}
-			
-			$data = $this->Voluntario->read(null, $id);
-			if($this->Voluntario->delete($id)) {
-				
-				$this->gravarLog('Excluiu voluntário: '. $data['Voluntario']['nome']);
-				
-				$this->Session->setFlash('Voluntário removido.', 'flash_success');
-				$this->redirect(array('action'=>'index'));
-			}
-			$this->Session->setFlash('Voluntário não pode ser removido', 'flash_error');
-			$this->redirect(array('action' => 'index'));
+	public function admin_excluir($id = null) {
+		if(!$id) {
+			$this->Session->setFlash('Voluntário inválido', 'flash_error');
+			$this->redirect(array('action'=>'index'));
 		}
+		
+		$data = $this->Voluntario->read(null, $id);
+		if($this->Voluntario->delete($id)) {
+			
+			$this->gravarLog('Excluiu voluntário: '. $data['Voluntario']['nome']);
+			
+			$this->Session->setFlash('Voluntário removido.', 'flash_success');
+			$this->redirect(array('action'=>'index'));
+		}
+		$this->Session->setFlash('Voluntário não pode ser removido', 'flash_error');
+		$this->redirect(array('action' => 'index'));
+	}
 	
 	/**
 	 * Exibe o relatório voluntarios
@@ -112,9 +112,21 @@ class VoluntariosController extends AppController {
 	 */
 	public function admin_rel_voluntarios()
 	{
-		$this->data 	= $this->Voluntario->find('all');
-		$listaCampos 	= array('Voluntario.nome','Voluntario.prestacao_servico','Voluntario.telefone','Voluntario.celular','Voluntario.email');
-		$this->set(compact('listaCampos'));
+		$tipo = isset($this->params['pass']['0']) ? $this->params['pass']['0'] : 'html';
+		if ($tipo=='pdf') $this->layout = 'pdf';
+		$this->data	= $this->Voluntario->find('all');
+
+		// configuração da view
+		$config['titulo'] = 'Reatório de Voluntários';
+		$config['listaCampos'] = array('Voluntario.nome','Voluntario.prestacao_servico','Voluntario.telefone','Voluntario.celular','Voluntario.email');
+		$config['Campos']['Voluntario']['nome']['titulo'] 				= 'Nome';
+		$config['Campos']['Voluntario']['prestacao_servico']['titulo'] 	= 'Prestação de Serviço';
+		$config['Campos']['Voluntario']['telefone']['titulo'] 			= 'Telefone';
+		$config['Campos']['Voluntario']['celular']['titulo'] 			= 'Celular';
+		$config['Campos']['Voluntario']['email']['titulo'] 				= 'email';
+
+		$this->set(compact('config','tipo'));
+		$this->render('../padrao/rel_lista');
 	}
 }
 ?>
