@@ -20,12 +20,6 @@ class Cesta extends AppModel {
 	public $belongsTo = array('Familia');
 	
 	// Uma cesta tem vários itens
-	public $hasMany = array(
-		'Itemcesta' => array(
-			'foreignKey'   => 'cesta_id',
-			'className'    => 'ItemCesta',
-			'dependent'	   => true
-		),
-	);
+	public $hasMany = array('Itemcesta');
 }
 ?>
