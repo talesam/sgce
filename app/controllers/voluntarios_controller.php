@@ -117,7 +117,7 @@ class VoluntariosController extends AppController {
 		$this->data	= $this->Voluntario->find('all');
 
 		// configuração da view
-		$config['titulo'] = 'Reatório de Voluntários';
+		$config['titulo'] = 'Relatório de Voluntários';
 		$config['listaCampos'] = array('Voluntario.nome','Voluntario.prestacao_servico','Voluntario.telefone','Voluntario.celular','Voluntario.email');
 		$config['Campos']['Voluntario']['nome']['titulo'] 				= 'Nome';
 		$config['Campos']['Voluntario']['prestacao_servico']['titulo'] 	= 'Prestação de Serviço';

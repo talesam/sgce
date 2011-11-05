@@ -188,7 +188,7 @@ class FamiliasController extends AppController {
 		}
 		
 		// configuração da view
-		$config['titulo'] = 'Reatório de Famílias Aptas';
+		$config['titulo'] = 'Relatório de Famílias Aptas';
 		$config['listaCampos'] = array('Familia.situacao','Familia.nome');
 		$config['Campos']['Familia']['situacao']['titulo'] 			= 'Situação';
 		$config['Campos']['Familia']['situacao']['td']['align'] 	= 'center';
@@ -217,7 +217,7 @@ class FamiliasController extends AppController {
 		if ($tipo=='pdf') $this->layout = 'pdf';
 		
 		// configuração da view
-		$config['titulo'] = 'Reatório de Vencimento de Matrículas';
+		$config['titulo'] = 'Relatório de Vencimento de Matrículas';
 		$config['listaCampos'] = array('Familia.situacao','Familia.nome','Cesta.data_saida');
 		$config['Campos']['Familia']['situacao']['titulo'] 			= 'Situação';
 		$config['Campos']['Familia']['situacao']['td']['align'] 	= 'center';

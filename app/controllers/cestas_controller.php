@@ -150,7 +150,7 @@ class CestasController extends AppController {
 		if ($tipo=='pdf') $this->layout = 'pdf';
 		
 		// config da view
-		$config['titulo'] 		= 'Reatório de Cestas Disponíveis';
+		$config['titulo'] 		= 'Relatório de Cestas Disponíveis';
 		$config['rodape'] 		= 'Total de Cestas: '.count($this->data);
 		$config['listaCampos']	= array('Cesta.nome','Cesta.data_gerada');
 		$config['Campos']['Cesta']['nome']['titulo'] 			= 'Cestas Disponíveis';
