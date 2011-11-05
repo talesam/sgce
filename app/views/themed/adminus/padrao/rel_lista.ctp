@@ -13,12 +13,19 @@ $config['listaCampos']	= isset($config['listaCampos']) ? $config['listaCampos']	
 
 // configurações obrigatórias
 $config['table']['width']	= isset($config['table']['width']) 	 ? $config['table']['width']   : '100%';
-if ($tipo=='html') $config['table']['style']	= isset($config['table']['style']) 	 ? $config['table']['style']: 'background-color: #fff; border: 1px solid #333;';
 $config['table']['cellpadding']	= isset($config['table']['cellpadding']) ? $config['table']['cellpadding'] : '0';
 $config['table']['cellspacing']	= isset($config['table']['cellspacing']) ? $config['table']['cellspacing'] : '0';
 
-$config['th']['style'] = isset($config['th']['style']) ? $config['th']['style'] : 'border-right: 1px dotted #ddd; background-color: #ccc;';
-$config['td']['style'] = isset($config['td']['style']) ? $config['td']['style'] : 'border-right: 1px dotted #ddd; border-bottom: 1px dotted #ddd; padding: 0px 4px 0px 4px';
+if ($tipo=='html')
+{
+	$config['table']['style'] = isset($config['table']['style']) ? $config['table']['style']: 'background-color: #fff; border: 1px solid #333;';
+	$config['th']['style'] = isset($config['th']['style']) ? $config['th']['style'] : 'border-right: 1px solid #ccc; background-color: #ddd; padding: 0px 4px 0px 4px;';
+	$config['td']['style'] = isset($config['td']['style']) ? $config['td']['style'] : 'border-right: 1px solid #ccc; border-bottom: 1px solid #ddd; padding: 0px 4px 0px 4px;';
+} else
+{
+	$config['th']['style'] = isset($config['th']['style']) ? $config['th']['style'] : 'border-left: 1px solid #ccc; border-right: 1px solid #ccc; background-color: #ddd; padding: 0px 4px 0px 4px;';
+	$config['td']['style'] = isset($config['td']['style']) ? $config['td']['style'] : 'border-left: 1px solid #ccc; border-right: 1px solid #ccc; border-bottom: 1px solid #ddd; padding: 0px 4px 0px 4px;';
+}
 
 // iniciando a tabela
 $texto = '<table id="rel"';
