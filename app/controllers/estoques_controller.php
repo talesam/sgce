@@ -39,8 +39,7 @@ class EstoquesController extends AppController {
 		if($definicoescestaId)
 		{
 			$this->set('definicoescesta', ClassRegistry::init('Definicoescesta')->findById($definicoescestaId));
-			$this->paginate['conditions'] = array('Estoque.definicoescesta_id' => $definicoescestaId, 
-				'Estoque.quantidade >' => 0);
+			$this->paginate['conditions'] = array('Estoque.definicoescesta_id' => $definicoescestaId, 'Estoque.quantidade >' => 0);
 			$this->set('estoques', $this->paginate());
 		} else {
 			$this->paginate['conditions'] = array('Estoque.quantidade >' => 0);

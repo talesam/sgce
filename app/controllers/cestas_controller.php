@@ -40,12 +40,13 @@ class CestasController extends AppController {
 	}
 	
 	public function admin_gerar_cestas(){
-		$defCesta = ClassRegistry::init('Definicoescesta');
-		$estoqueCesta = ClassRegistry::init('Estoque');
+		$defCesta 		= ClassRegistry::init('Definicoescesta');
+		$estoqueCesta 	= ClassRegistry::init('Estoque');
 		$estoqueCesta->recursive = -1;
-		$cestas = 0;
-		$ok = true;
-		$itDefCesta = $defCesta->find('all');
+		$cestas 		= 0;
+		$ok 			= true;
+		$itDefCesta 	= $defCesta->find('all');
+		$dataItemCesta	= array();
 
 		while($ok){
 			/* Pego todas as definições da cesta  */
@@ -77,45 +78,48 @@ class CestasController extends AppController {
 			}
 
 			// Se nao houver todos os itens que compoem a cesta, finaliza.
-			if (!$ok) {
-				break;
-			}
-			
+			if (!$ok)break;
+
 			// Abatendo os itens do estoque.
-			
-			foreach($itDefCesta as $def){
-				$estoque = $estoqueCesta->find('all', $estoqueParam);
-				
-				$qtdeTotal = $def['Definicoescesta']['quantidade'];
-				$cont = 0;
-				foreach ($estoque as $itemEstoque) {
+			foreach($itDefCesta as $def)
+			{
+				$estoque 	= $estoqueCesta->find('all', $estoqueParam);
+				$qtdeTotal 	= $def['Definicoescesta']['quantidade'];
+				$cont 		= 0;
+				foreach ($estoque as $itemEstoque)
+				{
+					$dataItemCesta[$cont]['estoque_id'] = $itemEstoque['Estoque']['id'];
+					$dataItemCesta[$cont]['quantidade'] = $itemEstoque['Estoque']['quantidade'];
 					++$cont;
-					$undNecessaria = $qtdeTotal / $itemEstoque['Estoque']['complemento_qt'];
-					$undDisponivel = $itemEstoque['Estoque']['quantidade'];
-					$undUtilizada = $undNecessaria;
-					if ($undUtilizada > $undDisponivel)
-						$undUtilizada = $undDisponivel;					
-					$qtdeItem = $undUtilizada * $itemEstoque['Estoque']['complemento_qt'];
-					$qtdeTotal -= $qtdeItem;
-					$novaQtde = $undDisponivel - $undUtilizada;
-
-					$result = $estoqueCesta->save(array('id' => $itemEstoque['Estoque']['id'], 
-						'quantidade' => $novaQtde));
-
-					if ($qtdeTotal == 0)
-						break;
+					$undNecessaria 	= $qtdeTotal / $itemEstoque['Estoque']['complemento_qt'];
+					$undDisponivel 	= $itemEstoque['Estoque']['quantidade'];
+					$undUtilizada  	= $undNecessaria;
+					if ($undUtilizada > $undDisponivel) $undUtilizada = $undDisponivel;					
+					$qtdeItem 		= $undUtilizada * $itemEstoque['Estoque']['complemento_qt'];
+					$qtdeTotal 		-= $qtdeItem;
+					$novaQtde 		= $undDisponivel - $undUtilizada;
+					$result 		= $estoqueCesta->save(array('id' => $itemEstoque['Estoque']['id'], 'quantidade' => $novaQtde));
+					if ($qtdeTotal == 0) break;
 				}
 			}			
 			$cestas++;			
 		}
 		
-		if($cestas > 0){
-			for($i=0; $i < $cestas; $i++){
+		if($cestas > 0)
+		{
+			for($i=0; $i < $cestas; $i++)
+			{
 				$this->Cesta->create();
 				$this->Cesta->save(array('data_gerada' => date('Y-m-d H:i:s')));
+				
+				// incluindo itemcesta
+				foreach($dataItemCesta as $_linha => $_arrCampos) $dataItemCesta[$_linha]['cesta_id'] = $this->Cesta->getLastInsertID();
+				//$this->Cesta->Itemcesta->create();
+				if (!$this->Cesta->Itemcesta->saveAll($dataItemCesta)) exit('Erro ao atualiar Item da Cesta !!!');
 			}
 			$this->Session->setFlash($cestas . ' cestas geradas.', 'flash_success');
-		}else{
+		}else
+		{
 			$this->Session->setFlash('Não foi possível gerar nenhuma cesta.', 'flash_error');
 		}
 		
@@ -127,6 +131,14 @@ class CestasController extends AppController {
 		} */
 		
 		$this->redirect('index');	
+	}
+
+	/**
+	 * 
+	 */
+	public function admin_consultar($id=null)
+	{
+		$this->data = $this->Cesta->find('all');
 	}
 
 	/**

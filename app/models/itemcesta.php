@@ -11,8 +11,6 @@
  **/
 class Itemcesta extends AppModel {
 	/* Itemcesta tem muitas Cestas e Estoques */
-	public $belongsTo = array(
-		'Estoque', 'Cesta'
-	);
+	public $belongsTo = array('Estoque', 'Cesta');
 }
 ?>

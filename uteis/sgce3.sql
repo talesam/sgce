@@ -440,7 +440,7 @@ INSERT INTO `grupos` (`id`, `nome`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `itemcestas` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `cesta_id` int(11) NOT NULL,
   `estoque_id` int(11) NOT NULL,
   `quantidade` int(11) NOT NULL,

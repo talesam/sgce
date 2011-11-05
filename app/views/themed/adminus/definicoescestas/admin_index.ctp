@@ -2,7 +2,7 @@
 	<div class="block_head">
 		<div class="bheadl"></div>
 		<div class="bheadr"></div>
-		<h2>Definições de cestas</h2>
+		<h2>Definições da Cesta</h2>
 		<ul>
 			<li><?php echo $this->Html->link('Cadastrar Definicoescesta', array('action' => 'cadastrar')); ?></li>
 		</ul>
