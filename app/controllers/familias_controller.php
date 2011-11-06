@@ -208,7 +208,7 @@ class FamiliasController extends AppController {
 		$this->data  = $this->Familia->find('all',array('conditions'=>array('Familia.situacao'=>1)));
 		foreach($this->data as $_linha => $_arrModel)
 		{
-			$this->data[$_linha]['Familia']['situacao'] = ($this->data[$_linha]['Familia']['situacao']==1) ? 'Sim' : 'Não';
+			$this->data[$_linha]['Familia']['situacao'] = ($this->data[$_linha]['Familia']['situacao']==1) ? 'Apta' : 'Não Apta';
 			$this->data[$_linha]['Cesta']['data_saida'] = isset($this->data[$_linha]['Cesta']['data_saida']) ? date('d/m/Y', strtotime($this->data[$_linha]['Cesta']['data_saida'])) : null;
 		}
 
