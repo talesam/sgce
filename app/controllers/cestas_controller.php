@@ -12,9 +12,20 @@
 
 class CestasController extends AppController {
 	
-	public function admin_index(){
+	public function beforeRender()
+	{
+		$config['Familia']['nome']['titulo'] 		= 'Nome';
+		$config['Cesta']['data_gerada']['titulo'] 	= 'Data Gerada';
+		$config['Cesta']['data_gerada']['titulo'] 	= 'Data Saída';
+		$config['Itemcesta']['0']['titulo'] 		= 'Produto/Qtde.';
+		$this->set(compact('config'));
+	}
 	
-		
+	/**
+	 * 
+	 */
+	public function admin_index()
+	{
 		$this->set('cestas', $this->paginate());
 	}
 	
@@ -134,11 +145,30 @@ class CestasController extends AppController {
 	}
 
 	/**
+	 * Exibe a consulta de Cestas
 	 * 
+	 * @return	void
 	 */
 	public function admin_consultar($id=null)
 	{
+		$this->loadModel('Estoque');
+		$Estoque	= new Estoque();
 		$this->data = $this->Cesta->find('all');
+		foreach($this->data as $_linha => $_arrModel)
+		{
+			$this->data[$_linha]['Cesta']['data_gerada'] = date('d/m/Y', strtotime($this->data[$_linha]['Cesta']['data_gerada']));
+			$this->data[$_linha]['Cesta']['data_saida']  = date('d/m/Y', strtotime($this->data[$_linha]['Cesta']['data_saida']));
+			foreach($_arrModel['Itemcesta'] as $_item => $_arrCampos)
+			{
+				$dataEstoque = $Estoque->find('all',array('conditions'=>array('Estoque.id'=>$_arrCampos['estoque_id'])));
+				foreach($dataEstoque as $_itemE => $_arrModelE)
+				{
+					$this->data[$_linha]['Itemcesta'][$_item]['produto'] = $_arrModelE['Definicoescesta']['nome'].' ('.round($_arrModelE['Definicoescesta']['quantidade']).') ';
+				}
+			}
+		}
+		$listaCampos = array('Familia.nome','Cesta.data_gerada','Cesta.data_saida','Itemcesta.0.produto');
+		$this->set(compact('listaCampos'));
 	}
 
 	/**
