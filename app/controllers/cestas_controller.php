@@ -59,7 +59,7 @@ class CestasController extends AppController {
 		$dataItemCesta	= array();
 		$defCesta->hasMany['Estoque']['conditions'] = 'Estoque.quantidade>0';
 		$itDefCesta 	= $defCesta->find('all');
-		debug($itDefCesta);
+		//debug($itDefCesta);
 
 		while($ok){
 			/* Pego todas as definições da cesta  */
@@ -78,7 +78,7 @@ class CestasController extends AppController {
 				$estoqueParam['conditions']['Estoque.data_vencimento >='] 	= date('Y/m/d');
 				$estoqueParam['order']['Estoque.data_vencimento'] = 'ASC';
 				$estoque = $estoqueCesta->find('all', $estoqueParam);
-				debug($estoque);
+				//debug($estoque);
 				
 				if (empty($estoque)) {
 					$ok = false;
@@ -100,16 +100,26 @@ class CestasController extends AppController {
 			if (!$ok)break;
 
 			// Abatendo os itens do estoque.
+			$cont = 0;
 			foreach($itDefCesta as $def)
 			{
-				$estoque 	= $estoqueCesta->find('all', $estoqueParam);
+				$estoqueParam = array();
+				$estoqueParam['conditions'] = null;
+				$estoqueParam['conditions']['Estoque.quantidade>0'];
+				$estoqueParam['conditions']['Estoque.definicoescesta_id'] 	= $def['Definicoescesta']['id'];
+				$estoqueParam['conditions']['Estoque.data_vencimento >='] 	= date('Y/m/d');
+				$estoqueParam['order']['Estoque.data_vencimento'] = 'ASC';
+				$estoque = $estoqueCesta->find('all', $estoqueParam);
+				debug($estoque);
 				$qtdeTotal 	= $def['Definicoescesta']['quantidade'];
-				$cont 		= 0;
 				foreach ($estoque as $itemEstoque)
 				{
-					$dataItemCesta[$cont]['estoque_id'] = $itemEstoque['Estoque']['id'];
-					$dataItemCesta[$cont]['quantidade'] = $itemEstoque['Estoque']['quantidade'];
-					$cont++;
+					if ($itemEstoque['Estoque']['quantidade'])
+					{
+						$dataItemCesta[$cont]['estoque_id'] = $itemEstoque['Estoque']['id'];
+						$dataItemCesta[$cont]['quantidade'] = $itemEstoque['Estoque']['quantidade'];
+						$cont++;
+					}
 					$undNecessaria 	= $qtdeTotal / $itemEstoque['Estoque']['complemento_qt'];
 					$undDisponivel 	= $itemEstoque['Estoque']['quantidade'];
 					$undUtilizada  	= $undNecessaria;
@@ -134,6 +144,7 @@ class CestasController extends AppController {
 			// incluindo itemcesta
 			foreach($dataItemCesta as $_linha => $_arrCampos) $dataItemCesta[$_linha]['cesta_id'] = $this->Cesta->getLastInsertID();
 			if (!$this->Cesta->Itemcesta->saveAll($dataItemCesta)) exit('Erro ao atualiar Item da Cesta !!!');
+			debug($dataItemCesta);
 			$this->Session->setFlash($cestas . ' cestas geradas.', 'flash_success');
 		}else
 		{
@@ -147,7 +158,7 @@ class CestasController extends AppController {
 			}
 		} */
 		
-		//$this->redirect('index');	
+		$this->redirect('index');	
 	}
 
 	/**
