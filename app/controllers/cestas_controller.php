@@ -14,9 +14,9 @@ class CestasController extends AppController {
 	
 	public function beforeRender()
 	{
-		$config['Familia']['nome']['titulo'] 		= 'Nome';
+		$config['Familia']['nome']['titulo'] 		= 'Família';
 		$config['Cesta']['data_gerada']['titulo'] 	= 'Data Gerada';
-		$config['Cesta']['data_gerada']['titulo'] 	= 'Data Saída';
+		$config['Cesta']['data_saida']['titulo'] 	= 'Data Saída';
 		$config['Itemcesta']['0']['titulo'] 		= 'Produto/Qtde.';
 		$this->set(compact('config'));
 	}
@@ -170,7 +170,7 @@ class CestasController extends AppController {
 	{
 		$this->loadModel('Estoque');
 		$Estoque	= new Estoque();
-		$this->data = $this->Cesta->find('all');
+		$this->data = $this->Cesta->find('all',array('conditions'=>array('Cesta.id'=>$id)));
 		foreach($this->data as $_linha => $_arrModel)
 		{
 			$this->data[$_linha]['Cesta']['data_gerada'] = date('d/m/Y', strtotime($this->data[$_linha]['Cesta']['data_gerada']));
