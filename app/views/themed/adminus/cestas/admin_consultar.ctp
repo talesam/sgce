@@ -15,7 +15,7 @@ foreach($this->data as $_linha => $_arrModel)
 	foreach($listaCampos as $_campo)
 	{
 		$arrCmp = explode('.',$_campo); 
-		$c = isset($config[$arrCmp['0']][$arrCmp['1']]) ? $config[$arrCmp['0']][$arrCmp['1']] : null;
+		$c = $_arrModel[$arrCmp['0']][$arrCmp['1']];
 		echo '<td>';
 		if (!is_array($c))
 		{
@@ -37,4 +37,4 @@ foreach($this->data as $_linha => $_arrModel)
 }
 ?>
 </table>
-<?php debug($this->data); ?>
+<?php //debug($this->data); ?>
