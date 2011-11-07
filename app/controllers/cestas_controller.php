@@ -56,8 +56,10 @@ class CestasController extends AppController {
 		$estoqueCesta->recursive = -1;
 		$cestas 		= 0;
 		$ok 			= true;
-		$itDefCesta 	= $defCesta->find('all');
 		$dataItemCesta	= array();
+		$defCesta->hasMany['Estoque']['conditions'] = 'Estoque.quantidade>0';
+		$itDefCesta 	= $defCesta->find('all');
+		debug($itDefCesta);
 
 		while($ok){
 			/* Pego todas as definições da cesta  */
@@ -70,11 +72,13 @@ class CestasController extends AppController {
 						'order' => array('Estoque.data_vencimento' => 'ASC')
 					)
 				);*/
-				$estoqueParam['conditions']['Estoque.quantidade>'] 			= '0';
+				$estoqueParam = array();
+				$estoqueParam['conditions'] = null;
 				$estoqueParam['conditions']['Estoque.definicoescesta_id'] 	= $def['Definicoescesta']['id'];
 				$estoqueParam['conditions']['Estoque.data_vencimento >='] 	= date('Y/m/d');
 				$estoqueParam['order']['Estoque.data_vencimento'] = 'ASC';
 				$estoque = $estoqueCesta->find('all', $estoqueParam);
+				debug($estoque);
 				
 				if (empty($estoque)) {
 					$ok = false;
@@ -105,7 +109,7 @@ class CestasController extends AppController {
 				{
 					$dataItemCesta[$cont]['estoque_id'] = $itemEstoque['Estoque']['id'];
 					$dataItemCesta[$cont]['quantidade'] = $itemEstoque['Estoque']['quantidade'];
-					++$cont;
+					$cont++;
 					$undNecessaria 	= $qtdeTotal / $itemEstoque['Estoque']['complemento_qt'];
 					$undDisponivel 	= $itemEstoque['Estoque']['quantidade'];
 					$undUtilizada  	= $undNecessaria;
@@ -143,7 +147,7 @@ class CestasController extends AppController {
 			}
 		} */
 		
-		$this->redirect('index');	
+		//$this->redirect('index');	
 	}
 
 	/**
