@@ -1,4 +1,4 @@
-<table width='100%' style='background-color: #fff;'>
+<table width='100%' style='background-color: #fff;' border='1'>
 <?php 
 foreach($this->data as $_linha => $_arrModel)
 {
@@ -37,4 +37,4 @@ foreach($this->data as $_linha => $_arrModel)
 }
 ?>
 </table>
-<?php //debug($this->data); ?>
+<?php debug($this->data); ?>
