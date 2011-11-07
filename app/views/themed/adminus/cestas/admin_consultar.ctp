@@ -37,4 +37,4 @@ foreach($this->data as $_linha => $_arrModel)
 }
 ?>
 </table>
-<?php debug($this->data); ?>
+<?php //debug($this->data); ?>

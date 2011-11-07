@@ -56,66 +56,70 @@ class CestasController extends AppController {
 		$estoqueCesta->recursive = -1;
 		$cestas 		= 0;
 		$ok 			= true;
-		$dataItemCesta	= array();
-		$dataEstoque	= array();
-		$defCesta->hasMany['Estoque']['conditions'] = 'Estoque.quantidade>0';
 		$itDefCesta 	= $defCesta->find('all');
-		debug($itDefCesta);
+		$dataItemCesta	= array();
 
-		foreach($itDefCesta as $_linha => $_arrModel)
-		{
-			foreach($_arrModel['Estoque'] as $_linhaE => $_arrCampos)
-			{
-				if ($_arrCampos['quantidade']>0)
-				{
-					$dataEstoque[$_linha] = $_arrCampos;
-				} else $ok = false; // se a quantidade está em zero, sarta fora.
-			}
-		}
-		if (empty($dataEstoque)) $ok = false;
-		//echo debug($dataEstoque);
-
-		if($ok)
-		{
+		while($ok){
 			/* Pego todas as definições da cesta  */
-			$cont = 0;
-			foreach($itDefCesta as $def)
-			{
-				$qtde 		= 0;
-				$qtdeTotal 	= $def['Definicoescesta']['quantidade'];
-				foreach($dataEstoque as $_linha => $_arrCampos)
-				{
-					if ($_arrCampos['definicoescesta_id']==$def['Definicoescesta']['id'])
-					{
-						// verificando a quantidade, se está 0, babau
-						$qtde += $_arrCampos['quantidade'] * $_arrCampos['complemento_qt'];
-						if ($qtde < $def['Definicoescesta']['quantidade'])
-						{
-							$ok = false;
-							break;
-						}
+			foreach($itDefCesta as $def){
+				/*$estoqueParam = array(
+					array('AND' => array (
+						'conditions' =>  array(
+							'Estoque.definicoescesta_id' => $def['Definicoescesta']['id']), 
+							'Estoque.data_vencimento >= ' => 'Date(Now())'),
+						'order' => array('Estoque.data_vencimento' => 'ASC')
+					)
+				);*/
+				$estoqueParam['conditions']['Estoque.quantidade>'] 			= '0';
+				$estoqueParam['conditions']['Estoque.definicoescesta_id'] 	= $def['Definicoescesta']['id'];
+				$estoqueParam['conditions']['Estoque.data_vencimento >='] 	= date('Y/m/d');
+				$estoqueParam['order']['Estoque.data_vencimento'] = 'ASC';
+				$estoque = $estoqueCesta->find('all', $estoqueParam);
+				
+				if (empty($estoque)) {
+					$ok = false;
+					break;
+				}
+				
+				$qtde = 0;
+				foreach($estoque as $itemEstoque){
+					$qtde += $itemEstoque['Estoque']['quantidade'] * $itemEstoque['Estoque']['complemento_qt'];
+				}
 
-						// abatendo os itens do estoque
-						$dataItemCesta[$cont]['estoque_id'] = $_arrCampos['id'];
-						$dataItemCesta[$cont]['quantidade'] = $_arrCampos['quantidade'];
-						$cont++;
-						$undNecessaria 	= $qtdeTotal / $_arrCampos['complemento_qt'];
-						$undDisponivel 	= $_arrCampos['quantidade'];
-						$undUtilizada  	= $undNecessaria;
-						if ($undUtilizada > $undDisponivel) $undUtilizada = $undDisponivel;					
-						$qtdeItem 		= $undUtilizada * $_arrCampos['complemento_qt'];
-						$qtdeTotal 		-= $qtdeItem;
-						$novaQtde 		= $undDisponivel - $undUtilizada;
-						if (!$estoqueCesta->save(array('id' => $_arrCampos['id'], 'quantidade' => $novaQtde))) exit('Errro ao atualiar Estoque !!!');
-						if ($qtdeTotal == 0) break;
-					}
+				if ($qtde < $def['Definicoescesta']['quantidade']) {
+					$ok = false;
+					break;
 				}
 			}
+
 			// Se nao houver todos os itens que compoem a cesta, finaliza.
 			if (!$ok)break;
-			$cestas++;
-		}
 
+			// Abatendo os itens do estoque.
+			foreach($itDefCesta as $def)
+			{
+				$estoque 	= $estoqueCesta->find('all', $estoqueParam);
+				$qtdeTotal 	= $def['Definicoescesta']['quantidade'];
+				$cont 		= 0;
+				foreach ($estoque as $itemEstoque)
+				{
+					$dataItemCesta[$cont]['estoque_id'] = $itemEstoque['Estoque']['id'];
+					$dataItemCesta[$cont]['quantidade'] = $itemEstoque['Estoque']['quantidade'];
+					++$cont;
+					$undNecessaria 	= $qtdeTotal / $itemEstoque['Estoque']['complemento_qt'];
+					$undDisponivel 	= $itemEstoque['Estoque']['quantidade'];
+					$undUtilizada  	= $undNecessaria;
+					if ($undUtilizada > $undDisponivel) $undUtilizada = $undDisponivel;					
+					$qtdeItem 		= $undUtilizada * $itemEstoque['Estoque']['complemento_qt'];
+					$qtdeTotal 		-= $qtdeItem;
+					$novaQtde 		= $undDisponivel - $undUtilizada;
+					$result 		= $estoqueCesta->save(array('id' => $itemEstoque['Estoque']['id'], 'quantidade' => $novaQtde));
+					if ($qtdeTotal == 0) break;
+				}
+			}			
+			$cestas++;			
+		}
+		
 		if($cestas > 0)
 		{
 			for($i=0; $i < $cestas; $i++)
@@ -126,22 +130,18 @@ class CestasController extends AppController {
 			// incluindo itemcesta
 			foreach($dataItemCesta as $_linha => $_arrCampos) $dataItemCesta[$_linha]['cesta_id'] = $this->Cesta->getLastInsertID();
 			if (!$this->Cesta->Itemcesta->saveAll($dataItemCesta)) exit('Erro ao atualiar Item da Cesta !!!');
-			//debug($dataItemCesta);
 			$this->Session->setFlash($cestas . ' cestas geradas.', 'flash_success');
 		}else
 		{
-			$this->Session->setFlash('Não foi possível gerar nenhuma cesta!!', 'flash_error');
+			$this->Session->setFlash('Não foi possível gerar nenhuma cesta.', 'flash_error');
 		}
-
+		
 		// Removendo do estoque os itens vazios.
-		//$estoqueCesta->deleteAll(array('Estoque.quantidade'=>0));
-		/*foreach($dataEstoque as $itemEstoque)
-		{
-			if ($itemEstoque['Estoque']['quantidade'] == 0)
-			{
+		/*foreach($estoque as $itemEstoque){
+			if ($itemEstoque['Estoque']['quantidade'] == 0) {
 				$estoqueCesta->deleteAll(array('Estoque.id' => $itemEstoque['Estoque']['id']));
 			}
-		}*/
+		} */
 		
 		$this->redirect('index');	
 	}
@@ -155,7 +155,7 @@ class CestasController extends AppController {
 	{
 		$this->loadModel('Estoque');
 		$Estoque	= new Estoque();
-		$this->data = $this->Cesta->find('all',array('conditions'=>array('Cesta.id'=>$id)));
+		$this->data = $this->Cesta->find('all');
 		foreach($this->data as $_linha => $_arrModel)
 		{
 			$this->data[$_linha]['Cesta']['data_gerada'] = date('d/m/Y', strtotime($this->data[$_linha]['Cesta']['data_gerada']));
