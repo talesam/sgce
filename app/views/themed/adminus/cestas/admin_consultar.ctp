@@ -1,62 +1,40 @@
-<div class="block">
-
-	<div class="block_head">
-		<div class="bheadl"></div>
-		<div class="bheadr"></div>
-		
-		<h2>Consultar Usuário</h2>
-		<ul><li><?php echo $this->Html->link('VOLTAR', array('action' => 'index')); ?></li></ul>
-	</div>		<!-- .block_head ends -->
-	
-	
-	
-	<div class="block_content">
-	
-		<?php echo $this->Form->create('Usuario'); echo $this->Form->input('id'); ?>
-			<p>
-				<label>Situação: </label><?= ($this->data['Usuario']['status']) ? 'Ativo' : 'Inativo'; ?>
-				<br />
-				<label>Prestão de serviço: </label><?= $this->data['Usuario']['prestacao_servico'] ?>
-			</p>
-
-			<p>
-				<label>Nome: </label><?= $this->data['Usuario']['nome'] ?>
-				<br />
-				<label>Grupo: </label><?= $this->data['Grupo']['nome'] ?>
-				<br />
-				<label>E-mail: </label><?= $this->data['Usuario']['email'] ?>
-				<br />
-				<label>CPF: </label><?= $this->data['Usuario']['cpf'] ?>
-			</p>
-			
-			<p>
-				<label>Endereço: </label><?= $this->data['Usuario']['endereco'] ?>
-				<br />
-				<label>Complemento: </label><?= $this->data['Usuario']['complemento'] ?>
-				<br />
-				<label>Número: </label><?= $this->data['Usuario']['numero'] ?>
-				<br />
-				<label>Bairro: </label><?= $this->data['Usuario']['bairro'] ?>
-				<br />
-				<label>Cidade: </label><?= $this->data['Usuario']['cidade'] ?>
-				<br />
-				<label>UF: </label><?= $this->data['Usuario']['uf'] ?>
-				<br />
-				<label>CEP: </label><?= $this->data['Usuario']['cep'] ?>
-			</p>
-					
-			<p>
-				<label>Telefone: </label><?= $this->data['Usuario']['telefone'] ?>
-				<br />
-				<label>Celular: </label><?= $this->data['Usuario']['celular'] ?>
-			</p>
-
-		<?php echo $this->Form->end(null); ?>
-		
-		
-	</div>		<!-- .block_content ends -->
-	
-	<div class="bendl"></div>
-	<div class="bendr"></div>
-		
-</div>		<!-- .block ends -->
+<table width='100%' style='background-color: #fff;'>
+<?php 
+foreach($this->data as $_linha => $_arrModel)
+{
+	echo '<tr>';
+	foreach($listaCampos as $_campo)
+	{
+		$arrCmp = explode('.',$_campo);
+		$c = isset($config[$arrCmp['0']][$arrCmp['1']]) ? $config[$arrCmp['0']][$arrCmp['1']] : null;
+		$titulo = isset($c['titulo']) ? $c['titulo'] : $arrCmp['1'];
+		echo '<th>'.$titulo.'</th>';
+	}
+	echo '</tr>';
+	echo '<tr>';
+	foreach($listaCampos as $_campo)
+	{
+		$arrCmp = explode('.',$_campo); 
+		$c = isset($config[$arrCmp['0']][$arrCmp['1']]) ? $config[$arrCmp['0']][$arrCmp['1']] : null;
+		echo '<td>';
+		if (!is_array($c))
+		{
+			echo $c;
+		} else
+		{
+			if (count($_arrModel[$arrCmp['0']]))
+			{
+				foreach($_arrModel[$arrCmp['0']] as $_linha2 => $_arrCampos2)
+				{
+					if ( isset($arrCmp['2']) && isset($_arrCampos2[$arrCmp['2']]) ) 
+						echo $_arrCampos2[$arrCmp['2']].', ';
+				}
+			}
+		}
+		echo '</td>';
+	}
+	echo '</tr>';
+}
+?>
+</table>
+<?php debug($this->data); ?>

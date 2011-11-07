@@ -21,7 +21,7 @@ flush privileges;</pre><br />
 	if (isset($_POST))
 	{
 		// instala todas as tabelas do sistema
-		$arq = APP.'..'.DS.'uteis'.DS.'sgce3.sql';
+		$arq = APP.'..'.DS.'uteis'.DS.'sgce_bd.sql';
 		if (!file_exists($arq))
 		{
 			$this->erro = 'Não foi possível localicar o arquivo '.$arq;
@@ -36,6 +36,24 @@ flush privileges;</pre><br />
 		{
 			if (trim($sql)) $connected->query($sql, $cachequeries=false);
 		}
+		
+		// populandos as tabelas do sistema
+		$arq = APP.'..'.DS.'uteis'.DS.'popula.sql';
+		if (!file_exists($arq))
+		{
+			$this->erro = 'Não foi possível localicar o arquivo '.$arq;
+			exit('não foi possível localizar o arquivo '.$arq);
+		}
+		$handle  = fopen($arq,"r");
+		$texto   = fread($handle, filesize($arq));
+		$sqls	 = explode(";",$texto);
+		fclose($handle);
+		// executando sql a sql
+		foreach($sqls as $sql)
+		{
+			if (trim($sql)) $connected->query($sql, $cachequeries=false);
+		}
+		
 		header('Location: '.Router::url('/',true));
 	}
 	?>
