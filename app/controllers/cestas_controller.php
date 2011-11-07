@@ -17,7 +17,7 @@ class CestasController extends AppController {
 		$config['Familia']['nome']['titulo'] 		= 'Família';
 		$config['Cesta']['data_gerada']['titulo'] 	= 'Data Gerada';
 		$config['Cesta']['data_saida']['titulo'] 	= 'Data Saída';
-		$config['Itemcesta']['0']['titulo'] 		= 'Produto/Qtde.';
+		$config['Itemcesta']['0']['titulo'] 		= 'Produto (Qtde)';
 		$this->set(compact('config'));
 	}
 	
@@ -173,6 +173,7 @@ class CestasController extends AppController {
 		$this->data = $this->Cesta->find('all',array('conditions'=>array('Cesta.id'=>$id)));
 		foreach($this->data as $_linha => $_arrModel)
 		{
+			if (empty($this->data[$_linha]['Familia']['nome'])) $this->data[$_linha]['Familia']['nome'] = '<span style="color: red;">NENHUMA FAMÍLIA FOI CONTEMPLADA AINDA</span>';
 			$this->data[$_linha]['Cesta']['data_gerada'] = date('d/m/Y', strtotime($this->data[$_linha]['Cesta']['data_gerada']));
 			$this->data[$_linha]['Cesta']['data_saida']  = date('d/m/Y', strtotime($this->data[$_linha]['Cesta']['data_saida']));
 			foreach($_arrModel['Itemcesta'] as $_item => $_arrCampos)
@@ -184,8 +185,10 @@ class CestasController extends AppController {
 				}
 			}
 		}
-		$listaCampos = array('Familia.nome','Cesta.data_gerada','Cesta.data_saida','Itemcesta.0.produto');
-		$this->set(compact('listaCampos'));
+		$listaCampos 	= array('Familia.nome','Cesta.data_gerada','Cesta.data_saida','Itemcesta.0.produto');
+		$titulo			= 'Cestas';
+		$this->set(compact('listaCampos','titulo'));
+		$this->render('../padrao/admin_consultar');
 	}
 
 	/**
