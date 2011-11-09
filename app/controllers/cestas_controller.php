@@ -176,6 +176,7 @@ class CestasController extends AppController {
 			if (empty($this->data[$_linha]['Familia']['nome'])) $this->data[$_linha]['Familia']['nome'] = '<span style="color: red;">NENHUMA FAMÍLIA FOI CONTEMPLADA AINDA</span>';
 			$this->data[$_linha]['Cesta']['data_gerada'] = date('d/m/Y', strtotime($this->data[$_linha]['Cesta']['data_gerada']));
 			$this->data[$_linha]['Cesta']['data_saida']  = date('d/m/Y', strtotime($this->data[$_linha]['Cesta']['data_saida']));
+			if ($this->data[$_linha]['Cesta']['data_saida']=='31/12/1969') $this->data[$_linha]['Cesta']['data_saida'] = '-';
 			foreach($_arrModel['Itemcesta'] as $_item => $_arrCampos)
 			{
 				$dataEstoque = $Estoque->find('all',array('conditions'=>array('Estoque.id'=>$_arrCampos['estoque_id'])));
