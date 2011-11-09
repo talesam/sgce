@@ -98,16 +98,32 @@ class MantimentosController extends AppController {
 	 */
 	public function admin_rel_venc_mantimentos()
 	{
-		//$this->data = $this->Mantimento->find('all');
-		/*foreach($this->data as $_linha => $_arrModel)
+		$dtVencimento = date('Y/m/d',strtotime('+ 30 days',strtotime(date('Y/m/d'))));
+		$this->loadModel('Estoque');
+		$opcoes['conditions'] = "Estoque.data_vencimento <= '".$dtVencimento."'";
+		$opcoes['order'] 	 = 'Estoque.data_entrada, Definicoescesta.nome';
+		$this->data = $this->Estoque->find('all',$opcoes);
+		foreach($this->data as $_linha => $_arrModel)
 		{
-			//$this->data[$_linha]['Familia']['situacao'] = ($this->data[$_linha]['Familia']['situacao']==1) ? 'Sim' : 'Não';
-			//$this->data[$_linha]['Cesta']['data_saida'] = date('d/m/Y', strtotime($this->data[$_linha]['Cesta']['data_saida']));
-		}*/
-		$this->data = array();
-		$listaCampos = array('Mantimento.nome','Mantimento.complemento_qt','Mantimento.data');
-		$this->set(compact('listaCampos'));
+			//$this->data[$_linha]['Estoque']['data_entrada']   = isset($this->data[$_linha]['Estoque']['data_entrada']) 	  ? date('d/m/Y',strtotime('-30 days',strtotime($this->data[$_linha]['Estoque']['data_entrada']))) 	 : '-';
+			$this->data[$_linha]['Estoque']['data_entrada']   = isset($this->data[$_linha]['Estoque']['data_entrada']) 	  ? date('d/m/Y',strtotime($this->data[$_linha]['Estoque']['data_entrada'])) 	: '-';
+			$this->data[$_linha]['Estoque']['data_vencimento']= isset($this->data[$_linha]['Estoque']['data_vencimento']) ? date('d/m/Y',strtotime($this->data[$_linha]['Estoque']['data_vencimento'])) : '-';
+		}
+
+		// descobrindo o tipo do relatório
+		$tipo = isset($this->params['pass']['0']) ? $this->params['pass']['0'] : 'html';
+		if ($tipo=='pdf') $this->layout = 'pdf';
+
+		// config da view
+		$config['titulo'] 											= 'Relatório de Mantimentos';
+		$config['listaCampos']										= array('Definicoescesta.nome','Estoque.data_vencimento','Estoque.complemento_qt');
+		$config['Campos']['Definicoescesta']['nome']['titulo'] 		= 'Produto';
+		$config['Campos']['Estoque']['data_entrada']['titulo'] 	= 'Data Entrada';
+		$config['Campos']['Estoque']['data_vencimento']['titulo'] 	= 'Data Vencimento';
+		$config['Campos']['Estoque']['complemento_qt']['titulo'] 	= 'Complemento';
+
+		$this->set(compact('config','tipo'));
+		$this->render('../padrao/rel_lista');
 	}
-	
 }
 ?>

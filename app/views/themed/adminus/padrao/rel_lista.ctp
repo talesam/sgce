@@ -79,4 +79,6 @@ if (isset($config['rodape'])) $texto .= "<tr><td colspan='".count($config['lista
 $texto .= '</table>';
 
 echo $texto;
+
+//debug($this->data);
 ?>
