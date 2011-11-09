@@ -10,12 +10,18 @@
  * @copyright __MyCompanyName__
  **/
 class Mantimento extends AppModel {
-	
+	/**
+	 * Nome da tabela
+	 * 
+	 * @var		boolean/string
+	 * @access	public
+	 */
+	var $useTable 	= false;
+
 	public $tipos = array(
 		'cesta' => 'Cesta',
 		'extra' => 'Extra'
 	);
-	
 
 	public $validate = array(
 		'nome' => array(
@@ -40,14 +46,14 @@ class Mantimento extends AppModel {
 			
 		),
 	);
-		
+
 	public $medidas = array(
 		'kilo'	=> 'kilo(s)',
 		'litro' => 'Litro(s)',
 		'lata'	=> 'Lata(s)',
 		'outro'	=> 'Outro(s)'
 	);
-	
+
 	public $displayField = 'nome';
 }
 ?>
