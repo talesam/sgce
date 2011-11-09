@@ -14,6 +14,7 @@ class CestasController extends AppController {
 	
 	public function beforeRender()
 	{
+		$config = isset($this->viewVars['config']) ? $this->viewVars['config'] : array();
 		$config['Familia']['nome']['titulo'] 		= 'Família';
 		$config['Cesta']['data_gerada']['titulo'] 	= 'Data Gerada';
 		$config['Cesta']['data_saida']['titulo'] 	= 'Data Saída';
@@ -236,7 +237,7 @@ class CestasController extends AppController {
 		// descobrindo o tipo do relatório
 		$tipo = isset($this->params['pass']['0']) ? $this->params['pass']['0'] : 'html';
 		if ($tipo=='pdf') $this->layout = 'pdf';
-		
+
 		// config da view
 		$config['titulo'] 		= 'Relatório de Itens Pendentes';
 		$config['listaCampos']	= array('Familia.nome','Estoque.quantidade','Estoque.complemento_qt');
