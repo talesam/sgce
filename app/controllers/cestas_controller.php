@@ -88,7 +88,9 @@ class CestasController extends AppController {
 				
 				$qtde = 0;
 				foreach($estoque as $itemEstoque){
-					$qtde += $itemEstoque['Estoque']['quantidade'] * $itemEstoque['Estoque']['complemento_qt'];
+					if ($itemEstoque['Estoque']['complemento_qt'] <= $def['Definicoescesta']['quantidade']) {
+						$qtde += $itemEstoque['Estoque']['quantidade'] * $itemEstoque['Estoque']['complemento_qt'];
+					}
 				}
 
 				if ($qtde < $def['Definicoescesta']['quantidade']) {
@@ -115,6 +117,9 @@ class CestasController extends AppController {
 				$qtdeTotal 	= $def['Definicoescesta']['quantidade'];
 				foreach ($estoque as $itemEstoque)
 				{
+					if ($itemEstoque['Estoque']['complemento_qt'] > $def['Definicoescesta']['quantidade']) 
+						continue;
+				
 					if ($itemEstoque['Estoque']['quantidade'])
 					{
 						$dataItemCesta[$cont]['estoque_id'] = $itemEstoque['Estoque']['id'];
