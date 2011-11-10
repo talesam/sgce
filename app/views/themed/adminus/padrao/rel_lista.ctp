@@ -38,6 +38,9 @@ if ($tipo=='html') $texto .= "<tr><td align='center' colspan='".count($config['l
 // título
 if (!empty($config['titulo'])) $texto .= "<tr><td align='center' colspan='".count($config['listaCampos'])."'><h2>".$config['titulo']."</h2></td></tr>\n";
 
+// sub-cabeçalho
+if (isset($config['cabecalho'])) $texto .= "<tr><td style='padding: 5px;' colspan='".count($config['listaCampos'])."'>".$config['cabecalho']."</td></tr>\n";
+
 // cabeçalho
 $texto .= "<tr>\n";
 foreach($config['listaCampos'] as $_campo)
@@ -80,5 +83,4 @@ $texto .= '</table>';
 
 echo $texto;
 
-//debug($this->data);
 ?>

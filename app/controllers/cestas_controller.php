@@ -226,26 +226,73 @@ class CestasController extends AppController {
 	}
 
 	/**
-	 * Exibe o relatório de itens pendentes
+	 * Exibe o relatório de itens pendentes para completar um cesta.
 	 * 
 	 * @return	void
 	 */
 	public function admin_rel_itens_pendentes()
 	{
-		$this->data = $this->Cesta->find('all');
+		// variáveis locais
+		$config = array();
 
 		// descobrindo o tipo do relatório
 		$tipo = isset($this->params['pass']['0']) ? $this->params['pass']['0'] : 'html';
 		if ($tipo=='pdf') $this->layout = 'pdf';
 
+		$this->loadModel('Estoque');
+		$this->data = $this->Estoque->find('all');
+		//debug($this->data);
+		
+		// descobrindo a cesta
+		$cesta 		= array();
+		$produtos 	= array();
+		$config['cabecalho'] = '<h2>Definição da Cesta</h2>';
+		
+		// configurando cestas e os produtos
+		foreach($this->data as $_linha => $_arrModel)
+		{
+			$cesta[$_arrModel['Definicoescesta']['nome']][$_arrModel['Definicoescesta']['medida']] = $_arrModel['Definicoescesta']['quantidade'];
+			$produtos[$_arrModel['Definicoescesta']['nome']]['medida'] = isset($produtos[$_arrModel['Definicoescesta']['nome']]['medida']) ? $produtos[$_arrModel['Definicoescesta']['nome']]['medida'] : 0;
+			if ($_arrModel['Estoque']['quantidade']>0)
+			{
+				$produtos[$_arrModel['Definicoescesta']['nome']]['medida'] += $_arrModel['Estoque']['complemento_qt'];
+			}
+		}
+		//debug($cesta);
+		//debug($produtos);
+
+		// configurando o cabeçalho do relatório, que vai levar a configuração da cesta
+		$l = 0;
+		$this->data = array();
+		foreach($cesta as $_produto => $_arrOpc)
+		{
+			foreach($_arrOpc as $_medida => $_qtde)
+			{
+				$config['cabecalho'] .= $_qtde.' '.$_medida.'(s) de '.$_produto.', ';
+				$falta = ($_qtde-$produtos[$_produto]['medida']);
+				if ($falta>0)
+				{
+					$this->data[$l]['Produto']['nome'] 	  = $_produto;
+					$this->data[$l]['Produto']['estoque'] = $produtos[$_produto]['medida'];
+					$this->data[$l]['Produto']['falta']   = $falta.' ('.$_medida.')';
+					$l++;
+				}
+			}
+		}
+		$config['cabecalho'] = substr($config['cabecalho'],0,strlen($config['cabecalho'])-2);
+
 		// config da view
 		$config['titulo'] 		= 'Relatório de Itens Pendentes';
-		$config['listaCampos']	= array('Familia.nome','Estoque.quantidade','Estoque.complemento_qt');
-		$config['Campos']['Familia']['nome']['titulo'] 			= 'Mantimento';
-		$config['Campos']['Estoque']['quantidade']['titulo'] 	= 'Quantidade';
-		$config['Campos']['Estoque']['complemento_qt']['titulo']= 'Complemento';
+		$config['listaCampos']	= array('Produto.nome','Produto.estoque','Produto.falta');
+		$config['Campos']['Produto']['nome']['titulo'] 			= 'Produto';
+		$config['Campos']['Produto']['estoque']['titulo'] 		= 'Em estoque';
+		$config['Campos']['Produto']['estoque']['td']['width']	= '250px';
+		$config['Campos']['Produto']['estoque']['td']['align']	= 'center';
+		$config['Campos']['Produto']['falta']['titulo'] 		= 'Falta para completar a cesta';
+		$config['Campos']['Produto']['falta']['td']['width']	= '250px';
+		$config['Campos']['Produto']['falta']['td']['align']	= 'center';
 
-		$this->set(compact('config','tipo'));
+		$this->set(compact('config','tipo','cesta'));
 		$this->render('../padrao/rel_lista');
 	}
 }
