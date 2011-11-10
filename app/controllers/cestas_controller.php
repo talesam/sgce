@@ -220,7 +220,7 @@ class CestasController extends AppController {
 		
 		// config da view
 		$config['titulo'] 		= 'Relatório de Cestas Disponíveis';
-		$config['rodape'] 		= 'Total de Cestas: '.count($this->data);
+		$config['rodape'] 		= '<strong>&nbsp;Total de Cestas: '.count($this->data).'</strong>';
 		$config['listaCampos']	= array('Cesta.nome','Cesta.data_gerada');
 		$config['Campos']['Cesta']['nome']['titulo'] 			= 'Cestas Disponíveis';
 		$config['Campos']['Cesta']['data_gerada']['titulo'] 	= 'Data Gerada';
