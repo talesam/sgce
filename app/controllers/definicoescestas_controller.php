@@ -42,7 +42,7 @@ class DefinicoescestasController extends AppController {
 
 		foreach($definicoescestas as $definicoescesta){
 			$estoque[$definicoescesta['Definicoescesta']['id']] = 
-				$e->find('first', array('fields' => 'SUM(Estoque.quantidade*Estoque.complemento_qt) as `total`' ,'conditions' => array('Estoque.definicoescesta_id' => $definicoescesta['Definicoescesta']['id'])));
+				$e->find('first', array('fields' => 'SUM(Estoque.quantidade) as `total`' ,'conditions' => array('Estoque.definicoescesta_id' => $definicoescesta['Definicoescesta']['id'])));
 		}
 
 		if (isset($estoque))

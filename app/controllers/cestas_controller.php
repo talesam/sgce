@@ -150,7 +150,7 @@ class CestasController extends AppController {
 			// incluindo itemcesta
 			foreach($dataItemCesta as $_linha => $_arrCampos) $dataItemCesta[$_linha]['cesta_id'] = $this->Cesta->getLastInsertID();
 			if (!$this->Cesta->Itemcesta->saveAll($dataItemCesta)) exit('Erro ao atualiar Item da Cesta !!!');
-			debug($dataItemCesta);
+			//debug($dataItemCesta);
 			$this->Session->setFlash($cestas . ' cestas geradas.', 'flash_success');
 		}else
 		{
