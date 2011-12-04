@@ -38,7 +38,7 @@ class FamiliasController extends AppController {
 			}
 		}
 
-		$this->Familia->recursive = 1;
+		unset($this->Familia->hasOne['Frequencia']);
 		$this->paginate['conditions'] = array('Familia.parente_id' => null);
 		$familias = $this->paginate();
 		$this->set('familias', $familias);
