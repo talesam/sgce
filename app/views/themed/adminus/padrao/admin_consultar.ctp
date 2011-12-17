@@ -17,7 +17,7 @@
 		{
 			$arrCmp = explode('.',$_campo);
 			$c = isset($config[$arrCmp['0']][$arrCmp['1']]) ? $config[$arrCmp['0']][$arrCmp['1']] : null;
-			$v = $this->data['0'][$arrCmp['0']][$arrCmp['1']];
+			$v = isset($this->data['0'][$arrCmp['0']][$arrCmp['1']]) ? $this->data['0'][$arrCmp['0']][$arrCmp['1']] :  null;
 			$titulo = isset($c['titulo']) ? $c['titulo'] : $arrCmp['1'];
 			echo '<p><label>'.$titulo.$separador.'</label>';
 			if (is_array($v))
