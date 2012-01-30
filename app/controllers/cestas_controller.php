@@ -113,7 +113,7 @@ class CestasController extends AppController {
 				$estoqueParam['conditions']['Estoque.data_vencimento >='] 	= date('Y/m/d');
 				$estoqueParam['order']['Estoque.data_vencimento'] = 'ASC';
 				$estoque = $estoqueCesta->find('all', $estoqueParam);
-				debug($estoque);
+				//debug($estoque);
 				$qtdeTotal 	= $def['Definicoescesta']['quantidade'];
 				foreach ($estoque as $itemEstoque)
 				{

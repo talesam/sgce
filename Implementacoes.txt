@@ -1,0 +1,13 @@
+*Permissões*
+------------
+O usuário pode pertencer a 1 ou vários grupos.
+Na cadastro/alteração do usuário, ao invéz de ter um campo "Seleção" para escolher a qual grupo o usuário pertence, terá vários checkbox (cada um para um grupo).
+
+*Frequência*
+------------
+A frequência deve funcionar da seguinte maneira: cadastra-se uma data e dentro dela, todas as famílias cadastradas. Então será o seguinte: no dia X apresentam várias famílias para fazer a chamada. Este deve usar um "radio" para escolha.
+É EXATAMENTE COMO A CHAMADA, FREQUÊNCIA DE AULA DE UM COLÉGIO, FACULDADE.
+
+*Relatórios*
+------------
+Os relatórios devem ser mais dinâmicos, como no icake, aonde o usuário escolhe o que quer filtrar e logo em seguida manda gerar o relatório.
